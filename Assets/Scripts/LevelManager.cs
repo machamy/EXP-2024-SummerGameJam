@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float weight;
+    [SerializeField] private IntVariableSO score;
+
+
+    private void CheckScore(int n)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
     {
         
     }
