@@ -32,6 +32,7 @@ public class Car : MonoBehaviour
     {
         state = State.stop;
 
+        //renderer.enabled
         renderer.color = new Color(1, 1, 1, 1); // 신호등 visible
         // 신호등 띄우고 시간
 
