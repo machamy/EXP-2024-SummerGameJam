@@ -13,6 +13,7 @@ public class Car : BaseVehicle
     public Vector3 EndPosition;
 
     public float speed = 1f;
+    public float carCollisionHeight = 0.3f; // downheight of car
     private float startTime;
     private float distanceLength;
     public bool Isflooding = false; //�浹����
@@ -79,6 +80,7 @@ public class Car : BaseVehicle
         // transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
         transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step); 
 
+
         if (transform.position == EndPosition)
         {
             Destroy(gameObject);
@@ -97,6 +99,18 @@ public class Car : BaseVehicle
             StartCoroutine(Stop());
  
         }
+    }
+
+    public void OnCollideDown()
+    {
+        Isflooding = true;
+        Debug.Log("Car flooding");
+    }
+
+    public void OnCollideFront()
+    {
+        Isflooding = true;
+        Debug.Log("Front Flooding");
     }
 
     void Awake()

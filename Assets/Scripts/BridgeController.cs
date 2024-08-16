@@ -8,7 +8,7 @@ public class BridgeController : MonoBehaviour
 {
     public GameObject bridgegfx;
     public Ship Ship;
-    public GameObject Car;
+    public Car Car;
     [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
     [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
     float height;
@@ -39,6 +39,15 @@ public class BridgeController : MonoBehaviour
                 Ship.GetComponent<Ship>().OnCollideFront();
             }
         }
+
+        if(collision.gameObject.CompareTag("Car"))
+        {
+            Car = collision.GetComponent<Car>();
+            if(Car && Car.carCollisionHeight < height)
+            {
+                Car.GetComponent<Car>().OnCollideFront();
+            }
+        }
     }
 
 
@@ -52,7 +61,19 @@ public class BridgeController : MonoBehaviour
                 Ship.GetComponent<Ship>().OnCollideUp();
             }
         }
+
+        if (collision.gameObject.CompareTag("Car"))
+        {
+            Car = collision.GetComponent<Car>();
+            if (Car && Car.carCollisionHeight < height && !Car.Isflooding)
+            {
+                Car.GetComponent<Car>().OnCollideDown();
+            }
+        }
+
     }
+
+
     void Update()
     {
         AnimationCurve sellecteCurve;
