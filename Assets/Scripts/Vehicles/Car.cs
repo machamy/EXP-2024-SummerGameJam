@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Car : MonoBehaviour
 {
+
+
     public Vector3 StartPosition;
     public Vector3 EndPosition;
 
@@ -13,9 +15,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     private bool state;
 
+    private BoxCollider testcollider;
+
     // Start is called before the first frame update
     void Start()
     {
+        testcollider = GetComponent<BoxCollider>();
 
         StartPosition = transform.position;
         EndPosition = new Vector3(4, 0, 0);
@@ -23,6 +28,11 @@ public class NewBehaviourScript : MonoBehaviour
         state = true;
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("접촉하였습니다.");
     }
 
     // Update is called once per frame

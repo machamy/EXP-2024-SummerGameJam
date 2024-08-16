@@ -15,13 +15,37 @@ public class UIManager : MonoBehaviour
     [Header("ScriptableObjects")]
     [SerializeField] private IntVariableSO Score;
     [SerializeField] private IntVariableSO Hp;
-
+    [Header("Settings")]
+    [SerializeField] private float uiTransitionSec = 0.25f;
+    [SerializeField] private float uiTransitionDistance = 5f;
     private void Awake()
     {
         Score.Value = 0;
         Hp.Value = 3;
     }
 
+    public void ShowPause()
+    {
+        
+    }
+
+    public void ShowGame()
+    {
+        scoreTMP.gameObject.SetActive(true);
+        hpIndicator.gameObject.SetActive(true);
+    }
+
+    public void ShowMain()
+    {
+        //TODO 애니메이션
+        
+    }
+
+    // private IEnumerator ShowGameRoutine(GameObject gameObject)
+    // {
+    //     
+    // }
+    
 
     // private IEnumerator FadeRoutine(float time, float from, float to, int frame = 32)
     // {

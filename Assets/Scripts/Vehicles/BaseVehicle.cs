@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class BaseVehicle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum VehicleType
     {
-        
+        Car,
+        Ship
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public VehicleType type;
+    
+    /// <summary>
+    /// 다리 이전 이동 시간
+    /// </summary>
+    public float priorMoveDelay = 1;
+    /// <summary>
+    /// 다리 이전 대기시간(자동차만 해당)
+    /// </summary>
+    public float priorWaitDelay = 1;
+    /// <summary>
+    /// 다리 건너는 시간
+    /// </summary>
+    public float crossBridgeDelay = 1;
+    /// <summary>
+    /// 다리 건넌 후 시간
+    /// </summary>
+    public float afterMoveTime = 1;
 }
