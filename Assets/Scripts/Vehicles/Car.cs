@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Car : MonoBehaviour
 {
     public SpriteRenderer renderer;
@@ -74,6 +75,7 @@ public class Car : MonoBehaviour
         //transform.Translate(Vector3.right * Time.deltaTime);
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
+        Global.
 
         if (transform.position == EndPosition)
         {
