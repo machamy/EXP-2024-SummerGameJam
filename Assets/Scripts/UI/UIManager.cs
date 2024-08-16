@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
         Hp.Value = 3;
     }
 
-    public void Initialize()
+    public void Initialize(int currentDifficulty, int unlockDifficulty)
     {
         Score.Value = 0;
         Hp.Value = 0;
@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     //     }
     // }
     //
-    private void ChangeScore(int n) => scoreTMP.text = "Score : "+Score.Value;
+    private void ChangeScore(int n) => scoreTMP.text = $"{Score.Value}";
 
     private void OnEnable()
     {

@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
+
+
+    public int currentDifficulty { get; private set; }
+    public int unlockedDifficulty { get; private set; }
+    public int highScore { get; private set; }
+    
     public enum GameState
     {
         Main,
@@ -16,6 +22,13 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState State { get; private set; } = GameState.Main;
+
+    public void Awake()
+    {
+        currentDifficulty = PlayerPrefs.GetInt("c_diff", 0);
+        unlockedDifficulty = PlayerPrefs.GetInt("u_diff", 0);
+        highScore = PlayerPrefs.GetInt("h_score", 0);
+    }
 
     public void Start()
     {
@@ -66,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame()
     {
-        uiManager.Initialize();
+        uiManager.Initialize(currentDifficulty,unlockedDifficulty);
         levelManager.Initialize();
     }
     
