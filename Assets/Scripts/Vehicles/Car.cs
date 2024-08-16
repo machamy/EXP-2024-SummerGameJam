@@ -1,4 +1,4 @@
-using DefaultNamespace;
+ï»¿using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +15,7 @@ public class Car : BaseVehicle
     public float speed = 1f;
     private float startTime;
     private float distanceLength;
+    public bool Isflooding = false; //ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½
 
     private Collider2D collider;
 
@@ -35,10 +36,10 @@ public class Car : BaseVehicle
         state = State.stop;
 
 
-        renderer.color = new Color(1, 1, 1, 1); // ½ÅÈ£µî visible
-        // ½ÅÈ£µî ¶ç¿ì°í ½Ã°£
+        renderer.color = new Color(1, 1, 1, 1); // ì‹ í˜¸ë“± visible
+        // ì‹ í˜¸ë“± ë„ìš°ê³  ì‹œê°„
 
-        yield return new WaitForSeconds(1f); // ´ë±â ½Ã°£
+        yield return new WaitForSeconds(1f); // ëŒ€ê¸° ì‹œê°„
 
         renderer.color = Color.red;
         yield return new WaitForSeconds(1f);
@@ -75,8 +76,8 @@ public class Car : BaseVehicle
 
         //transform.Translate(Vector3.right * Time.deltaTime);
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
-        //GlobalData.carDirection;
+        // transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
+        transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step); 
 
         if (transform.position == EndPosition)
         {
@@ -92,7 +93,7 @@ public class Car : BaseVehicle
 
         if (other.gameObject.tag == "Invisible")
         {
-            Debug.Log("Invisible°ú Á¢ÃËÇÏ¿´½À´Ï´Ù.");
+            Debug.Log("Invisibleê³¼ ì ‘ì´‰í•˜ì˜€ìŠµë‹ˆë‹¤.");
             StartCoroutine(Stop());
  
         }
@@ -100,7 +101,7 @@ public class Car : BaseVehicle
 
     void Awake()
     {
-        state = State.start; // ÀüÅõ ½ÃÀÛ¾Ë¸²
+        state = State.start; // ì „íˆ¬ ì‹œì‘ì•Œë¦¼
     }
 
     // Start is called before the first frame update
