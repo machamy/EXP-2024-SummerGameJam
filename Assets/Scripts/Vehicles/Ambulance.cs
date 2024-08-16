@@ -16,7 +16,7 @@ public class Ambulance : Car
         yield return null;
     }
 
-   /* IEnumerator Stop()
+    /*protected override IEnumerator Stop()
     {
         state = State.stop;
         WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
