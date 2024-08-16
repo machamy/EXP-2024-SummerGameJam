@@ -12,11 +12,13 @@ public class Pirate : Ship
     public override void OnCollideFront()
     {
         Iscollision = true;
+        Debug.Log("Front Collided");
     }
 
 
     public override void OnCollideUp()
     {
-        Iscollision = false;
+        Iscollision = true;
+        Debug.Log("Middle Collided");
     }
 }

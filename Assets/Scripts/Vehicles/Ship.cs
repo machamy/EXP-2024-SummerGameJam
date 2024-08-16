@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Ship : BaseVehicle
 {
-    public GameObject ShipPrefab;
     public Vector3 spawnPosition;
     public Vector3 Direction; // ship Direction
     public float speed = 5.0f; // Ship Speed
@@ -27,16 +26,13 @@ public class Ship : BaseVehicle
 
     protected virtual void OnBecameInvisible()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public virtual bool CollideCheck(float height)
     {
-        if (shipCollisionHeight < height)
-        {
-            return true;
-        }
-        else return false;
+        return (shipCollisionHeight < height);
+  
     }
 
     /// <summary>
