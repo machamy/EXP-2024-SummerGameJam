@@ -19,7 +19,7 @@ public class Car : BaseVehicle
     private float startTime;
     private float distanceLength;
     public bool Isflooding = false; //�浹����
-    public bool IsonBridge = true;
+    public bool IsonBridge = false;
 
     private Collider2D collider;
 
@@ -85,6 +85,10 @@ public class Car : BaseVehicle
         float step = speed * Time.deltaTime;
         transform.position += EndPosition * (step);
 
+        if (bridgeController.height <= transform.position.y)
+        {
+            IsonBridge=true;
+        }
 
         if (IsonBridge)
         {
