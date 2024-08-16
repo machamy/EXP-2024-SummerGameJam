@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Submarine : Ship
 {
-    new public float shipCollisionHeight = 0.3f;
+    public float submarineCollisionHeight = 0.3f;
     override protected void Start()
     {
         base.Start();
@@ -12,18 +12,18 @@ public class Submarine : Ship
 
     public override bool CollideCheck(float height)
     {
-        return shipCollisionHeight > height;
+        return submarineCollisionHeight > height;
     }
     public override void OnCollideFront()
     {
         Iscollision = true;
-        Debug.Log("Front Collided");
+        Debug.Log("Submarine Front Collided");
     }
 
 
     public override void OnCollideUp()
     {
         Iscollision = true;
-        Debug.Log("Middle Collided");
+        Debug.Log("Submarine Middle Collided");
     }
 }

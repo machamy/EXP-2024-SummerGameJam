@@ -12,13 +12,13 @@ public class NormalShip : Ship
     public override void OnCollideFront()
     {
         Iscollision = true;
-        Debug.Log("Front Collided");
+        Debug.Log("NormalShip Front Collided");
     }
 
 
     public override void OnCollideUp()
     {
         Iscollision = true;
-        Debug.Log("Middle Collided");
+        Debug.Log("NormalShip Middle Collided");
     }
 }
