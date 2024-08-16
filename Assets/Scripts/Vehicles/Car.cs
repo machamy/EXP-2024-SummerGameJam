@@ -76,7 +76,7 @@ public class Car : BaseVehicle
         //transform.Translate(Vector3.right * Time.deltaTime);
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
-        GlobalData.carDirection;
+        //GlobalData.carDirection;
 
         if (transform.position == EndPosition)
         {
