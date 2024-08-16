@@ -63,7 +63,7 @@ public class BridgeController : MonoBehaviour
             progress = Mathf.Max(0, progress-Time.deltaTime);
             sellecteCurve = curveGoup;
             IsSunken = false;
-            Debug.Log("Bridge Go Up");
+           // Debug.Log("Bridge Go Up");
         }
 
         float height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, progress/MoveTime)) * heightweight;
