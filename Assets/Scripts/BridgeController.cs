@@ -11,6 +11,7 @@ public class BridgeController : MonoBehaviour
     public GameObject Car;
     [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
     [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
+    float height;
 
     [Tooltip("다리 애니메이션 가중치")]                 public float heightweight = 1.0f;  
     [Tooltip("다리 최초 위치 저장 벡터")]               Vector3 originalPos;
@@ -33,7 +34,7 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight <= progress)
+            if (Ship && Ship.shipCollisionHeight < height)
             {
                 Ship.GetComponent<Ship>().OnCollideFront();
             }
@@ -46,13 +47,12 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight <= progress && !Ship.Iscollision)
+            if (Ship && Ship.shipCollisionHeight < height && !Ship.Iscollision)
             {
                 Ship.GetComponent<Ship>().OnCollideUp();
             }
         }
     }
-
     void Update()
     {
         AnimationCurve sellecteCurve;
@@ -66,10 +66,10 @@ public class BridgeController : MonoBehaviour
         {
             this.progress = Mathf.Max(0, this.progress- Time.deltaTime);
             sellecteCurve = curveGoup;
-            Debug.Log("Bridge Go Up");
+            //Debug.Log("Bridge Go Up");
         }
 
-        float height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime)) * heightweight;
+        height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime)) * heightweight;
         bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 
         
     }

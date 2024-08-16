@@ -22,7 +22,6 @@ public class Ship : BaseVehicle
     private void FixedUpdate()
     {
         transform.position += Direction * (speed * Time.deltaTime);
-        Debug.Log(Direction);
     }
 
     private void OnBecameInvisible()
@@ -31,17 +30,19 @@ public class Ship : BaseVehicle
     }
 
     /// <summary>
-    /// 밑에서 충돌
-    /// </summary>
-    public void OnCollideUp()
-    {
-        Iscollision = true;
-    }
-    /// <summary>
     /// 앞에서 충돌
     /// </summary>
     public void OnCollideFront()
     {
         Iscollision = true;
+        Debug.Log("전면충돌");
+    }
+    /// <summary>
+    /// 밑에서 충돌
+    /// </summary>
+    public void OnCollideUp()
+    {
+        Iscollision = true;
+        Debug.Log("하부충돌");
     }
 }
