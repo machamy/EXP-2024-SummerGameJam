@@ -34,9 +34,9 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight < height)
+            if (Ship && Ship.CollideCheck(height))
             {
-                Ship.GetComponent<Ship>().OnCollideFront();
+                Ship.OnCollideFront();
             }
         }
 
@@ -45,7 +45,7 @@ public class BridgeController : MonoBehaviour
             Car = collision.GetComponent<Car>();
             if(Car && Car.carCollisionHeight < height)
             {
-                Car.GetComponent<Car>().OnCollideFront();
+                Car.OnCollideFront();
             }
         }
     }
@@ -56,9 +56,9 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight < height && !Ship.Iscollision)
+            if (Ship && Ship.CollideCheck(height) && !Ship.Iscollision)
             {
-                Ship.GetComponent<Ship>().OnCollideUp();
+                Ship.OnCollideUp();
             }
         }
 
@@ -67,7 +67,7 @@ public class BridgeController : MonoBehaviour
             Car = collision.GetComponent<Car>();
             if (Car && Car.carCollisionHeight < height && !Car.Isflooding)
             {
-                Car.GetComponent<Car>().OnCollideDown();
+                Car.OnCollideDown();
             }
         }
 
