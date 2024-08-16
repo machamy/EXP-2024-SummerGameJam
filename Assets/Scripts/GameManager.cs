@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
 
 
-    public int currentDifficulty { get; private set; }
-    public int unlockedDifficulty { get; private set; }
+    public int currentDifficulty { get; set; }
+    public int unlockedDifficulty { get; set; }
     public int highScore { get; private set; }
     
     public enum GameState
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+        Instance = this;
         currentDifficulty = PlayerPrefs.GetInt("c_diff", 0);
         unlockedDifficulty = PlayerPrefs.GetInt("u_diff", 0);
         highScore = PlayerPrefs.GetInt("h_score", 0);
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         State = GameState.Running;
+        Time.timeScale = 1.0f;
     }
 
     /// <summary>

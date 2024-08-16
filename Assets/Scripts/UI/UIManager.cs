@@ -2,13 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UIElements")]
+    [Header("Main")] 
+    [SerializeField] private GameObject Main;
+    [Header("Game")]
+    [SerializeField] private GameObject Game;
+    [Header("Setting")]
+    [SerializeField] private GameObject Setting;
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private HPIndicator hpIndicator;
     // [SerializeField] private Image FadeImg;
@@ -18,6 +24,7 @@ public class UIManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float uiTransitionSec = 0.25f;
     [SerializeField] private float uiTransitionDistance = 5f;
+    [Header("Difficulties")] private Sprite[] difficultySprites;
     private void Awake()
     {
         Score.Value = 0;
@@ -28,23 +35,32 @@ public class UIManager : MonoBehaviour
     {
         Score.Value = 0;
         Hp.Value = 0;
+        Main.GetComponent<MainScreen>().UpdateSprites(currentDifficulty,unlockDifficulty);
     }
 
     public void ShowPause()
     {
-        
+        Setting.SetActive(true);
+        GameManager.Instance.PauseGame();
+    }
+
+    public void ShowSetting()
+    {
+        Setting.SetActive(true);
     }
 
     public void ShowGame()
     {
         scoreTMP.gameObject.SetActive(true);
         hpIndicator.gameObject.SetActive(true);
+        if(GameManager.Instance.State == GameManager.GameState.Pause)
+            GameManager.Instance.ResumeGame();
     }
 
     public void ShowMain()
     {
-        //TODO 애니메이션
-        
+        Main.SetActive(true);
+
     }
 
     // private IEnumerator ShowGameRoutine(GameObject gameObject)
