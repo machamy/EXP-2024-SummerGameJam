@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1081140977750974463}
   - component: {fileID: 6902067112919339442}
-  - component: {fileID: 8764378101005923166}
   - component: {fileID: 7853767038420965550}
+  - component: {fileID: 8764378101005923166}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -86,6 +86,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7853767038420965550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398638165062079017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84dd17bdf5f5b4eac0aad777cf09b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  priorMoveDelay: 1
+  priorWaitDelay: 1
+  crossBridgeDelay: 1
+  afterMoveTime: 1
+  ShipPrefab: {fileID: 4398638165062079017}
+  spawnPosition: {x: 4, y: 13, z: 0}
+  Direction: {x: 0, y: 0, z: 0}
+  speed: 5
+  shipCollisionHeight: 0.3
+  Iscollision: 0
 --- !u!61 &8764378101005923166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,20 +154,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7853767038420965550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4398638165062079017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f84dd17bdf5f5b4eac0aad777cf09b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShipPrefab: {fileID: 4398638165062079017}
-  spawnInterval: 3
-  spawnPosition: {x: 4, y: 13, z: 0}
-  endPosition: {x: -4, y: -13, z: 0}
-  speed: 5
