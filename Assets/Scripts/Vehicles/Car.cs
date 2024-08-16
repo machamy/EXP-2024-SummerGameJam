@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Car : BaseVehicle
 {
+    public BridgeController bridgeController;
+    public GameObject cargfx;
     public SpriteRenderer renderer;
 
     public Vector3 StartPosition;
@@ -17,6 +19,7 @@ public class Car : BaseVehicle
     private float startTime;
     private float distanceLength;
     public bool Isflooding = false; //�浹����
+    public bool IsonBridge = true;
 
     private Collider2D collider;
 
@@ -76,10 +79,17 @@ public class Car : BaseVehicle
         }
 
         //transform.Translate(Vector3.right * Time.deltaTime);
-        float step = speed * Time.deltaTime;
+
         // transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
         // transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step);
+        float step = speed * Time.deltaTime;
         transform.position += EndPosition * (step);
+
+
+        if (IsonBridge)
+        {
+            cargfx.transform.position = new Vector3(transform.position.x, transform.position.y + bridgeController.height - 1, transform.position.z);
+        }
 
     }
 
@@ -87,6 +97,8 @@ public class Car : BaseVehicle
     {
 
         Debug.Log(other.gameObject.tag);
+
+        GetComponent<CircleCollider2D>().isTrigger = false;
 
         if (other.gameObject.tag == "Invisible")
         {
