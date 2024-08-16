@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Ship : BaseVehicle
 {
-    public GameObject ShipPrefab; // ship ������
-    public Vector3 spawnPosition; // Ship ���� ��ġ
-    public Vector3 Direction; // ship �������
-    public float speed = 5.0f; // ���� �ӵ�
+    public GameObject ShipPrefab;
+    public Vector3 spawnPosition;
+    public Vector3 Direction; // ship Direction
+    public float speed = 5.0f; // Ship Speed
     public float shipCollisionHeight = 0.3f;
     float startTime;
-    public bool Iscollision = false; //�浹����
+    public bool Iscollision = false;
 
     void Start()
     {
@@ -30,19 +30,19 @@ public class Ship : BaseVehicle
     }
 
     /// <summary>
-    /// �տ��� �浹
+    /// Front Collided
     /// </summary>
     public void OnCollideFront()
     {
         Iscollision = true;
-        Debug.Log("�����浹");
+        Debug.Log("Front Collided");
     }
     /// <summary>
-    /// �ؿ��� �浹
+    /// Bottom Collided
     /// </summary>
     public void OnCollideUp()
     {
         Iscollision = true;
-        Debug.Log("�Ϻ��浹");
+        Debug.Log("Bottom Collided");
     }
 }

@@ -60,7 +60,7 @@ public class BridgeController : MonoBehaviour
         {
             this.progress = Mathf.Min(MoveTime, this.progress+ Time.deltaTime);
             sellecteCurve = curveSink;
-            Debug.Log("Bridge Sink");
+            //Debug.Log("Bridge Sink");
         }
         else
         {
