@@ -11,13 +11,13 @@ namespace DefaultNamespace
         public T Value{
             get => value;
             set {
-                ValueChangeEvent.Invoke(this.value);
+                ValueChangeEvent.Invoke(value);
                 this.value = value;
             }
         }
 
         /// <summary>
-        /// 이전 값이 인자로 들어간다.
+        /// 이후값이 인자로 들어간다
         /// </summary>
         public UnityEvent<T> ValueChangeEvent;
         
