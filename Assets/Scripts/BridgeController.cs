@@ -34,7 +34,7 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight < height)
+            if (Ship && Ship.CollideCheck(height))
             {
                 Ship.GetComponent<Ship>().OnCollideFront();
             }
@@ -56,7 +56,7 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.shipCollisionHeight < height && !Ship.Iscollision)
+            if (Ship && Ship.CollideCheck(height) && !Ship.Iscollision)
             {
                 Ship.GetComponent<Ship>().OnCollideUp();
             }

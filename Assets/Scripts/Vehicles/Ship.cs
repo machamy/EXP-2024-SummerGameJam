@@ -30,6 +30,15 @@ public class Ship : BaseVehicle
         Destroy(this);
     }
 
+    public virtual bool CollideCheck(float height)
+    {
+        if (shipCollisionHeight < height)
+        {
+            return true;
+        }
+        else return false;
+    }
+
     /// <summary>
     /// Front Collided
     /// </summary>

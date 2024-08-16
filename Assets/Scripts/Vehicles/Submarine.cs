@@ -10,6 +10,14 @@ public class Submarine : Ship
         base.Start();
     }
 
+    public override bool CollideCheck(float height)
+    {
+        if (shipCollisionHeight > height)
+        {
+            return true;
+        }
+        else return false;
+    }
     public override void OnCollideFront()
     {
         Iscollision = true;
