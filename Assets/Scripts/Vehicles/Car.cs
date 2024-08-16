@@ -1,7 +1,9 @@
 ﻿using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Vehicles;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -9,7 +11,8 @@ public class Car : BaseVehicle
 {
     public BridgeController bridgeController;
     public GameObject cargfx;
-    public SpriteRenderer renderer;
+
+    [SerializeField] private TrafficLight trafficLight;
 
     public Vector3 StartPosition;
     public Vector3 EndPosition;
@@ -38,24 +41,16 @@ public class Car : BaseVehicle
     IEnumerator Stop()
     {
         state = State.stop;
+        WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
 
-
-        renderer.color = new Color(1, 1, 1, 1); // 신호등 visible
+        trafficLight.SetLevel(1);
         // 신호등 띄우고 시간
-
-        yield return new WaitForSeconds(1f); // 대기 시간
-
-        renderer.color = Color.red;
-        yield return new WaitForSeconds(1f);
-
-
-        renderer.color = Color.yellow;
-        yield return new WaitForSeconds(1f);
-
-
-        renderer.color = Color.green;
-        yield return new WaitForSeconds(1f);
-
+        yield return wait;
+        trafficLight.SetLevel(2);
+        yield return wait;
+        trafficLight.SetLevel(3);
+        yield return wait;
+        trafficLight.SetLevel(0);
         StartCoroutine(Go());
 
     }
@@ -63,9 +58,6 @@ public class Car : BaseVehicle
     IEnumerator Go()
     {
         state = State.go;
-
-        renderer.enabled = false;
-
         yield return null;
 
     }
@@ -132,7 +124,7 @@ public class Car : BaseVehicle
     void Start()
     {
         //renderer = GetComponent<SpriteRenderer>();
-        renderer.color = new Color(1, 1, 1, 0);
+        trafficLight.SetLevel(0);
 
         collider = GetComponent<Collider2D>();
 

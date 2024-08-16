@@ -19,11 +19,11 @@ public class BaseVehicle : MonoBehaviour
     /// <summary>
     /// 다리 이전 대기시간(자동차만 해당)
     /// </summary>
-    public float priorWaitDelay = 1;
+    public float priorWaitDelay = 3;
     /// <summary>
     /// 다리 건너는 시간
     /// </summary>
-    public float crossBridgeDelay = 1;
+    public float crossBridgeDelay = 2;
     /// <summary>
     /// 다리 건넌 후 시간
     /// </summary>
