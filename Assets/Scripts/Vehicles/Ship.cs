@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class Ship : BaseVehicle
 {
-    public GameObject ShipPrefab; // ship ÇÁ¸®ÆÕ
-    public Vector3 spawnPosition; // Ship »ý¼º À§Ä¡
-    public Vector3 Direction; // ship ÁøÇà¹æÇâ
-    public float speed = 5.0f; // ¼±¹Ú ¼Óµµ
+    public GameObject ShipPrefab; // ship ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Vector3 spawnPosition; // Ship ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    public Vector3 Direction; // ship ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float speed = 5.0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
     public float shipCollisionHeight = 0.3f;
     float startTime;
-    public bool Iscollision = false; //Ãæµ¹¿©ºÎ
+    public bool Iscollision = false; //ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½
 
     void Start()
     {
         startTime = Time.time;
-        Direction = Global.shipDirection;
+        Direction = GlobalData.shipDirection;
     }
 
     private void FixedUpdate()
@@ -30,19 +30,19 @@ public class Ship : BaseVehicle
     }
 
     /// <summary>
-    /// ¾Õ¿¡¼­ Ãæµ¹
+    /// ï¿½Õ¿ï¿½ï¿½ï¿½ ï¿½æµ¹
     /// </summary>
     public void OnCollideFront()
     {
         Iscollision = true;
-        Debug.Log("Àü¸éÃæµ¹");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½æµ¹");
     }
     /// <summary>
-    /// ¹Ø¿¡¼­ Ãæµ¹
+    /// ï¿½Ø¿ï¿½ï¿½ï¿½ ï¿½æµ¹
     /// </summary>
     public void OnCollideUp()
     {
         Iscollision = true;
-        Debug.Log("ÇÏºÎÃæµ¹");
+        Debug.Log("ï¿½Ïºï¿½ï¿½æµ¹");
     }
 }
