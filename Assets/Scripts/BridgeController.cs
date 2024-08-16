@@ -7,16 +7,18 @@ using UnityEngine;
 public class BridgeController : MonoBehaviour
 {
     public GameObject bridge;
-    public float MoveTime = 1.0f;
-    public float progress = 0.0f;
-    public float heightweight = 1.0f;
-    Vector3 originalPos;
+    [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
+    [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
+
+    [Tooltip("다리 애니메이션 가중치")]                 public float heightweight = 1.0f;  
+    [Tooltip("다리 최초 위치 저장 벡터")]               Vector3 originalPos;
 
 
-    bool IsSunken = false;
-    
-    public AnimationCurve curveSink;
-    public AnimationCurve curveGoup;
+    [Tooltip("다리 잠겼는지 확인 변수")]                bool IsSunken = false;
+
+    [Tooltip("다리 잠김 애니메이션 곡선")] public AnimationCurve curveSink;
+    [Tooltip("다리 용승 애니메이션 곡선")] public AnimationCurve curveGoup;
+
     public Rigidbody2D playerRigidbody;
     void Start()
     {
@@ -53,32 +55,19 @@ public class BridgeController : MonoBehaviour
         {
             progress = Mathf.Min(MoveTime, progress+Time.deltaTime);
             sellecteCurve = curveSink;
-/*            if (time > 0.1f) 
-            { 
-                IsSunken = true;
-                Debug.Log("Bridge Sink");
-               //transform.position = 
-            }*/
+            IsSunken = true;
+            Debug.Log("Bridge Sink");
         }
         else
         {
             progress = Mathf.Max(0, progress-Time.deltaTime);
             sellecteCurve = curveGoup;
+            IsSunken = false;
+            Debug.Log("Bridge Go Up");
         }
 
-      /*  if(Input.GetKeyUp(KeyCode.Space))
-        {
-            time += Time.deltaTime;
-            if (time > 0.1f) 
-            { 
-                IsSunken = false;
-                //Debug.Log("Bridge Not sink");
-            }
-        }*/
         float height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, progress/MoveTime)) * heightweight;
-        transform.position = new Vector3(originalPos.x, height, originalPos.z); 
+        transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 
         
     }
-
-
 }
