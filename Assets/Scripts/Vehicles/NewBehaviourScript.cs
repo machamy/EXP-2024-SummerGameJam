@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Carvehicle : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public Vector3 StartPosition;
     public Vector3 EndPosition;
@@ -40,5 +40,9 @@ public class Carvehicle : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+
+    }
 
 }
