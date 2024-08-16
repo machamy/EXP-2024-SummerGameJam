@@ -24,6 +24,12 @@ public class UIManager : MonoBehaviour
         Hp.Value = 3;
     }
 
+    public void Initialize()
+    {
+        Score.Value = 0;
+        Hp.Value = 0;
+    }
+
     public void ShowPause()
     {
         
