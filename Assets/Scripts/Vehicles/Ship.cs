@@ -9,13 +9,9 @@ public class Ship : BaseVehicle
     public Vector3 spawnPosition;
     public Vector3 Direction; // ship Direction
     public float speed = 5.0f; // Ship Speed
-<<<<<<< HEAD
     public float shipCollisionHeight = 0.3f;
     protected float startTime;
-=======
-    public float shipCollisionHeight = 0.3f; // downheight of ship
-    float startTime;
->>>>>>> 5047a518f637adaf2945961a323b3a4b1a7b0616
+
     public bool Iscollision = false;
 
     protected virtual void Start()
