@@ -39,7 +39,7 @@ public class Car : MonoBehaviour
         // 신호등 띄우고 시간
 
 
-        yield return new WaitForSeconds(1f); // 대기 시간
+        yield return new WaitForSeconds(3f); // 대기 시간
 
         StartCoroutine(Go());
 
