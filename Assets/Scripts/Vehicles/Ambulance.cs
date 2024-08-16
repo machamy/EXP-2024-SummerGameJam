@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class Car : BaseVehicle
+public class Ambulance : BaseVehicle
 {
     public BridgeController bridgeController;
     public GameObject cargfx;
@@ -25,13 +24,14 @@ public class Car : BaseVehicle
 
     public enum State
     {
-        start,stop, blinker,go, end
+        start, stop, blinker, go, end
     }
 
     public State state;
 
     IEnumerator Moving()
     {
+        StartCoroutine(Stop());
         yield return null;
     }
 
@@ -47,11 +47,6 @@ public class Car : BaseVehicle
 
         renderer.color = Color.red;
         yield return new WaitForSeconds(1f);
-
-
-        renderer.color = Color.yellow;
-        yield return new WaitForSeconds(1f);
-
 
         renderer.color = Color.green;
         yield return new WaitForSeconds(1f);
@@ -73,7 +68,7 @@ public class Car : BaseVehicle
 
     void Move()
     {
-        if(state == State.stop)
+        if (state == State.stop)
         {
             return;
         }
@@ -87,7 +82,7 @@ public class Car : BaseVehicle
 
         if (bridgeController.height <= transform.position.y)
         {
-            IsonBridge=true;
+            IsonBridge = true;
         }
 
         if (IsonBridge)
@@ -97,19 +92,20 @@ public class Car : BaseVehicle
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
 
         Debug.Log(other.gameObject.tag);
+        StartCoroutine(Stop());
 
-
+        
         if (other.gameObject.tag == "Invisible")
         {
             Debug.Log("Invisible과 접촉하였습니다.");
-            StartCoroutine(Stop());
- 
+        
+
         }
-    }
+    }*/
 
     public void OnCollideDown()
     {
@@ -150,6 +146,7 @@ public class Car : BaseVehicle
     void FixedUpdate()
     {
         Move();
+       
     }
 
     private void OnBecameInvisible()
