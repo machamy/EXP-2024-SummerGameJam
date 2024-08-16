@@ -139,7 +139,7 @@ public class SoundManager
     AudioClip GetOrAddAudioClip(string path, SoundType type = SoundType.SFX)
     {
         if (path.Contains("Sound/") == false)
-            path = $"Sound/{path}"; // 📂Sound 폴더 안에 저장될 수 있도록
+            path = $"Sound/{path}"; // Sound 폴더 안에 저장될 수 있도록
 
         AudioClip audioClip;
 
