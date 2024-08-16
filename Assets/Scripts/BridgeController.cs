@@ -11,7 +11,7 @@ public class BridgeController : MonoBehaviour
     public Car Car;
     [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
     [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
-    float height;
+    public float height;
 
     [Tooltip("다리 애니메이션 가중치")]                 public float heightweight = 1.0f;  
     [Tooltip("다리 최초 위치 저장 벡터")]               Vector3 originalPos;
@@ -73,7 +73,10 @@ public class BridgeController : MonoBehaviour
 
     }
 
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(Ship) Ship = null;
+    }
     void Update()
     {
         AnimationCurve sellecteCurve;

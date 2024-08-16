@@ -9,22 +9,23 @@ public class Ship : BaseVehicle
     public Vector3 spawnPosition;
     public Vector3 Direction; // ship Direction
     public float speed = 5.0f; // Ship Speed
-    public float shipCollisionHeight = 0.3f; // downheight of ship
-    float startTime;
+    public float shipCollisionHeight = 0.3f;
+    protected float startTime;
+
     public bool Iscollision = false;
 
-    void Start()
+    protected virtual void Start()
     {
         startTime = Time.time;
         Direction = GlobalData.shipDirection;
     }
 
-    private void FixedUpdate()
-    {
-        transform.position += Direction * (speed * Time.deltaTime);
+    protected virtual void FixedUpdate()
+    {   
+        transform.position += Direction * (speed * Time.fixedDeltaTime);
     }
 
-    private void OnBecameInvisible()
+    protected virtual void OnBecameInvisible()
     {
         Destroy(this);
     }
@@ -32,18 +33,18 @@ public class Ship : BaseVehicle
     /// <summary>
     /// Front Collided
     /// </summary>
-    public void OnCollideFront()
+    public virtual void OnCollideFront()
     {
         Iscollision = true;
         Debug.Log("Front Collided");
     }
     /// <summary>
-    /// Bottom Collided
+    /// Middle Collided
     /// </summary>
-    public void OnCollideUp()
+    public virtual void OnCollideUp()
     {
         Iscollision = true;
-        Debug.Log("Bottom Collided");
+        Debug.Log("Middle Collided");
     }
 }
 
