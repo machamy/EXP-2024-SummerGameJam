@@ -1,8 +1,18 @@
+using System;
+using TMPro;
+using UnityEngine;
+
 namespace DefaultNamespace.UI
 {
     public class ScoreScreen:UIScreenBase
     {
+        [SerializeField] private IntVariableSO score;
+        [SerializeField] private TextMeshProUGUI scoreTMP;
 
+        public void OnEnable()
+        {
+            scoreTMP.text = $"{score.Value}";
+        }
 
         public void OnRestartClicked()
         {
