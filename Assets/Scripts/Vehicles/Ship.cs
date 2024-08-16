@@ -1,22 +1,22 @@
+using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class Ship : BaseVehicle
 {
     public GameObject ShipPrefab; // ship 프리팹
     public Vector3 spawnPosition; // Ship 생성 위치
-    public Vector3 endPosition; // Ship 최종 위치
+    public Vector3 Direction; // ship 진행방향
     public float speed = 5.0f; // 선박 속도
     public float shipCollisionHeight = 0.3f;
-    float journeyLength;
     float startTime;
-    bool Iscollision = false; //충돌여부
+    public bool Iscollision = false; //충돌여부
 
     void Start()
     {
-        journeyLength = Vector3.Distance(spawnPosition, endPosition);
         startTime = Time.time;
+        Direction = Global.shipDirection;
     }
 
    /* private IEnumerator SpawnShip()
@@ -37,16 +37,16 @@ public class Ship : MonoBehaviour
     {
         // 이동 진행률 계산
         float distCovered = (Time.time - startTime) * speed;
-        float fractionOfJourney = distCovered / journeyLength;
+        //float fractionOfJourney = distCovered / journeyLength;
 
         // 선박을 점진적으로 endPosition으로 이동
-        transform.position = Vector3.Lerp(spawnPosition, endPosition, fractionOfJourney);
+        //transform.position = Vector3.Lerp(spawnPosition, endPosition, fractionOfJourney);
 
-        // 목표 지점에 도달하면 루프 종료
-        if (transform.position == endPosition)
-        {   
-            Destroy(this);
-        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this);
     }
 
     /// <summary>
