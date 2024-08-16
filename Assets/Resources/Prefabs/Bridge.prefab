@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bridgegfx: {fileID: 2749836906126608999}
+  Ship: {fileID: 0}
+  Car: {fileID: 0}
   MoveTime: 0.5
   progress: 0
   heightweight: 1
@@ -243,8 +245,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.2592804
-      value: 0.9427715
+      time: 0.38863257
+      value: 0.84595484
       inSlope: 0.3192423
       outSlope: 0.3192423
       tangentMode: 0
@@ -252,8 +254,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.62235063
-      value: 1.1146823
+      time: 0.7243523
+      value: 1.1214155
       inSlope: -1.2539811
       outSlope: -1.2539811
       tangentMode: 0
@@ -263,11 +265,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -7.0717793
+      outSlope: -7.0717793
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.05795114
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

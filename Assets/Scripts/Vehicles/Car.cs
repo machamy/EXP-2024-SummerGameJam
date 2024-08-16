@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Car : MonoBehaviour
 {
-    public Color red = Color.red;
-    public Color endColor = Color.green;
-    public float Colorspeed = 1;
-
-    Image imgComp;
+    public SpriteRenderer renderer;
 
     public Vector3 StartPosition;
     public Vector3 EndPosition;
@@ -36,10 +33,22 @@ public class Car : MonoBehaviour
     {
         state = State.stop;
 
+
+        renderer.color = new Color(1, 1, 1, 1); // 신호등 visible
         // 신호등 띄우고 시간
 
+        yield return new WaitForSeconds(1f); // 대기 시간
 
-        yield return new WaitForSeconds(3f); // 대기 시간
+        renderer.color = Color.red;
+        yield return new WaitForSeconds(1f);
+
+
+        renderer.color = Color.yellow;
+        yield return new WaitForSeconds(1f);
+
+
+        renderer.color = Color.green;
+        yield return new WaitForSeconds(1f);
 
         StartCoroutine(Go());
 
@@ -48,6 +57,9 @@ public class Car : MonoBehaviour
     IEnumerator Go()
     {
         state = State.go;
+
+        renderer.enabled = false;
+
         yield return null;
 
     }
@@ -63,6 +75,7 @@ public class Car : MonoBehaviour
         //transform.Translate(Vector3.right * Time.deltaTime);
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
+        Global.
 
         if (transform.position == EndPosition)
         {
@@ -87,12 +100,14 @@ public class Car : MonoBehaviour
     void Awake()
     {
         state = State.start; // 전투 시작알림
-        imgComp = GetComponent<Image>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        //renderer = GetComponent<SpriteRenderer>();
+        renderer.color = new Color(1, 1, 1, 0);
+
         collider = GetComponent<Collider2D>();
 
         StartPosition = transform.position;

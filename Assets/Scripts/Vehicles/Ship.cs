@@ -19,29 +19,9 @@ public class Ship : BaseVehicle
         Direction = Global.shipDirection;
     }
 
-   /* private IEnumerator SpawnShip()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(spawnInterval);
-
-            // ShipPrefab 생성
-            GameObject newShip = Instantiate(ShipPrefab, spawnPosition, Quaternion.identity);
-
-            // ShipMove 코루틴을 실행하여 선박 이동 및 소멸 처리
-            StartCoroutine(ShipMove(newShip));
-        }
-    }*/
-
     private void FixedUpdate()
     {
-        // 이동 진행률 계산
-        float distCovered = (Time.time - startTime) * speed;
-        //float fractionOfJourney = distCovered / journeyLength;
-
-        // 선박을 점진적으로 endPosition으로 이동
-        //transform.position = Vector3.Lerp(spawnPosition, endPosition, fractionOfJourney);
-
+        transform.position += Direction * (speed * Time.deltaTime);
     }
 
     private void OnBecameInvisible()
@@ -50,17 +30,19 @@ public class Ship : BaseVehicle
     }
 
     /// <summary>
-    /// 밑에서 충돌
-    /// </summary>
-    public void OnCollideUp()
-    {
-        Iscollision = true;
-    }
-    /// <summary>
     /// 앞에서 충돌
     /// </summary>
     public void OnCollideFront()
     {
         Iscollision = true;
+        Debug.Log("전면충돌");
+    }
+    /// <summary>
+    /// 밑에서 충돌
+    /// </summary>
+    public void OnCollideUp()
+    {
+        Iscollision = true;
+        Debug.Log("하부충돌");
     }
 }
