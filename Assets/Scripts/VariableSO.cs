@@ -6,7 +6,7 @@ namespace DefaultNamespace
 {
     public class VariableSO<T> : ScriptableObject
     {
-        private T value;
+        [SerializeField]private T value;
 
         public T Value{
             get => value;
@@ -24,9 +24,11 @@ namespace DefaultNamespace
         
     }
 
+    [CreateAssetMenu(menuName = "VariableSO/int")]
     public class IntVariableSO : VariableSO<int>
     {
     }
+    [CreateAssetMenu(menuName = "VariableSO/float")]
     public class FloatVariableSO : VariableSO<int>
     {
     }

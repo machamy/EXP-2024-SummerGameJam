@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("UIElements")]
     [SerializeField] private TextMeshProUGUI scoreTMP;
-    [SerializeField] private TextMeshProUGUI hpTMP;
+    [SerializeField] private HPIndicator hpIndicator;
     // [SerializeField] private Image FadeImg;
     [Header("ScriptableObjects")]
     [SerializeField] private IntVariableSO Score;
@@ -39,10 +39,12 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         Score.ValueChangeEvent.AddListener(ChangeScore);
+        Hp.ValueChangeEvent.AddListener(hpIndicator.SetHP);
     }
 
     private void OnDisable()
     {
         Score.ValueChangeEvent.RemoveListener(ChangeScore);
+        Hp.ValueChangeEvent.RemoveListener(hpIndicator.SetHP);
     }
 }

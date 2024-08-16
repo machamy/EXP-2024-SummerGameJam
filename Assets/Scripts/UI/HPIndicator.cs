@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class HPIndicator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public GameObject HeartImg;
 
-    // Update is called once per frame
-    void Update()
+    public void SetHP(int n)
     {
         
     }
