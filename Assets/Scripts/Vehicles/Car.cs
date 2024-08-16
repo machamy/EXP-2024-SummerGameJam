@@ -78,13 +78,8 @@ public class Car : BaseVehicle
         //transform.Translate(Vector3.right * Time.deltaTime);
         float step = speed * Time.deltaTime;
         // transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
-        transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step); 
-
-
-        if (transform.position == EndPosition)
-        {
-            Destroy(gameObject);
-        }
+        // transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step);
+        transform.position += EndPosition * (step);
 
     }
 
@@ -127,7 +122,7 @@ public class Car : BaseVehicle
         collider = GetComponent<Collider2D>();
 
         StartPosition = transform.position;
-        EndPosition = new Vector3(4, 0, 0);
+        EndPosition = GlobalData.carDirection;
 
     }
 
@@ -140,5 +135,11 @@ public class Car : BaseVehicle
     void FixedUpdate()
     {
         Move();
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+        Debug.Log("사라짐");
     }
 }
