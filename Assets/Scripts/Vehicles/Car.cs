@@ -38,7 +38,7 @@ public class Car : BaseVehicle
         yield return null;
     }
 
-    IEnumerator Stop()
+    protected virtual IEnumerator Stop()
     {
         state = State.stop;
         WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
@@ -103,25 +103,25 @@ public class Car : BaseVehicle
         }
     }
 
-    public void OnCollideDown()
+    public virtual void OnCollideDown()
     {
         Isflooding = true;
         Debug.Log("Car flooding");
     }
 
-    public void OnCollideFront()
+    public virtual void OnCollideFront()
     {
         Isflooding = true;
         Debug.Log("Front Flooding");
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         state = State.start; // 전투 시작알림
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         //renderer = GetComponent<SpriteRenderer>();
         trafficLight.SetLevel(0);
@@ -134,17 +134,17 @@ public class Car : BaseVehicle
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
 
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
     }
 
-    private void OnBecameInvisible()
+    protected virtual void OnBecameInvisible()
     {
         Destroy(gameObject);
         Debug.Log("사라짐");
