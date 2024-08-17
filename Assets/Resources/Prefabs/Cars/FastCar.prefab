@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9064671353474696794}
   - component: {fileID: 4472377445324537805}
   m_Layer: 0
-  m_Name: Car
+  m_Name: FastCar
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,17 +107,16 @@ MonoBehaviour:
   type: 0
   state: 0
   isDead: 0
-  priorMoveDelay: 1
-  priorWaitDelay: 3
-  crossBridgeDelay: 1
-  afterMoveTime: 1
+  priorMoveDelay: 0.5
+  priorWaitDelay: 2.5
+  crossBridgeDelay: 0.5
+  afterMoveTime: 0.75
   OriginPos: {fileID: 0}
   WaitPos: {fileID: 0}
   NextWaitPos: {fileID: 0}
   EndPos: {fileID: 0}
   score: {fileID: 0}
   hp: {fileID: 0}
-  audioSource: {fileID: 0}
   cargfx: {fileID: 9019145961334134067}
   trafficLight: {fileID: 907542656083092478}
   carCollisionHeight: 0.3

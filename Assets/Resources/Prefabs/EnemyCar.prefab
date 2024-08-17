@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1899746750560005243}
   - component: {fileID: 2403562697379846029}
-  - component: {fileID: 1447145387448290013}
   - component: {fileID: 9064671353474696794}
   - component: {fileID: 4472377445324537805}
+  - component: {fileID: -1775612702806911699}
   m_Layer: 0
-  m_Name: Car
+  m_Name: EnemyCar
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,40 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1447145387448290013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690107860050213565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557f3dedfb6058246845f48687bc4d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
-  timestampCheck: 0
-  bridgeController: {fileID: 0}
-  type: 0
-  state: 0
-  isDead: 0
-  priorMoveDelay: 1
-  priorWaitDelay: 3
-  crossBridgeDelay: 1
-  afterMoveTime: 1
-  OriginPos: {fileID: 0}
-  WaitPos: {fileID: 0}
-  NextWaitPos: {fileID: 0}
-  EndPos: {fileID: 0}
-  score: {fileID: 0}
-  hp: {fileID: 0}
-  audioSource: {fileID: 0}
-  cargfx: {fileID: 9019145961334134067}
-  trafficLight: {fileID: 907542656083092478}
-  carCollisionHeight: 0.3
-  Isflooding: 0
-  IsonBridge: 0
 --- !u!61 &9064671353474696794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,6 +161,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1775612702806911699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690107860050213565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c319d6843d4b718d389017ebc61cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 0}
+  timestampCheck: 0
+  bridgeController: {fileID: 0}
+  type: 0
+  state: 0
+  isDead: 0
+  priorMoveDelay: 1
+  priorWaitDelay: 1.5
+  crossBridgeDelay: 0.625
+  afterMoveTime: 1
+  OriginPos: {fileID: 0}
+  WaitPos: {fileID: 0}
+  NextWaitPos: {fileID: 0}
+  EndPos: {fileID: 0}
+  score: {fileID: 0}
+  hp: {fileID: 0}
+  audioSource: {fileID: 0}
+  cargfx: {fileID: 9019145961334134067}
+  trafficLight: {fileID: 907542656083092478}
+  carCollisionHeight: 0.3
+  Isflooding: 0
+  IsonBridge: 0
 --- !u!1 &2765389675682264006
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 5261203545297965440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.99, z: 0}
+  m_LocalPosition: {x: 0, y: 1.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -575,7 +575,7 @@ SpriteRenderer:
   m_SortingLayerID: -1190538617
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6499c48c2c41c547a0413d417d589eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb27fb24f3f11dd498dfd51b7121bb8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

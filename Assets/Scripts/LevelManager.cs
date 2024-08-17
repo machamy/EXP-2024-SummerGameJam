@@ -132,12 +132,11 @@ public class LevelManager : MonoBehaviour
         bool isLeft = Random.Range(0, 1) == 1;
         if (Random.Range(0, 100f) <= 50) // 차
         {
-            isLeft = true;
             spawnPoint = carSpawnLeft;
             waitPoint = carWaitLeft;
             nextwaitPoint = carWaitRight;
             endPoint = carSpawnRight;
-            go = Instantiate(cars[0]);
+            go = Instantiate(cars[Random.Range(0,3)]);
         }
         else //배
         {
@@ -145,7 +144,7 @@ public class LevelManager : MonoBehaviour
             waitPoint = isLeft ? shipWaitLeft : shipWaitRight;
             nextwaitPoint = isLeft ? shipNextWaitLeft : shipNextWaitRight;
             endPoint = isLeft ? shipEndLeft : shipEndRight;
-            go = Instantiate(ships[Random.Range(0,2)]);
+            go = Instantiate(ships[Random.Range(0,3)]);
         }
         go.transform.position = spawnPoint.position;
         BaseVehicle vehicle = go.GetComponent<BaseVehicle>();

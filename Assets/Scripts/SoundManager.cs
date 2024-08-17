@@ -185,13 +185,13 @@ public class SoundManager
     
         if (optVibration)
         {
-        #if UNITY_ANDROID
-            Vibration.Vibrate(150);
-            
-        #endif
-            #if UNITY_EDITOR
-            Debug.Log("Vibration!");
-#endif
+//         #if UNITY_ANDROID
+//             Vibration.Vibrate(150);
+//             
+//         #endif
+//             #if UNITY_EDITOR
+//             Debug.Log("Vibration!");
+// #endif
         }
     
     }
