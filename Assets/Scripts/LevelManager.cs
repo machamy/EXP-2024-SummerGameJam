@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private BridgeController bridge;
 
+    [Header("Points")]
     [SerializeField] private Transform carSpawnLeft;
     [SerializeField] private Transform carSpawnRight;
     [SerializeField] private Transform carWaitLeft;
@@ -29,10 +30,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform shipNextWaitRight;
     [SerializeField] private Transform shipEndLeft;
     [SerializeField] private Transform shipEndRight;
+    [Header("Prefabs")]
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] ships;
-
-
+    [Header("Particles")]
+    [SerializeField] private GameObject explodeEffect;
+    [SerializeField] private GameObject bubbleEffect;
+    
+    [Header("Summon Interval")]
     [SerializeField] private float intervalMax = 7;
     [SerializeField] private float intervalMin = 3;
     [SerializeField] private float intervalRemain;
@@ -54,6 +59,16 @@ public class LevelManager : MonoBehaviour
         weight = 100f;
         timestamp = 0.0f;
         intervalRemain = Random.Range(intervalMin, intervalMax);
+        foreach (var go in schedule.Values)
+        {
+            Destroy(go);
+        }
+        schedule.Clear();
+        canSpawn = true;
+        foreach (var bv in FindObjectsByType<BaseVehicle>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+        {
+            Destroy(bv.gameObject);
+        }
     }
     
 
@@ -147,6 +162,7 @@ public class LevelManager : MonoBehaviour
         vehicle.bridgeController = bridge;
         vehicle.hp = GameManager.Instance.hp;
         vehicle.score = GameManager.Instance.score;
+        vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
     }
 
     private void OnEnable()

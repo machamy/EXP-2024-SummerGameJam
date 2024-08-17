@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
-    [SerializeField] private GameObject particle;
+
 
     public IntVariableSO hp;
     public IntVariableSO score;
@@ -90,14 +91,10 @@ public class GameManager : MonoBehaviour
         levelManager.Initialize();
     }
 
-    public void SummonParticle(Transform transform)
-    {
-        var go = Instantiate(particle);
-        go.transform.position = transform.position;
-    }
 
     public void GameOver()
     {
+        PauseGame();
         uiManager.ShowResult();
     }
 
