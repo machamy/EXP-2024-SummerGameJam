@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private GameObject particle;
 
+    public IntVariableSO hp;
+    public IntVariableSO score;
 
     public int currentDifficulty { get; set; }
     public int unlockedDifficulty { get; set; }
@@ -86,8 +89,17 @@ public class GameManager : MonoBehaviour
         uiManager.Initialize(currentDifficulty,unlockedDifficulty);
         levelManager.Initialize();
     }
-    
 
+    public void SummonParticle(Transform transform)
+    {
+        var go = Instantiate(particle);
+        go.transform.position = transform.position;
+    }
+
+    public void GameOver()
+    {
+        uiManager.ShowResult();
+    }
 
     private void Update()
     {

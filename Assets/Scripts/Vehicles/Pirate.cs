@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Pirate : Ship
 {
-    override protected void Start()
-    {
-        base.Start();
-    }
-
     public override void OnCollideFront()
     {
         Iscollision = true;

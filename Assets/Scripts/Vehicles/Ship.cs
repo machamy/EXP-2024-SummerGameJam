@@ -5,23 +5,17 @@ using UnityEngine;
 
 public class Ship : BaseVehicle
 {
-    public Vector3 spawnPosition;
-    public Vector3 Direction; // ship Direction
-    public float speed = 5.0f; // Ship Speed
     public float shipCollisionHeight = 0.3f;
-    protected float startTime;
-
     public bool Iscollision = false;
-
-    protected virtual void Start()
-    {
-        startTime = Time.time;
-        Direction = GlobalData.shipDirection;
-    }
+    
 
     protected virtual void FixedUpdate()
     {   
-        transform.position += Direction * (speed * Time.fixedDeltaTime);
+        // transform.position += Direction * (speed * Time.fixedDeltaTime);
+        if (state == State.Wait)
+        {
+            state = State.After;
+        }
     }
 
     protected virtual void OnBecameInvisible()
@@ -40,7 +34,9 @@ public class Ship : BaseVehicle
     /// </summary>
     public virtual void OnCollideFront()
     {
+        if(isDead) return;
         Iscollision = true;
+        isDead = true;
         Debug.Log("Front Collided");
     }
     /// <summary>
@@ -48,7 +44,9 @@ public class Ship : BaseVehicle
     /// </summary>
     public virtual void OnCollideUp()
     {
+        if (isDead) return;
         Iscollision = true;
+        isDead = true;
         Debug.Log("Middle Collided");
     }
 }

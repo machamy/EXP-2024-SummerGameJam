@@ -5,10 +5,6 @@ using UnityEngine;
 public class Submarine : Ship
 {
     public float submarineCollisionHeight = 0.3f;
-    override protected void Start()
-    {
-        base.Start();
-    }
 
     public override bool CollideCheck(float height)
     {

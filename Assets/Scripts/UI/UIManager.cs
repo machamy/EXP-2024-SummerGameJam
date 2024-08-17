@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Game;
     [Header("Setting")]
     [SerializeField] private GameObject Setting;
+
+    [Header("result")] [SerializeField] private GameObject Result;
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private HPIndicator hpIndicator;
     // [SerializeField] private Image FadeImg;
@@ -34,7 +36,7 @@ public class UIManager : MonoBehaviour
     public void Initialize(int currentDifficulty, int unlockDifficulty)
     {
         Score.Value = 0;
-        Hp.Value = 0;
+        Hp.Value = 3;
         Main.GetComponent<MainScreen>().UpdateSprites(currentDifficulty,unlockDifficulty);
     }
 
@@ -51,16 +53,25 @@ public class UIManager : MonoBehaviour
 
     public void ShowGame()
     {
-        scoreTMP.gameObject.SetActive(true);
-        hpIndicator.gameObject.SetActive(true);
+        Main.SetActive(false);
+        Game.SetActive(true);
+        Setting.SetActive(false);
         if(GameManager.Instance.State == GameManager.GameState.Pause)
             GameManager.Instance.ResumeGame();
     }
 
     public void ShowMain()
     {
+        Result.SetActive(false);
+        Game.SetActive(false);
+        Setting.SetActive(false);
         Main.SetActive(true);
 
+    }
+
+    public void ShowResult()
+    {
+        Result.SetActive(true);
     }
 
     // private IEnumerator ShowGameRoutine(GameObject gameObject)

@@ -78,6 +78,8 @@ namespace DefaultNamespace.UI
 
         public void OnStartClicked()
         {
+            uiManager.ShowGame();
+            GameManager.Instance.StartGame();
             
         }
         

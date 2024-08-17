@@ -48,11 +48,11 @@ TagManager:
   - name: Background
     uniqueID: 1807589045
     locked: 0
-  - name: Bridge
-    uniqueID: 1356688559
-    locked: 0
   - name: Ship
     uniqueID: 3447820233
+    locked: 0
+  - name: Bridge
+    uniqueID: 1356688559
     locked: 0
   - name: ForeGround
     uniqueID: 2049963881

@@ -11,16 +11,20 @@ public class HPIndicator : MonoBehaviour
 
     public int MaxHP => Hearts.Length;
     
-    public void SetHP(int n)
+    public void SetHP(int hp)
     {
-        if (n > MaxHP)
-            n = 3;
-        for (int i = 0; i < n; i++)
+        if (hp > MaxHP)
+            hp = MaxHP;
+        if (hp <= 0)
+        {
+            print("OVER OVER OVER");
+        }
+        for (int i = 0; i < hp-1; i++)
         {
             Hearts[i].sprite = FullHeartSprite;
         }
 
-        for (int i = n; i < MaxHP; i++)
+        for (int i = hp; i < MaxHP; i++)
         {
             Hearts[i].sprite = EmptyHeartSprite;
         }

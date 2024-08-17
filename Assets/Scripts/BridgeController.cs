@@ -18,7 +18,10 @@ public class BridgeController : MonoBehaviour
 
     [Tooltip("다리 잠김 애니메이션 곡선")] public AnimationCurve curveSink;
     [Tooltip("다리 용승 애니메이션 곡선")] public AnimationCurve curveGoup;
+    [SerializeField, Tooltip("잠김 색 처리")] private float sinkHeight;
+    [SerializeField, Tooltip("잠김 마스크")] private SpriteMask spriteMask;
 
+    [SerializeField, Tooltip("잠김 마스크 기존위치")] private Vector3 maskOriginalPos;
     
 
     public Rigidbody2D playerRigidbody;
@@ -27,6 +30,7 @@ public class BridgeController : MonoBehaviour
         originalPos = transform.position;
         // Rigidbody2D 컴포넌트를 할당
         playerRigidbody = GetComponent<Rigidbody2D>();
+        maskOriginalPos = spriteMask.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,14 +44,14 @@ public class BridgeController : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Car"))
-        {
-            Car = collision.GetComponent<Car>();
-            if(Car && Car.carCollisionHeight < height)
-            {
-                Car.OnCollideFront();
-            }
-        }
+        // if(collision.gameObject.CompareTag("Car"))
+        // {
+        //     Car = collision.GetComponent<Car>();
+        //     if(Car && Car.carCollisionHeight < height)
+        //     {
+        //         Car.OnCollideFront();
+        //     }
+        // }
     }
 
 
@@ -65,7 +69,9 @@ public class BridgeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Car"))
         {
             Car = collision.GetComponent<Car>();
-            if (Car && Car.carCollisionHeight < height && !Car.Isflooding)
+            var position = Car.transform.position;
+            Car.cargfx.transform.position = new Vector3(position.x, position.y + Car.bridgeController.height - 1, position.z);
+            if (Car && Car.carCollisionHeight > height && !Car.Isflooding)
             {
                 Car.OnCollideDown();
             }
@@ -90,6 +96,15 @@ public class BridgeController : MonoBehaviour
         }
 
         height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime)) * heightweight;
+        if (height < sinkHeight)
+        {
+            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y + 3, maskOriginalPos.z);
+        }
+        else
+        {
+            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
+        }
+            
         bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 
         
     }
