@@ -117,6 +117,7 @@ MonoBehaviour:
   EndPos: {fileID: 0}
   score: {fileID: 0}
   hp: {fileID: 0}
+  audioSource: {fileID: 0}
   cargfx: {fileID: 9019145961334134067}
   trafficLight: {fileID: 907542656083092478}
   carCollisionHeight: 0.3

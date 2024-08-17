@@ -11,6 +11,8 @@ using UnityEngine.UI;
 public class Car : BaseVehicle
 {
 
+    public AudioSource audioSource;
+
     public GameObject cargfx;
 
     [SerializeField] private TrafficLight trafficLight;
@@ -31,6 +33,13 @@ public class Car : BaseVehicle
 
     protected virtual IEnumerator StopRoutine()
     {
+        /*if (collision.gameObject.CompareTag("Player"))
+        {
+          
+        }*/
+
+
+
         WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
 
         trafficLight.SetLevel(1);
@@ -109,6 +118,9 @@ public class Car : BaseVehicle
     // Start is called before the first frame update
     protected virtual void Start()
     {
+
+        SoundManager.Instance.Play("car_crash", SoundManager.SoundType.SFX);
+
         //renderer = GetComponent<SpriteRenderer>();
         trafficLight.SetLevel(0);
 
