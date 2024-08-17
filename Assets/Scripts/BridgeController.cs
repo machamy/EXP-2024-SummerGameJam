@@ -87,7 +87,7 @@ public class BridgeController : MonoBehaviour
     void Update()
     {
         AnimationCurve sellecteCurve;
-        isInputAcitve = Input.GetKey(KeyCode.Space) || EventSystem.current.IsPointerOverGameObject(0);
+        isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(0);
         if (isInputAcitve) 
         {
             this.progress = Mathf.Min(MoveTime, this.progress+ Time.deltaTime);
