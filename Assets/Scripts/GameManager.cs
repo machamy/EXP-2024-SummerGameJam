@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private BGMManager bgmManager;
 
 
     public IntVariableSO hp;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void GoMain()
     {
         State = GameState.Main;
+        bgmManager.RunTitleMusic(); // 상태 변경에 따른 음악 실행
         uiManager.ShowMain();
         InitializeGame();
     }
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         State = GameState.Running;
+        bgmManager.RunPlayMusic(); // 상태 변경에 따른 음악 실행
         Time.timeScale = 1.0f;
     }
 
