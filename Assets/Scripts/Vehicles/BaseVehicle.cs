@@ -87,6 +87,8 @@ public class BaseVehicle : MonoBehaviour
         else if (state == State.EndReady)
         {
             state = State.EndMoving;
+            Debug.Log("Trigger exit detected, stopping car_slow");
+            SoundManager.Instance.StopSFX("car_slow");
             MoveCoroutine = StartCoroutine(MoveRoutine(NextWaitPos.position, EndPos.position, afterMoveTime, ()=> OnArrival()));
         }
         
