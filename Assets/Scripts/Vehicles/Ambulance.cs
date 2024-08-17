@@ -12,7 +12,7 @@ public class Ambulance : Car
 
     IEnumerator Moving()
     {
-        StartCoroutine(Stop());
+        StartCoroutine(StopRoutine());
         yield return null;
     }
 
@@ -34,32 +34,32 @@ public class Ambulance : Car
 
     }*/
 
-    IEnumerator Go()
-    {
-        state = State.go;
+    // IEnumerator Go()
+    // {
+    //     state = State.go;
+    //
+    //     GetComponent<Renderer>().enabled = false;
+    //
+    //     yield return null;
+    //
+    // }
 
-        GetComponent<Renderer>().enabled = false;
-
-        yield return null;
-
-    }
 
 
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-        Debug.Log(other.gameObject.tag);
-        StartCoroutine(Stop());
-
-        
-        if (other.gameObject.tag == "Invisible")
-        {
-            Debug.Log("Invisible과 접촉하였습니다.");
-        
-
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //
+    //     Debug.Log(other.gameObject.tag);
+    //     StartCoroutine(Stop());
+    //
+    //     
+    //     if (other.gameObject.tag == "Invisible")
+    //     {
+    //         Debug.Log("Invisible과 접촉하였습니다.");
+    //     
+    //
+    //     }
+    // }
 
     
     public override void OnCollideDown()
@@ -67,13 +67,7 @@ public class Ambulance : Car
         Isflooding = true;
         Debug.Log("Car flooding");
     }
-
-    public override void OnCollideFront()
-    {
-        Isflooding = true;
-        Debug.Log("Front Flooding");
-    }
-
+    
     
 }
     

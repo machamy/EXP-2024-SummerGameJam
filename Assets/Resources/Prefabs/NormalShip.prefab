@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 6c1664ddddc3a3447a2e660203c89a8f, type: 3}
     - target: {fileID: 6902067112919339442, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6902067112919339442, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
       propertyPath: m_SortingLayerID
@@ -118,13 +118,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a2dd68777906241a007f6d5900f1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  priorMoveDelay: 1
-  priorWaitDelay: 1
+  timestampCheck: 0
+  bridgeController: {fileID: 0}
+  type: 1
+  state: 0
+  isDead: 0
+  priorMoveDelay: 2
+  priorWaitDelay: 0
   crossBridgeDelay: 1
-  afterMoveTime: 1
-  spawnPosition: {x: 4, y: 13, z: 0}
-  Direction: {x: 0, y: 0, z: 0}
-  speed: 5
+  afterMoveTime: 3
+  OriginPos: {fileID: 0}
+  WaitPos: {fileID: 0}
+  NextWaitPos: {fileID: 0}
+  EndPos: {fileID: 0}
+  score: {fileID: 0}
+  hp: {fileID: 0}
   shipCollisionHeight: 0.3
   Iscollision: 0

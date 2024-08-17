@@ -24,10 +24,7 @@ namespace DefaultNamespace
         
     }
 
-    [CreateAssetMenu(menuName = "VariableSO/int")]
-    public class IntVariableSO : VariableSO<int>
-    {
-    }
+
     [CreateAssetMenu(menuName = "VariableSO/float")]
     public class FloatVariableSO : VariableSO<int>
     {

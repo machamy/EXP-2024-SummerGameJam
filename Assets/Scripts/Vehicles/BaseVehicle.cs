@@ -24,6 +24,8 @@ public class BaseVehicle : MonoBehaviour
         EndMoving,
         End
     }
+
+    public float timestampCheck;
     public BridgeController bridgeController;
     public VehicleType type;
     public State state;
@@ -73,7 +75,6 @@ public class BaseVehicle : MonoBehaviour
         if (state == State.Idle)
         {
             state = State.Before;
-            print("startMove");
             MoveCoroutine = StartCoroutine(MoveRoutine(OriginPos.position, WaitPos.position, priorMoveDelay, ()=> state = State.Stop));
         }
         else if (state == State.After)

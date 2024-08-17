@@ -11,8 +11,9 @@ public class Ship : BaseVehicle
 
     protected virtual void FixedUpdate()
     {   
+        base.FixedUpdate();
         // transform.position += Direction * (speed * Time.fixedDeltaTime);
-        if (state == State.Wait)
+        if (state == State.Stop)
         {
             state = State.After;
         }

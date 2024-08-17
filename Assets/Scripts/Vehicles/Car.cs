@@ -27,18 +27,10 @@ public class Car : BaseVehicle
     // {
     //     yield return null;
     // }
+    
 
-    IEnumerator StopRoutine()
+    protected virtual IEnumerator StopRoutine()
     {
-<<<<<<< Updated upstream
-        yield return null;
-    }
-
-    protected virtual IEnumerator Stop()
-    {
-        state = State.stop;
-=======
->>>>>>> Stashed changes
         WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
 
         trafficLight.SetLevel(1);
@@ -103,19 +95,7 @@ public class Car : BaseVehicle
         // Destroy(gameObject);
         Debug.Log("Car flooding");
     }
-
-<<<<<<< Updated upstream
-    public virtual void OnCollideFront()
-    {
-        Isflooding = true;
-        Debug.Log("Front Flooding");
-    }
-
-    protected virtual void Awake()
-    {
-        state = State.start; // 전투 시작알림
-    }
-=======
+    
     // public void OnCollideFront()
     // {
     //     Isflooding = true;
@@ -125,8 +105,6 @@ public class Car : BaseVehicle
     //     Debug.Log("Front Flooding");
     // }
     
->>>>>>> Stashed changes
-
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -134,10 +112,6 @@ public class Car : BaseVehicle
         trafficLight.SetLevel(0);
 
         collider = GetComponent<Collider2D>();
-<<<<<<< Updated upstream
-
-        StartPosition = transform.position;
-        EndPosition = GlobalData.carDirection;
 
     }
 
@@ -145,8 +119,7 @@ public class Car : BaseVehicle
     protected virtual void Update()
     {
 
-=======
->>>>>>> Stashed changes
+
     }
     
 

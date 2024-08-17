@@ -179,6 +179,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 156548317}
     - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: renderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: renderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1072889872}
+    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: renderers.Array.data[1]
+      value: 
+      objectReference: {fileID: 338646458}
+    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: renderers.Array.data[2]
+      value: 
+      objectReference: {fileID: 1352949479}
+    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: curveSink.m_Curve.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -359,6 +375,11 @@ SpriteMask:
   m_CorrespondingSourceObject: {fileID: 1275119100669403268, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
   m_PrefabInstance: {fileID: 68248465}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &338646458 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6808305088805832872, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+  m_PrefabInstance: {fileID: 68248465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &346781166
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +467,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1356688559
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ae45473745ee3d47affd6aa5ba10427, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -604,9 +625,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 110098532}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: canSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: deltaTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: carWaitLeft
       value: 
       objectReference: {fileID: 1521479788}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: shipEndLeft
+      value: 
+      objectReference: {fileID: 1435931676}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: carSpawnLeft
       value: 
@@ -615,6 +648,10 @@ PrefabInstance:
       propertyPath: carWaitRight
       value: 
       objectReference: {fileID: 1914443691}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: shipEndRight
+      value: 
+      objectReference: {fileID: 12172543}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipWaitLeft
       value: 
@@ -646,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipNextWaitLeft
       value: 
-      objectReference: {fileID: 1641584059}
+      objectReference: {fileID: 1315268615}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: ships.Array.size
       value: 3
@@ -654,7 +691,7 @@ PrefabInstance:
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipNextWaitRight
       value: 
-      objectReference: {fileID: 1315268615}
+      objectReference: {fileID: 1641584059}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: cars.Array.data[0]
       value: 
@@ -865,6 +902,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1072889872 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8683682752155894994, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+  m_PrefabInstance: {fileID: 68248465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1109167696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -913,6 +955,34 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1404201534}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3401074316341453249, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -1234,70 +1304,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 347}
-<<<<<<< Updated upstream
---- !u!1001 &1149577279
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_Name
-      value: Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 1447145387448290013, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: bridgeController
-      value: 
-      objectReference: {fileID: 110098532}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.343
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899746750560005243, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-=======
->>>>>>> Stashed changes
 --- !u!1001 &1174224484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1421,6 +1427,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 239}
+--- !u!212 &1352949479 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5759481626963536107, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+  m_PrefabInstance: {fileID: 68248465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1404201533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1712,7 +1723,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000c98f81cd87d209b9b59ebd6b69f72f7aaf6cdd50
+  m_ApplyToSortingLayers: 00000000c98f81cd87d209b9b59ebd6b69f72f7aaf6cdd50d73981af1fcd302f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

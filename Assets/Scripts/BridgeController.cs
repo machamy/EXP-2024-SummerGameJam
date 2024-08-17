@@ -22,6 +22,8 @@ public class BridgeController : MonoBehaviour
     [SerializeField, Tooltip("잠김 마스크")] private SpriteMask spriteMask;
 
     [SerializeField, Tooltip("잠김 마스크 기존위치")] private Vector3 maskOriginalPos;
+
+    [SerializeField] private SpriteRenderer[] renderers;
     
 
     public Rigidbody2D playerRigidbody;
@@ -99,10 +101,18 @@ public class BridgeController : MonoBehaviour
         if (height < sinkHeight)
         {
             spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y + 3, maskOriginalPos.z);
+            foreach (var renderer in renderers)
+            {
+                renderer.sortingLayerName = "SunkenBridge";
+            }
         }
         else
         {
             spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
+            foreach (var renderer in renderers)
+            {
+                renderer.sortingLayerName = "Bridge";
+            }
         }
             
         bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 

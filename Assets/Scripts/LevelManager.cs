@@ -9,10 +9,10 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private float weight = 100f;
+    [SerializeField] private float weight = 1.00f;
     [SerializeField] private float weightCoefficient = 0.95f;
     [SerializeField] private IntVariableSO score;
-    [SerializeField] private float deltaTime = 20f;
+    [SerializeField] private float deltaTime = 10f;
 
     [SerializeField] private BridgeController bridge;
 
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform carWaitRight;
     
     [SerializeField] private Transform shipSpawnLeft;
-    [FormerlySerializedAs("shipSapwnRight")] [SerializeField] private Transform shipSpawnRight;
+    [SerializeField] private Transform shipSpawnRight;
     [SerializeField] private Transform shipWaitLeft;
     [SerializeField] private Transform shipWaitRight;
     [SerializeField] private Transform shipNextWaitLeft;
@@ -37,14 +37,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float intervalMin = 3;
     [SerializeField] private float intervalRemain;
 
-    private class Comparer : IComparer<Tuple<float, GameObject>>
-    {
-        public int Compare(Tuple<float, GameObject> x, Tuple<float, GameObject> y)
-        {
-            return (x.Item1 < y.Item1) ? -1 : 1;
-        }
-    }
-    private SortedSet<Tuple<float, GameObject>> schedule = new SortedSet<Tuple<float, GameObject>>(new Comparer());
+    // private class Comparer : IComparer<Tuple<float, GameObject>>
+    // {
+    //     public int Compare(Tuple<float, GameObject> x, Tuple<float, GameObject> y)
+    //     {
+    //         return (x.Item1 < y.Item1) ? -1 : 1;
+    //     }
+    // }
+    private SortedList<float, GameObject> schedule = new SortedList<float, GameObject>();
 
     [SerializeField]private bool canSpawn = false;
     
@@ -66,12 +66,15 @@ public class LevelManager : MonoBehaviour
 
         if(schedule.Count > 0)
         {
-            var item = schedule.First();
-            while (timestamp > item.Item1)
+            var key = schedule.Keys[0];
+            while (timestamp > key)
             {
-                schedule.Remove(item);
-                GameObject go = item.Item2;
+                GameObject go = schedule.Values[0];
+                schedule.RemoveAt(0);
                 go.SetActive(true);
+                if (schedule.Count <= 0)
+                    return;
+                key = schedule.Keys[0];
             }
         }
 
@@ -85,10 +88,9 @@ public class LevelManager : MonoBehaviour
                 go.SetActive(false);
                 canSpawn = false;
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
-                schedule.Add(
-                    new Tuple<float, GameObject>(timestamp + deltaTime - vehicle.TotalBeforeTime,
-                        go));
+                schedule.Add( timestamp + deltaTime - vehicle.TotalBeforeTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
+                vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
                 StartCoroutine(WaitSpawnRoutine(vehicle.crossBridgeDelay));
             }
         }
@@ -113,7 +115,7 @@ public class LevelManager : MonoBehaviour
         GameObject go;
         Transform spawnPoint, waitPoint,nextwaitPoint, endPoint;
         bool isLeft = Random.Range(0, 1) == 1;
-        if (Random.Range(0, 100f) <= 100) // 차
+        if (Random.Range(0, 100f) <= 50) // 차
         {
             isLeft = true;
             spawnPoint = carSpawnLeft;

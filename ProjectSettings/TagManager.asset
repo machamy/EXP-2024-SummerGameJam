@@ -48,6 +48,12 @@ TagManager:
   - name: Background
     uniqueID: 1807589045
     locked: 0
+  - name: Submarine
+    uniqueID: 791727391
+    locked: 0
+  - name: SunkenBridge
+    uniqueID: 2944481751
+    locked: 0
   - name: Ship
     uniqueID: 3447820233
     locked: 0
