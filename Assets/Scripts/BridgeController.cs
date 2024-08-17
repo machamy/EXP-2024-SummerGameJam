@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BridgeController : MonoBehaviour
 {
@@ -81,10 +82,13 @@ public class BridgeController : MonoBehaviour
 
     }
 
+    private bool isInputAcitve = false;
+
     void Update()
     {
         AnimationCurve sellecteCurve;
-        if (Input.GetKey(KeyCode.Space)) 
+        isInputAcitve = Input.GetKey(KeyCode.Space) || EventSystem.current.IsPointerOverGameObject(0);
+        if (isInputAcitve) 
         {
             this.progress = Mathf.Min(MoveTime, this.progress+ Time.deltaTime);
             sellecteCurve = curveSink;
@@ -96,6 +100,8 @@ public class BridgeController : MonoBehaviour
             sellecteCurve = curveGoup;
             //Debug.Log("Bridge Go Up");
         }
+        
+        
 
         height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime)) * heightweight;
         if (height < sinkHeight)
