@@ -144,7 +144,7 @@ public class LevelManager : MonoBehaviour
             waitPoint = isLeft ? shipWaitLeft : shipWaitRight;
             nextwaitPoint = isLeft ? shipNextWaitLeft : shipNextWaitRight;
             endPoint = isLeft ? shipEndLeft : shipEndRight;
-            go = Instantiate(ships[Random.Range(0,3)]);
+            go = Instantiate(ships[Random.Range(0,2)]);
         }
         go.transform.position = spawnPoint.position;
         BaseVehicle vehicle = go.GetComponent<BaseVehicle>();

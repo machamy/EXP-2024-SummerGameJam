@@ -73,7 +73,7 @@ public class BridgeController : MonoBehaviour
         {
             Car = collision.GetComponent<Car>();
             var position = Car.transform.position;
-            Car.cargfx.transform.position = new Vector3(position.x, position.y + Car.bridgeController.height - 1, position.z);
+            Car.cargfx.transform.position = new Vector3(position.x, position.y - Car.bridgeController.height + 0.8f, position.z);
             if (Car && Car.carCollisionHeight > height && !Car.Isflooding)
             {
                 Car.OnCollideDown();
