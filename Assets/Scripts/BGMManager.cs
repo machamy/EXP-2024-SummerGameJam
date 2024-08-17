@@ -75,13 +75,13 @@ public class BGMManager : MonoBehaviour
                     _playbgmSources[i].volume = 0;
                 }
             break;
-            case 10:
+            case 5:
                 _playbgmSources[1].volume = 1; break;
-            case 20:
+            case 10:
                 _playbgmSources[2].volume = 1; break;
-            case 30:
+            case 15:
                 _playbgmSources[3].volume = 1; break;
-            case 40:
+            case 25:
                 for(int i = 0; i < 4; i++)
                 {
                     _playbgmSources[i].volume = 0;
