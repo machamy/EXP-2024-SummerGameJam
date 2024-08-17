@@ -132,11 +132,12 @@ public class LevelManager : MonoBehaviour
         bool isLeft = Random.Range(0, 1) == 1;
         if (Random.Range(0, 100f) <= 50) // 차
         {
+            isLeft = true;
             spawnPoint = carSpawnLeft;
             waitPoint = carWaitLeft;
             nextwaitPoint = carWaitRight;
             endPoint = carSpawnRight;
-            go = Instantiate(cars[Random.Range(0,3)]);
+            go = Instantiate(cars[0]);
         }
         else //배
         {
