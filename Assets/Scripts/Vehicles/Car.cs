@@ -33,12 +33,13 @@ public class Car : BaseVehicle
 
     protected virtual IEnumerator StopRoutine()
     {
+
         /*if (collision.gameObject.CompareTag("Player"))
         {
           
         }*/
 
-
+        SoundManager.Instance.StopSFX("car_slow");
 
         WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
 
@@ -51,6 +52,8 @@ public class Car : BaseVehicle
         yield return wait;
         trafficLight.SetLevel(0);
         state = State.After;
+
+        SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
     }
 
     // void Move()
@@ -89,6 +92,8 @@ public class Car : BaseVehicle
     {
         if (other.CompareTag("Bridge"))
         {
+
+ 
             cargfx.transform.position = Vector3.zero;
         }
     }
@@ -102,6 +107,9 @@ public class Car : BaseVehicle
         isDead = true;
         // StopAllCoroutines();
         // Destroy(gameObject);
+
+        SoundManager.Instance.StopSFX("car_slow");
+        SoundManager.Instance.Play("car_crash", SoundManager.SoundType.SFX);
         Debug.Log("Car flooding");
         OnDeath();
     }
@@ -119,8 +127,8 @@ public class Car : BaseVehicle
     protected virtual void Start()
     {
 
-        SoundManager.Instance.Play("car_crash", SoundManager.SoundType.SFX);
-
+        SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
+  
         //renderer = GetComponent<SpriteRenderer>();
         trafficLight.SetLevel(0);
 
@@ -143,6 +151,7 @@ public class Car : BaseVehicle
         if (state == State.Stop)
         {
             state = State.Wait;
+
             StartCoroutine(StopRoutine());
         }
         // else if(state == State.AfterMoving)
