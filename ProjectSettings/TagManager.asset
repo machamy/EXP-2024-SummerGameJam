@@ -66,3 +66,6 @@ TagManager:
   - name: Car
     uniqueID: 3104428679
     locked: 0
+  - name: Effect
+    uniqueID: 1494228433
+    locked: 0

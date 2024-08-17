@@ -14,10 +14,12 @@ public class Submarine : Ship
     {
         Iscollision = true;
         Debug.Log("Submarine Front Collided");
+        hp.Value -= 1;
+        OnDeath();
     }
 
 
-    public override void OnCollideUp()
+    public override void OnCollideUp() // 이거 실행 X
     {
         Iscollision = true;
         Debug.Log("Submarine Middle Collided");

@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     public void ShowPause()
     {
         Setting.SetActive(true);
+        Setting.GetComponent<SettingScreen>().isRunning = true;
         GameManager.Instance.PauseGame();
     }
 

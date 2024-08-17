@@ -60,6 +60,9 @@ namespace DefaultNamespace.UI
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);
             gameObject.SetActive(false);
+            if(isRunning)
+                GameManager.Instance.ResumeGame();
+            isRunning = false;
         }
     }
 }

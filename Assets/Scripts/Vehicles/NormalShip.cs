@@ -8,6 +8,8 @@ public class NormalShip : Ship
     {
         Iscollision = true;
         Debug.Log("NormalShip Front Collided");
+        hp.Value -= 1;
+        OnDeath();
     }
 
 
@@ -15,5 +17,7 @@ public class NormalShip : Ship
     {
         Iscollision = true;
         Debug.Log("NormalShip Middle Collided");
+        hp.Value -= 1;
+        OnDeath();
     }
 }

@@ -103,6 +103,7 @@ public class Car : BaseVehicle
         // StopAllCoroutines();
         // Destroy(gameObject);
         Debug.Log("Car flooding");
+        OnDeath();
     }
     
     // public void OnCollideFront()

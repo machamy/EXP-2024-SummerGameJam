@@ -25,6 +25,8 @@ public class BaseVehicle : MonoBehaviour
         End
     }
 
+    public GameObject deathEffect;
+
     public float timestampCheck;
     public BridgeController bridgeController;
     public VehicleType type;
@@ -109,6 +111,13 @@ public class BaseVehicle : MonoBehaviour
     {
         state = State.End;
         score.Value += 1;
+        Destroy(gameObject);
+    }
+
+    public void OnDeath()
+    {
+        var effect = Instantiate(deathEffect);
+        effect.transform.position = transform.position;
         Destroy(gameObject);
     }
 }

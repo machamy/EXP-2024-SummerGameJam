@@ -8,6 +8,8 @@ public class Pirate : Ship
     {
         Iscollision = true;
         Debug.Log("Pirate Front Collided");
+        score.Value += 1;
+        OnDeath();
     }
 
 
@@ -15,5 +17,7 @@ public class Pirate : Ship
     {
         Iscollision = true;
         Debug.Log("Pirate Middle Collided");
+        score.Value += 1;
+        OnDeath(); //TODO 날아가기
     }
 }

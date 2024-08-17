@@ -15,9 +15,9 @@ public class HPIndicator : MonoBehaviour
     {
         if (hp > MaxHP)
             hp = MaxHP;
-        if (hp <= 0)
+        if (hp <= 0 && GameManager.Instance.State == GameManager.GameState.Running)
         {
-            print("OVER OVER OVER");
+            GameManager.Instance.GameOver();
         }
         for (int i = 0; i < hp-1; i++)
         {

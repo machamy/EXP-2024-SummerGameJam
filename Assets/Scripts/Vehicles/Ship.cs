@@ -39,6 +39,8 @@ public class Ship : BaseVehicle
         Iscollision = true;
         isDead = true;
         Debug.Log("Front Collided");
+        OnDeath();
+        
     }
     /// <summary>
     /// Middle Collided
@@ -49,6 +51,7 @@ public class Ship : BaseVehicle
         Iscollision = true;
         isDead = true;
         Debug.Log("Middle Collided");
+        OnDeath();
     }
 }
 
