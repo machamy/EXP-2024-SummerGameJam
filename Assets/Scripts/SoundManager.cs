@@ -111,11 +111,13 @@ public class SoundManager
         else // Effect 효과음 재생
         {
             AudioSource audioSource = GetEffectSource();
-            audioSource.pitch = pitch;
+                audioSource.clip = audioClip;  // <-- Set the clip here
+                audioSource.pitch = pitch;
             audioSource.volume = volume;
             audioSource.outputAudioMixerGroup = effectGroup;
-            audioSource.PlayOneShot(audioClip);
-            _playingEffects.AddLast(audioClip.name);
+                audioSource.Play();
+                //audioSource.PlayOneShot(audioClip);
+                _playingEffects.AddLast(audioClip.name);
         }
     }
 
@@ -193,6 +195,8 @@ public class SoundManager
         }
     
     }
+
+
     
     /// <summary>
     /// effect 리스트를 돌며 볼륨 변경
@@ -219,25 +223,41 @@ public class SoundManager
         } while (nodeSrc != null);
     }
 
-    // public void Stop(string name)
-    // {
-    //     var node_src = _effectSources.First;
-    //     var node = _playingEffects.First;
-    //     
-    //     do
-    //     {
-    //         var src = node.Value;
-    //         node_src = node_src.Next;
-    //         node = node.Next;
-    //         if (node.Value == name)
-    //         {
-    //             node_src.Value.Stop();
-    //             _playingEffects.Remove(node);
-    //         }
-    //     } while (node != null);
-    // }
-    
-    public void Clear()
+       public void StopSFX(string soundName)
+        {
+            var node = _effectSources.First;
+            while (node != null)
+            {
+                var source = node.Value;
+                if (source.isPlaying && source.clip != null && source.clip.name == soundName)
+                {
+                    source.Stop();
+                    return;
+                }
+                node = node.Next;
+            }
+        }
+
+        /*
+         public void Stop(string name)
+        {
+             var node_src = _effectSources.First;
+             var node = _playingEffects.First;
+             
+             do
+             {
+                 var src = node.Value;
+                 node_src = node_src.Next;
+                 node = node.Next;
+                 if (node.Value == name)
+                 {
+                    node_src.Value.Stop();
+                     _playingEffects.Remove(node);
+                 }
+             } while (node != null);
+        }*/
+
+        public void Clear()
     {
         _bgmSource.clip = null;
         _bgmSource.Stop();
