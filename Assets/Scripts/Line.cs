@@ -65,6 +65,8 @@ namespace DefaultNamespace
 
         private void LateUpdate()
         {
+            if(!debugDraw)
+                return;
             Debug.DrawLine(Spawn.position,Wait01.position,Color.yellow);
             Debug.DrawLine(Wait01.position,Bridge01.position,Color.cyan);
             Debug.DrawLine(Bridge01.position,Bridge02.position,Color.green);
