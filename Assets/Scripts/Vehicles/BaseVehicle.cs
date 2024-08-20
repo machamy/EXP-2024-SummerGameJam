@@ -54,7 +54,7 @@ public class BaseVehicle : MonoBehaviour
 
     public Transform OriginPos;
     public Transform WaitPos;
-    public Transform NextWaitPos;
+    public Transform NextWaitPos; // TODO 삭제
     public Transform EndPos;
 
     public Coroutine MoveCoroutine;

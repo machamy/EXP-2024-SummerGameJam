@@ -16,20 +16,11 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private BridgeController bridge;
 
-    [Header("Points")]
-    [SerializeField] private Transform carSpawnLeft;
-    [SerializeField] private Transform carSpawnRight;
-    [SerializeField] private Transform carWaitLeft;
-    [SerializeField] private Transform carWaitRight;
-    
-    [SerializeField] private Transform shipSpawnLeft;
-    [SerializeField] private Transform shipSpawnRight;
-    [SerializeField] private Transform shipWaitLeft;
-    [SerializeField] private Transform shipWaitRight;
-    [SerializeField] private Transform shipNextWaitLeft;
-    [SerializeField] private Transform shipNextWaitRight;
-    [SerializeField] private Transform shipEndLeft;
-    [SerializeField] private Transform shipEndRight;
+    [Header("Lines")] 
+    [SerializeField] private Line carUpper;
+    [SerializeField] private Line carLower;
+    [SerializeField] private Line shipLeft;
+    [SerializeField] private Line shipRight;
     [Header("Prefabs")]
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] ships;
@@ -129,36 +120,34 @@ public class LevelManager : MonoBehaviour
     {
         GameObject go;
         Transform spawnPoint, waitPoint,nextwaitPoint, endPoint;
-        bool isLeft = Random.Range(0, 1) == 1;
-        if (Random.Range(0, 100f) <= 50) // 차
+        bool isLeft = Random.Range(0, 1) == 0;
+        bool isCar = Random.Range(0, 100) < 50;
+        Line PickedLine;
+        bool isReverse = false;
+        if (isCar)
         {
-            isLeft = true;
-            spawnPoint = carSpawnLeft;
-            waitPoint = carWaitLeft;
-            nextwaitPoint = carWaitRight;
-            endPoint = carSpawnRight;
-            go = Instantiate(cars[0]);
+            isReverse = Random.Range(0, 2) == 1;
+            PickedLine = isLeft ? carUpper : carLower;
+            go = Instantiate(cars[Random.Range(0, cars.Length)]);
         }
-        else //배
+        else
         {
-            spawnPoint = isLeft ? shipSpawnLeft : shipSpawnRight;
-            waitPoint = isLeft ? shipWaitLeft : shipWaitRight;
-            nextwaitPoint = isLeft ? shipNextWaitLeft : shipNextWaitRight;
-            endPoint = isLeft ? shipEndLeft : shipEndRight;
-            go = Instantiate(ships[Random.Range(0,2)]);
+            PickedLine = isLeft ? shipLeft : shipRight;
+            go = Instantiate(cars[Random.Range(0, ships.Length)]);
         }
-        go.transform.position = spawnPoint.position;
+
+        go.transform.position = isReverse ? PickedLine.End.position : PickedLine.Spawn.position;
         BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
-        InitVehicle(vehicle,spawnPoint,waitPoint,nextwaitPoint,endPoint);
+        InitVehicle(vehicle,PickedLine);
         return go;
     }
 
-    private void InitVehicle(BaseVehicle vehicle,Transform spawnPoint, Transform waitPoint,Transform nextwaitPoint, Transform endPoint)
+    private void InitVehicle(BaseVehicle vehicle,Line line,bool isReverse = false)
     {
-        vehicle.OriginPos = spawnPoint;
-        vehicle.WaitPos = waitPoint;
-        vehicle.NextWaitPos = nextwaitPoint;
-        vehicle.EndPos = endPoint;
+        vehicle.OriginPos = isReverse ? line.End : line.Spawn;
+        vehicle.WaitPos = line.Wait01;
+        vehicle.NextWaitPos = line.Wait02; //TODO <<<< 수정해야함.
+        vehicle.EndPos = isReverse ? line.Spawn :line.End;
         vehicle.bridgeController = bridge;
         vehicle.hp = GameManager.Instance.hp;
         vehicle.score = GameManager.Instance.score;
