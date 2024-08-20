@@ -6,10 +6,17 @@ using UnityEngine;
 namespace DefaultNamespace.DataStructure
 {
     [Serializable]
-    public class SerializableDict<K, V> : Dictionary<K, V>, ISerializationCallbackReceiver
+    public class OrderedSerializableDict<K, V> : Dictionary<K, V>, ISerializationCallbackReceiver
     {
         public static V Null = default;
         public List<SerializableData<K, V>> dataList = new List<SerializableData<K, V>>();
+        private IComparer<K> _comparer;
+
+        public OrderedSerializableDict(IComparer<K> comparer = null)
+        {
+            _comparer = comparer ?? Comparer<K>.Default;
+        }
+        
         /// <summary>
         /// 리스트 -> 딕셔너리
         /// </summary>
@@ -20,6 +27,7 @@ namespace DefaultNamespace.DataStructure
             {
                 dataList.Add(new SerializableData<K, V>(pair.Key,pair.Value));
             }
+            dataList.Sort((x, y) => _comparer.Compare(x.key, y.key));
         }
 
         /// <summary>
@@ -40,17 +48,4 @@ namespace DefaultNamespace.DataStructure
         }
     }
     
-    [Serializable]
-    public class SerializableData<K,V>
-    {
-        public K key;
-        public V value;
-        
-        public SerializableData(K key, V val)
-        {
-            this.key = key;
-            this.value = val;
-        }
-        
-    }
 }

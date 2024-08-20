@@ -62,17 +62,17 @@ public class BaseVehicle : MonoBehaviour
     public IntVariableSO score;
     public IntVariableSO hp;
 
-    public void Awake()
+    public virtual void Awake()
     {
         state = State.Idle;
     }
 
-    public void Update()
+    public virtual void Update()
     {
         
     }
 
-    public void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (state == State.Idle)
         {
