@@ -63,6 +63,8 @@ namespace DefaultNamespace
             
         }
 
+        // 디버그용 구역
+        #if UNITY_EDITOR
         private void LateUpdate()
         {
             if(!debugDraw)
@@ -72,9 +74,36 @@ namespace DefaultNamespace
             Debug.DrawLine(Bridge01.position,Bridge02.position,Color.green);
             Debug.DrawLine(Bridge02.position,Wait02.position,Color.cyan);
             Debug.DrawLine(Wait02.position,End.position,Color.yellow);
-            
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(Spawn.position,Wait01.position);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(Wait01.position,Bridge01.position);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(Bridge01.position,Bridge02.position);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(Bridge02.position,Wait02.position);
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(Wait02.position,End.position);
+
+            float radius = 0.1f;
+            
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(Spawn.position,radius);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(Wait01.position,radius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(Bridge01.position,radius);
+            Gizmos.DrawSphere(Bridge02.position,radius);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(Wait02.position,radius);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(End.position, radius);
+        }
+        #endif
         private void OnValidate()
         {
             Vector3 angle = transform.eulerAngles;
@@ -138,13 +167,15 @@ namespace DefaultNamespace
                 pointObject.transform.localRotation = Quaternion.identity;
                 pointObject.transform.localPosition = newPosition;
             }
-            
+#if UNITY_EDITOR
             // 라인렌더러
             if (lineRenderer)
             {
                 LineRenderer renderer;
                 if (!TryGetComponent(out renderer))
                     renderer = gameObject.AddComponent<LineRenderer>();
+                else
+                    renderer.enabled = true;
 
                 renderer.loop = false;
                 renderer.useWorldSpace = false;
@@ -169,7 +200,11 @@ namespace DefaultNamespace
                 
                 renderer.startWidth = 0.1f;
                 renderer.endWidth = 0.1f;
+            }else if (TryGetComponent<LineRenderer>(out var renderer))
+            {
+                renderer.enabled = false;
             }
+    #endif
         }
     }
 }
