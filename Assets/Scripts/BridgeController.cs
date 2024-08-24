@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Vehicles;
 
 public class BridgeController : MonoBehaviour
 {
@@ -92,7 +93,7 @@ public class BridgeController : MonoBehaviour
 
     void Update()
     {
-        isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(0);
+        isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
     }
 
     private void FixedUpdate()
