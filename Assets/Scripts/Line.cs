@@ -5,6 +5,7 @@ using DefaultNamespace.DataStructure;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Vehicles;
 
 namespace DefaultNamespace
 {

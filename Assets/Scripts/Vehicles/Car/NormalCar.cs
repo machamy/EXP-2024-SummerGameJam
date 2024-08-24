@@ -1,8 +1,8 @@
-using UnityEngine;
+using DefaultNamespace;
 
-namespace DefaultNamespace.Vehicles
+namespace Vehicles.Car
 {
-    public class NormalCar:Car
+    public class NormalCar:global::Car
     {
         public override void OnCollisionUp()
         {

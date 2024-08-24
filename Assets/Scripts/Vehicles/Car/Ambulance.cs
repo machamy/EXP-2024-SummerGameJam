@@ -1,21 +1,30 @@
-﻿using DefaultNamespace;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class Ambulance : Car
+﻿namespace Vehicles.Car
 {
-    public override void OnWait()
+    public class Ambulance : global::Car
     {
-        state = VehicleState.MoveAfter;
-        currentTime = 0f;
-    }
 
-    public override void OnCollisionUp()
-    {
-        hp.Value -= 1;
-        OnDeath();
+
+        public override void OnIdleStay()
+        {
+
+        }
+
+        public override void OnWait()
+        {
+            state = VehicleState.MoveAfter;
+            currentTime = 0f;
+        }
+
+        public override void OnCollisionUp()
+        {
+            hp.Value -= 1;
+            OnDeath();
+        }
+
+        public override void OnArrival()
+        {
+            score.Value += 1;
+            Destroy(gameObject);
+        }
     }
 }
-    

@@ -2,11 +2,10 @@ using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vehicles;
 
 public abstract class Ship : BaseVehicle
 {
-    public bool Iscollision = false;
-    
     public override bool isCollideHeight(float height)
     {
         return collisionHeight < height;

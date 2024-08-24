@@ -6,6 +6,7 @@ using DefaultNamespace;
 using DefaultNamespace.DataStructure;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Vehicles;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour

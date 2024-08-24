@@ -1,21 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalShip : Ship
+namespace Vehicles.Ship
 {
-    public override void OnCollisionFront()
+    public class NormalShip : global::Ship
     {
-        Iscollision = true;
-        Debug.Log("NormalShip Front Collided");
-        hp.Value -= 1;
-        OnDeath();
-    }
-    public override void OnCollisionUp()
-    {
-        Iscollision = true;
-        Debug.Log("NormalShip Middle Collided");
-        hp.Value -= 1;
-        OnDeath();
+        public override void OnCollisionFront()
+        {
+            Debug.Log("NormalShip Front Collided");
+            hp.Value -= 1;
+            OnDeath();
+        }
+        public override void OnCollisionUp()
+        {
+            Debug.Log("NormalShip Middle Collided");
+            hp.Value -= 1;
+            OnDeath();
+        }
+
+        public override void OnArrival()
+        {
+            score.Value += 1;
+            Destroy(gameObject);
+        }
     }
 }

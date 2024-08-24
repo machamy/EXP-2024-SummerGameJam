@@ -1,23 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Pirate : Ship
+namespace Vehicles.Ship
 {
-    public override void OnCollisionFront()
+    public class Pirate : global::Ship
     {
-        Iscollision = true;
-        Debug.Log("Pirate Front Collided");
-        score.Value += 1;
-        OnDeath();
-    }
+        public override void OnCollisionFront()
+        {
+            Debug.Log("Pirate Front Collided");
+            score.Value += 1;
+            OnDeath();
+        }
 
 
-    public override void OnCollisionUp()
-    {
-        Iscollision = true;
-        Debug.Log("Pirate Middle Collided");
-        score.Value += 1;
-        OnDeath(); //TODO 날아가기
+        public override void OnCollisionUp()
+        {
+            Debug.Log("Pirate Middle Collided");
+            score.Value += 1;
+            OnDeath(); //TODO 날아가기
+        }
+
+        public override void OnArrival()
+        {
+            score.Value -= 1;
+            Destroy(gameObject);
+        }
     }
 }

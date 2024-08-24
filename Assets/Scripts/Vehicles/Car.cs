@@ -6,11 +6,13 @@ using DefaultNamespace.Vehicles;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Vehicles;
 
 
 public abstract class Car : BaseVehicle
 {
 
+    [Header("Car")]
     public AudioSource audioSource;
 
     public GameObject cargfx;
