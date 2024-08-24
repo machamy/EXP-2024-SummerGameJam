@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Vehicles.Ship
+namespace Vehicles.Ships
 {
-    public class NormalShip : global::Ship
+    public class NormalShip : global::Vehicles.Ship
     {
         public override void OnCollisionFront()
         {

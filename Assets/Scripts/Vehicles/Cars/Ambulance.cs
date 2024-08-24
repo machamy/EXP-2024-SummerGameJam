@@ -1,12 +1,12 @@
-﻿namespace Vehicles.Car
+﻿namespace Vehicles.Cars
 {
-    public class Ambulance : global::Car
+    public class Ambulance : Car
     {
 
 
         public override void OnIdleStay()
         {
-
+            //TODO : 사이렌 후 BeforeMove상태로 바꾸기.
         }
 
         public override void OnWait()

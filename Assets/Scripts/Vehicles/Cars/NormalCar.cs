@@ -1,8 +1,8 @@
 using DefaultNamespace;
 
-namespace Vehicles.Car
+namespace Vehicles.Cars
 {
-    public class NormalCar:global::Car
+    public class NormalCar:Car
     {
         public override void OnCollisionUp()
         {

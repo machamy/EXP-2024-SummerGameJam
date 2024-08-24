@@ -1,6 +1,6 @@
-namespace Vehicles.Car
+namespace Vehicles.Cars
 {
-    public class EnemyCar : global::Car
+    public class EnemyCar : Car
     {
         public override void OnCollisionUp()
         {

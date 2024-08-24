@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Vehicles.Ship
+namespace Vehicles.Ships
 {
-    public class Submarine : global::Ship
+    public class Submarine : global::Vehicles.Ship
     {
         public float submarineCollisionHeight = 0.3f;
 
@@ -23,6 +23,12 @@ namespace Vehicles.Ship
             //위에서 아래로 찌부되는 경우
             OnDeath();
             Debug.Log("Submarine Middle Collided");
+        }
+
+        public override void OnArrival()
+        {
+            score.Value += 1;
+            Destroy(gameObject);
         }
     }
 }
