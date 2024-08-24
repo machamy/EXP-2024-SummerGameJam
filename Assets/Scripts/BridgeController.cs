@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,19 +11,19 @@ public class BridgeController : MonoBehaviour
     public GameObject bridgegfx;
     public Ship Ship;
     public Car Car;
-    [Tooltip("´Ù¸®°¡ Àá±â°í ¶°¿À¸£´Âµ¥ °É¸®´Â ½Ã°£")]   public float MoveTime = 1.0f;       
-    [Tooltip("Àá±â°í ¶°¿À¸£´Â ÇàÀ§ÀÇ ÁøÇà·ü")]          public float progress = 0.0f;
+    [Tooltip("ë‹¤ë¦¬ê°€ ì ê¸°ê³  ë– ì˜¤ë¥´ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„")]   public float MoveTime = 1.0f;       
+    [Tooltip("ì ê¸°ê³  ë– ì˜¤ë¥´ëŠ” í–‰ìœ„ì˜ ì§„í–‰ë¥ ")]          public float progress = 0.0f;
     public float height;
 
-    [Tooltip("´Ù¸® ¾Ö´Ï¸ŞÀÌ¼Ç °¡ÁßÄ¡")]                 public float heightweight = 1.0f;  
-    [Tooltip("´Ù¸® ÃÖÃÊ À§Ä¡ ÀúÀå º¤ÅÍ")]               Vector3 originalPos;
+    [Tooltip("ë‹¤ë¦¬ ì• ë‹ˆë©”ì´ì…˜ ê°€ì¤‘ì¹˜")]                 public float heightweight = 1.0f;  
+    [Tooltip("ë‹¤ë¦¬ ìµœì´ˆ ìœ„ì¹˜ ì €ì¥ ë²¡í„°")]               Vector3 originalPos;
 
-    [Tooltip("´Ù¸® Àá±è ¾Ö´Ï¸ŞÀÌ¼Ç °î¼±")] public AnimationCurve curveSink;
-    [Tooltip("´Ù¸® ¿ë½Â ¾Ö´Ï¸ŞÀÌ¼Ç °î¼±")] public AnimationCurve curveGoup;
-    [SerializeField, Tooltip("Àá±è »ö Ã³¸®")] private float sinkHeight;
-    [SerializeField, Tooltip("Àá±è ¸¶½ºÅ©")] private SpriteMask spriteMask;
+    [Tooltip("ë‹¤ë¦¬ ì ê¹€ ì• ë‹ˆë©”ì´ì…˜ ê³¡ì„ ")] public AnimationCurve curveSink;
+    [Tooltip("ë‹¤ë¦¬ ìš©ìŠ¹ ì• ë‹ˆë©”ì´ì…˜ ê³¡ì„ ")] public AnimationCurve curveGoup;
+    [SerializeField, Tooltip("ì ê¹€ ìƒ‰ ì²˜ë¦¬")] private float sinkHeight;
+    [SerializeField, Tooltip("ì ê¹€ ë§ˆìŠ¤í¬")] private SpriteMask spriteMask;
 
-    [SerializeField, Tooltip("Àá±è ¸¶½ºÅ© ±âÁ¸À§Ä¡")] private Vector3 maskOriginalPos;
+    [SerializeField, Tooltip("ì ê¹€ ë§ˆìŠ¤í¬ ê¸°ì¡´ìœ„ì¹˜")] private Vector3 maskOriginalPos;
 
     [SerializeField] private SpriteRenderer[] renderers;
     
@@ -31,13 +32,14 @@ public class BridgeController : MonoBehaviour
     void Start()
     {
         originalPos = transform.position;
-        // Rigidbody2D ÄÄÆ÷³ÍÆ®¸¦ ÇÒ´ç
+        // Rigidbody2D ì»´í¬ë„ŒíŠ¸ë¥¼ í• ë‹¹
         playerRigidbody = GetComponent<Rigidbody2D>();
         maskOriginalPos = spriteMask.transform.position;
     }
 
-    #region regacy
-// private void OnTriggerEnter2D(Collider2D collision)
+    
+#region regacy
+    // private void OnTriggerEnter2D(Collider2D collision)
     // {
     //     if (collision.gameObject.CompareTag("Ship"))
     //     {
@@ -90,8 +92,12 @@ public class BridgeController : MonoBehaviour
 
     void Update()
     {
-        AnimationCurve sellecteCurve;
         isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(0);
+    }
+
+    private void FixedUpdate()
+    {
+        AnimationCurve sellecteCurve;
         if (isInputAcitve) 
         {
             this.progress = Mathf.Min(MoveTime, this.progress+ Time.deltaTime);
@@ -126,6 +132,5 @@ public class BridgeController : MonoBehaviour
         }
             
         bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 
-        
     }
 }
