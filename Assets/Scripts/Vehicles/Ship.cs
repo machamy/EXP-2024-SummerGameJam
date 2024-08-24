@@ -1,40 +1,39 @@
-using DefaultNamespace;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Vehicles;
 
-public abstract class Ship : BaseVehicle
+namespace Vehicles
 {
-    public override bool isCollideHeight(float height)
+    public abstract class Ship : BaseVehicle
     {
-        return collisionHeight < height;
-    }
+        public override bool isCollideHeight(float height)
+        {
+            return collisionHeight < height;
+        }
 
-    public override void OnBridgeCrossing()
-    {
-        // Do nothing
-    }
+        public override void OnBridgeCrossing()
+        {
+            // Do nothing
+        }
 
-    public override void OnWait()
-    {
-        state = VehicleState.MoveAfter;
-        currentTime = 0f;
-    }
+        public override void OnWait()
+        {
+            state = VehicleState.MoveAfter;
+            currentTime = 0f;
+        }
 
-    public override void OnCollisionFront()
-    {
-        Debug.Log("Front Collided");
-    }
+        public override void OnCollisionFront()
+        {
+            Debug.Log("Front Collided");
+        }
 
-    public override void OnCollisionUp()
-    {
-        Debug.Log("Middle Collided");
-    }
+        public override void OnCollisionUp()
+        {
+            Debug.Log("Middle Collided");
+        }
 
-    public override void OnArrival()
-    {
-        Destroy(gameObject);
+        public override void OnArrival()
+        {
+            Destroy(gameObject);
+        }
     }
 }
 
