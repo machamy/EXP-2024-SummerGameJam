@@ -7,7 +7,7 @@ namespace Vehicles.Ships
         public override void OnCollisionFront()
         {
             Debug.Log("Pirate Front Collided");
-            score.Value += 1;
+            playerScore.Value += 1;
             OnDeath();
         }
 
@@ -15,13 +15,13 @@ namespace Vehicles.Ships
         public override void OnCollisionUp()
         {
             Debug.Log("Pirate Middle Collided");
-            score.Value += 1;
+            playerScore.Value += 1;
             OnDeath(); //TODO 날아가기
         }
 
         public override void OnArrival()
         {
-            score.Value -= 1;
+            playerScore.Value -= 1;
             Destroy(gameObject);
         }
     }

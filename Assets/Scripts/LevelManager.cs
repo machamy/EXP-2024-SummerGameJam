@@ -175,8 +175,8 @@ public class LevelManager : MonoBehaviour
         vehicle.curveSO = curveSo;
         vehicle.currentDistance = isReverse ? line.EndDistance : 0;
         vehicle.bridgeController = bridge;
-        vehicle.hp = GameManager.Instance.hp;
-        vehicle.score = GameManager.Instance.score;
+        vehicle.playerHp = GameManager.Instance.hp;
+        vehicle.playerScore = GameManager.Instance.score;
         vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
         
         float t = (vehicle.BridgeEndDistance - vehicle.WaitDistance) / (vehicle.EndDistance - vehicle.WaitDistance);

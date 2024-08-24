@@ -7,6 +7,7 @@
         public override void OnIdleStay()
         {
             //TODO : 사이렌 후 BeforeMove상태로 바꾸기.
+            //Start 쓴다면 이 함수는 override상태로 비워두기.
         }
 
         public override void OnWait()
@@ -17,13 +18,14 @@
 
         public override void OnCollisionUp()
         {
-            hp.Value -= 1;
+            playerHp.Value -= 1;
+            
             OnDeath();
         }
 
         public override void OnArrival()
         {
-            score.Value += 1;
+            playerScore.Value += 1;
             Destroy(gameObject);
         }
     }

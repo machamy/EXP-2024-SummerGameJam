@@ -72,8 +72,8 @@ namespace Vehicles
         public Coroutine MoveCoroutine;
 
         [Header("공용 변수")]
-        public IntVariableSO score;
-        public IntVariableSO hp;
+        [FormerlySerializedAs("score")]public IntVariableSO playerScore;
+        [FormerlySerializedAs("hp")] public IntVariableSO playerHp;
 
 
         private void FixedUpdate()

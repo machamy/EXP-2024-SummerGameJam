@@ -13,7 +13,7 @@ namespace Vehicles.Ships
         public override void OnCollisionFront()
         {
             Debug.Log("Submarine Front Collided");
-            hp.Value -= 1;
+            playerHp.Value -= 1;
             OnDeath();
         }
 
@@ -27,7 +27,7 @@ namespace Vehicles.Ships
 
         public override void OnArrival()
         {
-            score.Value += 1;
+            playerScore.Value += 1;
             Destroy(gameObject);
         }
     }
