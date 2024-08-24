@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pirate : Ship
 {
-    public override void OnCollideFront()
+    public override void OnCollisionFront()
     {
         Iscollision = true;
         Debug.Log("Pirate Front Collided");
@@ -13,7 +13,7 @@ public class Pirate : Ship
     }
 
 
-    public override void OnCollideUp()
+    public override void OnCollisionUp()
     {
         Iscollision = true;
         Debug.Log("Pirate Middle Collided");

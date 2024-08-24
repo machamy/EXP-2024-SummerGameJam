@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2897081354676847685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.35, y: 13.18, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -847147063
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29cb76c7deb525c4984457afed9503c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,22 +98,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf52f5741b10249963733f2048d1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 0}
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 1
-  state: 0
-  isDead: 0
   priorMoveDelay: 2
   priorWaitDelay: 0
-  crossBridgeDelay: 2
-  afterMoveTime: 3
-  OriginPos: {fileID: 0}
-  WaitPos: {fileID: 0}
-  NextWaitPos: {fileID: 0}
-  EndPos: {fileID: 0}
+  bridgeCrossingTime: 10
+  collisionHeight: 0.3
+  MoveLine: {fileID: 0}
+  isReverse: 0
+  curveSO: {fileID: 0}
+  beforeCurveSo: {fileID: 0}
+  currentTime: 0
+  currentDistance: 0
+  currentPoint: 0
+  state: 0
   score: {fileID: 0}
   hp: {fileID: 0}
-  shipCollisionHeight: 0.3
   Iscollision: 0
 --- !u!61 &2568900186296551934
 BoxCollider2D:

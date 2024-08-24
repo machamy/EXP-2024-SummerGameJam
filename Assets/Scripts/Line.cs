@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace.DataStructure;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
@@ -20,6 +21,8 @@ namespace DefaultNamespace
             End,
             
             Count = 6,
+            Wait,
+            Bridge,
             Debug
         }
         public class PointComparer : IComparer<Point>
@@ -35,7 +38,7 @@ namespace DefaultNamespace
         [SerializeField] private BaseVehicle.VehicleType vehicleType = BaseVehicle.VehicleType.Car;
         [Header("Property")]
         [SerializeField] private float length = 10;
-        [SerializeField] private OrderedSerializableDict<Point, float> Distances = new OrderedSerializableDict<Point, float>(new PointComparer());
+        [FormerlySerializedAs("Distances")] [SerializeField] public OrderedSerializableDict<Point, float> distances = new OrderedSerializableDict<Point, float>(new PointComparer());
         [Header("값 체크용")]
         [SerializeField] private SerializableDict<Point, GameObject> positions;
 
@@ -51,13 +54,14 @@ namespace DefaultNamespace
         public Transform End => positions[Point.End].transform;
         
         // public float SpawnDistance => Distances[Position.Spawn];
-        public float Wait01Distance => Distances[Point.Wait01];
-        public float Bridge01Distance => Distances[Point.Bridge01];
-        public float Bridge02Distance => Distances[Point.Bridge02];
-        public float Wait02Distance => Distances[Point.Wait02];
-        public float EndDistance => Distances[Point.End];
+        public float Wait01Distance => distances[Point.Wait01];
+        public float Bridge01Distance => distances[Point.Bridge01];
+        public float Bridge02Distance => distances[Point.Bridge02];
+        public float Wait02Distance => distances[Point.Wait02];
+        public float EndDistance => distances[Point.End];
         // public Transform Spawn => positions[Position.Spawn].transform;
 
+        
         public void Reset()
         {
             
@@ -111,19 +115,19 @@ namespace DefaultNamespace
             transform.eulerAngles = angle;
             
             // transform.rotation = new Quaternion().
-            if (Distances.Keys.Contains(Point.End))
+            if (distances.Keys.Contains(Point.End))
             {
-                Distances[Point.End] = length;
+                distances[Point.End] = length;
             }
             // 1번값(Spawn) 확인
             // 거리 체크
-            if (!Distances.Keys.Contains(Point.Spawn))
+            if (!distances.Keys.Contains(Point.Spawn))
             {
-                Distances.Add(Point.Spawn,0);
+                distances.Add(Point.Spawn,0);
             }
             else
             {
-                Distances[Point.Spawn] = 0;
+                distances[Point.Spawn] = 0;
             }
 
             bool hasGO = positions.TryGetValue(Point.Spawn, out var go);
@@ -145,10 +149,10 @@ namespace DefaultNamespace
             for (int i = 2; i <= (int)Point.Count; i++)
             {
                 Point point = (Point)i;
-                if (!Distances.TryGetValue(point, out var distance))
+                if (!distances.TryGetValue(point, out var distance))
                 {
-                    Distances[point] = 0;
-                    distance = Distances[point];
+                    distances[point] = 0;
+                    distance = distances[point];
                 }
                 bool hasObject = positions.TryGetValue(point,out var pointObject);
                 if (!hasObject || !positions[point])
@@ -192,14 +196,14 @@ namespace DefaultNamespace
                 
                 if (renderer.sharedMaterial == null)
                 {
-                    renderer.sharedMaterial = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+                    renderer.sharedMaterial = new Material(Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default"));
                 }
                 
                 renderer.startColor = Color.yellow; 
-                renderer.endColor = Color.red;      
+                renderer.endColor = Color.red;
                 
-                renderer.startWidth = 0.1f;
-                renderer.endWidth = 0.1f;
+                renderer.startWidth = 0.01f;
+                renderer.endWidth = 0.01f;
             }else if (TryGetComponent<LineRenderer>(out var renderer))
             {
                 renderer.enabled = false;

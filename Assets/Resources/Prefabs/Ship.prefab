@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1081140977750974463}
   - component: {fileID: 6902067112919339442}
-  - component: {fileID: 7853767038420965550}
+  - component: {fileID: 6902445524783724940}
   - component: {fileID: 8764378101005923166}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.100188084, w: 0.99496853}
   m_LocalPosition: {x: 3.35, y: 13.18, z: 0}
-  m_LocalScale: {x: 1.0088, y: 1.47537, z: 1.0088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -847147063
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c1664ddddc3a3447a2e660203c89a8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7853767038420965550
+--- !u!114 &6902445524783724940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,19 +95,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4398638165062079017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f84dd17bdf5f5b4eac0aad777cf09b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 72a2dd68777906241a007f6d5900f1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  priorMoveDelay: 1
-  priorWaitDelay: 1
+  deathEffect: {fileID: 0}
+  timestampCheck: 0
+  bridgeController: {fileID: 0}
+  type: 1
+  priorMoveDelay: 2
+  priorWaitDelay: 0
   crossBridgeDelay: 1
-  afterMoveTime: 1
-  ShipPrefab: {fileID: 4398638165062079017}
-  spawnPosition: {x: 4, y: 13, z: 0}
-  Direction: {x: 0, y: 0, z: 0}
-  speed: 5
-  shipCollisionHeight: 0.3
+  afterMoveTime: 3
+  collisionHeight: 0.3
+  MoveLine: {fileID: 0}
+  isReverse: 0
+  curveSO: {fileID: 0}
+  currentTime: 0
+  currentPosition: 0
+  currentPoint: 0
+  state: 0
+  score: {fileID: 0}
+  hp: {fileID: 0}
   Iscollision: 0
 --- !u!61 &8764378101005923166
 BoxCollider2D:
@@ -145,7 +153,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.5747519, y: 3.2389998}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

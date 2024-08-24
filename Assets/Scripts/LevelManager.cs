@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using DefaultNamespace.DataStructure;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -21,6 +22,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Line carLower;
     [SerializeField] private Line shipLeft;
     [SerializeField] private Line shipRight;
+    [Header("Curves")]
+    [SerializeField] private List<Pair<string,CurveSO>> curveDict;
+
+    public CurveSO GetCurve(string name)
+    {
+        foreach (var p in curveDict)
+        {
+            if (p.first.ToLower() == name.ToLower())
+                return p.second;
+        }
+
+        return curveDict[0].second;
+    }
     [Header("Prefabs")]
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] ships;
@@ -97,7 +111,7 @@ public class LevelManager : MonoBehaviour
                 schedule.Add( timestamp + deltaTime - vehicle.TotalBeforeTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
                 vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
-                StartCoroutine(WaitSpawnRoutine(vehicle.crossBridgeDelay));
+                StartCoroutine(WaitSpawnRoutine(vehicle.bridgeCrossingTime));
             }
         }
     }
@@ -110,7 +124,11 @@ public class LevelManager : MonoBehaviour
     
     private void CheckScore(int n)
     {
-        if (n % 10 == 0)
+        if (n == 0)
+        {
+            weight = 1.00f;
+        }
+        else if (n % 10 == 0)
         {
             weight *= weightCoefficient;
         }
@@ -120,38 +138,50 @@ public class LevelManager : MonoBehaviour
     {
         GameObject go;
         Transform spawnPoint, waitPoint,nextwaitPoint, endPoint;
-        bool isLeft = Random.Range(0, 1) == 0;
+        bool isLeft = Random.Range(0, 2) == 0;
         bool isCar = Random.Range(0, 100) < 50;
         Line PickedLine;
         bool isReverse = false;
         if (isCar)
         {
             isReverse = Random.Range(0, 2) == 1;
+            isReverse = false;
             PickedLine = isLeft ? carUpper : carLower;
             go = Instantiate(cars[Random.Range(0, cars.Length)]);
         }
         else
         {
             PickedLine = isLeft ? shipLeft : shipRight;
-            go = Instantiate(cars[Random.Range(0, ships.Length)]);
+            go = Instantiate(ships[Random.Range(0, ships.Length)]);
         }
-
         go.transform.position = isReverse ? PickedLine.End.position : PickedLine.Spawn.position;
         BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
-        InitVehicle(vehicle,PickedLine);
+        InitVehicle(vehicle,PickedLine,"Linear",isReverse);
         return go;
     }
 
-    private void InitVehicle(BaseVehicle vehicle,Line line,bool isReverse = false)
+    private void InitVehicle(BaseVehicle vehicle, Line line, string curveSo, bool isReverse = false)
     {
-        vehicle.OriginPos = isReverse ? line.End : line.Spawn;
-        vehicle.WaitPos = line.Wait01;
-        vehicle.NextWaitPos = line.Wait02; //TODO <<<< 수정해야함.
-        vehicle.EndPos = isReverse ? line.Spawn :line.End;
+        InitVehicle(vehicle, line, GetCurve(curveSo), isReverse);
+    }
+    
+
+    private void InitVehicle(BaseVehicle vehicle,Line line,CurveSO curveSo,bool isReverse = false)
+    {
+        vehicle.MoveLine = line;
+        vehicle.isReverse = isReverse;
+        vehicle.beforeCurveSo = GetCurve("Linear");
+        vehicle.curveSO = curveSo;
+        vehicle.currentDistance = isReverse ? line.EndDistance : 0;
         vehicle.bridgeController = bridge;
         vehicle.hp = GameManager.Instance.hp;
         vehicle.score = GameManager.Instance.score;
         vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
+        
+        float t = (vehicle.BridgeEndDistance - vehicle.WaitDistance) / (vehicle.EndDistance - vehicle.WaitDistance);
+        // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
+        // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
+        vehicle.bridgeCrossingTime = curveSo.EvaluateByValueFirst(t);
     }
 
     private void OnEnable()

@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         State = GameState.Main;
         bgmManager.RunTitleMusic(); // 상태 변경에 따른 음악 실행
         uiManager.ShowMain();
+        Time.timeScale = 1.0f;
         InitializeGame();
     }
 

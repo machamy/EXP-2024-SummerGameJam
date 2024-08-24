@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1392127427131589865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.07, y: 13.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,22 +98,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9eca16d80d4f74c8b8865014dfb0d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 0}
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 1
-  state: 0
-  isDead: 0
   priorMoveDelay: 2.5
   priorWaitDelay: 0
-  crossBridgeDelay: 1.5
-  afterMoveTime: 4
-  OriginPos: {fileID: 0}
-  WaitPos: {fileID: 0}
-  NextWaitPos: {fileID: 0}
-  EndPos: {fileID: 0}
+  bridgeCrossingTime: 8
+  collisionHeight: 0.3
+  MoveLine: {fileID: 0}
+  isReverse: 0
+  curveSO: {fileID: 0}
+  beforeCurveSo: {fileID: 0}
+  currentTime: 0
+  currentDistance: 0
+  currentPoint: 0
+  state: 0
   score: {fileID: 0}
   hp: {fileID: 0}
-  shipCollisionHeight: 0.3
   Iscollision: 0
   submarineCollisionHeight: 0.3
 --- !u!61 &9156804935839451556

@@ -36,51 +36,55 @@ public class BridgeController : MonoBehaviour
         maskOriginalPos = spriteMask.transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ship"))
-        {
-            Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.CollideCheck(height))
-            {
-                Ship.OnCollideFront();
-            }
-        }
+    #region regacy
+// private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ship"))
+    //     {
+    //         Ship = collision.GetComponent<Ship>();
+    //         if (Ship && Ship.CollideCheck(height))
+    //         {
+    //             Ship.OnCollideFront();
+    //         }
+    //     }
+    //
+    //     // if(collision.gameObject.CompareTag("Car"))
+    //     // {
+    //     //     Car = collision.GetComponent<Car>();
+    //     //     if(Car && Car.carCollisionHeight < height)
+    //     //     {
+    //     //         Car.OnCollideFront();
+    //     //     }
+    //     // }
+    // }
+    //
 
-        // if(collision.gameObject.CompareTag("Car"))
-        // {
-        //     Car = collision.GetComponent<Car>();
-        //     if(Car && Car.carCollisionHeight < height)
-        //     {
-        //         Car.OnCollideFront();
-        //     }
-        // }
-    }
+    // private void OnTriggerStay2D(Collider2D collision)
+    // {
+    //     // if (collision.gameObject.CompareTag("Ship"))
+    //     // {
+    //     //     Ship = collision.GetComponent<Ship>();
+    //     //     if (Ship && Ship.CollideCheck(height) && !Ship.Iscollision)
+    //     //     {
+    //     //         Ship.OnCollideUp();
+    //     //     }
+    //     // }
+    //
+    //     if (collision.gameObject.CompareTag("Car"))
+    //     {
+    //         Car = collision.GetComponent<Car>();
+    //         var position = Car.transform.position;
+    //         Car.cargfx.transform.position = new Vector3(position.x, position.y - Car.bridgeController.height + 0.8f, position.z);
+    //         if (Car && Car.carCollisionHeight > height && !Car.Isflooding)
+    //         {
+    //             Car.OnCollideDown();
+    //         }
+    //     }
+    // }
+    
 
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ship"))
-        {
-            Ship = collision.GetComponent<Ship>();
-            if (Ship && Ship.CollideCheck(height) && !Ship.Iscollision)
-            {
-                Ship.OnCollideUp();
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Car"))
-        {
-            Car = collision.GetComponent<Car>();
-            var position = Car.transform.position;
-            Car.cargfx.transform.position = new Vector3(position.x, position.y - Car.bridgeController.height + 0.8f, position.z);
-            if (Car && Car.carCollisionHeight > height && !Car.Isflooding)
-            {
-                Car.OnCollideDown();
-            }
-        }
-
-    }
+    #endregion
+    
 
     private bool isInputAcitve = false;
 

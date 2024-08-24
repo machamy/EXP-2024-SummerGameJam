@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
 using DefaultNamespace.DataStructure;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace DefaultNamespace.Editor
 {
@@ -26,7 +29,8 @@ namespace DefaultNamespace.Editor
             EditorGUIUtility.labelWidth = 45f;
             EditorGUI.PropertyField(contentPos, key);
             contentPos.x += half;
-            EditorGUI.PropertyField(contentPos, value);
+            EditorGUI.PropertyField(contentPos, value, GUIContent.none);
         }
+        
     }
 }

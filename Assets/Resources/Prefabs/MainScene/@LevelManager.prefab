@@ -44,3 +44,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fc6732cb3187c4e8647dd41d7a9534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
+  weightCoefficient: 0.95
+  score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
+  deltaTime: 7
+  bridge: {fileID: 0}
+  carUpper: {fileID: 0}
+  carLower: {fileID: 0}
+  shipLeft: {fileID: 0}
+  shipRight: {fileID: 0}
+  curveDict:
+  - first: Linear
+    second: {fileID: 11400000, guid: 196b4282280b36a4098402a04e20acbc, type: 2}
+  - first: EaseIn
+    second: {fileID: 11400000, guid: 55bc617a84fdc484daeea50ea52089f6, type: 2}
+  - first: EaseOut
+    second: {fileID: 11400000, guid: f601f35feaff7d147ae6572294ff22bb, type: 2}
+  - first: EaseBoth
+    second: {fileID: 11400000, guid: c544ffdbb6e496c4ca60a8f2e5df23e1, type: 2}
+  cars:
+  - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
+  - {fileID: 690107860050213565, guid: 2a95bdd1e21a1034a860a5da3bf4156e, type: 3}
+  - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
+  ships:
+  - {fileID: 4198584010292510665, guid: 8b4fa44f77cbc2747b5f4dbd8fcfb87e, type: 3}
+  - {fileID: 2897081354676847685, guid: 052627993a704cb4f98f1053b689299e, type: 3}
+  - {fileID: 1392127427131589865, guid: 7bf7eb6ce751acb409dc0224cbc9f571, type: 3}
+  explodeEffect: {fileID: 3147302296258448394, guid: c9031c508cc000846b8024430fb6562c, type: 3}
+  bubbleEffect: {fileID: 1483976923654584623, guid: 58d61bce3d5528545bc2e9e8efc999a4, type: 3}
+  intervalMax: 7
+  intervalMin: 3
+  intervalRemain: 0
+  canSpawn: 1
+  timestamp: 0

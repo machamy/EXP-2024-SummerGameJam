@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class NormalShip : Ship
 {
-    public override void OnCollideFront()
+    public override void OnCollisionFront()
     {
         Iscollision = true;
         Debug.Log("NormalShip Front Collided");
         hp.Value -= 1;
         OnDeath();
     }
-
-
-    public override void OnCollideUp()
+    public override void OnCollisionUp()
     {
         Iscollision = true;
         Debug.Log("NormalShip Middle Collided");

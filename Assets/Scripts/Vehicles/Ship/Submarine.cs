@@ -6,11 +6,11 @@ public class Submarine : Ship
 {
     public float submarineCollisionHeight = 0.3f;
 
-    public override bool CollideCheck(float height)
+    public override bool isCollideHeight(float height)
     {
         return submarineCollisionHeight > height;
     }
-    public override void OnCollideFront()
+    public override void OnCollisionFront()
     {
         Iscollision = true;
         Debug.Log("Submarine Front Collided");
@@ -19,9 +19,11 @@ public class Submarine : Ship
     }
 
 
-    public override void OnCollideUp() // 이거 실행 X
+    public override void OnCollisionUp()
     {
+        //위에서 아래로 찌부되는 경우
         Iscollision = true;
+        OnDeath();
         Debug.Log("Submarine Middle Collided");
     }
 }
