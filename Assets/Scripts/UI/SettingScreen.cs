@@ -42,6 +42,11 @@ namespace DefaultNamespace.UI
             sm.ChangeVolumeEffect(value);
         }
 
+        public void OnMainClicked()
+        {
+            GameManager.Instance.GoMain();
+            gameObject.SetActive(false);
+        }
         public override void OnBackClicked()
         {
             if (Credit.activeSelf)

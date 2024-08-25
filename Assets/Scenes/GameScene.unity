@@ -330,6 +330,7 @@ MonoBehaviour:
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 0
+  gfx: {fileID: 0}
   priorMoveDelay: 2
   priorWaitDelay: 3
   bridgeCrossingTime: 1
@@ -1705,6 +1706,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996977927}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: pedestrianLine
+      value: 
+      objectReference: {fileID: 1063299457}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: cars.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1720,6 +1725,14 @@ PrefabInstance:
       propertyPath: ships.Array.data[3]
       value: 
       objectReference: {fileID: 2897081354676847685, guid: a683437201dba84458a0392f14bbbab7, type: 3}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: pedestrianunit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: pedestrianunit.Array.data[0]
+      value: 
+      objectReference: {fileID: 7834775809938355334, guid: f626b413549e6d247846100522d93d77, type: 3}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
