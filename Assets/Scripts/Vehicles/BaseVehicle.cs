@@ -11,7 +11,8 @@ namespace Vehicles
         public enum VehicleType
         {
             Car,
-            Ship
+            Ship,
+            Pedstrian
         }
     
     

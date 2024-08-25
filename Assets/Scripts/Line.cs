@@ -132,7 +132,17 @@ namespace DefaultNamespace
         private void OnValidate()
         {
             Vector3 angle = transform.eulerAngles;
-            angle.z = vehicleType == BaseVehicle.VehicleType.Car ? GlobalData.carDegree : GlobalData.shipDegree;
+            switch(vehicleType)
+            {
+                case BaseVehicle.VehicleType.Car:
+                    angle.z = GlobalData.carDegree; break;
+
+                case BaseVehicle.VehicleType.Ship:
+                    angle.z = GlobalData.shipDegree; break;
+
+                case BaseVehicle.VehicleType.Pedstrian:
+                    angle.z = GlobalData.PedDegree; break;
+            }
             if (isReverse)
                 angle.z += 180;
             transform.eulerAngles = angle;
