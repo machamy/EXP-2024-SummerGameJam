@@ -9,7 +9,7 @@ namespace DefaultNamespace.UI
         [SerializeField] private TextMeshProUGUI rankingText;
         [SerializeField] private ScoreManager scoreManager;
 
-        private void OnEnable()
+        public void OnEnable()
         {
             scoreManager.LoadScores();
             UpdateRankingDisplay();
@@ -17,11 +17,17 @@ namespace DefaultNamespace.UI
 
         public void UpdateRankingDisplay()
         {
-            rankingText.text = "Top Scores:\n";
+            rankingText.text = "Top Scores: ";
+
             for (int i = 0; i < scoreManager.scores.Count; i++)
             {
                 rankingText.text += $"{i + 1}. {scoreManager.scores[i]}\n";
             }
+        }
+        public void OnMainClicked()
+        {
+            GameManager.Instance.GoMain();
+            gameObject.SetActive(false);
         }
     }
 }
