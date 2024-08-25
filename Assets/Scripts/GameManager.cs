@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         PauseGame();
 
-        scoreManager.AddScore(score.Value);
+        scoreManager.AddScore(currentDifficulty,score.Value);
 
         uiManager.ShowResult();
 
