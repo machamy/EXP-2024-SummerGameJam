@@ -2,21 +2,27 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static ScoreManager;
+using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 
 namespace DefaultNamespace.UI
 {
     public class RankingScreen : UIScreenBase
     {
+        [SerializeField] private MainScreen _mainScreen;
         [SerializeField] private TextMeshProUGUI rankingText;
         [SerializeField] private ScoreManager scoreManager;
+        
+        [SerializeField] private GameObject levelBox;
+        [SerializeField] private Button levelButton;
+        [SerializeField] private int sellectedDifficulty = 0;
 
         public void OnEnable()
         {
             scoreManager.LoadScores();
-
-            OnDifficultySelected(2);
-
+            OnDifficultySelected(sellectedDifficulty);
         }
 
         public void UpdateRankingDisplay(int selectedDifficulty)
@@ -43,12 +49,27 @@ namespace DefaultNamespace.UI
         public void OnDifficultySelected(int difficulty)
         {
             UpdateRankingDisplay(difficulty);
+            levelBox.SetActive(false);
+
+            var ss = levelButton.spriteState;
+            ss.selectedSprite = _mainScreen.levelSprites[difficulty];
+            ss.pressedSprite = _mainScreen.levelPressedSprites[difficulty];
+            levelButton.spriteState = ss;
+            levelButton.GetComponent<Image>().sprite = ss.selectedSprite;
+            
+        }
+
+        public void OnDifficultyButtonClicked()
+        {
+            levelBox.SetActive(!levelBox.activeSelf);
+            
         }
 
 
         public void OnMainClicked()
         {
             GameManager.Instance.GoMain();
+            levelBox.SetActive(false);
             gameObject.SetActive(false);
         }
     }

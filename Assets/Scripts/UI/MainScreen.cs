@@ -8,9 +8,9 @@ namespace DefaultNamespace.UI
         [SerializeField] private GameObject difficultySellector;
         [SerializeField] private Button levelButton;
         [SerializeField] private Button RankingButton;
-        [SerializeField] private Sprite[] levelSprites;
-        [SerializeField] private Sprite[] levelPressedSprites;
-        [SerializeField] private Button[] difficultyButtons;
+        [field:SerializeField] public Sprite[] levelSprites { get; private set; }
+        [field:SerializeField] public Sprite[] levelPressedSprites{ get; private set; }
+        [field:SerializeField] public Button[] difficultyButtons{ get; private set; }
         public bool isSellectingDiffculty;
         public bool IsSellectingDiffculty
         {
