@@ -11,6 +11,12 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] private bool dbgSummonCar;
+    [SerializeField] private int dbgCarId = 0;
+    [SerializeField] private bool dbgSummonShip;
+    [SerializeField] private int dbgShipId = 0;
+    [Header("Spawn")]
     [SerializeField] private float weight = 1.00f;
     [SerializeField] private float weightCoefficient = 0.95f;
     [SerializeField] private IntVariableSO score;
@@ -143,19 +149,31 @@ public class LevelManager : MonoBehaviour
         Transform spawnPoint, waitPoint,nextwaitPoint, endPoint;
         bool isLeft = Random.Range(0, 2) == 0;
         bool isCar = Random.Range(0, 100) < 50;
+        #if UNITY_EDITOR
+        if(dbgSummonCar)
+            isCar = true;
+        else if (dbgSummonShip)
+            isCar = false;
+        #endif
         Line PickedLine;
         bool isReverse = false;
+        int pickedId = Random.Range(0, isCar ? cars.Length : ships.Length);
+        #if UNITY_EDITOR
+            if(dbgSummonCar && dbgCarId >= 0)
+                pickedId = dbgCarId;
+            else if (dbgSummonShip&& dbgShipId >= 0)
+                pickedId = dbgShipId;
+        #endif
         if (isCar)
         {
-            isReverse = Random.Range(0, 2) == 1;
-            isReverse = false;
+            // isReverse = Random.Range(0, 2) == 1;
             PickedLine = isLeft ? carUpper : carLower;
-            go = Instantiate(cars[Random.Range(0, cars.Length)]);
+            go = Instantiate(cars[pickedId]);
         }
         else
         {
             PickedLine = isLeft ? shipLeft : shipRight;
-            go = Instantiate(ships[Random.Range(0, ships.Length)]);
+            go = Instantiate(ships[pickedId]);
         }
         go.transform.position = isReverse ? PickedLine.End.position : PickedLine.Spawn.position;
         BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
