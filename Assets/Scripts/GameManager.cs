@@ -93,7 +93,12 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame()
     {
-        uiManager.Initialize(currentDifficulty,unlockedDifficulty);
+        var sm = SoundManager.Instance;
+        var bgmVol = PlayerPrefs.GetFloat("bgm", 0.5f);
+        var sfxVol = PlayerPrefs.GetFloat("sfx", 0.5f);
+        sm.ChangeVolumeBGM(bgmVol);
+        sm.ChangeVolumeEffect(sfxVol);
+        uiManager.Initialize(currentDifficulty, unlockedDifficulty);
         levelManager.Initialize();
     }
 
