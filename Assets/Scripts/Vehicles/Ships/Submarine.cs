@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Vehicles.Ships
@@ -5,6 +6,11 @@ namespace Vehicles.Ships
     public class Submarine : global::Vehicles.Ship
     {
         public float submarineCollisionHeight = 0.3f;
+
+        private void Start()
+        {
+            
+        }
 
         public override bool isCollideHeight(float height)
         {

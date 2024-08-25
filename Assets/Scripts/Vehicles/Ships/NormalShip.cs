@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace Vehicles.Ships
 {
     public class NormalShip : global::Vehicles.Ship
     {
+        private void Start()
+        {
+            
+        }
+
         public override void OnCollisionFront()
         {
             Debug.Log("NormalShip Front Collided");

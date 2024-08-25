@@ -1,9 +1,16 @@
 using DefaultNamespace;
+using Unity.VisualScripting;
 
 namespace Vehicles.Cars
 {
     public class EnemyCar : Car
     {
+        protected override void Start()
+        {
+            base.Start();
+            SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
+        }
+
         public override void OnCollisionUp()
         {
             playerScore.Value += 1;

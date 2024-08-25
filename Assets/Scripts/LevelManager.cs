@@ -143,6 +143,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("SummonRandom")]
     public GameObject SummonRandom()
     {
         GameObject go;

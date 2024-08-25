@@ -9,7 +9,7 @@ namespace Vehicles.Cars
     public class Ambulance : Car
     {
         [Space, Header("Ambulance")] 
-        [SerializeField, Tooltip("사이렌 색 바뀌는 주기")] private float sirenInterval;
+        [SerializeField, Tooltip("사이렌 색 바뀌는 주기")] private float sirenInterval = 0.5f;
         
         [SerializeField] private GameObject RedLight;
         [SerializeField] private GameObject BlueLight;
@@ -73,10 +73,12 @@ namespace Vehicles.Cars
             while (state == VehicleState.MoveBefore)
             {
                 RedLight.SetActive(isRed);
-                BlueLight.SetActive(!false);
+                BlueLight.SetActive(!isRed);
                 isRed = !isRed;
                 yield return wait;
             }
+            RedLight.SetActive(false);
+            BlueLight.SetActive(false);
         }
 
         public override void OnWait()
