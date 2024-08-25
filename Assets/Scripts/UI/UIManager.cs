@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
     //     }
     // }
     //
-    private void ChangeScore(int n) => scoreTMP.text = $"{Score.Value}";
+    private void ChangeScore(int n) => scoreTMP.text = $"{n}";
 
     private void OnEnable()
     {
