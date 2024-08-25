@@ -238,7 +238,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: d18a2a7b6adca8247bccfbde73cd55be, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -252,9 +252,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1712734861859843774}
-        m_TargetAssemblyTypeName: DefaultNamespace.UI.MainScreen, Assembly-CSharp
-        m_MethodName: OnClickDifficulty
+      - m_Target: {fileID: 2430015026490854803}
+        m_TargetAssemblyTypeName: DefaultNamespace.UI.RankingScreen, Assembly-CSharp
+        m_MethodName: OnDifficultyButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2911967416066911983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -320,9 +320,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
   backButton: {fileID: 36895739897972001}
+  _mainScreen: {fileID: 1712734861859843774}
   rankingText: {fileID: 5599888990188337448}
   scoreManager: {fileID: 11400000, guid: 7634f1873e4c81d4ca6765e635f3a33c, type: 2}
-  levelBox: {fileID: 0}
+  levelBox: {fileID: 8525465036080764310}
+  levelButton: {fileID: 8901320290560202568}
   sellectedDifficulty: 0
 --- !u!1 &772507120920841591
 GameObject:
@@ -3282,7 +3284,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: d18a2a7b6adca8247bccfbde73cd55be, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -4736,15 +4738,15 @@ MonoBehaviour:
   difficultySellector: {fileID: 5656568952224887205}
   levelButton: {fileID: 5438168902132423691}
   RankingButton: {fileID: 2134191872704313059}
-  levelSprites:
+  <levelSprites>k__BackingField:
   - {fileID: 21300000, guid: 1838cd9f0e575b740bc379db4fa4a236, type: 3}
   - {fileID: 21300000, guid: 096f1bef07564b5428104ec3f190a8a4, type: 3}
   - {fileID: 21300000, guid: bad4a32c295f8f04da19d19531c19afd, type: 3}
-  levelPressedSprites:
+  <levelPressedSprites>k__BackingField:
   - {fileID: 21300000, guid: d18a2a7b6adca8247bccfbde73cd55be, type: 3}
   - {fileID: 21300000, guid: 4f1561b18a1ccde4fb9ea2bd53eb4c99, type: 3}
   - {fileID: 21300000, guid: 59e3c5c61480de84eb1d2776e973a72d, type: 3}
-  difficultyButtons:
+  <difficultyButtons>k__BackingField:
   - {fileID: 2791641082143984500}
   - {fileID: 3066706534190152374}
   - {fileID: 1730833866257493362}
