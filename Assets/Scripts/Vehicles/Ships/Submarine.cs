@@ -21,6 +21,7 @@ namespace Vehicles.Ships
         public override void OnCollisionUp()
         {
             //위에서 아래로 찌부되는 경우
+            playerHp.Value -= 1;
             OnDeath();
             Debug.Log("Submarine Middle Collided");
         }

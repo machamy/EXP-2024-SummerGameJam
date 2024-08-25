@@ -21,7 +21,7 @@ namespace Vehicles.Ships
 
         public override void OnArrival()
         {
-            playerScore.Value -= 1;
+            playerHp.Value -= 1;
             Destroy(gameObject);
         }
     }
