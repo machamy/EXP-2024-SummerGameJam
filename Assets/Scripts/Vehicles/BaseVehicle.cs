@@ -67,8 +67,8 @@ namespace Vehicles
         [field: SerializeField] public bool IsOnBridge { get; private set; }
 
         #region Properties
-        private AnimationCurve Curve => curveSO.Curve;
-        private AnimationCurve BeforeCurve => beforeCurveSo.Curve;
+        protected AnimationCurve Curve => curveSO.Curve;
+        protected AnimationCurve BeforeCurve => beforeCurveSo.Curve;
         public Transform OriginPos => MoveLine.Spawn;
         public Transform WaitPos => MoveLine.Wait01;
         public Transform EndPos => MoveLine.End;
