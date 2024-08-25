@@ -39,7 +39,7 @@ public class BridgeController : MonoBehaviour
     }
 
     
-#region regacy
+#region legacy
     // private void OnTriggerEnter2D(Collider2D collision)
     // {
     //     if (collision.gameObject.CompareTag("Ship"))
