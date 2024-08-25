@@ -1698,6 +1698,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 996977928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &792571722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3575918346057680466, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+  m_PrefabInstance: {fileID: 1109167696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &792571726
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792571722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a52d853ac2386394ca9a1730aa5cf113, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &816324493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2422,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6474329033688599269, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.44
+      objectReference: {fileID: 0}
     - target: {fileID: 7077734392012754311, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_fontSize
       value: 150
@@ -2421,7 +2451,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2878475092208950917, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       insertIndex: 3
       addedObject: {fileID: 665342077}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3575918346057680466, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 792571726}
   m_SourcePrefab: {fileID: 100100000, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
 --- !u!114 &1109167697 stripped
 MonoBehaviour:
