@@ -8,6 +8,7 @@ TagManager:
   - Car
   - Ship
   - Invisible
+  - Pedestrian
   layers:
   - Default
   - TransparentFX
