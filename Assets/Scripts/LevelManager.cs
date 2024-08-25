@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Line carLowerRev;
     [SerializeField] private Line shipLeft;
     [SerializeField] private Line shipRight;
+    [SerializeField] private Line pedestrianLine;
     [Header("Curves")]
     [SerializeField] private List<Pair<string,CurveSO>> curveDict;
 
@@ -47,6 +48,7 @@ public class LevelManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] ships;
+    [SerializeField] private GameObject[] pedestrianunit;
     [Header("Particles")]
     [SerializeField] private GameObject explodeEffect;
     [SerializeField] private GameObject bubbleEffect;
@@ -65,8 +67,9 @@ public class LevelManager : MonoBehaviour
     // }
     private SortedList<float, GameObject> schedule = new SortedList<float, GameObject>();
 
-    [SerializeField]private bool canSpawn = false;
-    
+    [SerializeField] private bool canSpawn = false;
+    [SerializeField] private bool PedcanSpawn = false;
+
     public float timestamp = 0.0f;
     public void Initialize()
     {
@@ -79,6 +82,7 @@ public class LevelManager : MonoBehaviour
         }
         schedule.Clear();
         canSpawn = true;
+        PedcanSpawn = true;
         foreach (var bv in FindObjectsByType<BaseVehicle>(FindObjectsInactive.Include,FindObjectsSortMode.None))
         {
             Destroy(bv.gameObject);
@@ -123,12 +127,32 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(WaitSpawnRoutine(vehicle.bridgeCrossingTime));
             }
         }
+
+        if (PedcanSpawn)
+        {
+            GameObject Ped = SummonPedestrian();
+            Ped.SetActive(false);
+            PedcanSpawn = false;
+            BaseVehicle vehicle = Ped.GetComponent<BaseVehicle>();
+            schedule.Add(timestamp + deltaTime - vehicle.TotalBeforeTime, Ped);
+            intervalRemain = Random.Range(intervalMin, intervalMax);
+            vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
+            StartCoroutine(WaitSpawnPed(Random.Range(2, 8)));
+        }
+
+
     }
 
     private IEnumerator WaitSpawnRoutine(float time)
     {
         yield return new WaitForSeconds(time);
         canSpawn = true;
+    }
+
+    private IEnumerator WaitSpawnPed(float time)
+    {
+        yield return new WaitForSeconds(time);
+        PedcanSpawn = true;
     }
     
     private void CheckScore(int n)
@@ -147,7 +171,7 @@ public class LevelManager : MonoBehaviour
     public GameObject SummonRandom()
     {
         GameObject go;
-        Transform spawnPoint, waitPoint,nextwaitPoint, endPoint;
+        Transform spawnPoint, waitPoint, nextwaitPoint, endPoint;
         bool isLeft = Random.Range(0, 2) == 0;
         bool isCar = Random.Range(0, 100) < 50;
         #if UNITY_EDITOR
@@ -182,6 +206,21 @@ public class LevelManager : MonoBehaviour
         return go;
     }
 
+    [ContextMenu("SummonPedestrian")]
+    public GameObject SummonPedestrian()
+    {
+        GameObject Ped;
+        Transform spawnPoint, waitPoint, nextwaitPoint, endPoint;
+        bool isPed = Random.Range(0, 3) == 0;
+        Line PickedLine;
+        bool isReverse = false;
+        PickedLine = pedestrianLine;
+        Ped = Instantiate(pedestrianunit[0]);
+        Ped.transform.position = PickedLine.Spawn.position;
+        BaseVehicle vehicle = Ped.GetComponent<BaseVehicle>();
+        InitVehicle(vehicle, PickedLine, "Linear", isReverse);
+        return Ped;
+    }
     private void InitVehicle(BaseVehicle vehicle, Line line, string curveSo, bool isReverse = false)
     {
         InitVehicle(vehicle, line, GetCurve(curveSo), isReverse);

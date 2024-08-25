@@ -165,7 +165,7 @@ namespace Vehicles
         protected virtual void CheckBridge()
         {
             Line.Point targetPoint = Line.Point.Bridge01;
-
+            //backwardPoint: 
             if (frontPoint == targetPoint || backwardPoint == targetPoint) // 현재 다리 위에 있음
             {
                 if (isCollideHeight(bridgeController.height)) // 충돌시
