@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static ScoreManager;
@@ -13,26 +14,39 @@ namespace DefaultNamespace.UI
         public void OnEnable()
         {
             scoreManager.LoadScores();
-            UpdateRankingDisplay();
+
+            OnDifficultySelected(2);
 
         }
 
-        public void UpdateRankingDisplay()
+        public void UpdateRankingDisplay(int selectedDifficulty)
         {
             rankingText.text = "";
-            int i = 0;
-            foreach (var score in scoreManager.scoreData)
+
+            var filteredScores = scoreManager.scoreData
+                .Where(score => score.difficulty == selectedDifficulty)
+                .OrderByDescending(score => score.score) 
+                .ToList();
+
+            for (int i = 0; i < filteredScores.Count; i++)
             {
-             
-                rankingText.text += $"{i+1}  Score: {score.score}\n";
-                i++;
+                rankingText.text += $"{i + 1}. Score: {filteredScores[i].score}\n";
             }
-            
+
+            if (filteredScores.Count == 0)
+            {
+                rankingText.text = "No scores available for this difficulty.";
+            }
         }
 
- 
 
-    public void OnMainClicked()
+        public void OnDifficultySelected(int difficulty)
+        {
+            UpdateRankingDisplay(difficulty);
+        }
+
+
+        public void OnMainClicked()
         {
             GameManager.Instance.GoMain();
             gameObject.SetActive(false);
