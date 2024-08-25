@@ -81,6 +81,18 @@ namespace Vehicles.Cars
             BlueLight.SetActive(false);
         }
 
+        
+        public override float InitBridgeCrossingTime()
+        {
+            float totalDistance = (EndDistance);
+            
+            float t0 = BridgeStartDistance /totalDistance;
+            float t1 = BridgeEndDistance /totalDistance;
+            
+            bridgeCrossingTime = (curveSO.EvaluateByValueFirst(t1) - curveSO.EvaluateByValueFirst(t0)) * afterMovingTime;
+            return bridgeCrossingTime;
+        }
+        
         public override void OnWait()
         {
             state = VehicleState.MoveAfter;
