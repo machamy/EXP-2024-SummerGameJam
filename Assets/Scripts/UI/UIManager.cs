@@ -90,7 +90,6 @@ public class UIManager : MonoBehaviour
     public void ShowRanking()
     {
         Ranking.SetActive(true);
-
     }
 
     public void HideRanking()

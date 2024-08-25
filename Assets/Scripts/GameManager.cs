@@ -113,13 +113,11 @@ public class GameManager : MonoBehaviour
 
         score.Value = 0;
 
-
-
     }
 
     public void ShowRankingScreen()
     {
-        rankingScreen.UpdateRankingDisplay();
+        rankingScreen.UpdateRankingDisplay(currentDifficulty);
         uiManager.ShowRanking();
     }
 
