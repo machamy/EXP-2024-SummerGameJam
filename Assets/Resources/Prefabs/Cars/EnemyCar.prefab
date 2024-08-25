@@ -173,30 +173,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c319d6843d4b718d389017ebc61cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showPanjeong: 0
   deathEffect: {fileID: 0}
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 0
-  isDead: 0
+  gfx: {fileID: 9019145961334134067}
   priorMoveDelay: 1
   priorWaitDelay: 1.5
-  crossBridgeDelay: 0.625
-  afterMoveTime: 1
+  bridgeCrossingTime: 1
+  afterMovingTime: 3
+  collisionHeight: 0.3
+  frontDeltaPos: 0
+  backwardDeltaPos: 0
   MoveLine: {fileID: 0}
   isReverse: 0
   curveSO: {fileID: 0}
+  beforeCurveSo: {fileID: 0}
   currentTime: 0
-  currentPosition: 0
-  currentPoint: 0
+  currentDistance: 0
+  frontPoint: 0
+  backwardPoint: 0
+  midPoint: 0
   state: 0
-  score: {fileID: 0}
-  hp: {fileID: 0}
+  <IsOnBridge>k__BackingField: 0
+  playerScore: {fileID: 0}
+  playerHp: {fileID: 0}
   audioSource: {fileID: 0}
-  cargfx: {fileID: 9019145961334134067}
   trafficLight: {fileID: 907542656083092478}
-  carCollisionHeight: 0.3
-  Isflooding: 0
-  IsonBridge: 0
 --- !u!1 &2765389675682264006
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +581,7 @@ SpriteRenderer:
   m_SortingLayerID: -1190538617
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb27fb24f3f11dd498dfd51b7121bb8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b18737552f3e88541b216e674a9d43c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

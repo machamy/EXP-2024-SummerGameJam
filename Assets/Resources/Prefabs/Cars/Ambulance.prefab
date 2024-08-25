@@ -274,7 +274,7 @@ SpriteRenderer:
   m_SortingLayerID: -1190538617
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 10526216129b4d340b2768ed2bc4fd63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cec47717f2d89a4eabb6e3b5ca969f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -531,6 +531,7 @@ MonoBehaviour:
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 0
+  gfx: {fileID: 2399468111071835652}
   priorMoveDelay: 1
   priorWaitDelay: 3
   bridgeCrossingTime: 1
@@ -552,7 +553,6 @@ MonoBehaviour:
   playerScore: {fileID: 0}
   playerHp: {fileID: 0}
   audioSource: {fileID: 0}
-  cargfx: {fileID: 2399468111071835652}
   trafficLight: {fileID: 1947653920138667637}
   sirenInterval: 0.5
   RedLight: {fileID: 4056259172912850821}

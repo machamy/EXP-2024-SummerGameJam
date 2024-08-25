@@ -31,6 +31,7 @@ namespace Vehicles
         public float timestampCheck;
         public BridgeController bridgeController;
         public VehicleType type;
+        public GameObject gfx;
         /// <summary>
         /// 다리 이전 이동 시간
         /// </summary>
