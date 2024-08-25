@@ -52,11 +52,7 @@ namespace Vehicles
 
         protected virtual void Start()
         {
-            SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
-  
-            //renderer = GetComponent<SpriteRenderer>();
             trafficLight.SetLevel(0);
-
         }
 
         public override bool isCollideHeight(float height)

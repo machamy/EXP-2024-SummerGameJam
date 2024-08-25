@@ -143,6 +143,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("SummonRandom")]
     public GameObject SummonRandom()
     {
         GameObject go;
@@ -200,15 +201,8 @@ public class LevelManager : MonoBehaviour
         vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
 
         // 다리 건너는 시간 계산
-        
-        float totalDistance = (vehicle.EndDistance - vehicle.WaitDistance);
-        // t0 = 대기--다리시작 / 대기--끝
-        float t0 = (vehicle.BridgeStartDistance - vehicle.WaitDistance) /totalDistance;
-        // t1 = 대기--다리끝 / 대기--끝
-        float t1 = (vehicle.BridgeEndDistance - vehicle.WaitDistance) /totalDistance;
-        // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
-        // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
-        vehicle.bridgeCrossingTime = (curveSo.EvaluateByValueFirst(t1) - curveSo.EvaluateByValueFirst(t0)) * vehicle.afterMovingTime;
+
+        vehicle.InitBridgeCrossingTime();
     }
 
     private void OnEnable()

@@ -188,7 +188,20 @@ namespace Vehicles
             {
                 IsOnBridge = false;
             }
-        } 
+        }
+
+        public virtual float InitBridgeCrossingTime()
+        {
+            float totalDistance = (EndDistance - WaitDistance);
+            // t0 = 대기--다리시작 / 대기--끝
+            float t0 = (BridgeStartDistance - WaitDistance) /totalDistance;
+            // t1 = 대기--다리끝 / 대기--끝
+            float t1 = (BridgeEndDistance - WaitDistance) /totalDistance;
+            // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
+            // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
+            bridgeCrossingTime = (curveSO.EvaluateByValueFirst(t1) - curveSO.EvaluateByValueFirst(t0)) * afterMovingTime;
+            return bridgeCrossingTime;
+        }
 
 
         public IEnumerator MoveRoutine(Vector3 start, Vector3 end, float time, Action callback)
