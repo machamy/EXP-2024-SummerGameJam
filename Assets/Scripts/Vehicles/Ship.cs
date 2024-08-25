@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Vehicles
@@ -12,6 +14,22 @@ namespace Vehicles
         public override void OnBridgeCrossing()
         {
             // Do nothing
+        }
+        
+        public virtual IEnumerator FlyAwayRoutine(float height = 12f, float time = 1.0f, Action callback = null)
+        {
+            float passedTime = 0f;
+            gfx.GetComponent<SpriteRenderer>().sortingLayerName = "Effect";
+            while (passedTime < time)
+            {
+                float dy = Mathf.Lerp(0, height, passedTime/time);
+                gfx.transform.localPosition = new Vector3(0, dy,0);
+                print(gfx.transform.position);
+                passedTime += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            OnDeath();
+            callback?.Invoke();
         }
 
         public override void OnWait()

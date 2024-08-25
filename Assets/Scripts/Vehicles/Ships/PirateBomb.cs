@@ -19,9 +19,7 @@ namespace Vehicles.Ships
 
         public override void OnCollisionUp()
         {
-            Debug.Log("Pirate Middle Collided");
-            playerScore.Value += 1;
-            OnDeath(); //TODO 날아가기
+            StartCoroutine(FlyAwayRoutine(callback: () => playerScore.Value += 1));
         }
 
         public override void OnArrival()

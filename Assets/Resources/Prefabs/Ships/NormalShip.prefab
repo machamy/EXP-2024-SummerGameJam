@@ -48,12 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2865229560119694763, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865229560119694763, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -847147063
+      objectReference: {fileID: 0}
     - target: {fileID: 4398638165062079017, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
       propertyPath: m_Name
       value: NormalShip
       objectReference: {fileID: 0}
+    - target: {fileID: 6902445524783724940, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+      propertyPath: gfx
+      value: 
+      objectReference: {fileID: 5000469961110181835}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+--- !u!1 &5000469961110181835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767758521031014955, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+  m_PrefabInstance: {fileID: 526718788836453856}
+  m_PrefabAsset: {fileID: 0}

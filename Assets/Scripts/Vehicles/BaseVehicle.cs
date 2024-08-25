@@ -279,7 +279,7 @@ namespace Vehicles
         public void OnDeath()
         {
             var effect = Instantiate(deathEffect);
-            effect.transform.position = transform.position;
+            effect.transform.position = gfx ? gfx.transform.position : transform.position;
             Destroy(gameObject);
         }
     }

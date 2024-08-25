@@ -104,7 +104,7 @@ MonoBehaviour:
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 1
-  gfx: {fileID: 0}
+  gfx: {fileID: 7778769344004828290}
   priorMoveDelay: 2.5
   priorWaitDelay: 0
   bridgeCrossingTime: 8
@@ -241,8 +241,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 791727391
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3129dafd9f2f69d4f91873a086669c71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
