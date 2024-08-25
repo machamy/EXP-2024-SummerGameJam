@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Vehicles.Ships
 {
-    public class Pirate : global::Vehicles.Ship
+    public class PirateBomb : Ship
     {
         private void Start()
         {
@@ -12,8 +12,7 @@ namespace Vehicles.Ships
 
         public override void OnCollisionFront()
         {
-            Debug.Log("Pirate Front Collided");
-            playerScore.Value += 1;
+            playerHp.Value -= 1;
             OnDeath();
         }
 

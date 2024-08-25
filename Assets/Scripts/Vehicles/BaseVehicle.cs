@@ -31,6 +31,7 @@ namespace Vehicles
         public float timestampCheck;
         public BridgeController bridgeController;
         public VehicleType type;
+        public GameObject gfx;
         /// <summary>
         /// 다리 이전 이동 시간
         /// </summary>
@@ -278,7 +279,7 @@ namespace Vehicles
         public void OnDeath()
         {
             var effect = Instantiate(deathEffect);
-            effect.transform.position = transform.position;
+            effect.transform.position = gfx ? gfx.transform.position : transform.position;
             Destroy(gameObject);
         }
     }

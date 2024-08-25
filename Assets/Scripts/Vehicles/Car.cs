@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using DefaultNamespace.Vehicles;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Vehicles
 {
@@ -10,9 +11,7 @@ namespace Vehicles
 
         [Header("Car")]
         public AudioSource audioSource;
-
-        public GameObject cargfx;
-
+        
         [SerializeField] private TrafficLight trafficLight;
     
         private float startTime;
@@ -64,7 +63,7 @@ namespace Vehicles
         public override void OnBridgeCrossing()
         {
             var position = transform.position;
-            cargfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height - 1.0f), position.z);
+            gfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height - 1.0f), position.z);
         }
 
         public override void OnWait()

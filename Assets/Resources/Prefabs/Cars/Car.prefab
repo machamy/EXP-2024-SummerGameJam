@@ -178,6 +178,7 @@ MonoBehaviour:
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 0
+  gfx: {fileID: 9019145961334134067}
   priorMoveDelay: 2
   priorWaitDelay: 3
   bridgeCrossingTime: 4
@@ -199,7 +200,6 @@ MonoBehaviour:
   playerScore: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
   playerHp: {fileID: 11400000, guid: a21eea83c8342fa42926173892c24084, type: 2}
   audioSource: {fileID: 0}
-  cargfx: {fileID: 9019145961334134067}
   trafficLight: {fileID: 907542656083092478}
 --- !u!1 &2765389675682264006
 GameObject:
@@ -581,7 +581,7 @@ SpriteRenderer:
   m_SortingLayerID: -1190538617
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 392aeeb1072976e4e8c499369bec886e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76b34ca918cd9bd469fc17911134e83d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

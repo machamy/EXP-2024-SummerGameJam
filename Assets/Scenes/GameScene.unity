@@ -1709,9 +1709,17 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: ships.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: cars.Array.data[3]
       value: 
       objectReference: {fileID: 4888110323885056083, guid: 566576db9769f0e42a3e72bc8a88ad67, type: 3}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: ships.Array.data[3]
+      value: 
+      objectReference: {fileID: 2897081354676847685, guid: a683437201dba84458a0392f14bbbab7, type: 3}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'

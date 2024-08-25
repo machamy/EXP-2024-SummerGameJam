@@ -18,9 +18,7 @@ namespace Vehicles.Ships
         }
         public override void OnCollisionUp()
         {
-            Debug.Log("NormalShip Middle Collided");
-            playerHp.Value -= 1;
-            OnDeath();
+            StartCoroutine(FlyAwayRoutine(callback: () => playerHp.Value -= 1));
         }
 
         public override void OnArrival()

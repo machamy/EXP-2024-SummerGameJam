@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Vehicles.Cars
@@ -46,7 +47,7 @@ namespace Vehicles.Cars
                 default:
                     return;
             }
-
+            
             if (totalTime == 0f)
                 ratio = 1.0f;
             else
