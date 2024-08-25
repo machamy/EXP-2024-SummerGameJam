@@ -1,57 +1,39 @@
-using DefaultNamespace;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : BaseVehicle
+namespace Vehicles
 {
-    public float shipCollisionHeight = 0.3f;
-    public bool Iscollision = false;
-    
-
-    protected virtual void FixedUpdate()
-    {   
-        base.FixedUpdate();
-        // transform.position += Direction * (speed * Time.fixedDeltaTime);
-        if (state == State.Stop)
+    public abstract class Ship : BaseVehicle
+    {
+        public override bool isCollideHeight(float height)
         {
-            state = State.After;
+            return collisionHeight < height;
         }
-    }
 
-    protected virtual void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+        public override void OnBridgeCrossing()
+        {
+            // Do nothing
+        }
 
-    public virtual bool CollideCheck(float height)
-    {
-        return (shipCollisionHeight < height);
-  
-    }
+        public override void OnWait()
+        {
+            state = VehicleState.MoveAfter;
+            currentTime = 0f;
+        }
 
-    /// <summary>
-    /// Front Collided
-    /// </summary>
-    public virtual void OnCollideFront()
-    {
-        if(isDead) return;
-        Iscollision = true;
-        isDead = true;
-        Debug.Log("Front Collided");
-        OnDeath();
-        
-    }
-    /// <summary>
-    /// Middle Collided
-    /// </summary>
-    public virtual void OnCollideUp()
-    {
-        if (isDead) return;
-        Iscollision = true;
-        isDead = true;
-        Debug.Log("Middle Collided");
-        OnDeath();
+        public override void OnCollisionFront()
+        {
+            Debug.Log("Front Collided");
+        }
+
+        public override void OnCollisionUp()
+        {
+            Debug.Log("Middle Collided");
+        }
+
+        public override void OnArrival()
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

@@ -55,7 +55,7 @@ namespace DefaultNamespace.UI
             
         }
 
-        public void Exit()
+        public override void Exit()
         {
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);

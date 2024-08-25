@@ -1,168 +1,92 @@
-﻿using System;
+﻿using System.Collections;
 using DefaultNamespace;
-using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace.Vehicles;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
-
-public class Car : BaseVehicle
+namespace Vehicles
 {
-
-    public AudioSource audioSource;
-
-    public GameObject cargfx;
-
-    [SerializeField] private TrafficLight trafficLight;
-    
-    public float carCollisionHeight = 0.3f; // downheight of car
-    private float startTime;
-    private float distanceLength;
-    public bool Isflooding = false; //�浹����
-    public bool IsonBridge = false;
-
-    private Collider2D collider;
-
-    // IEnumerator Moving()
-    // {
-    //     yield return null;
-    // }
-    
-
-    protected virtual IEnumerator StopRoutine()
+    public abstract class Car : BaseVehicle
     {
 
-        /*if (collision.gameObject.CompareTag("Player"))
+        [Header("Car")]
+        public AudioSource audioSource;
+
+        public GameObject cargfx;
+
+        [SerializeField] private TrafficLight trafficLight;
+    
+        private float startTime;
+        private float distanceLength;
+
+        // IEnumerator Moving()
+        // {
+        //     yield return null;
+        // }
+    
+
+        protected virtual IEnumerator StopRoutine()
+        {
+
+            /*if (collision.gameObject.CompareTag("Player"))
         {
           
         }*/
 
-        SoundManager.Instance.StopSFX("car_slow");
+            SoundManager.Instance.StopSFX("car_slow");
 
-        WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
+            WaitForSeconds wait = new WaitForSeconds(priorWaitDelay / 3f);
 
-        trafficLight.SetLevel(1);
-        // 신호등 띄우고 시간
-        yield return wait;
-        trafficLight.SetLevel(2);
-        yield return wait;
-        trafficLight.SetLevel(3);
-        yield return wait;
-        trafficLight.SetLevel(0);
-        state = State.After;
+            trafficLight.SetLevel(1);
+            // 신호등 띄우고 시간
+            yield return wait;
+            trafficLight.SetLevel(2);
+            yield return wait;
+            trafficLight.SetLevel(3);
+            yield return wait;
+            trafficLight.SetLevel(0);
 
-        SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
-    }
-
-    // void Move()
-    // {
-    //
-    //     // //transform.Translate(Vector3.right * Time.deltaTime);
-    //     //
-    //     // // transform.position = Vector3.MoveTowards(transform.position, EndPosition, step);
-    //     // // transform.position = Vector3.MoveTowards(transform.position, GlobalData.carDirection, step);
-    //     // float step = speed * Time.deltaTime;
-    //     // transform.position += EndPosition * (step);
-    //
-    //     if (bridgeController.height <= transform.position.y)
-    //     {
-    //         IsonBridge=true;
-    //     }
-    //
-    //     if (IsonBridge)
-    //     {
-    //                 }
-    //
-    // }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // if (other.gameObject.tag == "Invisible")
-        // {
-        //     Debug.Log("Invisible과 접촉하였습니다.");
-        //     StartCoroutine(Stop());
-        //
-        // }
-    }
-    
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Bridge"))
-        {
-
- 
-            cargfx.transform.position = Vector3.zero;
+            this.state = VehicleState.MoveAfter;
+            currentTime = 0f;
+            SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
         }
-    }
 
-    public virtual void OnCollideDown()
-    {
-        if (isDead)
-            return;
-        Isflooding = true;
-        hp.Value -= 1;
-        isDead = true;
-        // StopAllCoroutines();
-        // Destroy(gameObject);
-
-        SoundManager.Instance.StopSFX("car_slow");
-        SoundManager.Instance.Play("car_crash", SoundManager.SoundType.SFX);
-        Debug.Log("Car flooding");
-        OnDeath();
-    }
-    
-    // public void OnCollideFront()
-    // {
-    //     Isflooding = true;
-    //     hp.Value -= 1;
-    //     StopAllCoroutines();
-    //     Destroy(gameObject);
-    //     Debug.Log("Front Flooding");
-    // }
-    
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-
-        SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
-  
-        //renderer = GetComponent<SpriteRenderer>();
-        trafficLight.SetLevel(0);
-
-        collider = GetComponent<Collider2D>();
-
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-
-
-    }
-    
-
-    protected virtual void FixedUpdate()
-    {
-        base.FixedUpdate();
-        
-        if (state == State.Stop)
+        protected virtual void Start()
         {
-            state = State.Wait;
+            SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
+  
+            //renderer = GetComponent<SpriteRenderer>();
+            trafficLight.SetLevel(0);
 
+        }
+
+        public override bool isCollideHeight(float height)
+        {
+            return collisionHeight > height;
+        }
+
+
+        public override void OnBridgeCrossing()
+        {
+            var position = transform.position;
+            cargfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height - 1.0f), position.z);
+        }
+
+        public override void OnWait()
+        {
             StartCoroutine(StopRoutine());
         }
-        // else if(state == State.AfterMoving)
-        // {
-        //     Move();
-        // }
-    }
 
-    protected virtual void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-        Debug.Log("사라짐");
+        /// <summary>
+        /// 차의 전방충돌은 Up과 같다.
+        /// </summary>
+        public override void OnCollisionFront()
+        { 
+            OnCollisionUp();
+        }
+
+        public override void OnArrival()
+        {
+            Destroy(gameObject);
+        }
     }
 }

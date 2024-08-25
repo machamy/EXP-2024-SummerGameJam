@@ -1,125 +1,244 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class BaseVehicle : MonoBehaviour
+namespace Vehicles
 {
-    public enum VehicleType
+    public abstract class BaseVehicle : MonoBehaviour
     {
-        Car,
-        Ship
-    }
+        public enum VehicleType
+        {
+            Car,
+            Ship
+        }
     
-    public enum State
-    {
-        Idle,
-        Before,
-        Stop,
-        Wait,
-        After,
-        AfterMoving,
-        EndReady,
-        EndMoving,
-        End
-    }
-
-    public GameObject deathEffect;
-
-    public float timestampCheck;
-    public BridgeController bridgeController;
-    public VehicleType type;
-    public State state;
-    public bool isDead = false;
-    /// <summary>
-    /// 다리 이전 이동 시간
-    /// </summary>
-    public float priorMoveDelay = 2;
-    /// <summary>
-    /// 다리 이전 대기시간(자동차만 해당)
-    /// </summary>
-    public float priorWaitDelay = 3;
-
-    public float TotalBeforeTime => priorMoveDelay + priorWaitDelay;
-    /// <summary>
-    /// 다리 건너는 시간
-    /// </summary>
-    public float crossBridgeDelay = 3;
-    /// <summary>
-    /// 다리 건넌 후 시간
-    /// </summary>
-     public float afterMoveTime = 1;
-
-
-    public Transform OriginPos;
-    public Transform WaitPos;
-    public Transform NextWaitPos;
-    public Transform EndPos;
-
-    public Coroutine MoveCoroutine;
-
-    public IntVariableSO score;
-    public IntVariableSO hp;
-
-    public void Awake()
-    {
-        state = State.Idle;
-    }
-
-    public void Update()
-    {
-        
-    }
-
-    public void FixedUpdate()
-    {
-        if (state == State.Idle)
+    
+        public enum VehicleState
         {
-            state = State.Before;
-            MoveCoroutine = StartCoroutine(MoveRoutine(OriginPos.position, WaitPos.position, priorMoveDelay, ()=> state = State.Stop));
+            Idle,
+            MoveBefore,
+            Wait,
+            MoveAfter
         }
-        else if (state == State.After)
-        {
-            state = State.AfterMoving;
-            MoveCoroutine = StartCoroutine(MoveRoutine(WaitPos.position, NextWaitPos.position, crossBridgeDelay, ()=> state = State.EndReady));
-        }
-        else if (state == State.EndReady)
-        {
-            state = State.EndMoving;
-            Debug.Log("Trigger exit detected, stopping car_slow");
-            SoundManager.Instance.StopSFX("car_slow");
-            MoveCoroutine = StartCoroutine(MoveRoutine(NextWaitPos.position, EndPos.position, afterMoveTime, ()=> OnArrival()));
-        }
-        
-    }
 
-    public IEnumerator MoveRoutine(Vector3 start, Vector3 end, float time, Action callback)
-    {
-        float currentTime = 0;
-        while (currentTime <= time)
+        public GameObject deathEffect;
+
+        public float timestampCheck;
+        public BridgeController bridgeController;
+        public VehicleType type;
+        /// <summary>
+        /// 다리 이전 이동 시간
+        /// </summary>
+        [Tooltip("다리 도착전 이동시간")]public float priorMoveDelay = 2;
+        /// <summary>
+        /// 다리 이전 대기시간(자동차만 해당)
+        /// </summary>
+        [Tooltip("대기시간(신호등)")] public float priorWaitDelay = 3;
+    
+        /// <summary>
+        /// 다리 오르기 전까지의 시간
+        /// </summary>
+        public float TotalBeforeTime => priorMoveDelay + priorWaitDelay;
+
+        public float bridgeCrossingTime = 1f;
+        public float afterMovingTime = 3f;
+    
+        [Header("판정")]
+        [Tooltip("다리 충돌")]public float collisionHeight = 0.3f;
+
+        [Tooltip("앞쪽 판정선(양수)")] public float frontDeltaPos = 0f;
+        [Tooltip("뒤쪽 판정선(음수)")] public float backwardDeltaPos = 0f;
+        [Header("움직임 설정값")]
+        public Line MoveLine;
+        public bool isReverse;
+        public CurveSO curveSO;
+        public CurveSO beforeCurveSo;
+        [Header("움직임 현재값")] 
+        public float currentTime;
+        [FormerlySerializedAs("currentPosition")] public float currentDistance = 0f;
+        public Line.Point currentPoint;
+        public VehicleState state;
+        [field: SerializeField] public bool IsOnBridge { get; private set; }
+        private AnimationCurve Curve => curveSO.Curve;
+        private AnimationCurve BeforeCurve => beforeCurveSo.Curve;
+        public Transform OriginPos => MoveLine.Spawn;
+        public Transform WaitPos => MoveLine.Wait01;
+        public Transform EndPos => MoveLine.End;
+        public float OriginDistance => 0;
+        public float WaitDistance => MoveLine.Wait01Distance;
+    
+        public float BridgeEndDistance => MoveLine.Bridge02Distance;
+        public float EndDistance => MoveLine.EndDistance;
+    
+        public Coroutine MoveCoroutine;
+
+        [Header("공용 변수")]
+        [FormerlySerializedAs("score")]public IntVariableSO playerScore;
+        [FormerlySerializedAs("hp")] public IntVariableSO playerHp;
+
+
+        private void FixedUpdate()
         {
-            Vector3 position = Vector3.Lerp(start, end, currentTime / time);
-            transform.position = position;
-            // print(position);
-            yield return new WaitForFixedUpdate();
+            currentPoint = CheckPoint();
+            Move();
+            CheckBridge();
+            if(IsOnBridge)
+                OnBridgeCrossing();
+        }
+    
+
+        protected virtual void Move()
+        {
+            Vector3 position, startPos,endPos;
+            float ratio, totalTime,start,end;
+            AnimationCurve pickedCurve;
+            switch (state)
+            {
+                case VehicleState.Idle:
+                    // OnStart와 같음
+                    OnIdleStay(); // 초기 시작 함수
+                    currentTime += Time.fixedDeltaTime;
+                    return;// 움직이지 않는다.
+                case VehicleState.MoveBefore:
+                    if (currentDistance >= WaitDistance) // 도착하면 움직이지않고 대기 페이즈로
+                    {
+                        transform.position = WaitPos.position;
+                        state = VehicleState.Wait;
+                        currentTime = 0f;
+                        OnWait();
+                        return;
+                    }
+                    // OnMovingBefore 와 같음
+                    totalTime = priorMoveDelay;
+                    startPos = OriginPos.position;
+                    endPos = WaitPos.position;
+                    start = OriginDistance;
+                    end = WaitDistance;
+                    pickedCurve = BeforeCurve;
+                    break;
+                case VehicleState.Wait:
+                    return;// 아무것도 하지 않는다.
+                case VehicleState.MoveAfter:
+                    totalTime = afterMovingTime;
+                    startPos = WaitPos.position;
+                    endPos = EndPos.position;
+                    start = WaitDistance;
+                    end = EndDistance;
+                    pickedCurve = Curve;
+                    if (currentDistance >= EndDistance)
+                        OnArrival();
+                    break;
+                default:
+                    return;
+            }
+
+            if (totalTime == 0f)
+                ratio = 1.0f;
+            else
+                ratio = currentTime / totalTime;
+            position = Vector3.Lerp(startPos,endPos, pickedCurve.Evaluate(ratio));
+            currentDistance = Mathf.Lerp(start, end, ratio);
+            // print($"{name} : {totalTime} {startPos} {endPos}, {pickedCurve.Evaluate(ratio)}");
+            // print($"{currentTime} {ratio} {currentDistance} {position}");
             currentTime += Time.fixedDeltaTime;
+            transform.position = position;
+
         }
-        transform.position = end;
-        callback?.Invoke();
-    }
 
-    public virtual void OnArrival()
-    {
-        state = State.End;
-        score.Value += 1;
-        Destroy(gameObject);
-    }
+        /// <summary>
+        /// 다리위에 있는지확인하는 함수
+        /// </summary>
+        protected virtual void CheckBridge()
+        {
+            Line.Point targetPoint = Line.Point.Bridge01;
 
-    public void OnDeath()
-    {
-        var effect = Instantiate(deathEffect);
-        effect.transform.position = transform.position;
-        Destroy(gameObject);
+            if (currentPoint == targetPoint) // 현재 다리 위에 있음
+            {
+                if (isCollideHeight(bridgeController.height)) // 충돌시
+                {
+                    // 이전위치와 현재위치 확인
+                    if (IsOnBridge) 
+                    { 
+                        //Stay 이벤트
+                        OnCollisionUp();
+                    }
+                    else
+                    { 
+                        //Enter 이벤트
+                        OnCollisionFront();
+                    }
+                }
+                IsOnBridge = true;
+            }
+            else
+            {
+                IsOnBridge = false;
+            }
+        } 
+        public Line.Point CheckPoint()
+        {
+            Line.Point res = Line.Point.Spawn;
+            for (Line.Point i = Line.Point.End; i >= Line.Point.Spawn; i--)
+            {
+                if (MoveLine.distances[i] <= currentDistance)
+                {
+                    res = i;
+                    break;
+                }
+            }
+
+            return res;
+        }
+
+        public IEnumerator MoveRoutine(Vector3 start, Vector3 end, float time, Action callback)
+        {
+            float currentTime = 0;
+            while (currentTime <= time)
+            {
+                Vector3 position = Vector3.Lerp(start, end, currentTime / time);
+                transform.position = position;
+                // print(position);
+                yield return new WaitForFixedUpdate();
+                currentTime += Time.fixedDeltaTime;
+            }
+            transform.position = end;
+            callback?.Invoke();
+        }
+
+        public abstract bool isCollideHeight(float height);
+
+        public virtual void OnIdleStay()
+        {
+            currentTime = 0f;
+            state = VehicleState.MoveBefore; // 움직임 시작
+        }
+    
+        /// <summary>
+        /// 대기 시작
+        /// </summary>
+        public abstract void OnWait();
+
+        /// <summary>
+        /// 정면 충돌
+        /// </summary>
+        public abstract void OnCollisionFront();
+        /// <summary>
+        /// 상향 충돌
+        /// </summary>
+        public abstract void OnCollisionUp();
+
+        public abstract void OnBridgeCrossing();
+
+        public abstract void OnArrival();
+    
+
+        public void OnDeath()
+        {
+            var effect = Instantiate(deathEffect);
+            effect.transform.position = transform.position;
+            Destroy(gameObject);
+        }
     }
 }

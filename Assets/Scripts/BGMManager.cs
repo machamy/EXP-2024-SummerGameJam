@@ -7,18 +7,18 @@ using static GameManager;
 
 public class BGMManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource _titlebgmSource;  // Inspector¿¡¼­ ¹Ì¸® ÇÒ´çµÈ Å¸ÀÌÆ² BGM ¼Ò½º
-    [SerializeField] private AudioClip _titleBGMClip; // Å¸ÀÌÆ² BGM Å¬¸³
+    [SerializeField] private AudioSource _titlebgmSource;  // Inspectorì—ì„œ ë¯¸ë¦¬ í• ë‹¹ëœ íƒ€ì´í‹€ BGM ì†ŒìŠ¤
+    [SerializeField] private AudioClip _titleBGMClip; // íƒ€ì´í‹€ BGM í´ë¦½
 
-    [SerializeField] private List<AudioSource> _playbgmSources = new List<AudioSource>(); // Inspector¿¡¼­ ÇÒ´çµÈ °ÔÀÓ ÇÃ·¹ÀÌ BGM ¼Ò½º ¸®½ºÆ®
-    [SerializeField] private List<AudioClip> _playBGMClips = new List<AudioClip>(); // °ÔÀÓ ÇÃ·¹ÀÌ BGM Å¬¸³ ¸®½ºÆ®
+    [SerializeField] private List<AudioSource> _playbgmSources = new List<AudioSource>(); // Inspectorì—ì„œ í• ë‹¹ëœ ê²Œì„ í”Œë ˆì´ BGM ì†ŒìŠ¤ ë¦¬ìŠ¤íŠ¸
+    [SerializeField] private List<AudioClip> _playBGMClips = new List<AudioClip>(); // ê²Œì„ í”Œë ˆì´ BGM í´ë¦½ ë¦¬ìŠ¤íŠ¸
 
     public IntVariableSO score;
 
     void Start()
     {
-        AssignClipsToSources(); // ½ÃÀÛ ½Ã ¿Àµğ¿À Å¬¸³À» ¿Àµğ¿À ¼Ò½º¿¡ ÇÒ´ç
-        RunTitleMusic(); // ÃÊ±â ½ÇÇà ½Ã Å¸ÀÌÆ² À½¾ÇÀ» Àç»ı
+        AssignClipsToSources(); // ì‹œì‘ ì‹œ ì˜¤ë””ì˜¤ í´ë¦½ì„ ì˜¤ë””ì˜¤ ì†ŒìŠ¤ì— í• ë‹¹
+        RunTitleMusic(); // ì´ˆê¸° ì‹¤í–‰ ì‹œ íƒ€ì´í‹€ ìŒì•…ì„ ì¬ìƒ
         score.ValueChangeEvent.AddListener(OnScoreChange);
     }
 
@@ -26,32 +26,32 @@ public class BGMManager : MonoBehaviour
     {
         if (_titlebgmSource != null && _titleBGMClip != null)
         {
-            _titlebgmSource.clip = _titleBGMClip; // Å¸ÀÌÆ² BGM ¿Àµğ¿À Å¬¸³À» ¼Ò½º¿¡ ÇÒ´ç
+            _titlebgmSource.clip = _titleBGMClip; // íƒ€ì´í‹€ BGM ì˜¤ë””ì˜¤ í´ë¦½ì„ ì†ŒìŠ¤ì— í• ë‹¹
         }
 
         for (int i = 0; i < _playbgmSources.Count && i < _playBGMClips.Count; i++)
         {
-            _playbgmSources[i].clip = _playBGMClips[i]; // °ÔÀÓ ÇÃ·¹ÀÌ BGM ¿Àµğ¿À Å¬¸³À» °¢°¢ÀÇ ¼Ò½º¿¡ ÇÒ´ç
+            _playbgmSources[i].clip = _playBGMClips[i]; // ê²Œì„ í”Œë ˆì´ BGM ì˜¤ë””ì˜¤ í´ë¦½ì„ ê°ê°ì˜ ì†ŒìŠ¤ì— í• ë‹¹
         }
     }
 
     public void RunTitleMusic()
     {
-        StopAllMusic(); // ±âÁ¸ Àç»ı ÁßÀÎ À½¾ÇÀ» ¸ğµÎ ÁßÁö
+        StopAllMusic(); // ê¸°ì¡´ ì¬ìƒ ì¤‘ì¸ ìŒì•…ì„ ëª¨ë‘ ì¤‘ì§€
         if (_titlebgmSource.clip != null)
         {
-            _titlebgmSource.Play(); // Å¸ÀÌÆ² BGM Àç»ı
+            _titlebgmSource.Play(); // íƒ€ì´í‹€ BGM ì¬ìƒ
         }
     }
 
     public void RunPlayMusic()
     {
-        StopAllMusic(); // ±âÁ¸ Àç»ı ÁßÀÎ À½¾ÇÀ» ¸ğµÎ ÁßÁö
+        StopAllMusic(); // ê¸°ì¡´ ì¬ìƒ ì¤‘ì¸ ìŒì•…ì„ ëª¨ë‘ ì¤‘ì§€
         foreach (var source in _playbgmSources)
         {
             if (source.clip != null)
             {
-                source.Play(); // °¢ ÇÃ·¹ÀÌ BGM Àç»ı
+                source.Play(); // ê° í”Œë ˆì´ BGM ì¬ìƒ
             }
         }
         OnScoreChange(0);
