@@ -54,6 +54,8 @@ namespace Vehicles
 
         [Tooltip("앞쪽 판정선(양수)")] public float frontDeltaPos = 0f;
         [Tooltip("뒤쪽 판정선(음수)")] public float backwardDeltaPos = 0f;
+
+        [Tooltip("사망여부")] public bool isDead = false;
         [Header("움직임 설정값")]
         public Line MoveLine;
         public bool isReverse;
@@ -166,6 +168,8 @@ namespace Vehicles
         protected virtual void CheckBridge()
         {
             Line.Point targetPoint = Line.Point.Bridge01;
+            if (isDead) // 죽으면 실행 X
+                return;
             //backwardPoint: 
             if (frontPoint == targetPoint || backwardPoint == targetPoint) // 현재 다리 위에 있음
             {

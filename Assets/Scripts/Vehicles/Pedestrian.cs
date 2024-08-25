@@ -42,13 +42,13 @@ namespace Vehicles
 
         public override bool isCollideHeight(float height)
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
 
         public override void OnBridgeCrossing()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public override void OnWait()
@@ -58,12 +58,10 @@ namespace Vehicles
 
         public override void OnCollisionFront()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void OnCollisionUp()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void OnArrival()

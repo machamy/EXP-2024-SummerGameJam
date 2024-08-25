@@ -338,6 +338,7 @@ MonoBehaviour:
   collisionHeight: 0.3
   frontDeltaPos: 0
   backwardDeltaPos: 0
+  isDead: 0
   MoveLine: {fileID: 0}
   isReverse: 0
   curveSO: {fileID: 0}
@@ -2840,6 +2841,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1233595453359516658, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1712734861859843774, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -2848,6 +2853,10 @@ PrefabInstance:
       propertyPath: RankingButton
       value: 
       objectReference: {fileID: 665342074}
+    - target: {fileID: 2063587827066750584, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2321368765821398454, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: score
       value: 
@@ -2983,6 +2992,10 @@ PrefabInstance:
     - target: {fileID: 7285896768457144265, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473432319227944850, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009077638874764435, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_Name

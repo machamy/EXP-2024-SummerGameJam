@@ -18,6 +18,9 @@ namespace Vehicles.Ships
         }
         public override void OnCollisionFront()
         {
+            if(isDead)
+                return;
+            isDead = true;
             Debug.Log("Submarine Front Collided");
             playerHp.Value -= 1;
             OnDeath();
@@ -26,12 +29,17 @@ namespace Vehicles.Ships
 
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             //위에서 아래로 찌부되는 경우
             StartCoroutine(FlyAwayRoutine(callback: () => playerHp.Value -= 1));
         }
 
         public override void OnArrival()
         {
+            if(isDead)
+                return;
             playerScore.Value += 1;
             Destroy(gameObject);
         }

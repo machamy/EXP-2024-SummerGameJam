@@ -24,7 +24,6 @@ namespace Vehicles
             {
                 float dy = Mathf.Lerp(0, height, passedTime/time);
                 gfx.transform.localPosition = new Vector3(0, dy,0);
-                print(gfx.transform.position);
                 passedTime += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }

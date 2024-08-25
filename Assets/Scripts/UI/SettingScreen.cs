@@ -41,12 +41,7 @@ namespace DefaultNamespace.UI
             sfxVol = value;
             sm.ChangeVolumeEffect(value);
         }
-
-        public void OnMainClicked()
-        {
-            GameManager.Instance.GoMain();
-            gameObject.SetActive(false);
-        }
+        
         public override void OnBackClicked()
         {
             if (Credit.activeSelf)
@@ -58,6 +53,15 @@ namespace DefaultNamespace.UI
                 Exit();
             }
             
+        }
+        public void OnMainClicked()
+        {
+            GameManager.Instance.GoMain();
+            PlayerPrefs.SetFloat("bgm",bgmVol);
+            PlayerPrefs.SetFloat("sfx",sfxVol);
+            gameObject.SetActive(false);
+            Credit.SetActive(false);
+            isRunning = false;
         }
 
         public override void Exit()

@@ -12,7 +12,10 @@ namespace Vehicles.Ships
 
         public override void OnCollisionFront()
         {
+            if(isDead)
+                return;
             Debug.Log("Pirate Front Collided");
+            isDead = true;
             playerScore.Value += 1;
             OnDeath();
         }
@@ -20,11 +23,16 @@ namespace Vehicles.Ships
 
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             StartCoroutine(FlyAwayRoutine(callback: () => playerScore.Value += 1));
         }
 
         public override void OnArrival()
         {
+            if(isDead)
+                return;
             playerHp.Value -= 1;
             Destroy(gameObject);
         }

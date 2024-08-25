@@ -12,12 +12,18 @@ namespace Vehicles.Ships
 
         public override void OnCollisionFront()
         {
+            if(isDead)
+                return;
             Debug.Log("NormalShip Front Collided");
+            isDead = true;
             playerHp.Value -= 1;
             OnDeath();
         }
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             StartCoroutine(FlyAwayRoutine(callback: () => playerHp.Value -= 1));
         }
 
