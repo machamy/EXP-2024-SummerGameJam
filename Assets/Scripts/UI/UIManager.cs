@@ -20,9 +20,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private HPIndicator hpIndicator;
     // [SerializeField] private Image FadeImg;
+
+    [Header("Ranking")][SerializeField] private GameObject Ranking;
+    [SerializeField] private TextMeshProUGUI rankingText;
+
+
     [Header("ScriptableObjects")]
     [SerializeField] private IntVariableSO Score;
     [SerializeField] private IntVariableSO Hp;
+    [SerializeField] private ScoreManager scoreManager;
+
     [Header("Settings")]
     [SerializeField] private float uiTransitionSec = 0.25f;
     [SerializeField] private float uiTransitionDistance = 5f;
@@ -79,6 +86,15 @@ public class UIManager : MonoBehaviour
     // {
     //     
     // }
+
+    public void ShowRanking()
+    {
+        Ranking.SetActive(true);
+
+    }
+
+    public void HideRanking()
+    { Ranking.SetActive(false); }
     
 
     // private IEnumerator FadeRoutine(float time, float from, float to, int frame = 32)

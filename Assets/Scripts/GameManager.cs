@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private BGMManager bgmManager;
+    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private DefaultNamespace.UI.RankingScreen rankingScreen; 
 
 
     public IntVariableSO hp;
@@ -98,7 +100,25 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         PauseGame();
+
+        scoreManager.AddScore(score.Value);
+
         uiManager.ShowResult();
+        rankingScreen.UpdateRankingDisplay();
+        score.Value = 0;
+
+
+
+    }
+
+    public void ShowRankingScreen()
+    {
+        uiManager.ShowRanking();
+    }
+
+    public void HideRankingScreen()
+    {
+        uiManager.HideRanking();
     }
 
     private void Update()
