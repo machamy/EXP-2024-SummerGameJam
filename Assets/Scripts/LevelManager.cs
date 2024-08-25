@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
     [Header("Lines")] 
     [SerializeField] private Line carUpper;
     [SerializeField] private Line carLower;
+    [SerializeField] private Line carUpperRev;
+    [SerializeField] private Line carLowerRev;
     [SerializeField] private Line shipLeft;
     [SerializeField] private Line shipRight;
     [Header("Curves")]

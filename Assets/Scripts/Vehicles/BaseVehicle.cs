@@ -45,8 +45,11 @@ namespace Vehicles
         public float bridgeCrossingTime = 1f;
         public float afterMovingTime = 3f;
     
-        [Header("충돌")]
-        public float collisionHeight = 0.3f;
+        [Header("판정")]
+        [Tooltip("다리 충돌")]public float collisionHeight = 0.3f;
+
+        [Tooltip("앞쪽 판정선(양수)")] public float frontDeltaPos = 0f;
+        [Tooltip("뒤쪽 판정선(음수)")] public float backwardDeltaPos = 0f;
         [Header("움직임 설정값")]
         public Line MoveLine;
         public bool isReverse;
@@ -60,14 +63,14 @@ namespace Vehicles
         [field: SerializeField] public bool IsOnBridge { get; private set; }
         private AnimationCurve Curve => curveSO.Curve;
         private AnimationCurve BeforeCurve => beforeCurveSo.Curve;
-        public Transform OriginPos => isReverse ? MoveLine.End : MoveLine.Spawn;
-        public Transform WaitPos => isReverse ? MoveLine.Wait02 : MoveLine.Wait01;
-        public Transform EndPos => isReverse ? MoveLine.Spawn : MoveLine.End;
-        public float OriginDistance => isReverse ? MoveLine.EndDistance :0;
-        public float WaitDistance => isReverse ? MoveLine.Wait02Distance : MoveLine.Wait01Distance;
+        public Transform OriginPos => MoveLine.Spawn;
+        public Transform WaitPos => MoveLine.Wait01;
+        public Transform EndPos => MoveLine.End;
+        public float OriginDistance => 0;
+        public float WaitDistance => MoveLine.Wait01Distance;
     
-        public float BridgeEndDistance => isReverse ? MoveLine.Bridge01Distance : MoveLine.Bridge02Distance;
-        public float EndDistance => isReverse ?  0 :MoveLine.EndDistance;
+        public float BridgeEndDistance => MoveLine.Bridge02Distance;
+        public float EndDistance => MoveLine.EndDistance;
     
         public Coroutine MoveCoroutine;
 
@@ -149,7 +152,7 @@ namespace Vehicles
         /// </summary>
         protected virtual void CheckBridge()
         {
-            Line.Point targetPoint = isReverse ? Line.Point.Bridge02 : Line.Point.Bridge01;
+            Line.Point targetPoint = Line.Point.Bridge01;
 
             if (currentPoint == targetPoint) // 현재 다리 위에 있음
             {
@@ -177,26 +180,12 @@ namespace Vehicles
         public Line.Point CheckPoint()
         {
             Line.Point res = Line.Point.Spawn;
-            if (isReverse)
+            for (Line.Point i = Line.Point.End; i >= Line.Point.Spawn; i--)
             {
-                for (Line.Point i = Line.Point.Spawn; i <= Line.Point.End; i++)
+                if (MoveLine.distances[i] <= currentDistance)
                 {
-                    if (MoveLine.distances[i] >= currentDistance)
-                    {
-                        res = i;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                for (Line.Point i = Line.Point.End; i >= Line.Point.Spawn; i--)
-                {
-                    if (MoveLine.distances[i] <= currentDistance)
-                    {
-                        res = i;
-                        break;
-                    }
+                    res = i;
+                    break;
                 }
             }
 

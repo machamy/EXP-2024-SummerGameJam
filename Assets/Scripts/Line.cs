@@ -36,6 +36,7 @@ namespace DefaultNamespace
         
         [Header("Type")]
         [SerializeField] private BaseVehicle.VehicleType vehicleType = BaseVehicle.VehicleType.Car;
+        [field:SerializeField] public bool isReverse { get; private set; }
         [Header("Property")]
         [SerializeField] private float length = 10;
         [FormerlySerializedAs("Distances")] [SerializeField] public OrderedSerializableDict<Point, float> distances = new OrderedSerializableDict<Point, float>(new PointComparer());
@@ -112,6 +113,8 @@ namespace DefaultNamespace
         {
             Vector3 angle = transform.eulerAngles;
             angle.z = vehicleType == BaseVehicle.VehicleType.Car ? GlobalData.carDegree : GlobalData.shipDegree;
+            if (isReverse)
+                angle.z += 180;
             transform.eulerAngles = angle;
             
             // transform.rotation = new Quaternion().
