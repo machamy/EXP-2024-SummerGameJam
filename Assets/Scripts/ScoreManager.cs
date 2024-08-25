@@ -1,12 +1,29 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "RankingSystem/ScoreManager")]
 public class ScoreManager : ScriptableObject
 {
-    public List<int> scores = new List<int>(); // A list to store scores
-    public int maxScores = 100; // Maximum number of scores to keep
+
+    [System.Serializable]
+    public class ScoreData
+    {
+        public int difficulty;
+        public int score;
+    }
+
+
+   [System.Serializable]
+    private class ScoreDataList
+    {
+        public List<ScoreData> scoreDataList = new List<ScoreData>();
+    }
+
+    public List<ScoreData> scoreData = new List<ScoreData>();
+
+    public int maxScores = 50; // Maximum number of scores to keep
     private string filePath; // Path to the JSON file
 
     private void OnEnable()
@@ -16,57 +33,45 @@ public class ScoreManager : ScriptableObject
         LoadScores(); // Load scores when the game starts
     }
 
-    public void AddScore(int score)
+    public void AddScore(int difficulty, int score)
     {
-        scores.Add(score);
-        scores.Sort((a, b) => b.CompareTo(a)); // Sort scores in descending order
+        scoreData.Add(new ScoreData { difficulty = difficulty, score = score });
 
-        // Keep only the top scores
-        if (scores.Count > maxScores)
+        // Sort scores in descending order
+        scoreData.Sort((a, b) => b.score.CompareTo(a.score));
+
+        // Trim the list to only keep the top `maxScores`
+        if (scoreData.Count > maxScores)
         {
-            scores.RemoveAt(scores.Count - 1);
+            scoreData.RemoveRange(maxScores, scoreData.Count - maxScores);
         }
 
         SaveScores(); // Save scores to JSON file
     }
 
-    public int GetBestScore()
-    {
-        if (scores.Count > 0)
-        {
-            return scores[0];
-        }
-        return 0;
-    }
+
 
     public void SaveScores()
     {
-        string json = JsonUtility.ToJson(new ScoreData(scores), true); // Convert the scores list to JSON
-        File.WriteAllText(filePath, json); // Write the JSON to the file
+        ScoreDataList scoreDataList = new ScoreDataList { scoreDataList = scoreData };
+        string json = JsonUtility.ToJson(scoreDataList);
+        File.WriteAllText(filePath, json);
     }
 
     public void LoadScores()
     {
         if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(filePath); // Read the JSON from the file
-            ScoreData scoreData = JsonUtility.FromJson<ScoreData>(json); // Convert the JSON back to ScoreData
-            scores = scoreData.scores; // Update the scores list
+            string json = File.ReadAllText(filePath);
+
+            ScoreDataList loadedData = JsonUtility.FromJson<ScoreDataList>(json);
+
+            scoreData = loadedData.scoreDataList;
+
         }
         else
         {
-            scores = new List<int>(); // Initialize an empty list if the file does not exist
-        }
-    }
-
-    [System.Serializable]
-    private class ScoreData
-    {
-        public List<int> scores;
-
-        public ScoreData(List<int> scores)
-        {
-            this.scores = scores;
+            Debug.LogWarning("Score file not found. Starting with an empty score list.");
         }
     }
 }
