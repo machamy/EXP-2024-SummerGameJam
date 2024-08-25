@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         scoreManager.AddScore(score.Value);
 
         uiManager.ShowResult();
-        rankingScreen.UpdateRankingDisplay();
+
         score.Value = 0;
 
 
@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowRankingScreen()
     {
+        rankingScreen.UpdateRankingDisplay();
         uiManager.ShowRanking();
     }
 

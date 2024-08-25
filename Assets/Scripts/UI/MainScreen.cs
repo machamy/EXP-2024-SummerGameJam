@@ -7,6 +7,7 @@ namespace DefaultNamespace.UI
     {
         [SerializeField] private GameObject difficultySellector;
         [SerializeField] private Button levelButton;
+        [SerializeField] private Button RankingButton;
         [SerializeField] private Sprite[] levelSprites;
         [SerializeField] private Sprite[] levelPressedSprites;
         [SerializeField] private Button[] difficultyButtons;
@@ -83,5 +84,6 @@ namespace DefaultNamespace.UI
             
         }
         
+        public void OnRankingClicked() { uiManager.ShowRanking(); }
     }
 }
