@@ -23,6 +23,8 @@ namespace Vehicles
             MoveAfter
         }
 
+        [Header("Debug")] public bool showPanjeong;
+        [Space,Header("BaseVehicle")]
         public GameObject deathEffect;
 
         public float timestampCheck;
@@ -58,9 +60,13 @@ namespace Vehicles
         [Header("움직임 현재값")] 
         public float currentTime;
         [FormerlySerializedAs("currentPosition")] public float currentDistance = 0f;
-        public Line.Point currentPoint;
+        public Line.Point frontPoint;
+        public Line.Point backwardPoint;
+        public Line.Point midPoint;
         public VehicleState state;
         [field: SerializeField] public bool IsOnBridge { get; private set; }
+
+        #region Properties
         private AnimationCurve Curve => curveSO.Curve;
         private AnimationCurve BeforeCurve => beforeCurveSo.Curve;
         public Transform OriginPos => MoveLine.Spawn;
@@ -68,9 +74,12 @@ namespace Vehicles
         public Transform EndPos => MoveLine.End;
         public float OriginDistance => 0;
         public float WaitDistance => MoveLine.Wait01Distance;
-    
+        public float BridgeStartDistance => MoveLine.Bridge01Distance;
         public float BridgeEndDistance => MoveLine.Bridge02Distance;
         public float EndDistance => MoveLine.EndDistance;
+
+        #endregion
+        
     
         public Coroutine MoveCoroutine;
 
@@ -81,7 +90,9 @@ namespace Vehicles
 
         private void FixedUpdate()
         {
-            currentPoint = CheckPoint();
+            frontPoint = MoveLine.CheckPoint(currentDistance + frontDeltaPos);
+            midPoint = MoveLine.CheckPoint(currentDistance);
+            backwardPoint = MoveLine.CheckPoint(currentDistance + backwardDeltaPos);
             Move();
             CheckBridge();
             if(IsOnBridge)
@@ -154,7 +165,7 @@ namespace Vehicles
         {
             Line.Point targetPoint = Line.Point.Bridge01;
 
-            if (currentPoint == targetPoint) // 현재 다리 위에 있음
+            if (frontPoint == targetPoint || backwardPoint == targetPoint) // 현재 다리 위에 있음
             {
                 if (isCollideHeight(bridgeController.height)) // 충돌시
                 {
@@ -177,20 +188,7 @@ namespace Vehicles
                 IsOnBridge = false;
             }
         } 
-        public Line.Point CheckPoint()
-        {
-            Line.Point res = Line.Point.Spawn;
-            for (Line.Point i = Line.Point.End; i >= Line.Point.Spawn; i--)
-            {
-                if (MoveLine.distances[i] <= currentDistance)
-                {
-                    res = i;
-                    break;
-                }
-            }
 
-            return res;
-        }
 
         public IEnumerator MoveRoutine(Vector3 start, Vector3 end, float time, Action callback)
         {
@@ -205,6 +203,35 @@ namespace Vehicles
             }
             transform.position = end;
             callback?.Invoke();
+        }
+        
+        private void OnDrawGizmosSelected()
+        {
+            Vector3 front, back;
+            Vector3 position = transform.position;
+            Vector3 direction;
+            if(MoveLine is null)
+            {
+                direction = type == VehicleType.Car ? GlobalData.carDirection : GlobalData.shipDirection;
+                if (isReverse)
+                    direction *= -1;
+            }
+            else
+            {
+                direction = MoveLine.transform.right;
+            }
+            front = new Vector3(position.x, position.y, position.x) + direction * frontDeltaPos;
+            back = new Vector3(position.x, position.y, position.x) + direction * backwardDeltaPos;
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(front,back);
+
+
+            float radius = 0.1f;
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(front,radius);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(back,radius);
         }
 
         public abstract bool isCollideHeight(float height);

@@ -67,6 +67,26 @@ namespace DefaultNamespace
         {
             
         }
+        
+        /// <summary>
+        /// 입력된 거리 기준, 어느 점을 넘었는지 반환
+        /// </summary>
+        /// <param name="currentDistance"></param>
+        /// <returns></returns>
+        public Line.Point CheckPoint(float currentDistance)
+        {
+            Line.Point res = Line.Point.Spawn;
+            for (Line.Point i = Line.Point.End; i >= Line.Point.Spawn; i--)
+            {
+                if (distances[i] <= currentDistance)
+                {
+                    res = i;
+                    break;
+                }
+            }
+
+            return res;
+        }
 
         // 디버그용 구역
         #if UNITY_EDITOR
