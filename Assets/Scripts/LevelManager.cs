@@ -128,6 +128,8 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        return;
+        // 일단 비활성화
         if (PedcanSpawn)
         {
             GameObject Ped = SummonPedestrian();
@@ -137,7 +139,7 @@ public class LevelManager : MonoBehaviour
             schedule.Add(timestamp + deltaTime - vehicle.TotalBeforeTime, Ped);
             intervalRemain = Random.Range(intervalMin, intervalMax);
             vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
-            StartCoroutine(WaitSpawnPed(Random.Range(2, 8)));
+            StartCoroutine(WaitSpawnPed(Random.Range(3, 5))); // 생성 인터벌 3~5초로 - machamy
         }
 
 
