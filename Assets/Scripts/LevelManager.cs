@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
     public float timestamp = 0.0f;
     public void Initialize()
     {
-        weight = 100f;
+        weight = 1.00f;
         timestamp = 0.0f;
         intervalRemain = Random.Range(intervalMin, intervalMax);
         foreach (var go in schedule.Values)
@@ -168,7 +168,7 @@ public class LevelManager : MonoBehaviour
     }
 
     [ContextMenu("SummonRandom")]
-    public GameObject SummonRandom()
+    public GameObject SummonRandom(bool applyWeight = true)
     {
         GameObject go;
         Transform spawnPoint, waitPoint, nextwaitPoint, endPoint;
@@ -221,13 +221,13 @@ public class LevelManager : MonoBehaviour
         InitVehicle(vehicle, PickedLine, "Linear", isReverse);
         return Ped;
     }
-    private void InitVehicle(BaseVehicle vehicle, Line line, string curveSo, bool isReverse = false)
+    private void InitVehicle(BaseVehicle vehicle, Line line, string curveSo, bool isReverse = false, bool applyWeight = true)
     {
         InitVehicle(vehicle, line, GetCurve(curveSo), isReverse);
     }
     
 
-    private void InitVehicle(BaseVehicle vehicle,Line line,CurveSO curveSo,bool isReverse = false)
+    private void InitVehicle(BaseVehicle vehicle,Line line,CurveSO curveSo,bool isReverse = false, bool applyWeight = true)
     {
         vehicle.MoveLine = line;
         vehicle.isReverse = isReverse;
@@ -239,6 +239,12 @@ public class LevelManager : MonoBehaviour
         vehicle.playerScore = GameManager.Instance.score;
         vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
 
+        if (applyWeight)
+        {
+            vehicle.priorMoveDelay *= weight;
+            vehicle.priorWaitDelay *= weight;
+            vehicle.afterMovingTime *= weight;
+        }
         // 다리 건너는 시간 계산
 
         vehicle.InitBridgeCrossingTime();
