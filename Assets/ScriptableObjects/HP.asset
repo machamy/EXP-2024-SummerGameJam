@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e51920876e4f4ab9f32e0da020d98c, type: 3}
   m_Name: hp
   m_EditorClassIdentifier: Assembly-CSharp:DefaultNamespace:IntVariableSO
-  value: 0
+  value: 3
   ValueChangeEvent:
     m_PersistentCalls:
       m_Calls: []

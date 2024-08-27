@@ -114,10 +114,10 @@ public class BridgeController : MonoBehaviour
         
         
 
-        height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime)) * heightweight;
+        height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime));
         if (height < sinkHeight)
         {
-            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y + 3, maskOriginalPos.z);
+            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
             foreach (var renderer in renderers)
             {
                 renderer.sortingLayerName = "SunkenBridge";
@@ -132,6 +132,6 @@ public class BridgeController : MonoBehaviour
             }
         }
             
-        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height - 1, originalPos.z); 
+        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height* heightweight - 1* heightweight, originalPos.z); 
     }
 }
