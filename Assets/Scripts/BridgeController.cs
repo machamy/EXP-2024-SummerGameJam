@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Vehicles;
+using ColorUtility = UnityEngine.ColorUtility;
 
 public class BridgeController : MonoBehaviour
 {
@@ -27,14 +28,36 @@ public class BridgeController : MonoBehaviour
     [SerializeField, Tooltip("잠김 마스크 기존위치")] private Vector3 maskOriginalPos;
 
     [SerializeField] private SpriteRenderer[] renderers;
-    
+    [Header("Skin")] 
+    [SerializeField] private SkinSO skinSo;
 
-    public Rigidbody2D playerRigidbody;
+    [SerializeField] private Color bridgeColor = Color.white;
+    [SerializeField] private Color sunkenColor = new Color(0.81f, 0.94f, 1f);
+    private static Color defaultSunkenColor = new Color(0.81f, 0.94f, 1f);
+    public SkinSO SkinSo
+    {
+        get => skinSo;
+        set
+        {
+            skinSo = value;
+            bridgeColor = skinSo.BridgeColor;
+            sunkenColor = skinSo.SunkenColor;
+            if (value.isLegacySkin)
+            {
+                var bridgeRenderer = bridgegfx.GetComponent<SpriteRenderer>();
+                var sunkenRenderer = bridgegfx.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                bridgeRenderer.sprite = skinSo.sprite;
+                bridgeRenderer.color = bridgeColor;
+                sunkenRenderer.sprite = skinSo.sprite;
+                sunkenRenderer.color = sunkenColor;
+            }
+        }
+    }
+    
     void Start()
     {
         originalPos = transform.position;
         // Rigidbody2D 컴포넌트를 할당
-        playerRigidbody = GetComponent<Rigidbody2D>();
         maskOriginalPos = spriteMask.transform.position;
     }
 
@@ -95,6 +118,8 @@ public class BridgeController : MonoBehaviour
     {
         isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
     }
+    
+    
 
     private void FixedUpdate()
     {
@@ -133,5 +158,10 @@ public class BridgeController : MonoBehaviour
         }
             
         bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height* heightweight - 1* heightweight, originalPos.z); 
+    }
+
+    public void OnValidate()
+    {
+        SkinSo = skinSo;
     }
 }
