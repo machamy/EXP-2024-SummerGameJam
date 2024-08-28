@@ -14,8 +14,8 @@ namespace Vehicles.Ships
         {
             if(isDead)
                 return;
-            Debug.Log("NormalShip Front Collided");
             isDead = true;
+            Debug.Log("NormalShip Front Collided");
             playerHp.Value -= 1;
             OnDeath();
         }

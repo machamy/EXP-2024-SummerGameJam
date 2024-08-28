@@ -13,6 +13,9 @@ namespace Vehicles.Cars
 
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             playerScore.Value += 1;
             SoundManager.Instance.StopSFX("car_slow");
             SoundManager.Instance.Play("car_crash", SoundManager.SoundType.SFX);

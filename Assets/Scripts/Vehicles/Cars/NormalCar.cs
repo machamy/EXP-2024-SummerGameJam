@@ -13,6 +13,9 @@ namespace Vehicles.Cars
 
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             playerHp.Value -= 1;
             SoundManager.Instance.StopSFX("car_slow");
             SoundManager.Instance.Play("car_crash");
@@ -21,6 +24,8 @@ namespace Vehicles.Cars
 
         public override void OnArrival()
         {
+            if(isDead)
+                return;
             playerScore.Value += 1;
             Destroy(gameObject);
         }

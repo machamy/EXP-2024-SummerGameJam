@@ -21,7 +21,8 @@ namespace Vehicles
             Idle,
             MoveBefore,
             Wait,
-            MoveAfter
+            MoveAfter,
+            DeathRoutine // 깜빡임중 움직임 방지
         }
 
         [Header("Debug")] public bool showPanjeong;
@@ -99,7 +100,7 @@ namespace Vehicles
             backwardPoint = MoveLine.CheckPoint(currentDistance + backwardDeltaPos);
             Move();
             CheckBridge();
-            if(IsOnBridge)
+            if(IsOnBridge && !isDead)
                 OnBridgeCrossing();
         }
     
@@ -284,6 +285,23 @@ namespace Vehicles
         {
             var effect = Instantiate(deathEffect);
             effect.transform.position = gfx ? gfx.transform.position : transform.position;
+            StartCoroutine(DeatRoutine(1, 0.25f, new Color(1f, 1f, 1f, 0.5f), new Color(1,1,1,1)));
+        }
+
+        private IEnumerator DeatRoutine(float total, float interval, Color c0, Color c1)
+        {
+            float remain = total;
+            state = VehicleState.DeathRoutine;
+            var wait = new WaitForSeconds(interval);
+            SpriteRenderer renderer = gfx.GetComponent<SpriteRenderer>();
+            bool isFirst = true;
+            while (remain > 0)
+            {
+                remain -= interval;
+                renderer.color = isFirst ? c0 : c1;
+                yield return wait;
+                isFirst = !isFirst;
+            }
             Destroy(gameObject);
         }
     }

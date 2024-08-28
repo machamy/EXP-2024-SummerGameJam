@@ -103,13 +103,17 @@ namespace Vehicles.Cars
 
         public override void OnCollisionUp()
         {
+            if(isDead)
+                return;
+            isDead = true;
             playerHp.Value -= 1;
-            
             OnDeath();
         }
 
         public override void OnArrival()
         {
+            if(isDead)
+                return;
             playerScore.Value += 1;
             Destroy(gameObject);
         }
