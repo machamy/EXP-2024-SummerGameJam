@@ -27,6 +27,7 @@ namespace DefaultNamespace.UI
 
         public void OnCreditClicked()
         {
+            SoundManager.Instance.Play("button2");
             Credit.SetActive(true);
         }
 
@@ -44,6 +45,8 @@ namespace DefaultNamespace.UI
         
         public override void OnBackClicked()
         {
+            SoundManager.Instance.Play("button2");
+
             if (Credit.activeSelf)
             {
                 Credit.SetActive(false);
@@ -56,6 +59,7 @@ namespace DefaultNamespace.UI
         }
         public void OnMainClicked()
         {
+            SoundManager.Instance.Play("button2");
             GameManager.Instance.GoMain();
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);
@@ -66,6 +70,7 @@ namespace DefaultNamespace.UI
 
         public override void Exit()
         {
+            SoundManager.Instance.Play("button2");
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);
             gameObject.SetActive(false);

@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using System;
 using UnityEngine;
 
@@ -7,13 +8,15 @@ namespace Vehicles.Ships
     {
         private void Start()
         {
-            
+            SoundManager.Instance.Play("speedboat");
         }
 
         public override void OnCollisionFront()
         {
             playerHp.Value -= 1;
             isDead = true;
+            SoundManager.Instance.StopSFX("speedboat");
+            SoundManager.Instance.Play("sheep_crash");
             OnDeath();
         }
 
@@ -21,6 +24,10 @@ namespace Vehicles.Ships
         public override void OnCollisionUp()
         {
             isDead = true;
+
+            SoundManager.Instance.StopSFX("speedboat");
+            SoundManager.Instance.Play("bridge_jump_2");
+
             StartCoroutine(FlyAwayRoutine(callback: () => playerScore.Value += 1));
         }
 

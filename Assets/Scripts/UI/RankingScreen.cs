@@ -48,6 +48,7 @@ namespace DefaultNamespace.UI
 
         public void OnDifficultySelected(int difficulty)
         {
+
             UpdateRankingDisplay(difficulty);
             levelBox.SetActive(false);
 
@@ -61,6 +62,7 @@ namespace DefaultNamespace.UI
 
         public void OnDifficultyButtonClicked()
         {
+            SoundManager.Instance.Play("button2");
             levelBox.SetActive(!levelBox.activeSelf);
             
         }
@@ -68,6 +70,7 @@ namespace DefaultNamespace.UI
 
         public void OnMainClicked()
         {
+            SoundManager.Instance.Play("button2");
             // GameManager.Instance.GoMain();
             levelBox.SetActive(false);
             gameObject.SetActive(false);

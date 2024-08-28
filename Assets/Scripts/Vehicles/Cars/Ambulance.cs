@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DefaultNamespace;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,14 +15,21 @@ namespace Vehicles.Cars
         
         [SerializeField] private GameObject RedLight;
         [SerializeField] private GameObject BlueLight;
-        
+
+        private bool sirenSoundPlayed = false;
+
         protected override void Move()
         {
             Vector3 position, startPos,endPos;
             float ratio, totalTime,start,end;
             AnimationCurve pickedCurve;
+
+        
+
             switch (state)
             {
+
+
                 case VehicleState.Idle:
                     // OnStart와 같음
                     currentTime = 0f;
@@ -29,6 +37,13 @@ namespace Vehicles.Cars
                     float total = priorMoveDelay + priorWaitDelay;
                     StartCoroutine(SirenWaitRoutine(total));
                     StartCoroutine(SirenLightRoutine(total/ sirenMaxCount));
+
+                    if (!sirenSoundPlayed)
+                    {
+                        SoundManager.Instance.Play("ambul_siren", SoundManager.SoundType.SFX);
+                        sirenSoundPlayed = true;
+                    }
+
                     currentTime += Time.fixedDeltaTime;
                     return;// 움직이지 않는다.
                 case VehicleState.MoveBefore:

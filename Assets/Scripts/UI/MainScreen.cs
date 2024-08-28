@@ -52,7 +52,8 @@ namespace DefaultNamespace.UI
 
         public override void OnBackClicked()
         {
-            if(IsSellectingDiffculty)
+            SoundManager.Instance.Play("button2");
+            if (IsSellectingDiffculty)
             {
                 IsSellectingDiffculty = false;
             }
@@ -60,6 +61,7 @@ namespace DefaultNamespace.UI
 
         public void OnClickDifficulty()
         {
+            SoundManager.Instance.Play("button2");
             IsSellectingDiffculty = !IsSellectingDiffculty;
         }
 
@@ -74,16 +76,20 @@ namespace DefaultNamespace.UI
 
         public void OnSettingClicked()
         {
+            SoundManager.Instance.Play("button2");
             uiManager.ShowSetting();
         }
 
         public void OnStartClicked()
         {
+            SoundManager.Instance.Play("button2");
             uiManager.ShowGame();
             GameManager.Instance.StartGame();
             
         }
         
-        public void OnRankingClicked() { uiManager.ShowRanking(); }
+        public void OnRankingClicked() { 
+            SoundManager.Instance.Play("button2"); 
+            uiManager.ShowRanking(); }
     }
 }

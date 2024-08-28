@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using System;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Vehicles.Ships
 
         private void Start()
         {
-            
+            SoundManager.Instance.Play("splash_long");
         }
 
         public override bool isCollideHeight(float height)
@@ -21,6 +22,8 @@ namespace Vehicles.Ships
             if(isDead)
                 return;
             isDead = true;
+            SoundManager.Instance.StopSFX("splash_long");
+            SoundManager.Instance.Play("ship_crash");
             Debug.Log("Submarine Front Collided");
             playerHp.Value -= 1;
             OnDeath();
@@ -33,6 +36,8 @@ namespace Vehicles.Ships
                 return;
             isDead = true;
             //위에서 아래로 찌부되는 경우
+            SoundManager.Instance.StopSFX("splash_long");
+            SoundManager.Instance.Play("ship_crash");
             StartCoroutine(FlyAwayRoutine(callback: () => playerHp.Value -= 1));
         }
 

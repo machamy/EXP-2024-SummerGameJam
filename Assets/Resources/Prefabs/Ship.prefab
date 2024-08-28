@@ -112,6 +112,7 @@ MonoBehaviour:
   collisionHeight: 0.3
   frontDeltaPos: 0
   backwardDeltaPos: 0
+  isDead: 0
   MoveLine: {fileID: 0}
   isReverse: 0
   curveSO: {fileID: 0}
