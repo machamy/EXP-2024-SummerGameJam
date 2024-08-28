@@ -9,8 +9,8 @@ namespace Vehicles.Cars
     /// </summary>
     public class Ambulance : Car
     {
-        [Space, Header("Ambulance")] 
-        [SerializeField, Tooltip("사이렌 색 바뀌는 주기")] private float sirenInterval = 0.5f;
+        [Space, Header("Ambulance")] [SerializeField, Tooltip("사이렌 색 깜빡임 횟수")]
+        private int sirenMaxCount = 4;
         
         [SerializeField] private GameObject RedLight;
         [SerializeField] private GameObject BlueLight;
@@ -26,8 +26,9 @@ namespace Vehicles.Cars
                     // OnStart와 같음
                     currentTime = 0f;
                     state = VehicleState.MoveBefore;
-                    StartCoroutine(SirenWaitRoutine(priorMoveDelay+ priorWaitDelay));
-                    StartCoroutine(SirenLightRoutine(sirenInterval));
+                    float total = priorMoveDelay + priorWaitDelay;
+                    StartCoroutine(SirenWaitRoutine(total));
+                    StartCoroutine(SirenLightRoutine(total/ sirenMaxCount));
                     currentTime += Time.fixedDeltaTime;
                     return;// 움직이지 않는다.
                 case VehicleState.MoveBefore:
