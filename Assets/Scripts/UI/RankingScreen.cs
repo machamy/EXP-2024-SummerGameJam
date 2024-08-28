@@ -68,7 +68,7 @@ namespace DefaultNamespace.UI
 
         public void OnMainClicked()
         {
-            GameManager.Instance.GoMain();
+            // GameManager.Instance.GoMain();
             levelBox.SetActive(false);
             gameObject.SetActive(false);
         }

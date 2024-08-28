@@ -43,6 +43,11 @@ namespace DefaultNamespace.UI
         public void OnNext() => Go(currentIdx += 1);
         public void OnPrev() => Go(currentIdx -= 1);
 
+        public override void OnBackClicked()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void OnSkinChange(SkinSO skinSo)
         {
             bridge.SkinSo = skinSo;
