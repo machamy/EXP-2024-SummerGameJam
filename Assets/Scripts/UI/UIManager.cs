@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Game;
     [Header("Setting")]
     [SerializeField] private GameObject Setting;
+    [Header("Pause")]
+    [SerializeField] private GameObject Pause;
 
     [Header("result")] [SerializeField] private GameObject Result;
     [SerializeField] private TextMeshProUGUI scoreTMP;
@@ -50,8 +52,8 @@ public class UIManager : MonoBehaviour
     public void ShowPause()
     {
         SoundManager.Instance.Play("button2");
-        Setting.SetActive(true);
-        Setting.GetComponent<SettingScreen>().isRunning = true;
+        Pause.SetActive(true);
+        Pause.GetComponent<PauseScreen>().isRunning = true;
         GameManager.Instance.PauseGame();
     }
 
@@ -65,6 +67,7 @@ public class UIManager : MonoBehaviour
         Main.SetActive(false);
         Game.SetActive(true);
         Setting.SetActive(false);
+        Pause.SetActive(false);
         if(GameManager.Instance.State == GameManager.GameState.Pause)
             GameManager.Instance.ResumeGame();
     }
@@ -73,6 +76,7 @@ public class UIManager : MonoBehaviour
     {
         Result.SetActive(false);
         Game.SetActive(false);
+        Pause.SetActive(false);
         Setting.SetActive(false);
         Main.SetActive(true);
 

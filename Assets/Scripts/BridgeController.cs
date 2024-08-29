@@ -31,6 +31,7 @@ public class BridgeController : MonoBehaviour
     [Header("Skin")] 
     [SerializeField] private SkinSO skinSo;
 
+    
     [SerializeField] private Color bridgeColor = Color.white;
     [SerializeField] private Color sunkenColor = new Color(0.81f, 0.94f, 1f);
     private static Color defaultSunkenColor = new Color(0.81f, 0.94f, 1f);
