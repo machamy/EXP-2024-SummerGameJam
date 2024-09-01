@@ -1027,17 +1027,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 368157017230932230, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
   m_PrefabInstance: {fileID: 1109167696}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &518018579 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7779029763339271147, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-  m_PrefabInstance: {fileID: 1109167696}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518018577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0fa18ad5595bd46be3a5e76db731c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &578861462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,18 +2246,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1404201534}
-    - target: {fileID: 3130036415762524995, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 518018579}
-    - target: {fileID: 3130036415762524995, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnVolChangeBGM
-      objectReference: {fileID: 0}
-    - target: {fileID: 3130036415762524995, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DefaultNamespace.UI.PauseScreen, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3401074316341453249, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -2352,22 +2329,6 @@ PrefabInstance:
     - target: {fileID: 3423761120503717364, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702322160248210007, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702322160248210007, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 518018579}
-    - target: {fileID: 3702322160248210007, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnVolChangeSFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 3702322160248210007, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DefaultNamespace.UI.PauseScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4421252889681157072, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: bridge
