@@ -15,8 +15,10 @@ MonoBehaviour:
   vehicleName: "\uC570\uBDF8\uB7F0\uC2A4"
   type: 0
   prefabID: 3
-  spriteID: 3
+  spriteID: 2
   rawSprite: '-'
+  sprite: {fileID: 0}
+  reverseSprite: {fileID: 0}
   beforeTime: 1
   waitTime: 3
   afterTime: 1.5
