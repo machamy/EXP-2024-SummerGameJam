@@ -52,6 +52,7 @@ namespace Vehicles
         protected virtual void Start()
         {
             trafficLight.SetLevel(0);
+            gfx.GetComponent<SpriteRenderer>().sprite = VehicleData.Sprite;
         }
 
         public override bool isCollideHeight(float height)

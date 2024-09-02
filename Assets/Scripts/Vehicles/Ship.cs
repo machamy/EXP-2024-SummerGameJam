@@ -6,6 +6,11 @@ namespace Vehicles
 {
     public abstract class Ship : BaseVehicle
     {
+        private void Start()
+        {
+            gfx.GetComponent<SpriteRenderer>().sprite = VehicleData.Sprite;
+        }
+
         public override bool isCollideHeight(float height)
         {
             return collisionHeight < height;

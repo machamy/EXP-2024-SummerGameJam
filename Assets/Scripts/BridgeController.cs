@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,8 +21,11 @@ public class BridgeController : MonoBehaviour
     [Tooltip("다리 애니메이션 가중치")]                 public float heightweight = 1.0f;  
     [Tooltip("다리 최초 위치 저장 벡터")]               Vector3 originalPos;
 
-    [Tooltip("다리 잠김 애니메이션 곡선")] public AnimationCurve curveSink;
-    [Tooltip("다리 용승 애니메이션 곡선")] public AnimationCurve curveGoup;
+    [Tooltip("다리 잠김 애니메이션 곡선")]public CurveSO curveSinkSO;
+    public AnimationCurve curveSink => curveSinkSO.Curve;
+    
+    [Tooltip("다리 용승 애니메이션 곡선")]  public CurveSO curveGoupSO;
+    public AnimationCurve curveGoup => curveGoupSO.Curve;
     [SerializeField, Tooltip("잠김 색 처리")] private float sinkHeight;
     [SerializeField, Tooltip("잠김 마스크")] private SpriteMask spriteMask;
 
@@ -43,14 +47,29 @@ public class BridgeController : MonoBehaviour
             skinSo = value;
             bridgeColor = skinSo.BridgeColor;
             sunkenColor = skinSo.SunkenColor;
+            
+            var bridgeRenderer = bridgegfx.GetComponent<SpriteRenderer>();
+            var sunkenRenderer = bridgegfx.transform.GetChild(0).GetComponent<SpriteRenderer>();
+            Transform upper = bridgegfx.transform.GetChild(1);
+            Transform side = bridgegfx.transform.GetChild(2);
             if (value.isLegacySkin)
             {
-                var bridgeRenderer = bridgegfx.GetComponent<SpriteRenderer>();
-                var sunkenRenderer = bridgegfx.transform.GetChild(0).GetComponent<SpriteRenderer>();
                 bridgeRenderer.sprite = skinSo.sprite;
                 bridgeRenderer.color = bridgeColor;
                 sunkenRenderer.sprite = skinSo.sprite;
                 sunkenRenderer.color = sunkenColor;
+            }
+            else
+            {
+                bridgeRenderer.enabled = false;
+                sunkenRenderer.enabled = false;
+                
+                var upperRenderer = upper.GetComponent<SpriteRenderer>();
+                var sideRenderer = side.GetComponent<SpriteRenderer>();
+                upperRenderer.enabled = true;
+                sideRenderer.enabled = true;
+                upperRenderer.sprite = skinSo.upperSprite;
+                sideRenderer.sprite = skinSo.sideSprite;
             }
         }
     }
@@ -163,6 +182,7 @@ public class BridgeController : MonoBehaviour
 
     public void OnValidate()
     {
-        SkinSo = skinSo;
+        if(skinSo)
+            SkinSo = skinSo;
     }
 }

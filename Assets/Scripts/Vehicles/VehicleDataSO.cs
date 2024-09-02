@@ -22,11 +22,13 @@ namespace Vehicles
                 if (sprite is null)
                 {
                     string path = $"Sprites/Vehicle/{(type == BaseVehicle.VehicleType.Car ? "car" : "ship")}{spriteID}";
-                    if (rawSprite == String.Empty || rawSprite.Contains("-"))
+                    if (rawSprite != String.Empty && !rawSprite.Contains("-"))
                     {
                         path += $"_{rawSprite}";
                     }
                     sprite = Resources.Load<Sprite>(path);
+                    if(sprite == null)
+                        Debug.LogWarning($"not found: {path}");
                 }
 
                 return sprite;
@@ -46,6 +48,8 @@ namespace Vehicles
                         path += $"_{rawSprite}";
                     }
                     reverseSprite = Resources.Load<Sprite>(path) ?? Sprite;
+                    if(reverseSprite == null)
+                        Debug.LogWarning($"not found: {path}");
                 }
 
                 return sprite;

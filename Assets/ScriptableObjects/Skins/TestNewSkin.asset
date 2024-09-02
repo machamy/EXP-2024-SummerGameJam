@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1a84009be0538f458d31f16d4eec798, type: 3}
-  m_Name: TestSkin
+  m_Name: TestNewSkin
   m_EditorClassIdentifier: 
   isLegacySkin: 0
-  sprite: {fileID: 21300000, guid: afa199dd2a8e802429b282b7375e3d05, type: 3}
+  sprite: {fileID: 0}
   upperSprite: {fileID: 21300000, guid: 88bbe632d0e43ac428bf173dcf9eb1d5, type: 3}
-  sideSprite: {fileID: 809563669, guid: 752127cf8eedb3449984851c2156742f, type: 3}
+  sideSprite: {fileID: 21300000, guid: 752127cf8eedb3449984851c2156742f, type: 3}
   BridgeColor: {r: 1, g: 1, b: 1, a: 1}
   SunkenColor: {r: 0.81, g: 0.94, b: 1, a: 1}
