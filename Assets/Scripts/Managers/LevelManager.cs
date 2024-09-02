@@ -119,14 +119,14 @@ public class LevelManager : MonoBehaviour
             if (intervalRemain <= 0)
             {
                 // 소환 후 대기
-                GameObject go = SummonRandom();
+                GameObject go = SummonRandomByData();
                 go.SetActive(false);
-                canSpawn = false;
+                
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
                 schedule.Add( timestamp + deltaTime - vehicle.TotalBeforeTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
                 vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
-                StartCoroutine(WaitSpawnRoutine(vehicle.bridgeCrossingTime));
+                StartCoroutine(WaitSpawnRoutine(Mathf.Max(0,vehicle.bridgeCrossingTime - vehicle.VehicleData.bridgeCrossVariableT - 0.1f),Mathf.Min(vehicle.VehicleData.bridgeCrossVariableT,vehicle.bridgeCrossingTime)));
             }
         }
 
@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    private IEnumerator WaitSpawnRoutine(float time)
+    private IEnumerator WaitSpawnRoutine(float startWait, float time)
     {
         yield return new WaitForSeconds(time);
         canSpawn = true;
@@ -171,7 +171,44 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("SummonRandom")]
+    public GameObject SummonRandomByData()
+    {
+        GameObject prefab;
+        bool isCar = Random.Range(0, 2) == 1;
+        Rarity rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
+        GameObject[] prefabArr = cars;
+        List<VehicleDataSO> vehicleDataList = carDataList;
+        bool isFirstLine = Random.Range(0, 2) == 1;
+        Line line = isFirstLine ? carUpper : carLower;
+        if (!isCar)
+        {
+            prefabArr = ships;
+            vehicleDataList = shipDataList;
+            line = isFirstLine ? shipLeft : shipRight;
+        }
+        var candidates = GetSummonables(rarity, vehicleDataList);
+        
+        while (candidates is null)
+        {
+            rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
+            candidates = GetSummonables(rarity, vehicleDataList);
+        }
+
+        VehicleDataSO data = candidates[Random.Range(0, candidates.Count)];
+        GameObject result = Instantiate(prefabArr[data.prefabID]);
+        InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve);
+        
+        return result;
+    }
+
+    private List<VehicleDataSO> GetSummonables(Rarity rarity, List<VehicleDataSO> vehicleDataSoList)
+    {
+
+
+        return null;
+    }
+
+    [ContextMenu("SummonRandom"), Obsolete("Use SummonRandomByData()")]
     public GameObject SummonRandom(bool applyWeight = true)
     {
         GameObject go;

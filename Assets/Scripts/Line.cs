@@ -135,13 +135,13 @@ namespace DefaultNamespace
             switch(vehicleType)
             {
                 case BaseVehicle.VehicleType.Car:
-                    angle.z = GlobalData.carDegree; break;
+                    angle.z = Utilties.carDegree; break;
 
                 case BaseVehicle.VehicleType.Ship:
-                    angle.z = GlobalData.shipDegree; break;
+                    angle.z = Utilties.shipDegree; break;
 
                 case BaseVehicle.VehicleType.Pedstrian:
-                    angle.z = GlobalData.PedDegree; break;
+                    angle.z = Utilties.PedDegree; break;
             }
             if (isReverse)
                 angle.z += 180;

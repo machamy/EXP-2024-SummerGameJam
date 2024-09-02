@@ -2,7 +2,7 @@ namespace Vehicles
 {
     public enum Rarity
     {
-        Normal,
+        Normal = 0,
         Rare,
         Special
     }

@@ -13,8 +13,8 @@ namespace Vehicles
         public int prefabID;
         public int spriteID;
         public string rawSprite;
-        private Sprite sprite;
-        private Sprite reverseSprite;
+        [SerializeField]private Sprite sprite;
+        [SerializeField]private Sprite reverseSprite;
         public Sprite Sprite
         {
             get

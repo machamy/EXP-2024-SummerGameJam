@@ -13,11 +13,15 @@ namespace DefaultNamespace.Database
 
         private Coroutine loadRoutine;
 
+        public static Database Instance;
+        
         public List<VehicleDataSO> VehicleDataSoList;
+        public List<VehicleDataSO> CarDataSoList;
+        public List<VehicleDataSO> ShipDataSoList;
         private void Awake()
         {
             sheetReader = new SpreadSheetReader();
-            
+            Instance = this;
         }
 
         public void Start()
@@ -50,7 +54,24 @@ namespace DefaultNamespace.Database
                     }
                 }
             }
-            
+            SortData();
+        }
+
+        public void SortData()
+        {
+            CarDataSoList.Clear();
+            ShipDataSoList.Clear();
+            foreach (var data in VehicleDataSoList)
+            {
+                if (data.type == BaseVehicle.VehicleType.Car)
+                {
+                    CarDataSoList.Add(data);
+                }
+                else
+                {
+                    ShipDataSoList.Add(data);
+                }
+            }
         }
 
         public IEnumerator WaitBreak()

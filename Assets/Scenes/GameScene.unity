@@ -2913,7 +2913,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e063b6ad8dd64e62afb70f44d850a0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehicleDataSoList: []
+  VehicleDataSoList:
+  - {fileID: 11400000, guid: d4a9bffd68c23c64ab163bfa594e145f, type: 2}
+  - {fileID: 11400000, guid: 69a683fdb10751f4388e99e7e7cde2e9, type: 2}
+  - {fileID: 11400000, guid: dbdc1515134c5f1488af7feb9b4b8b7a, type: 2}
+  - {fileID: 11400000, guid: 304320081a5e928468234c1e49f58f1d, type: 2}
+  - {fileID: 11400000, guid: ec95f33615fad9a418a9890988505f31, type: 2}
+  - {fileID: 11400000, guid: 28d86ce81e27b844d8be1687638cf552, type: 2}
+  - {fileID: 11400000, guid: dd1ef852762f0a64ebfd18d66582a20e, type: 2}
+  - {fileID: 11400000, guid: 1210dc553b1bb5949abde88258fd8683, type: 2}
+  - {fileID: 11400000, guid: 0337fc890ce94494bb7d4f9b539437d1, type: 2}
+  - {fileID: 11400000, guid: d09fede5b47e91a45902bc4fafbe495d, type: 2}
+  - {fileID: 11400000, guid: 657a247bca32d9742ab3cf7a9b5fe2e1, type: 2}
+  - {fileID: 11400000, guid: 4b4e3b2e8b961d148a995ab2503bef96, type: 2}
+  - {fileID: 11400000, guid: 6d2eb3ca16c803b4ca7a68d1ba7070f0, type: 2}
+  - {fileID: 11400000, guid: d19456e4f07329d4f8fc17049e230b18, type: 2}
+  - {fileID: 11400000, guid: 5210a168f6f46e04294b8fdb24e97a02, type: 2}
 --- !u!4 &1521374877
 Transform:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ namespace Vehicles
         }
 
         [Header("Debug")] public bool showPanjeong;
-        [Space,Header("BaseVehicle")]
+        [Space, Header("BaseVehicle")] public VehicleDataSO VehicleData;
         public GameObject deathEffect;
 
         public float timestampCheck;
@@ -232,7 +232,7 @@ namespace Vehicles
             Vector3 direction;
             if(MoveLine is null)
             {
-                direction = type == VehicleType.Car ? GlobalData.carDirection : GlobalData.shipDirection;
+                direction = type == VehicleType.Car ? Utilties.carDirection : Utilties.shipDirection;
                 if (isReverse)
                     direction *= -1;
             }
