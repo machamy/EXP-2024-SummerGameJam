@@ -292,7 +292,7 @@ public class LevelManager : MonoBehaviour
         vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
         vehicle.transform.position = line.Spawn.position;
 
-        vehicle.VehicleData = data;
+        data?.ApplyData(vehicle);
         print(data);
         if (applyWeight)
         {

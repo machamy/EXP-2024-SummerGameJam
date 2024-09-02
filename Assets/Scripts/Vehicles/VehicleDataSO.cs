@@ -72,5 +72,14 @@ namespace Vehicles
             var s = Sprite;
             var r = reverseSprite;
         }
+
+        public void ApplyData(BaseVehicle baseVehicle)
+        {
+            baseVehicle.type = type;
+            baseVehicle.VehicleData = this;
+            baseVehicle.priorMoveDelay = beforeTime;
+            baseVehicle.priorWaitDelay = waitTime;
+            baseVehicle.afterMovingTime = afterTime;
+        }
     }
 }
