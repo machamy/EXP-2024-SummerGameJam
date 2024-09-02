@@ -1,13 +1,14 @@
 using System;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Vehicles
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu, Serializable]
     public class VehicleDataSO : ScriptableObject
     {
-        public string name;
+        [FormerlySerializedAs("name")] public string vehicleName;
         public BaseVehicle.VehicleType type;
         public int prefabID;
         public int spriteID;
@@ -44,7 +45,7 @@ namespace Vehicles
                     {
                         path += $"_{rawSprite}";
                     }
-                    reverseSprite = Resources.Load<Sprite>(path);
+                    reverseSprite = Resources.Load<Sprite>(path) ?? Sprite;
                 }
 
                 return sprite;
@@ -60,5 +61,12 @@ namespace Vehicles
         public CurveSO afterCurve;
         public Rarity Rarity;
         public int open;
+        public float bridgeCrossVariableT;
+
+        public void Init()
+        {
+            var s = Sprite;
+            var r = reverseSprite;
+        }
     }
 }

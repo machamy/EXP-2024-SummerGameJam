@@ -45,10 +45,12 @@ public class LevelManager : MonoBehaviour
 
         return curveDict[0].second;
     }
-    [Header("Prefabs")]
+    [Space, Header("Prefabs")]
     [SerializeField] private GameObject[] cars;
     [SerializeField] private GameObject[] ships;
     [SerializeField] private GameObject[] pedestrianunit;
+    [Header("CarData"), SerializeField] private List<VehicleDataSO> carDataList;
+    [Header("ShipData"), SerializeField] private List<VehicleDataSO> shipDataList;
     [Header("Particles")]
     [SerializeField] private GameObject explodeEffect;
     [SerializeField] private GameObject bubbleEffect;
