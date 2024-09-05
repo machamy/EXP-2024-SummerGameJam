@@ -52,8 +52,14 @@ public class BridgeController : MonoBehaviour
             var sunkenRenderer = bridgegfx.transform.GetChild(0).GetComponent<SpriteRenderer>();
             Transform upper = bridgegfx.transform.GetChild(1);
             Transform side = bridgegfx.transform.GetChild(2);
+            var upperRenderer = upper.GetComponent<SpriteRenderer>();
+            var sideRenderer = side.GetComponent<SpriteRenderer>();
             if (value.isLegacySkin)
             {
+                bridgeRenderer.enabled = true;
+                sunkenRenderer.enabled = true;
+                upperRenderer.enabled = false;
+                sideRenderer.enabled = false;
                 bridgeRenderer.sprite = skinSo.sprite;
                 bridgeRenderer.color = bridgeColor;
                 sunkenRenderer.sprite = skinSo.sprite;
@@ -64,8 +70,7 @@ public class BridgeController : MonoBehaviour
                 bridgeRenderer.enabled = false;
                 sunkenRenderer.enabled = false;
                 
-                var upperRenderer = upper.GetComponent<SpriteRenderer>();
-                var sideRenderer = side.GetComponent<SpriteRenderer>();
+                
                 upperRenderer.enabled = true;
                 sideRenderer.enabled = true;
                 upperRenderer.sprite = skinSo.upperSprite;

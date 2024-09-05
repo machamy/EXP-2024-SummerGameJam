@@ -100,7 +100,8 @@ namespace Vehicles
             backwardPoint = MoveLine.CheckPoint(currentDistance + backwardDeltaPos);
             Move();
             CheckBridge();
-            if(IsOnBridge && !isDead)
+            if(IsOnBridge)
+                // if(!isDead)
                 OnBridgeCrossing();
         }
     

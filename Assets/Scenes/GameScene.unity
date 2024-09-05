@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6861071919750462988, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.45
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 6861071919750462988, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2082,6 +2082,10 @@ PrefabInstance:
     - target: {fileID: 9009077638874764435, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097998568213799461, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

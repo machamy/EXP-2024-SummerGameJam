@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e990ce2d20d44d3dbfa68544df4b06c9, type: 3}
+  m_Name: CarDown
+  m_EditorClassIdentifier: 
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0009880066
+      value: 0.9861145
+      inSlope: -0.82085186
+      outSlope: -0.82085186
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.11559698
+      value: 0.8920375
+      inSlope: -2.0711255
+      outSlope: -2.0711255
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.38507554
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.80574095
+      value: 0.011669308
+      inSlope: -0.7382571
+      outSlope: -0.7382571
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.98999023
+      value: -0.025343493
+      inSlope: -0.20088437
+      outSlope: -0.20088437
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
