@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public IntVariableSO hp;
     public IntVariableSO score;
 
+    [Header("Debug")] public bool invincible = false;
     public int currentDifficulty { get; set; }
     public int unlockedDifficulty { get; set; }
     public int highScore { get; private set; }
@@ -27,7 +28,8 @@ public class GameManager : MonoBehaviour
     {
         Main,
         Pause,
-        Running
+        Running,
+        Score
     }
 
     public GameState State { get; private set; } = GameState.Main;
@@ -40,9 +42,11 @@ public class GameManager : MonoBehaviour
         highScore = PlayerPrefs.GetInt("h_score", 0);
     }
 
+
     public void Start()
     {
         InitializeGame();
+        print($"current difficulty : {currentDifficulty}");
         
         // Debug.Log(Global.shipDirection);
         // Debug.Log(Global.carDirection);
@@ -105,10 +109,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        PauseGame();
-
+        // PauseGame();
+        
+        State = GameState.Score;
         scoreManager.AddScore(currentDifficulty,score.Value);
-
         uiManager.ShowResult();
 
         score.Value = 0;
@@ -128,6 +132,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        #if UNITY_EDITOR
+        if (invincible && hp.Value < 3)
+        {
+            hp.Value = 3;
+        }
+        #endif
     }
 }

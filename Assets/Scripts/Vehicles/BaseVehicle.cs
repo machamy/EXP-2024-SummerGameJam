@@ -45,9 +45,11 @@ namespace Vehicles
         /// <summary>
         /// 다리 오르기 전까지의 시간
         /// </summary>
-        public float TotalBeforeTime => priorMoveDelay + priorWaitDelay;
+        public float TotalBeforeTime => type == VehicleType.Ship ? priorMoveDelay: priorMoveDelay + priorWaitDelay;
 
         public float bridgeCrossingTime = 1f;
+        public float bridgeStartTime = 0.2f;
+        public float bridgeEndTime = 1.2f;
         public float afterMovingTime = 3f;
     
         [Header("판정")]
@@ -206,7 +208,9 @@ namespace Vehicles
             float t1 = (BridgeEndDistance - WaitDistance) /totalDistance;
             // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
             // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
-            bridgeCrossingTime = (curveSO.EvaluateByValueFirst(t1) - curveSO.EvaluateByValueFirst(t0)) * afterMovingTime;
+            bridgeStartTime = curveSO.EvaluateByValueFirst(t0) * afterMovingTime;
+            bridgeEndTime = curveSO.EvaluateByValueFirst(t1) * afterMovingTime;
+            bridgeCrossingTime = bridgeEndTime - bridgeStartTime;
             return bridgeCrossingTime;
         }
 

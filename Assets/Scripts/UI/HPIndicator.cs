@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,12 @@ public class HPIndicator : MonoBehaviour
     [SerializeField] private Image[] Hearts;
 
     public int MaxHP => Hearts.Length;
-    
+
+    private void OnEnable()
+    {
+        SetHP(GameManager.Instance.hp.Value);
+    }
+
     public void SetHP(int hp)
     {
         if (hp > MaxHP)
@@ -19,12 +25,12 @@ public class HPIndicator : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
-        for (int i = 0; i < hp-1; i++)
+        for (int i = 0; i < hp; i++)
         {
             Hearts[i].sprite = FullHeartSprite;
         }
 
-        for (int i = hp; i < MaxHP; i++)
+        for (int i = hp + 1; i < MaxHP; i++)
         {
             Hearts[i].sprite = EmptyHeartSprite;
         }

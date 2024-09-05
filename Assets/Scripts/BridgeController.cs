@@ -182,7 +182,7 @@ public class BridgeController : MonoBehaviour
             }
         }
             
-        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height* heightweight - 1* heightweight, originalPos.z); 
+        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height* heightweight - heightweight, originalPos.z); 
     }
 
     public void OnValidate()

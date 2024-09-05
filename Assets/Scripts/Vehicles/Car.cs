@@ -64,7 +64,7 @@ namespace Vehicles
         public override void OnBridgeCrossing()
         {
             var position = transform.position;
-            gfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height - 1.0f), position.z);
+            gfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height -1.0f) * bridgeController.heightweight, position.z);
         }
 
         public override void OnWait()

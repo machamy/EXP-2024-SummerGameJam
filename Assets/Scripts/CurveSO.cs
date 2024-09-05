@@ -14,7 +14,7 @@ namespace DefaultNamespace
                 float time = (float)i / acc;
                 if (Curve.Evaluate(time) >= value)
                 {
-                    Debug.Log($"[EVAL]found {Curve.Evaluate(time)} <= {value}");
+                    // Debug.Log($"[EVAL]found {Curve.Evaluate(time)} <= {value}");
                     return time;
                 }
             }

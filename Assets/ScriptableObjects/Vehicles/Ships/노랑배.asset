@@ -17,6 +17,8 @@ MonoBehaviour:
   prefabID: 1
   spriteID: 1
   rawSprite: yellow
+  sprite: {fileID: 0}
+  reverseSprite: {fileID: 0}
   beforeTime: 2
   waitTime: 9999
   afterTime: 2.5

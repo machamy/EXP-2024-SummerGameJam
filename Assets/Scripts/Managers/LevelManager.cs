@@ -130,9 +130,15 @@ public class LevelManager : MonoBehaviour
                 intervalRemain = Random.Range(intervalMin, intervalMax);
                 vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
                 float t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(0.3f));
-                StartCoroutine(
-                    WaitSpawnRoutine(Mathf.Max(0,vehicle.bridgeCrossingTime - t - 0.05f), // 마진
-                        Mathf.Min(t,vehicle.bridgeCrossingTime)));
+                // float startDelay = Random.Range(vehicle.bridgeStartTime, vehicle.bridgeEndTime - t - 0.05f);
+                // 난이도 쉬움 : t 없음
+                if (GameManager.Instance.currentDifficulty == 0)
+                    t = 10000f;
+                canSpawn = false;
+                float waitTime = Random.Range(Mathf.Min(t + 0.05f, vehicle.bridgeCrossingTime),
+                    vehicle.bridgeCrossingTime);
+                waitTime = vehicle.bridgeCrossingTime;
+                StartCoroutine(WaitSpawnRoutine(waitTime));
             }
         }
 
@@ -153,10 +159,10 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    private IEnumerator WaitSpawnRoutine(float startWait, float time)
+    private IEnumerator WaitSpawnRoutine (float time)
     {
-        yield return new WaitForSeconds(startWait);
-        canSpawn = false;
+        // yield return new WaitForSeconds(startWait);
+        // canSpawn = false;
         yield return new WaitForSeconds(time);
         canSpawn = true;
     }
