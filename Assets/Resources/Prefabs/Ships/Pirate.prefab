@@ -184,7 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showPanjeong: 0
+  VehicleData: {fileID: 0}
   deathEffect: {fileID: 0}
+  height: 1
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 1
@@ -192,10 +194,13 @@ MonoBehaviour:
   priorMoveDelay: 2
   priorWaitDelay: 0
   bridgeCrossingTime: 10
+  bridgeStartTime: 0.2
+  bridgeEndTime: 1.2
   afterMovingTime: 3
   collisionHeight: 0.3
   frontDeltaPos: 0
   backwardDeltaPos: 0
+  isDead: 0
   MoveLine: {fileID: 0}
   isReverse: 0
   curveSO: {fileID: 0}

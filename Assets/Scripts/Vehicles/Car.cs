@@ -58,14 +58,44 @@ namespace Vehicles
 
         public override bool isCollideHeight(float height)
         {
-            return collisionHeight > height;
+            return collisionHeight >= this.height;
         }
 
+        public void UpdateGfxPosition() => UpdateGfxPosition(height);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="height"> 0 ~ 1 : 최저점 ~ 최고점</param>
+        public void UpdateGfxPosition(float height)
+        {
+            var position = transform.position;
+            float targetPositionY = transform.position.y + (height - 1.0f) * bridgeController.heightweight;
+            gfx.transform.position = new Vector3(position.x,targetPositionY , position.z);
+        }
 
         public override void OnBridgeCrossing()
         {
-            var position = transform.position;
-            gfx.transform.position = new Vector3(position.x, position.y + (bridgeController.height -1.0f) * bridgeController.heightweight, position.z);
+            // 다리 높이에 맞춰서
+            
+            if (height > bridgeController.height)
+            // 떨어지는경우
+            {
+                height = Mathf.Max(height - 1.0f * GameManager.Gravity * Time.fixedDeltaTime, bridgeController.height);
+            }
+            else
+            // 올라가는경우
+            {
+                height = bridgeController.height; 
+            }
+            
+            UpdateGfxPosition();
+        }
+
+        public override void OnBridgeEnd()
+        {
+            // 최고점으로
+            height = 1;
+            UpdateGfxPosition();
         }
 
         public override void OnWait()

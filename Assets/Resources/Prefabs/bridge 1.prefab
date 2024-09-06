@@ -106,7 +106,7 @@ MonoBehaviour:
   Car: {fileID: 0}
   MoveTime: 0.33
   progress: 0
-  height: 0
+  height: 1
   heightweight: 5
   curveSinkSO: {fileID: 11400000, guid: b44740b653557a442b7d6fe79c59fd22, type: 2}
   curveGoupSO: {fileID: 11400000, guid: bdb036bb09512324a8d626ff1ef1cb7f, type: 2}

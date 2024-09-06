@@ -20,7 +20,12 @@ namespace Vehicles
         {
             // Do nothing
         }
-        
+
+        public override void OnBridgeEnd()
+        {
+            
+        }
+
         public virtual IEnumerator FlyAwayRoutine(float height = 12f, float time = 1.0f, Action callback = null)
         {
             float passedTime = 0f;

@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public IntVariableSO hp;
     public IntVariableSO score;
 
+    public float gravity = 3;
+    public static float Gravity => Instance.gravity;
+
     [Header("Debug")] public bool invincible = false;
     [field:SerializeField] public int currentDifficulty { get; set; }
     [field:SerializeField]public int unlockedDifficulty { get; set; }

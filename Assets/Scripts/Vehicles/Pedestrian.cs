@@ -51,6 +51,11 @@ namespace Vehicles
             
         }
 
+        public override void OnBridgeEnd()
+        {
+            
+        }
+
         public override void OnWait()
         {
             StartCoroutine(StopRoutine());

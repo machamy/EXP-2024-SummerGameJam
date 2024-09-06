@@ -29,6 +29,7 @@ namespace Vehicles
         [Space, Header("BaseVehicle")] public VehicleDataSO VehicleData;
         public GameObject deathEffect;
 
+        public float height = 1f;
         public float timestampCheck;
         public BridgeController bridgeController;
         public VehicleType type;
@@ -200,6 +201,8 @@ namespace Vehicles
             }
             else
             {
+                if (IsOnBridge)
+                    OnBridgeEnd();
                 IsOnBridge = false;
             }
         }
@@ -287,6 +290,7 @@ namespace Vehicles
         public abstract void OnCollisionUp();
 
         public abstract void OnBridgeCrossing();
+        public abstract void OnBridgeEnd();
 
         public abstract void OnArrival();
     

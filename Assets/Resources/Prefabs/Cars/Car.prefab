@@ -176,6 +176,7 @@ MonoBehaviour:
   showPanjeong: 0
   VehicleData: {fileID: 0}
   deathEffect: {fileID: 0}
+  height: 1
   timestampCheck: 0
   bridgeController: {fileID: 0}
   type: 0
