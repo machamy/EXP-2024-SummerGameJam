@@ -21,18 +21,21 @@ public class HPIndicator : MonoBehaviour
     {
         if (hp > MaxHP)
             hp = MaxHP;
-        if (hp <= 0 && GameManager.Instance.State == GameManager.GameState.Running)
-        {
-            GameManager.Instance.GameOver();
-        }
+        
         for (int i = 0; i < hp; i++)
         {
             Hearts[i].sprite = FullHeartSprite;
         }
 
-        for (int i = hp + 1; i < MaxHP; i++)
+        for (int i = hp; i < MaxHP; i++)
         {
             Hearts[i].sprite = EmptyHeartSprite;
         }
+        
+        if (hp <= 0 && GameManager.Instance.State == GameManager.GameState.Running)
+        {
+            GameManager.Instance.GameOver();
+        }
+        print($"hp is set to {hp}");
     }
 }
