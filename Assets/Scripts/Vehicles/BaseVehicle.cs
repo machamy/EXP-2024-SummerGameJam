@@ -45,7 +45,7 @@ namespace Vehicles
         /// <summary>
         /// 다리 오르기 전까지의 시간
         /// </summary>
-        public float TotalBeforeTime => type == VehicleType.Ship ? priorMoveDelay: priorMoveDelay + priorWaitDelay;
+        public float TotalBeforeTime => type == VehicleType.Ship ? bridgeStartTime: priorMoveDelay + priorWaitDelay;
 
         public float bridgeCrossingTime = 1f;
         public float bridgeStartTime = 0.2f;
@@ -106,7 +106,12 @@ namespace Vehicles
                 // if(!isDead)
                 OnBridgeCrossing();
         }
-    
+
+        private void OnEnable()
+        {
+            currentTime = 0f;
+        }
+
 
         protected virtual void Move()
         {
@@ -125,7 +130,6 @@ namespace Vehicles
                     {
                         transform.position = WaitPos.position;
                         state = VehicleState.Wait;
-                        currentTime = 0f;
                         OnWait();
                         return;
                     }
@@ -138,6 +142,7 @@ namespace Vehicles
                     pickedCurve = BeforeCurve;
                     break;
                 case VehicleState.Wait:
+                    currentTime += Time.fixedDeltaTime;
                     return;// 아무것도 하지 않는다.
                 case VehicleState.MoveAfter:
                     totalTime = afterMovingTime;

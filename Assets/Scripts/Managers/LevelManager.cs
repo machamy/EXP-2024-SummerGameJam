@@ -17,7 +17,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int dbgCarId = 0;
     [SerializeField] private bool dbgSummonShip;
     [SerializeField] private int dbgShipId = 0;
-    [Header("Spawn")]
+
+    [Header("Level")]
+    [Range(0,3),SerializeField] public int difficulty = 0;
+    [SerializeField] private float[] intervalMinArr = { 3f, 1f, 0.2f };
+    [SerializeField] private float[] intervalMaxArr = { 7f, 4f, 3f };
+    [field:SerializeField] public int[] openScoreArr { get; private set; } = { 0, 70, 70, -1 };
+    [SerializeField] private bool[] reverseValueArr = { false, false, true };
+    [SerializeField] private bool[] useTArr = { false, true, true };
+
+    [Header("Spawn")]    
+    [SerializeField] private bool useReverse = false;
+    [SerializeField] private bool useT = false;
+    [Space] 
     [SerializeField] private float weight = 1.00f;
     [SerializeField] private float weightCoefficient = 0.95f;
     [SerializeField] private IntVariableSO score;
@@ -88,6 +100,11 @@ public class LevelManager : MonoBehaviour
         PedcanSpawn = true;
         carDataList = Database.Instance.CarDataSoList;
         shipDataList = Database.Instance.ShipDataSoList;
+        difficulty = GameManager.Instance.currentDifficulty;
+        intervalMin = intervalMinArr[difficulty];
+        intervalMax = intervalMaxArr[difficulty];
+        useReverse = reverseValueArr[difficulty];
+        useT = useTArr[difficulty];
         foreach (var bv in FindObjectsByType<BaseVehicle>(FindObjectsInactive.Include,FindObjectsSortMode.None))
         {
             Destroy(bv.gameObject);
@@ -126,18 +143,22 @@ public class LevelManager : MonoBehaviour
                 go.SetActive(false);
                 
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
-                schedule.Add( timestamp + deltaTime - vehicle.TotalBeforeTime, go);
+                float vehicleActivateTime = timestamp + deltaTime - vehicle.TotalBeforeTime;
+                schedule.Add(vehicleActivateTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
-                vehicle.timestampCheck = timestamp + deltaTime - vehicle.TotalBeforeTime;
-                float t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(0.3f));
+                vehicle.timestampCheck = vehicleActivateTime;
+                float t;
+                if (useT)
+                    t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(0.3f));
+                else
+                    t = 10000f;
                 // float startDelay = Random.Range(vehicle.bridgeStartTime, vehicle.bridgeEndTime - t - 0.05f);
                 // 난이도 쉬움 : t 없음
-                if (GameManager.Instance.currentDifficulty == 0)
-                    t = 10000f;
+                
                 canSpawn = false;
-                float waitTime = Random.Range(Mathf.Min(t + 0.05f, vehicle.bridgeCrossingTime),
+                float waitTime = Random.Range(Mathf.Min(t + 0.7f, vehicle.bridgeCrossingTime),
                     vehicle.bridgeCrossingTime);
-                waitTime = vehicle.bridgeCrossingTime;
+                // print($"{vehicleActivateTime}, {vehicleActivateTime + vehicle.TotalBeforeTime+ vehicle.bridgeStartTime} {vehicleActivateTime +vehicle.TotalBeforeTime+ vehicle.bridgeEndTime}");
                 StartCoroutine(WaitSpawnRoutine(waitTime));
             }
         }
@@ -182,6 +203,7 @@ public class LevelManager : MonoBehaviour
         else if (n % 10 == 0)
         {
             weight *= weightCoefficient;
+            weight = Mathf.Max(0.05f, weight); // 최솟값(임의) 설정
         }
     }
     [ContextMenu("SummonRandomByData")]
@@ -192,13 +214,10 @@ public class LevelManager : MonoBehaviour
         Rarity rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
         GameObject[] prefabArr = cars;
         List<VehicleDataSO> vehicleDataList = carDataList;
-        bool isFirstLine = Random.Range(0, 2) == 1;
-        Line line = isFirstLine ? carUpper : carLower;
         if (!isCar)
         {
             prefabArr = ships;
             vehicleDataList = shipDataList;
-            line = isFirstLine ? shipLeft : shipRight;
         }
         var candidates = GetSummonables(rarity, vehicleDataList);
         
@@ -207,21 +226,44 @@ public class LevelManager : MonoBehaviour
             rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
             candidates = GetSummonables(rarity, vehicleDataList);
         }
-
         VehicleDataSO data = candidates[Random.Range(0, candidates.Count)];
+        var line = isCar ? GetCarLine(data) : GetShipLine(data);
+
+
+        // 거꾸로 이동 부여
         GameObject result = Instantiate(prefabArr[data.prefabID]);
-        InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve,data:data);
+        InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve,data:data,isReverse:line.isReverse);
         
         return result;
+    }
+
+    private Line GetCarLine(VehicleDataSO data)
+    {
+        Line line;
+        bool isFirstLine = Random.Range(0, 2) == 1;
+        if (useReverse && Random.Range(0, 100) < data.reverseValue)
+            line = isFirstLine ? carUpperRev : carLowerRev;
+        else
+            line = isFirstLine ? carUpper : carLower;
+        line = isFirstLine ? carUpperRev : carLowerRev;
+        return line;
+    }
+    
+    private Line GetShipLine(VehicleDataSO data)
+    {
+        Line line;
+        bool isFirstLine = Random.Range(0, 2) == 1;
+        line = isFirstLine ? shipLeft : shipRight;
+        return line;
     }
 
     private List<VehicleDataSO> GetSummonables(Rarity rarity, List<VehicleDataSO> vehicleDataSoList)
     {
         var resultList = from data in vehicleDataSoList where data.open <= score.Value && rarity == data.Rarity select data;
-        foreach (var data in vehicleDataSoList)
-        {
-            print($"{data.name} : {data.open <= score.Value} {data.Rarity == rarity} ({rarity})");
-        }
+        // foreach (var data in vehicleDataSoList)
+        // {
+        //     print($"{data.name} : {data.open <= score.Value} {data.Rarity == rarity} ({rarity})");
+        // }
         return resultList.ToList();
     }
 
@@ -287,11 +329,13 @@ public class LevelManager : MonoBehaviour
 
     private void InitVehicle(BaseVehicle vehicle,Line line,CurveSO curveSo,VehicleDataSO data = null,bool isReverse = false, bool applyWeight = true)
     {
+        if(data)
+            vehicle.name = data.vehicleName;
         vehicle.MoveLine = line;
         vehicle.isReverse = isReverse;
         vehicle.beforeCurveSo = GetCurve("Linear");
         vehicle.curveSO = curveSo;
-        vehicle.currentDistance = isReverse ? line.EndDistance : 0;
+        vehicle.currentDistance = 0;
         vehicle.bridgeController = bridge;
         vehicle.playerHp = GameManager.Instance.hp;
         vehicle.playerScore = GameManager.Instance.score;
@@ -299,7 +343,7 @@ public class LevelManager : MonoBehaviour
         vehicle.transform.position = line.Spawn.position;
 
         data?.ApplyData(vehicle);
-        print(data);
+        // print(data);
         if (applyWeight)
         {
             vehicle.priorMoveDelay *= weight;

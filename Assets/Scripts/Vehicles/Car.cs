@@ -45,6 +45,7 @@ namespace Vehicles
             trafficLight.SetLevel(0);
 
             this.state = VehicleState.MoveAfter;
+            // print($"car {TotalBeforeTime} {priorWaitDelay} , {currentTime}");
             currentTime = 0f;
             SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
         }
@@ -52,7 +53,7 @@ namespace Vehicles
         protected virtual void Start()
         {
             trafficLight.SetLevel(0);
-            gfx.GetComponent<SpriteRenderer>().sprite = VehicleData.Sprite;
+            gfx.GetComponent<SpriteRenderer>().sprite = isReverse ? VehicleData.ReverseSprite : VehicleData.Sprite;
         }
 
         public override bool isCollideHeight(float height)

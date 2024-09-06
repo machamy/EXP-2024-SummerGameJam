@@ -121,6 +121,12 @@ namespace DefaultNamespace.Database
                 t = 9999;
             }
             result.bridgeCrossVariableT = t;
+            
+            if (!int.TryParse(data[13], out var rev))
+            {
+                rev = 0;
+            }
+            result.reverseValue = rev;
             result.Init();
             return result;
         }

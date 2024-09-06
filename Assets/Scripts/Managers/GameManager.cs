@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     public IntVariableSO score;
 
     [Header("Debug")] public bool invincible = false;
-    public int currentDifficulty { get; set; }
-    public int unlockedDifficulty { get; set; }
-    public int highScore { get; private set; }
+    [field:SerializeField] public int currentDifficulty { get; set; }
+    [field:SerializeField]public int unlockedDifficulty { get; set; }
+    // public int highScore { get; private set; }
     
     public enum GameState
     {
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         currentDifficulty = PlayerPrefs.GetInt("c_diff", 0);
         unlockedDifficulty = PlayerPrefs.GetInt("u_diff", 0);
-        highScore = PlayerPrefs.GetInt("h_score", 0);
+        // highScore = PlayerPrefs.GetInt("h_score", 0);
     }
 
 
@@ -113,6 +113,15 @@ public class GameManager : MonoBehaviour
         
         State = GameState.Score;
         scoreManager.AddScore(currentDifficulty,score.Value);
+        
+        // 다음 난이도 해금
+        if (currentDifficulty < 2 && score.Value >= levelManager.openScoreArr[currentDifficulty])
+        {
+            unlockedDifficulty = currentDifficulty + 1;
+            PlayerPrefs.SetInt("u_diff",unlockedDifficulty);
+            PlayerPrefs.Save();
+        }
+        
         uiManager.ShowResult();
 
         score.Value = 0;
@@ -138,5 +147,12 @@ public class GameManager : MonoBehaviour
             hp.Value = 3;
         }
         #endif
+    }
+
+    private void OnDisable()
+    {
+         PlayerPrefs.SetInt("c_diff", currentDifficulty);
+         PlayerPrefs.SetInt("u_diff", unlockedDifficulty);
+         PlayerPrefs.Save();
     }
 }

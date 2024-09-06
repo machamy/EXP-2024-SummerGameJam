@@ -18,7 +18,7 @@ namespace Vehicles.Ships
             isDead = true;
             SoundManager.Instance.StopSFX("splash_long");
             SoundManager.Instance.Play("ship_crash");
-            Debug.Log("NormalShip Front Collided");
+            // print($"{bridgeStartTime} {currentTime}");
             playerHp.Value -= 1;
             OnDeath();
         }

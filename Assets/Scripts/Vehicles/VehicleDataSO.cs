@@ -26,6 +26,11 @@ namespace Vehicles
                     {
                         path += $"_{rawSprite}";
                     }
+
+                    if (type == BaseVehicle.VehicleType.Ship && spriteID == 1)
+                    {
+                        path += "_2";
+                    }
                     sprite = Resources.Load<Sprite>(path);
                     if(sprite == null)
                         Debug.LogWarning($"not found: {path}");
@@ -40,21 +45,24 @@ namespace Vehicles
         {
             get
             {
-                if (sprite is null)
+                if (reverseSprite is null)
                 {
                     string path = $"Sprites/Vehicle/{(type == BaseVehicle.VehicleType.Car ? "car" : "ship")}{spriteID}B";
-                    if (rawSprite == String.Empty || rawSprite.Contains("-"))
+                    if (rawSprite != String.Empty && !rawSprite.Contains("-"))
                     {
                         path += $"_{rawSprite}";
                     }
-                    reverseSprite = Resources.Load<Sprite>(path) ?? Sprite;
+                    reverseSprite = Resources.Load<Sprite>(path);
                     if(reverseSprite == null)
+                    {
+                        reverseSprite = Sprite;
                         Debug.LogWarning($"not found: {path}");
+                    }
                 }
 
-                return sprite;
+                return reverseSprite;
             }
-            set => sprite = value;
+            set => reverseSprite = value;
         }
         public float beforeTime;
         public float waitTime;
@@ -66,11 +74,12 @@ namespace Vehicles
         public Rarity Rarity;
         public int open;
         public float bridgeCrossVariableT;
+        public int reverseValue = 0;
 
         public void Init()
         {
             var s = Sprite;
-            var r = reverseSprite;
+            var r = ReverseSprite;
         }
 
         public void ApplyData(BaseVehicle baseVehicle)

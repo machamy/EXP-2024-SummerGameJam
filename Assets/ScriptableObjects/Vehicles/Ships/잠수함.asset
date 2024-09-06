@@ -17,7 +17,9 @@ MonoBehaviour:
   prefabID: 3
   spriteID: 3
   rawSprite: '-'
-  beforeTime: 2.5
+  sprite: {fileID: 21300000, guid: 3129dafd9f2f69d4f91873a086669c71, type: 3}
+  reverseSprite: {fileID: 21300000, guid: 3129dafd9f2f69d4f91873a086669c71, type: 3}
+  beforeTime: 0
   waitTime: 9999
   afterTime: 3
   rawBeforeCurve: Linear
@@ -27,3 +29,4 @@ MonoBehaviour:
   Rarity: 2
   open: 50
   bridgeCrossVariableT: 9999
+  reverseValue: 0
