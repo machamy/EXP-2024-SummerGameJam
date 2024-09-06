@@ -245,7 +245,6 @@ public class LevelManager : MonoBehaviour
             line = isFirstLine ? carUpperRev : carLowerRev;
         else
             line = isFirstLine ? carUpper : carLower;
-        line = isFirstLine ? carUpperRev : carLowerRev;
         return line;
     }
     
