@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     public IntVariableSO score;
 
     public float gravity = 3;
+    public float waterGravity = 1;
     public static float Gravity => Instance.gravity;
-
+    public static float WaterGravity => Instance.waterGravity;
     [Header("Debug")] public bool invincible = false;
     [field:SerializeField] public int currentDifficulty { get; set; }
     [field:SerializeField]public int unlockedDifficulty { get; set; }

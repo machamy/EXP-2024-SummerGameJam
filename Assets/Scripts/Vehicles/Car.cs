@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DefaultNamespace;
 using DefaultNamespace.Vehicles;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -76,11 +77,17 @@ namespace Vehicles
         public override void OnBridgeCrossing()
         {
             // 다리 높이에 맞춰서
-            
-            if (height > bridgeController.height)
+            float G = isDead ? GameManager.WaterGravity : GameManager.Gravity;
+
+            if (isDead)
+            // 죽으면 쭉 떨어지기
+            {
+                height -= 1.0f * G * Time.fixedDeltaTime;
+            }
+            else if (height > bridgeController.height)
             // 떨어지는경우
             {
-                height = Mathf.Max(height - 1.0f * GameManager.Gravity * Time.fixedDeltaTime, bridgeController.height);
+                height = Mathf.Max(height - 1.0f * G * Time.fixedDeltaTime, bridgeController.height);
             }
             else
             // 올라가는경우
@@ -89,6 +96,8 @@ namespace Vehicles
             }
             
             UpdateGfxPosition();
+            if(height <= 0.02f)
+                Destroy(gameObject);
         }
 
         public override void OnBridgeEnd()
