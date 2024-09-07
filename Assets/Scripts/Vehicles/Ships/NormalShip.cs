@@ -20,6 +20,7 @@ namespace Vehicles.Ships
 
         private void Start()
         {
+            base.Start();
             StartCoroutine(PlayShipLoop());
         }
 

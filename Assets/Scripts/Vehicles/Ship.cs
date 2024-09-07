@@ -6,7 +6,7 @@ namespace Vehicles
 {
     public abstract class Ship : BaseVehicle
     {
-        private void Start()
+        public void Start()
         {
             gfx.GetComponent<SpriteRenderer>().sprite = VehicleData.Sprite;
         }

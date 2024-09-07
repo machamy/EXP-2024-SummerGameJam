@@ -8,6 +8,7 @@ namespace Vehicles.Ships
     {
         private void Start()
         {
+            base.Start();
             SoundManager.Instance.Play("speedboat");
         }
 
