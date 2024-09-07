@@ -1,14 +1,26 @@
 using DefaultNamespace;
 using System;
 using UnityEngine;
+using System.Collections;
 
 namespace Vehicles.Ships
 {
     public class NormalShip : global::Vehicles.Ship
     {
+        protected virtual IEnumerator PlayShipLoop()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                SoundManager.Instance.Play("water");
+
+                yield return new WaitForSeconds(1f); // 사운드 텀 여기서 조정 하면 됨 1f, 2f 이런식으로 (숫자만 바꾸면 됨)
+
+            }
+        }
+
         private void Start()
         {
-            SoundManager.Instance.Play("splash_long");
+            StartCoroutine(PlayShipLoop());
         }
 
         public override void OnCollisionFront()
