@@ -46,7 +46,7 @@ namespace Vehicles
         /// <summary>
         /// 다리 오르기 전까지의 시간
         /// </summary>
-        public float TotalBeforeTime => type == VehicleType.Ship ? bridgeStartTime: priorMoveDelay + priorWaitDelay;
+        public float TotalBeforeTime => type == VehicleType.Ship ? 0 : priorMoveDelay + priorWaitDelay;
 
         public float bridgeCrossingTime = 1f;
         public float bridgeStartTime = 0.2f;
@@ -184,6 +184,10 @@ namespace Vehicles
             //backwardPoint: 
             if (frontPoint == targetPoint || backwardPoint == targetPoint) // 현재 다리 위에 있음
             {
+                if (!IsOnBridge)
+                {
+                    OnBridgeStart();
+                }
                 if (isCollideHeight(bridgeController.height)) // 충돌시
                 {
                     // 이전위치와 현재위치 확인
@@ -203,7 +207,10 @@ namespace Vehicles
             else
             {
                 if (IsOnBridge)
+                {
+                    OnBridgeEndDebug();
                     OnBridgeEnd();
+                }
                 IsOnBridge = false;
             }
         }
@@ -290,6 +297,17 @@ namespace Vehicles
         /// </summary>
         public abstract void OnCollisionUp();
 
+        public virtual void OnBridgeStart()
+        {
+            float a = TotalBeforeTime + timestampCheck;
+            print($"{name}{GetInstanceID()%10} Start {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
+        }
+ 
+        public virtual void OnBridgeEndDebug()
+        {
+            float a = TotalBeforeTime + timestampCheck;
+            print($"{name}{GetInstanceID()%10} End {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
+        }
         public abstract void OnBridgeCrossing();
         public abstract void OnBridgeEnd();
 

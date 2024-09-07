@@ -36,6 +36,6 @@ public class HPIndicator : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
-        print($"hp is set to {hp}");
+        // print($"hp is set to {hp}");
     }
 }

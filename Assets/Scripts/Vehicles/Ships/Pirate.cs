@@ -16,7 +16,7 @@ namespace Vehicles.Ships
         {
             if(isDead)
                 return;
-            Debug.Log("Pirate Front Collided");
+            // Debug.Log("Pirate Front Collided");
             isDead = true;
 
             SoundManager.Instance.StopSFX("speedboat");

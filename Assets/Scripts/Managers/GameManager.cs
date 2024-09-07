@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private BGMManager bgmManager;
     [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private DefaultNamespace.UI.RankingScreen rankingScreen; 
+    [SerializeField] private DefaultNamespace.UI.RankingScreen rankingScreen;
 
 
+    public LevelManager LM => levelManager;
     public IntVariableSO hp;
     public IntVariableSO score;
 

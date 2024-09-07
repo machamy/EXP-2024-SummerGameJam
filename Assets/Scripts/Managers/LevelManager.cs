@@ -143,11 +143,12 @@ public class LevelManager : MonoBehaviour
                 go.SetActive(false);
                 
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
-                float vehicleActivateTime = timestamp + deltaTime - vehicle.TotalBeforeTime;
+                float vehicleActivateTime = timestamp + deltaTime - (vehicle.TotalBeforeTime + vehicle.bridgeStartTime);
                 schedule.Add(vehicleActivateTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
                 vehicle.timestampCheck = vehicleActivateTime;
                 float t;
+                
                 if (useT)
                     t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(vehicle.collisionHeight));
                 else
@@ -156,8 +157,9 @@ public class LevelManager : MonoBehaviour
                 // 난이도 쉬움 : t 없음
                 
                 canSpawn = false;
-                float waitTime = Random.Range(Mathf.Min(t + 0.7f, vehicle.bridgeCrossingTime),
+                float waitTime = Random.Range(Mathf.Min(t + 0.1f, vehicle.bridgeCrossingTime),
                     vehicle.bridgeCrossingTime);
+                // print($"{vehicle.GetInstanceID()%10} wait start {timestamp + deltaTime} ~ end {timestamp + deltaTime + waitTime}({waitTime})");
                 // print($"{vehicleActivateTime}, {vehicleActivateTime + vehicle.TotalBeforeTime+ vehicle.bridgeStartTime} {vehicleActivateTime +vehicle.TotalBeforeTime+ vehicle.bridgeEndTime}");
                 StartCoroutine(WaitSpawnRoutine(waitTime));
             }
