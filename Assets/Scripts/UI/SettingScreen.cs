@@ -63,6 +63,7 @@ namespace DefaultNamespace.UI
             GameManager.Instance.GoMain();
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);
+            PlayerPrefs.Save();
             gameObject.SetActive(false);
             Credit.SetActive(false);
             isRunning = false;
@@ -73,6 +74,7 @@ namespace DefaultNamespace.UI
             SoundManager.Instance.Play("button2");
             PlayerPrefs.SetFloat("bgm",bgmVol);
             PlayerPrefs.SetFloat("sfx",sfxVol);
+            PlayerPrefs.Save();
             gameObject.SetActive(false);
             if(isRunning)
                 GameManager.Instance.ResumeGame();
