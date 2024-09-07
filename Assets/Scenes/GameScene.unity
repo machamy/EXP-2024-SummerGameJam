@@ -1975,6 +1975,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239445594090990892, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 837250e6f363a2d45b63ad234d0d8e3b, type: 3}
+    - target: {fileID: 1290406241876646953, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d04d1e351ccddc4d8bdff81efdd7e98, type: 3}
     - target: {fileID: 1712734861859843774, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -2075,6 +2083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3852810587411961574, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4421252889681157072, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: bridge
       value: 
@@ -2087,6 +2099,14 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
+    - target: {fileID: 7908897129299574131, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d72682f7de122741b8dda9ec127017f, type: 3}
+    - target: {fileID: 8774376949034040260, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c2df3444166abd4680f25e24e92a5ea, type: 3}
     - target: {fileID: 9009077638874764435, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_Name
       value: Canvas
