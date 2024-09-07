@@ -149,7 +149,7 @@ public class LevelManager : MonoBehaviour
                 vehicle.timestampCheck = vehicleActivateTime;
                 float t;
                 if (useT)
-                    t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(0.3f));
+                    t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(vehicle.collisionHeight));
                 else
                     t = 10000f;
                 // float startDelay = Random.Range(vehicle.bridgeStartTime, vehicle.bridgeEndTime - t - 0.05f);
