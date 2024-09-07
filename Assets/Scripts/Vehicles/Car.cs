@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DefaultNamespace;
 using DefaultNamespace.Vehicles;
 using Unity.VisualScripting;
@@ -57,6 +58,19 @@ namespace Vehicles
             gfx.GetComponent<SpriteRenderer>().sprite = isReverse ? VehicleData.ReverseSprite : VehicleData.Sprite;
         }
 
+        private void LateUpdate()
+        {
+            var renderer = gfx.GetComponent<SpriteRenderer>();
+            if (height <= 0.9f)
+            {
+                renderer.sortingLayerName = "FallingCar";
+            }
+            else
+            {
+                renderer.sortingLayerName = "Car";
+            }
+        }
+
         public override bool isCollideHeight(float height)
         {
             return collisionHeight >= this.height;
@@ -78,7 +92,7 @@ namespace Vehicles
         {
             // 다리 높이에 맞춰서
             float G = isDead ? GameManager.WaterGravity : GameManager.Gravity;
-
+            
             if (isDead)
             // 죽으면 쭉 떨어지기
             {
