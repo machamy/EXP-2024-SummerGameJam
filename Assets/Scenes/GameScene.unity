@@ -1223,6 +1223,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1392127427131589865, guid: 7bf7eb6ce751acb409dc0224cbc9f571, type: 3}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: pedestrianunit.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1230,6 +1234,14 @@ PrefabInstance:
       propertyPath: pedestrianunit.Array.data[0]
       value: 
       objectReference: {fileID: 7834775809938355334, guid: f626b413549e6d247846100522d93d77, type: 3}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.data[4].first
+      value: BoatEaseOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.data[4].second
+      value: 
+      objectReference: {fileID: 11400000, guid: ef2c0c6565addb7408888c1cc98e6a91, type: 2}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
