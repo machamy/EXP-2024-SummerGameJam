@@ -163,8 +163,9 @@ namespace Vehicles
                 ratio = 1.0f;
             else
                 ratio = currentTime / totalTime;
-            position = Vector3.Lerp(startPos,endPos, pickedCurve.Evaluate(ratio));
-            currentDistance = Mathf.Lerp(start, end, ratio);
+            float curveRatio = pickedCurve.Evaluate(ratio);
+            position = Vector3.Lerp(startPos,endPos, curveRatio);
+            currentDistance = Mathf.Lerp(start, end, curveRatio);
             // print($"{name} : {totalTime} {startPos} {endPos}, {pickedCurve.Evaluate(ratio)}");
             // print($"{currentTime} {ratio} {currentDistance} {position}");
             currentTime += Time.fixedDeltaTime;

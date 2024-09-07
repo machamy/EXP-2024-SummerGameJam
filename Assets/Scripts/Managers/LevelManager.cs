@@ -236,7 +236,36 @@ public class LevelManager : MonoBehaviour
         
         return result;
     }
+    [ContextMenu("SummonDebug")]
+    public GameObject SummonDebug()
+    {
+        GameObject prefab;
+        bool isCar = Random.Range(0, 2) == 1;
+        Rarity rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
+        GameObject[] prefabArr = cars;
+        List<VehicleDataSO> vehicleDataList = carDataList;
+        if (!isCar)
+        {
+            prefabArr = ships;
+            vehicleDataList = shipDataList;
+        }
+        var candidates = GetSummonables(rarity, vehicleDataList);
+        
+        while (candidates.Count == 0)
+        {
+            rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
+            candidates = GetSummonables(rarity, vehicleDataList);
+        }
+        VehicleDataSO data = candidates[Random.Range(0, candidates.Count)];
+        var line = isCar ? GetCarLine(data) : GetShipLine(data);
 
+
+        // 거꾸로 이동 부여
+        GameObject result = Instantiate(prefabArr[data.prefabID]);
+        InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve,data:data,isReverse:line.isReverse);
+        
+        return result;
+    }
     private Line GetCarLine(VehicleDataSO data)
     {
         Line line;
