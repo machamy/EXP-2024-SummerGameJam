@@ -260,8 +260,8 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   backButton: {fileID: 2356285282842904275}
   isRunning: 0
-  bgmSilder: {fileID: 3018329229288835806}
-  sfxSilder: {fileID: 1241073257594026678}
+  bgmSilder: {fileID: 3130036415762524995}
+  sfxSilder: {fileID: 3702322160248210007}
 --- !u!1 &406229498895184911
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,7 +7395,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7779029763339271147}
         m_TargetAssemblyTypeName: DefaultNamespace.UI.PauseScreen, Assembly-CSharp
         m_MethodName: OnVolChangeSFX
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
