@@ -17,7 +17,7 @@ namespace Vehicles.Ships
             playerHp.Value -= 1;
             isDead = true;
             SoundManager.Instance.StopSFX("speedboat");
-            SoundManager.Instance.Play("sheep_crash");
+            SoundManager.Instance.Play("ship_crash");
             OnDeath();
         }
 

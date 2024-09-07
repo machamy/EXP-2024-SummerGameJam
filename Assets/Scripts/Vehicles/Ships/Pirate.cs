@@ -20,7 +20,7 @@ namespace Vehicles.Ships
             isDead = true;
 
             SoundManager.Instance.StopSFX("speedboat");
-            SoundManager.Instance.Play("sheep_crash");
+            SoundManager.Instance.Play("ship_crash");
 
             playerScore.Value += 1;
             OnDeath();
