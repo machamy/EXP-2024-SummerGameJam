@@ -39,6 +39,8 @@ public class BridgeController : MonoBehaviour
     [SerializeField] private Color bridgeColor = Color.white;
     [SerializeField] private Color sunkenColor = new Color(0.81f, 0.94f, 1f);
     private static Color defaultSunkenColor = new Color(0.81f, 0.94f, 1f);
+    private AnimationCurve selectedCurve;  // 클래스 레벨에서 selectedCurve 선언
+    private AnimationCurve previousCurve;  // 이전 곡선을 저장할 변수
     public SkinSO SkinSo
     {
         get => skinSo;
@@ -84,6 +86,8 @@ public class BridgeController : MonoBehaviour
         originalPos = transform.position;
         // Rigidbody2D 컴포넌트를 할당
         maskOriginalPos = spriteMask.transform.position;
+        selectedCurve = curveSink;
+        previousCurve = selectedCurve;
     }
 
     
@@ -137,34 +141,44 @@ public class BridgeController : MonoBehaviour
     #endregion
     
 
-    private bool isInputAcitve = false;
+    private bool isInputActive = false;
 
     void Update()
     {
-        isInputAcitve = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        isInputActive = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
     }
-    
-    
+
+
 
     private void FixedUpdate()
     {
-        AnimationCurve sellecteCurve;
-        if (isInputAcitve) 
+        previousCurve = selectedCurve;
+        float previousHeight = height;  // 이전 height 값 저장
+        
+        if (isInputActive)
         {
-            this.progress = Mathf.Min(MoveTime, this.progress+ Time.deltaTime);
-            sellecteCurve = curveSink;
-            //Debug.Log("Bridge Sink");
+            // progress가 MoveTime을 넘지 않도록 증가
+            this.progress = Mathf.Clamp(this.progress + Time.deltaTime, 0, MoveTime);
+            selectedCurve = curveSink;
+            // Debug.Log("Bridge Sink");
         }
         else
         {
-            this.progress = Mathf.Max(0, this.progress- Time.deltaTime);
-            sellecteCurve = curveGoup;
-            //Debug.Log("Bridge Go Up");
+            // progress가 0보다 작지 않도록 감소
+            this.progress = Mathf.Clamp(this.progress - Time.deltaTime, 0, MoveTime);
+            selectedCurve = curveGoup;
+            // Debug.Log("Bridge Go Up");
         }
-        
-        
 
-        height = sellecteCurve.Evaluate(Mathf.Lerp(0, 1, this.progress/ MoveTime));
+        // 곡선이 바뀌었다면, 이전 height에 맞는 새로운 progress 값을 찾음
+        if (previousCurve != selectedCurve)
+        {
+            this.progress = FindProgressForHeight(selectedCurve, previousHeight);
+        }
+
+        // 현재 곡선에 따른 height 계산
+        height = selectedCurve.Evaluate(Mathf.Lerp(0, 1, this.progress / MoveTime));
+
         if (height < sinkHeight)
         {
             spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
@@ -181,9 +195,33 @@ public class BridgeController : MonoBehaviour
                 renderer.sortingLayerName = "Bridge";
             }
         }
-            
-        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height* heightweight - heightweight, originalPos.z); 
+
+        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height * heightweight - heightweight, originalPos.z);
     }
+
+    // 주어진 height에 맞는 progress 값을 찾는 함수
+    private float FindProgressForHeight(AnimationCurve curve, float targetHeight)
+    {
+        // 0에서 MoveTime까지의 progress에서 해당 height에 가까운 값을 찾음
+        float bestProgress = 0f;
+        float bestDifference = Mathf.Abs(curve.Evaluate(0) - targetHeight);
+
+        // 일정 간격으로 progress 값을 탐색해 가장 가까운 값을 찾음
+        for (float p = 0f; p <= MoveTime; p += 0.01f)
+        {
+            float heightAtP = curve.Evaluate(Mathf.Lerp(0, 1, p / MoveTime));
+            float difference = Mathf.Abs(heightAtP - targetHeight);
+
+            if (difference < bestDifference)
+            {
+                bestDifference = difference;
+                bestProgress = p;
+            }
+        }
+
+        return bestProgress;
+    }
+
 
     public void OnValidate()
     {
