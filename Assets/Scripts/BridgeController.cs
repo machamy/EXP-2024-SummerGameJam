@@ -14,6 +14,7 @@ public class BridgeController : MonoBehaviour
     public GameObject bridgegfx;
     public Ship Ship;
     public Car Car;
+    public float MoveSpeedWeight = 1.0f;
     [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
     [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
     public float height = 1;
@@ -158,14 +159,14 @@ public class BridgeController : MonoBehaviour
         if (isInputActive)
         {
             // progress가 MoveTime을 넘지 않도록 증가
-            this.progress = Mathf.Clamp(this.progress + Time.deltaTime, 0, MoveTime);
+            this.progress = Mathf.Clamp(this.progress + Time.deltaTime*(1/MoveSpeedWeight), 0, MoveTime);
             selectedCurve = curveSink;
             // Debug.Log("Bridge Sink");
         }
         else
         {
             // progress가 0보다 작지 않도록 감소
-            this.progress = Mathf.Clamp(this.progress - Time.deltaTime, 0, MoveTime);
+            this.progress = Mathf.Clamp(this.progress - Time.deltaTime*(1/MoveSpeedWeight), 0, MoveTime);
             selectedCurve = curveGoup;
             // Debug.Log("Bridge Go Up");
         }

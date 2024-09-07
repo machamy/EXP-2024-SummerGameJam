@@ -76,17 +76,21 @@ public class BGMManager : MonoBehaviour
                 }
             break;
             case 10:
-                _playbgmSources[1].volume = 1; break;
+                StartCoroutine(VolumeRoutine(_playbgmSources[1]));
+                break;
             case 20:
-                _playbgmSources[2].volume = 1; break;
+                StartCoroutine(VolumeRoutine(_playbgmSources[2]));
+                break;
             case 30:
-                _playbgmSources[3].volume = 1; break;
+                StartCoroutine(VolumeRoutine(_playbgmSources[3]));
+                break;
             case 40:
                 for(int i = 0; i < 4; i++)
                 {
-                    _playbgmSources[i].volume = 0;
+                    StartCoroutine(VolumeRoutine(_playbgmSources[i],1,0));
                 }
-                _playbgmSources[4].volume = 1; break;
+                StartCoroutine(VolumeRoutine(_playbgmSources[4],0,1));
+                break;
        };
     }
 
@@ -105,8 +109,18 @@ public class BGMManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
 
+    public IEnumerator VolumeRoutine(AudioSource source, float from = 0f, float to = 1f, float time = 0.6f)
+    {
+        float current = 0;
+        while (current < time)
+        {
+            source.volume = Mathf.Lerp(from, to, current / time);
+            current += Time.deltaTime;
+            yield return null;
+        }
+
+        source.volume = to;
     }
+    
 }

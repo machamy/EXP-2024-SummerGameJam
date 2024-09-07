@@ -23,18 +23,16 @@ namespace Vehicles.Cars
             Vector3 position, startPos,endPos;
             float ratio, totalTime,start,end;
             AnimationCurve pickedCurve;
-
-        
-
             switch (state)
             {
-
-
                 case VehicleState.Idle:
                     // OnStart와 같음
                     currentTime = 0f;
                     state = VehicleState.MoveBefore;
                     float total = priorMoveDelay + priorWaitDelay;
+                    float hardcoding = -0.743f;
+                    RedLight.transform.position += Vector3.left * (hardcoding);
+                    RedLight.transform.position += Vector3.left * (hardcoding);
                     StartCoroutine(SirenWaitRoutine(total));
                     StartCoroutine(SirenLightRoutine(total/ sirenMaxCount));
 
@@ -68,8 +66,9 @@ namespace Vehicles.Cars
                 ratio = 1.0f;
             else
                 ratio = currentTime / totalTime;
-            position = Vector3.Lerp(startPos,endPos, pickedCurve.Evaluate(ratio));
-            currentDistance = Mathf.Lerp(start, end, ratio);
+            float curveRatio = pickedCurve.Evaluate(ratio);
+            position = Vector3.Lerp(startPos,endPos, curveRatio);
+            currentDistance = Mathf.Lerp(start, end, curveRatio);
             // print($"{name} : {totalTime} {startPos} {endPos}, {pickedCurve.Evaluate(ratio)}");
             // print($"{currentTime} {ratio} {currentDistance} {position}");
             currentTime += Time.fixedDeltaTime;

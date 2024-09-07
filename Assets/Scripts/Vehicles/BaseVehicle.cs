@@ -318,7 +318,11 @@ namespace Vehicles
         {
             var effect = Instantiate(deathEffect);
             effect.transform.position = gfx ? gfx.transform.position : transform.position;
-            StartCoroutine(DeatRoutine(1, 0.25f, new Color(1f, 1f, 1f, 0.5f), new Color(1,1,1,1)));
+            Color c0, c1;
+            SpriteRenderer renderer = gfx.GetComponent<SpriteRenderer>();
+            c0 = c1 = renderer.color;
+            c0.a = 0.5f;
+            StartCoroutine(DeatRoutine(1, 0.25f, c0, c1));
         }
 
         private IEnumerator DeatRoutine(float total, float interval, Color c0, Color c1)

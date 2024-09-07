@@ -138,8 +138,21 @@ public class LevelManager : MonoBehaviour
             intervalRemain -= Time.deltaTime;
             if (intervalRemain <= 0)
             {
+                GameObject go;
+            #if UNITY_EDITOR
+                if(dbgSummonCar || dbgSummonShip)
+                { 
+                    go = SummonDebug();
+                }
+                else
+                {
+                    go = SummonRandomByData();
+                }
+            #else
+                    GameObject go = SummonRandomByData();
+            #endif
                 // 소환 후 대기
-                GameObject go = SummonRandomByData();
+                
                 go.SetActive(false);
                 
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
@@ -201,10 +214,13 @@ public class LevelManager : MonoBehaviour
         if (n == 0)
         {
             weight = 1.00f;
+            bridge.MoveSpeedWeight = 1.00f;
         }
         else if (n % 10 == 0)
         {
             weight *= weightCoefficient;
+            bridge.MoveSpeedWeight *= weightCoefficient;
+            intervalMax = Mathf.Max(intervalMin, intervalMax * weightCoefficient);
             weight = Mathf.Max(0.05f, weight); // 최솟값(임의) 설정
         }
     }
@@ -242,7 +258,7 @@ public class LevelManager : MonoBehaviour
     public GameObject SummonDebug()
     {
         GameObject prefab;
-        bool isCar = Random.Range(0, 2) == 1;
+        bool isCar = dbgSummonCar;
         Rarity rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
         GameObject[] prefabArr = cars;
         List<VehicleDataSO> vehicleDataList = carDataList;
@@ -251,14 +267,8 @@ public class LevelManager : MonoBehaviour
             prefabArr = ships;
             vehicleDataList = shipDataList;
         }
-        var candidates = GetSummonables(rarity, vehicleDataList);
-        
-        while (candidates.Count == 0)
-        {
-            rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
-            candidates = GetSummonables(rarity, vehicleDataList);
-        }
-        VehicleDataSO data = candidates[Random.Range(0, candidates.Count)];
+
+        VehicleDataSO data = vehicleDataList[isCar ? dbgCarId : dbgShipId];
         var line = isCar ? GetCarLine(data) : GetShipLine(data);
 
 
@@ -284,6 +294,8 @@ public class LevelManager : MonoBehaviour
         Line line;
         bool isFirstLine = Random.Range(0, 2) == 1;
         line = isFirstLine ? shipLeft : shipRight;
+        if (data.prefabID == 4)
+            line = shipLeft;
         return line;
     }
 

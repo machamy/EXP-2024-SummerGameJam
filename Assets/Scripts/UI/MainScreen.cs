@@ -6,6 +6,7 @@ namespace DefaultNamespace.UI
     public class MainScreen : UIScreenBase
     {
         [SerializeField] private GameObject difficultySellector;
+        [SerializeField] private GameObject SkinScreen;
         [SerializeField] private Button levelButton;
         [SerializeField] private Button RankingButton;
         [field:SerializeField] public Sprite[] levelSprites { get; private set; }
@@ -91,5 +92,10 @@ namespace DefaultNamespace.UI
         public void OnRankingClicked() { 
             SoundManager.Instance.Play("button2"); 
             uiManager.ShowRanking(); }
+
+        public void OnSkinClicked()
+        {
+            SkinScreen.SetActive(true);
+        }
     }
 }

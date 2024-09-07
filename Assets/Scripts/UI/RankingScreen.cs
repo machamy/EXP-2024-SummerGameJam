@@ -67,6 +67,10 @@ namespace DefaultNamespace.UI
             
         }
 
+        public override void OnBackClicked()
+        {
+            OnMainClicked();
+        }
 
         public void OnMainClicked()
         {

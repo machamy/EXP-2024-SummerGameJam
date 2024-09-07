@@ -39,7 +39,7 @@ namespace Vehicles.Ships
             //위에서 아래로 찌부되는 경우
             SoundManager.Instance.StopSFX("splash_long");
             SoundManager.Instance.Play("ship_crash");
-            StartCoroutine(FlyAwayRoutine(callback: () => playerHp.Value -= 1));
+            OnDeath();
         }
 
         public override void OnArrival()
