@@ -116,13 +116,14 @@ namespace DefaultNamespace.Database
             }
             result.Rarity = rarity;
             result.open = Convert.ToInt32(data[11]);
-            if (!float.TryParse(data[12], out var t))
+            result.close = Convert.ToInt32(data[12]);
+            if (!float.TryParse(data[13], out var t))
             {
                 t = 9999;
             }
             result.bridgeCrossVariableT = t;
             
-            if (!int.TryParse(data[13], out var rev))
+            if (!int.TryParse(data[14], out var rev))
             {
                 rev = 0;
             }

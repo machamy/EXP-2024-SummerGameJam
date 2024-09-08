@@ -28,5 +28,6 @@ MonoBehaviour:
   afterCurve: {fileID: 0}
   Rarity: 1
   open: 3
+  close: -1
   bridgeCrossVariableT: 0.5
   reverseValue: 0

@@ -23,10 +23,11 @@ MonoBehaviour:
   waitTime: 5
   afterTime: 1
   rawBeforeCurve: Linear
-  rawAfterCurve: Linear
+  rawAfterCurve: EaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 2
-  open: 30
+  open: 20
+  close: -1
   bridgeCrossVariableT: 9999
   reverseValue: 30

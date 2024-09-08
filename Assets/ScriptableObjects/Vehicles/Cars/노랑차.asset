@@ -20,13 +20,14 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 6740121b48864a746831a063e58fa675, type: 3}
   reverseSprite: {fileID: 21300000, guid: 3cbaa24f52339a940984042cfe077901, type: 3}
   beforeTime: 2
-  waitTime: 2
-  afterTime: 2.5
+  waitTime: 3
+  afterTime: 2
   rawBeforeCurve: Linear
-  rawAfterCurve: EaseOut
+  rawAfterCurve: EaseBoth
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 0
   open: 5
+  close: -1
   bridgeCrossVariableT: 9999
   reverseValue: 30

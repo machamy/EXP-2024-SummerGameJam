@@ -8,7 +8,7 @@ namespace DefaultNamespace.Database
     public class SpreadSheetReader
     {
         public readonly string ADRESS = "1BksCb5wDTNaXzDFMsazgt0wz4vhYwZtQU3zJdCOGDQk";
-        public readonly string RANGE = "A2:N";
+        public readonly string RANGE = "A2:O";
         public readonly long SHEET_ID = 0;
 
         public bool IsDataLoaded = false;

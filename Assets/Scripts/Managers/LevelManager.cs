@@ -301,7 +301,10 @@ public class LevelManager : MonoBehaviour
 
     private List<VehicleDataSO> GetSummonables(Rarity rarity, List<VehicleDataSO> vehicleDataSoList)
     {
-        var resultList = from data in vehicleDataSoList where data.open <= score.Value && rarity == data.Rarity select data;
+        var resultList = from data in vehicleDataSoList 
+            where data.open <= score.Value && rarity == data.Rarity 
+                                           && (data.close == -1 || data.close != -1 && score.Value < data.close)
+             select data;
         // foreach (var data in vehicleDataSoList)
         // {
         //     print($"{data.name} : {data.open <= score.Value} {data.Rarity == rarity} ({rarity})");

@@ -32,7 +32,7 @@ namespace Vehicles.Cars
                     float total = priorMoveDelay + priorWaitDelay;
                     float hardcoding = -0.743f;
                     RedLight.transform.position += Vector3.left * (hardcoding);
-                    RedLight.transform.position += Vector3.left * (hardcoding);
+                    BlueLight.transform.position += Vector3.left * (hardcoding);
                     StartCoroutine(SirenWaitRoutine(total));
                     StartCoroutine(SirenLightRoutine(total/ sirenMaxCount));
 

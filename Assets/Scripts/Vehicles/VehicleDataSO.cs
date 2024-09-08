@@ -73,6 +73,7 @@ namespace Vehicles
         public CurveSO afterCurve;
         public Rarity Rarity;
         public int open;
+        public int close;
         public float bridgeCrossVariableT;
         public int reverseValue = 0;
 
