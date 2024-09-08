@@ -12,6 +12,7 @@ using ColorUtility = UnityEngine.ColorUtility;
 public class BridgeController : MonoBehaviour
 {
     public GameObject bridgegfx;
+    public GameObject shadow;
     public Ship Ship;
     public Car Car;
     public float MoveSpeedWeight = 1.0f;
@@ -179,6 +180,8 @@ public class BridgeController : MonoBehaviour
 
         // 현재 곡선에 따른 height 계산
         height = selectedCurve.Evaluate(Mathf.Lerp(0, 1, this.progress / MoveTime));
+
+        shadow.SetActive(!(bridgegfx.transform.position.y <= shadow.transform.position.y));
 
         if (height < sinkHeight)
         {

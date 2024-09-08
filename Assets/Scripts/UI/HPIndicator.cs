@@ -19,8 +19,7 @@ public class HPIndicator : MonoBehaviour
 
     public void SetHP(int hp)
     {
-        if (hp > MaxHP)
-            hp = MaxHP;
+        Math.Clamp(hp, 0, 3);
         
         for (int i = 0; i < hp; i++)
         {

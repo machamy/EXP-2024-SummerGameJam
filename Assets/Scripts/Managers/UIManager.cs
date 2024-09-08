@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Setting;
     [Header("Pause")]
     [SerializeField] private GameObject Pause;
-
+    [Header("Skin")]
+    [SerializeField] private SkinScreen Skin;
     [Header("result")] [SerializeField] private GameObject Result;
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private HPIndicator hpIndicator;
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
         Score.Value = 0;
         Hp.Value = 3;
         Main.GetComponent<MainScreen>().UpdateSprites(currentDifficulty,unlockDifficulty);
+        Skin.SkinCheck();
     }
 
     public void ShowPause()

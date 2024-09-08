@@ -48,6 +48,7 @@ namespace DefaultNamespace.UI
             gameObject.SetActive(false);
         }
 
+        public void SkinCheck() => OnSkinChange(CurrentSkin);
         private void OnSkinChange(SkinSO skinSo)
         {
             bridge.SkinSo = skinSo;
