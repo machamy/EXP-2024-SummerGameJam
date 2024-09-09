@@ -955,9 +955,9 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 4.3, y: 0.000000011175871, z: 0}
   - {x: 5.3, y: 0.000000059604645, z: 0}
-  - {x: 12, y: -0.00000011920929, z: 0}
-  - {x: 13.000001, y: 0.000000044703484, z: 0}
-  - {x: 15.999999, y: -0.00000040233135, z: 0}
+  - {x: 11.7, y: 0.000000059604645, z: 0}
+  - {x: 12.7, y: -0.000000007450581, z: 0}
+  - {x: 16, y: -0.00000039488077, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.0001
@@ -1788,7 +1788,7 @@ Transform:
   m_GameObject: {fileID: 996977925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.99254614, w: -0.121869594}
-  m_LocalPosition: {x: 8.16, y: -4.15, z: 0}
+  m_LocalPosition: {x: 8.114, y: -4.336, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
