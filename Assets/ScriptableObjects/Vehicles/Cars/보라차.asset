@@ -19,7 +19,7 @@ MonoBehaviour:
   rawSprite: purple
   sprite: {fileID: 21300000, guid: 6f4017d6e24a43d4482ac0721c0d79d4, type: 3}
   reverseSprite: {fileID: 21300000, guid: 254d4237ac74c9546967e1f43a1c607f, type: 3}
-  beforeTime: 1
+  beforeTime: 0.5
   waitTime: 0.2
   afterTime: 1
   rawBeforeCurve: Linear
