@@ -57,17 +57,17 @@ namespace DefaultNamespace.UI
             }
             
         }
-        public void OnMainClicked()
-        {
-            SoundManager.Instance.Play("button2");
-            GameManager.Instance.GoMain();
-            PlayerPrefs.SetFloat("bgm",bgmVol);
-            PlayerPrefs.SetFloat("sfx",sfxVol);
-            PlayerPrefs.Save();
-            gameObject.SetActive(false);
-            Credit.SetActive(false);
-            isRunning = false;
-        }
+        // public void OnMainClicked()
+        // {
+        //     SoundManager.Instance.Play("button2");
+        //     GameManager.Instance.GoMain();
+        //     PlayerPrefs.SetFloat("bgm",bgmVol);
+        //     PlayerPrefs.SetFloat("sfx",sfxVol);
+        //     PlayerPrefs.Save();
+        //     gameObject.SetActive(false);
+        //     Credit.SetActive(false);
+        //     isRunning = false;
+        // }
 
         public override void Exit()
         {

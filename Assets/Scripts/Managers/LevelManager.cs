@@ -221,7 +221,7 @@ public class LevelManager : MonoBehaviour
             weight = 1.00f;
             bridge.MoveSpeedWeight = 1.00f;
         }
-        else if (n % 10 == 0)
+        else if (n % 10 == 0 && GameManager.Instance.State == GameManager.GameState.Running)
         {
             weight *= weightCoefficient;
             bridge.MoveSpeedWeight *= weightCoefficient;
