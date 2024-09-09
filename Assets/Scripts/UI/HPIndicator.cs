@@ -19,7 +19,7 @@ public class HPIndicator : MonoBehaviour
 
     public void SetHP(int hp)
     {
-        Math.Clamp(hp, 0, 3);
+        hp = Math.Clamp(hp, 0, 3);
         
         for (int i = 0; i < hp; i++)
         {
