@@ -135,6 +135,7 @@ namespace DefaultNamespace.Database
             return result;
         }
 
+        #if UNITY_EDITOR
         [ContextMenu("SaveSO")]
         public void SaveDataSO()
         {
@@ -144,5 +145,6 @@ namespace DefaultNamespace.Database
             }
             AssetDatabase.SaveAssets();
         }
+        #endif
     }
 }

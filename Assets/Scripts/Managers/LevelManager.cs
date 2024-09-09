@@ -149,7 +149,7 @@ public class LevelManager : MonoBehaviour
                     go = SummonRandomByData();
                 }
             #else
-                    GameObject go = SummonRandomByData();
+                    go = SummonRandomByData();
             #endif
                 // 소환 후 대기
                 
