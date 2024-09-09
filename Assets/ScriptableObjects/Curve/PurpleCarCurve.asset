@@ -10,46 +10,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e990ce2d20d44d3dbfa68544df4b06c9, type: 3}
-  m_Name: CarEaseIn
+  m_Name: PurpleCarCurve
   m_EditorClassIdentifier: 
   Curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0006828308
+      time: 0
       value: 0
-      inSlope: 2.6518526
-      outSlope: 2.6518526
+      inSlope: 0.07421875
+      outSlope: 0.07421875
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.126205
+      outWeight: 0.2975952
     - serializedVersion: 3
-      time: 0.2070094
-      value: 0.40383434
-      inSlope: 1.2627757
-      outSlope: 1.2627757
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.30833542
-      outWeight: 0.05173403
-    - serializedVersion: 3
-      time: 0.5334765
-      value: 0.553153
-      inSlope: 0.39452216
-      outSlope: 0.39452216
+      time: 0.17685628
+      value: 0.34124255
+      inSlope: 0.026216026
+      outSlope: 0.026216026
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.114444986
+      outWeight: 0.26587394
     - serializedVersion: 3
-      time: 1
-      value: 1.0013008
-      inSlope: 0.3621631
-      outSlope: 0.3621631
+      time: 0.34636205
+      value: 0.67135847
+      inSlope: 0.5656932
+      outSlope: 0.5656932
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.14661518
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.79609674
+      outSlope: 0.79609674
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07006376
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
