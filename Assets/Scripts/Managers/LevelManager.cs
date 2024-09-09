@@ -302,8 +302,10 @@ public class LevelManager : MonoBehaviour
     private List<VehicleDataSO> GetSummonables(Rarity rarity, List<VehicleDataSO> vehicleDataSoList)
     {
         var resultList = from data in vehicleDataSoList 
-            where data.open <= score.Value && rarity == data.Rarity 
-                                           && (data.close == -1 || data.close != -1 && score.Value < data.close)
+            where data.open <= score.Value  //최소 조건
+                  && rarity == data.Rarity  //희귀도 조건
+                  && (data.close == -1 || data.close != -1 && score.Value < data.close) // 최대조건
+                  && (data.possibleDifficultyFlag & (1<<difficulty)) > 0 // 난이도 조건
              select data;
         // foreach (var data in vehicleDataSoList)
         // {

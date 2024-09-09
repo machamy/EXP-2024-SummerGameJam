@@ -21,13 +21,13 @@ MonoBehaviour:
   reverseSprite: {fileID: 21300000, guid: 1bdbc2694b3ba8745bb54faa3754cf6d, type: 3}
   beforeTime: 0
   waitTime: 9999
-  afterTime: 1.5
+  afterTime: 2
   rawBeforeCurve: Linear
   rawAfterCurve: Linear
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
-  Rarity: 1
-  open: 3
+  Rarity: 2
+  open: 30
   close: -1
   bridgeCrossVariableT: 0.5
   reverseValue: 0

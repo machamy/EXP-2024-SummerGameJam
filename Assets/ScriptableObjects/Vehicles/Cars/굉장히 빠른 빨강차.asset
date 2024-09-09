@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a4a04d4d36b4da39b629a11f20b026c, type: 3}
-  m_Name: "\uBE68\uAC15\uBC30"
+  m_Name: "\uAD49\uC7A5\uD788 \uBE60\uB978 \uBE68\uAC15\uCC28"
   m_EditorClassIdentifier: 
-  vehicleName: "\uBE68\uAC15\uBC30"
-  type: 1
+  vehicleName: "\uAD49\uC7A5\uD788 \uBE60\uB978 \uBE68\uAC15\uCC28"
+  type: 0
   prefabID: 1
   spriteID: 1
   rawSprite: red
-  sprite: {fileID: 21300000, guid: 0735f63f1e191a7418d8d7771a0f75ef, type: 3}
-  reverseSprite: {fileID: 21300000, guid: 0735f63f1e191a7418d8d7771a0f75ef, type: 3}
-  beforeTime: 0
-  waitTime: 9999
-  afterTime: 3
+  sprite: {fileID: 21300000, guid: 76b34ca918cd9bd469fc17911134e83d, type: 3}
+  reverseSprite: {fileID: 21300000, guid: 39cd9218557409b468f01f82cd6aea13, type: 3}
+  beforeTime: 2
+  waitTime: 2
+  afterTime: 0.7
   rawBeforeCurve: Linear
-  rawAfterCurve: Linear
+  rawAfterCurve: EaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
-  Rarity: 0
-  open: 20
+  Rarity: 2
+  open: 30
   close: -1
   possibleDifficultyFlag: 7
   bridgeCrossVariableT: 9999
-  reverseValue: 0
+  reverseValue: 30

@@ -74,6 +74,7 @@ namespace Vehicles
         public Rarity Rarity;
         public int open;
         public int close;
+        public int possibleDifficultyFlag;
         public float bridgeCrossVariableT;
         public int reverseValue = 0;
 

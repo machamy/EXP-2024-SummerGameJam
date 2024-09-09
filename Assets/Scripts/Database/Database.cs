@@ -128,6 +128,9 @@ namespace DefaultNamespace.Database
                 rev = 0;
             }
             result.reverseValue = rev;
+
+            result.possibleDifficultyFlag = Convert.ToInt32(data[15]);
+            
             result.Init();
             return result;
         }
