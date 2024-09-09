@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int dbgShipId = 0;
 
     [Header("Level")]
-    [Range(0,3),SerializeField] public int difficulty = 0;
+    [Range(0,3),SerializeField,Tooltip("easy,normal,hard,main")] public int difficulty = 0;
     [SerializeField] private float[] intervalMinArr = { 3f, 1f, 0.2f };
     [SerializeField] private float[] intervalMaxArr = { 7f, 4f, 3f };
     [field:SerializeField] public int[] openScoreArr { get; private set; } = { 0, 70, 70, -1 };
@@ -86,8 +86,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool PedcanSpawn = false;
 
     public float timestamp = 0.0f;
-    public void Initialize()
+    public void Initialize(int difficulty)
     {
+        this.difficulty = difficulty;
         weight = 1.00f;
         timestamp = 0.0f;
         intervalRemain = Random.Range(intervalMin, intervalMax);
@@ -95,12 +96,14 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(go);
         }
+
+        score.Value = 0;
         schedule.Clear();
         canSpawn = true;
         PedcanSpawn = true;
         carDataList = Database.Instance.CarDataSoList;
         shipDataList = Database.Instance.ShipDataSoList;
-        difficulty = GameManager.Instance.currentDifficulty;
+        
         intervalMin = intervalMinArr[difficulty];
         intervalMax = intervalMaxArr[difficulty];
         useReverse = reverseValueArr[difficulty];
@@ -114,7 +117,8 @@ public class LevelManager : MonoBehaviour
 
     public void Update()
     {
-        if(GameManager.Instance.State != GameManager.GameState.Running)
+        if(GameManager.Instance.State == GameManager.GameState.Pause ||
+           GameManager.Instance.State == GameManager.GameState.Score)
             return;
 
         timestamp += Time.deltaTime;
@@ -172,6 +176,7 @@ public class LevelManager : MonoBehaviour
                 canSpawn = false;
                 float waitTime = Random.Range(Mathf.Min(t + 0.1f, vehicle.bridgeCrossingTime),
                     vehicle.bridgeCrossingTime);
+                vehicle.waitTime = waitTime;
                 // print($"{vehicle.GetInstanceID()%10} wait start {timestamp + deltaTime} ~ end {timestamp + deltaTime + waitTime}({waitTime})");
                 // print($"{vehicleActivateTime}, {vehicleActivateTime + vehicle.TotalBeforeTime+ vehicle.bridgeStartTime} {vehicleActivateTime +vehicle.TotalBeforeTime+ vehicle.bridgeEndTime}");
                 StartCoroutine(WaitSpawnRoutine(waitTime));

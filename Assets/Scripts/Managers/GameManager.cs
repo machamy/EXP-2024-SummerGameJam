@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private DefaultNamespace.UI.RankingScreen rankingScreen;
 
-
-    public LevelManager LM => levelManager;
+    [SerializeField] private BridgeController bridge;
+    
     public IntVariableSO hp;
     public IntVariableSO score;
 
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         InitializeGame();
         print($"current difficulty : {currentDifficulty}");
+        levelManager.Initialize(3);
         
         // Debug.Log(Global.shipDirection);
         // Debug.Log(Global.carDirection);
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
         uiManager.ShowMain();
         Time.timeScale = 1.0f;
         InitializeGame();
+        levelManager.Initialize(3);
+        bridge.autoplayEnabled = true;
     }
 
     /// <summary>
@@ -77,8 +80,10 @@ public class GameManager : MonoBehaviour
     {
         State = GameState.Running;
         bgmManager.RunPlayMusic(); // 상태 변경에 따른 음악 실행
-        levelManager.Initialize();
+        hp.Value = 3;
+        levelManager.Initialize(currentDifficulty);
         Time.timeScale = 1.0f;
+        bridge.autoplayEnabled = false;
     }
 
     /// <summary>
@@ -109,7 +114,7 @@ public class GameManager : MonoBehaviour
         sm.ChangeVolumeBGM(bgmVol);
         sm.ChangeVolumeEffect(sfxVol);
         uiManager.Initialize(currentDifficulty, unlockedDifficulty);
-        levelManager.Initialize();
+        levelManager.Initialize(currentDifficulty);
     }
 
 

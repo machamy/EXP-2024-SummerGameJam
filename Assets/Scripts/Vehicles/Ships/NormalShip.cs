@@ -7,6 +7,8 @@ namespace Vehicles.Ships
 {
     public class NormalShip : global::Vehicles.Ship
     {
+        public override bool isBridgeMustSink => true;
+        
         protected virtual IEnumerator PlayShipLoop()
         {
             for (int i = 0; i < 5; i++)

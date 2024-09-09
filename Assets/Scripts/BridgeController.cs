@@ -144,10 +144,26 @@ public class BridgeController : MonoBehaviour
     
 
     private bool isInputActive = false;
-
+    public bool autoplayEnabled = false;
+    public bool autoInput = false;
+    [SerializeField]private float autoplayDelay = 3f;
+    private float autoplayDelayRemain = 3f;
     void Update()
     {
         isInputActive = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        if (isInputActive)
+        {
+            autoplayEnabled = false;
+            autoplayDelayRemain = autoplayDelay;
+        }
+        else if(autoplayDelayRemain > 0)
+        {
+            autoplayDelayRemain -= Time.deltaTime;
+        }
+        else
+        {
+            autoplayEnabled = true;
+        }
     }
 
 
@@ -156,8 +172,8 @@ public class BridgeController : MonoBehaviour
     {
         previousCurve = selectedCurve;
         float previousHeight = height;  // 이전 height 값 저장
-        
-        if (isInputActive)
+        bool bridgeDown = isInputActive || autoplayEnabled && autoInput;
+        if (bridgeDown)
         {
             // progress가 MoveTime을 넘지 않도록 증가
             this.progress = Mathf.Clamp(this.progress + Time.deltaTime*(1/MoveSpeedWeight), 0, MoveTime);

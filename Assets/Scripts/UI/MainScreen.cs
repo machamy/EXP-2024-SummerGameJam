@@ -72,6 +72,7 @@ namespace DefaultNamespace.UI
             IsSellectingDiffculty = false;
             UpdateLevelSprite(n);
             PlayerPrefs.SetInt("c_diff", n);
+            PlayerPrefs.Save();
             print($"Change difficult {n}");
         }
 

@@ -5,6 +5,8 @@ namespace Vehicles.Cars
 {
     public class EnemyCar : Car
     {
+        public override bool isBridgeMustSink => true;
+
         protected override void Start()
         {
             base.Start();

@@ -34,6 +34,8 @@ namespace Vehicles
         public BridgeController bridgeController;
         public VehicleType type;
         public GameObject gfx;
+
+        public virtual bool isBridgeMustSink => false;
         /// <summary>
         /// 다리 이전 이동 시간
         /// </summary>
@@ -52,6 +54,8 @@ namespace Vehicles
         public float bridgeStartTime = 0.2f;
         public float bridgeEndTime = 1.2f;
         public float afterMovingTime = 3f;
+
+        public float waitTime = 0.4f;
     
         [Header("판정")]
         [Tooltip("다리 충돌")]public float collisionHeight = 0.3f;
@@ -111,6 +115,14 @@ namespace Vehicles
         private void OnEnable()
         {
             currentTime = 0f;
+            AutoInit();
+        }
+
+        public virtual void AutoInit() => AutoInit(-0.3f, 0.5f);
+        
+        public void AutoInit(float deltaA, float deltaB)
+        {
+            StartCoroutine(BridgeAutoInputRoutine(TotalBeforeTime + bridgeStartTime + deltaA, waitTime+deltaB));
         }
 
 
@@ -299,14 +311,23 @@ namespace Vehicles
 
         public virtual void OnBridgeStart()
         {
-            float a = TotalBeforeTime + timestampCheck;
-            print($"{name}{GetInstanceID()%10} Start {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
+            // float a = TotalBeforeTime + timestampCheck;
+            // print($"{name}{GetInstanceID()%10} Start {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
+            
+        }
+
+        private IEnumerator BridgeAutoInputRoutine(float wait, float time)
+        {
+            yield return new WaitForSeconds(wait);
+            bridgeController.autoInput = isBridgeMustSink;
+            yield return new WaitForSeconds(time);
+            bridgeController.autoInput = false;
         }
  
         public virtual void OnBridgeEndDebug()
         {
-            float a = TotalBeforeTime + timestampCheck;
-            print($"{name}{GetInstanceID()%10} End {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
+            // float a = TotalBeforeTime + timestampCheck;
+            // print($"{name}{GetInstanceID()%10} End {a+bridgeStartTime} ~ {a+bridgeEndTime} : {a+currentTime}({GameManager.Instance.LM.timestamp})");
         }
         public abstract void OnBridgeCrossing();
         public abstract void OnBridgeEnd();

@@ -6,12 +6,14 @@ namespace Vehicles.Ships
 {
     public class PirateBomb : Ship
     {
+        public override bool isBridgeMustSink => true;
         private void Start()
         {
             base.Start();
             SoundManager.Instance.Play("speedboat");
         }
 
+        public override void AutoInit() => AutoInit(-0.3f, 0);
         public override void OnCollisionFront()
         {
             playerHp.Value -= 1;
