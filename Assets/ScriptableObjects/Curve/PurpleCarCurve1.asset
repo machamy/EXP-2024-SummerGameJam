@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e990ce2d20d44d3dbfa68544df4b06c9, type: 3}
-  m_Name: PurpleCarCurve
+  m_Name: PurpleCarCurve1
   m_EditorClassIdentifier: 
   Curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: -0.35686374
-      outSlope: -0.35686374
+      value: -0.0027770996
+      inSlope: 0.28646228
+      outSlope: 0.28646228
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.08273057
+      outWeight: 0.09137744
     - serializedVersion: 3
-      time: 0.44845396
-      value: -0.05897998
-      inSlope: 0.19574429
-      outSlope: 0.19574429
+      time: 0.781094
+      value: 0.3356689
+      inSlope: 0.6275503
+      outSlope: 0.6275503
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07903519
+      inWeight: 0.081017576
       outWeight: 0.13345811
     - serializedVersion: 3
       time: 0.9559736

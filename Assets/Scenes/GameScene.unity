@@ -1074,6 +1074,18 @@ PrefabInstance:
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.data[9].first
+      value: PurpleCarCurve1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: curveDict.Array.data[9].second
+      value: 
+      objectReference: {fileID: 11400000, guid: e3c4519c527f9da4e919749f6ed927e5, type: 2}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
