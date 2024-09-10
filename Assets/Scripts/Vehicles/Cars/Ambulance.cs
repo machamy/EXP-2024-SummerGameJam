@@ -101,11 +101,15 @@ namespace Vehicles.Cars
         public override float InitBridgeCrossingTime()
         {
             float totalDistance = (EndDistance);
+            float t0 = (BridgeStartDistance) /totalDistance;
+            // t1 = 대기--다리끝 / 대기--끝
+            float t1 = (BridgeEndDistance) /totalDistance;
+            // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
+            // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
+            bridgeStartTime = curveSO.EvaluateByValueFirst(t0) * afterMovingTime;
+            bridgeEndTime = curveSO.EvaluateByValueFirst(t1) * afterMovingTime;
+            bridgeCrossingTime = bridgeEndTime - bridgeStartTime;
             
-            float t0 = BridgeStartDistance /totalDistance;
-            float t1 = BridgeEndDistance /totalDistance;
-            
-            bridgeCrossingTime = (curveSO.EvaluateByValueFirst(t1) - curveSO.EvaluateByValueFirst(t0)) * afterMovingTime;
             return bridgeCrossingTime;
         }
         
