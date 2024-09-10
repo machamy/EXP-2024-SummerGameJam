@@ -178,7 +178,7 @@ namespace Vehicles
             float curveRatio = pickedCurve.Evaluate(ratio);
             position = Utilties.NegativeLerp(startPos,endPos, curveRatio);
             currentDistance = Utilties.NegativeLerp(start, end, curveRatio);
-            print($"{name}({GetInstanceID()}) {position} {currentDistance}");
+            // print($"{name}({GetInstanceID()}) {position} {currentDistance}");
             // print($"{name} : {totalTime} {startPos} {endPos}, {pickedCurve.Evaluate(ratio)}");
             // print($"{currentTime} {ratio} {currentDistance} {position}");
             currentTime += Time.fixedDeltaTime;
