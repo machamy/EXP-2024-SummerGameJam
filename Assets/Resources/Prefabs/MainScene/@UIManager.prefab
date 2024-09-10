@@ -44,7 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e3e9cc808b3fa4dbadb2879862746f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Main: {fileID: 0}
+  Game: {fileID: 0}
+  Setting: {fileID: 0}
+  Pause: {fileID: 0}
+  Skin: {fileID: 0}
+  Result: {fileID: 0}
   scoreTMP: {fileID: 0}
   hpIndicator: {fileID: 0}
-  Score: {fileID: 11400000, guid: 32a91e9e84cfccc438559d3b0f0515a6, type: 2}
-  Hp: {fileID: 11400000, guid: 3329a751d91838e45b65903f3f70e5df, type: 2}
+  Ranking: {fileID: 0}
+  rankingText: {fileID: 0}
+  Score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
+  Hp: {fileID: 11400000, guid: a21eea83c8342fa42926173892c24084, type: 2}
+  scoreManager: {fileID: 11400000, guid: 7634f1873e4c81d4ca6765e635f3a33c, type: 2}
+  uiTransitionSec: 0.25
+  uiTransitionDistance: 5

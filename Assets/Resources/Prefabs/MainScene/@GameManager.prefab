@@ -45,3 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
+  levelManager: {fileID: 0}
+  bgmManager: {fileID: 0}
+  scoreManager: {fileID: 11400000, guid: 7634f1873e4c81d4ca6765e635f3a33c, type: 2}
+  rankingScreen: {fileID: 0}
+  bridge: {fileID: 0}
+  hp: {fileID: 11400000, guid: a21eea83c8342fa42926173892c24084, type: 2}
+  score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
+  gravity: 3
+  waterGravity: 1
+  invincible: 0
+  <currentDifficulty>k__BackingField: 0
+  <unlockedDifficulty>k__BackingField: 0

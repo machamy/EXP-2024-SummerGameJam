@@ -45,9 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dbgSummonCar: 0
-  dbgCarId: 3
+  dbgCarId: 2
   dbgSummonShip: 0
   dbgShipId: 0
+  difficulty: 3
+  intervalMinArr:
+  - 0.9
+  - 0.6
+  - 0.2
+  - 3
+  intervalMaxArr:
+  - 3
+  - 2
+  - 1
+  - 4
+  <openScoreArr>k__BackingField: 000000004600000046000000ffffffff
+  reverseValueArr: 00000101
+  useTArr: 00010100
+  useReverse: 0
+  useT: 0
   weight: 1
   weightCoefficient: 0.95
   score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
@@ -69,22 +85,35 @@ MonoBehaviour:
     second: {fileID: 11400000, guid: f601f35feaff7d147ae6572294ff22bb, type: 2}
   - first: EaseBoth
     second: {fileID: 11400000, guid: c544ffdbb6e496c4ca60a8f2e5df23e1, type: 2}
+  - first: BoatEaseOut
+    second: {fileID: 11400000, guid: ef2c0c6565addb7408888c1cc98e6a91, type: 2}
+  - first: BoatEaseIn
+    second: {fileID: 11400000, guid: e55077ae6708efc42a42f2a2e710ab4c, type: 2}
+  - first: BoatEaseWeird
+    second: {fileID: 11400000, guid: f493da12165856a4cae9f5313ad9f735, type: 2}
+  - first: CarEaseIn
+    second: {fileID: 11400000, guid: 903906fb0744bba45b399cdd8e64bbba, type: 2}
+  - first: PurpleCarCurve
+    second: {fileID: 11400000, guid: c896da989c23df345ab1b6137afd3495, type: 2}
   cars:
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
-  - {fileID: 690107860050213565, guid: 2a95bdd1e21a1034a860a5da3bf4156e, type: 3}
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
+  - {fileID: 690107860050213565, guid: 2a95bdd1e21a1034a860a5da3bf4156e, type: 3}
   - {fileID: 4888110323885056083, guid: 566576db9769f0e42a3e72bc8a88ad67, type: 3}
   ships:
   - {fileID: 4198584010292510665, guid: 8b4fa44f77cbc2747b5f4dbd8fcfb87e, type: 3}
+  - {fileID: 4198584010292510665, guid: 8b4fa44f77cbc2747b5f4dbd8fcfb87e, type: 3}
   - {fileID: 2897081354676847685, guid: 052627993a704cb4f98f1053b689299e, type: 3}
-  - {fileID: 1392127427131589865, guid: 7bf7eb6ce751acb409dc0224cbc9f571, type: 3}
   - {fileID: 2897081354676847685, guid: a683437201dba84458a0392f14bbbab7, type: 3}
+  - {fileID: 1392127427131589865, guid: 7bf7eb6ce751acb409dc0224cbc9f571, type: 3}
   pedestrianunit:
   - {fileID: 7834775809938355334, guid: f626b413549e6d247846100522d93d77, type: 3}
-  explodeEffect: {fileID: 3147302296258448394, guid: c9031c508cc000846b8024430fb6562c, type: 3}
+  carDataList: []
+  shipDataList: []
+  explodeEffect: {fileID: 3147302296258448394, guid: 24a22453fa58f174a815c260b976e4ed, type: 3}
   bubbleEffect: {fileID: 1483976923654584623, guid: 58d61bce3d5528545bc2e9e8efc999a4, type: 3}
-  intervalMax: 7
-  intervalMin: 3
+  intervalMax: 3
+  intervalMin: 0.2
   intervalRemain: 0
   canSpawn: 1
   PedcanSpawn: 0
