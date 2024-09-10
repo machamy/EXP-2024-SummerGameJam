@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 224646804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.1, y: 0, z: 0}
+  m_LocalPosition: {x: 12.88, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -557,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 455952182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.3, y: 0, z: 0}
+  m_LocalPosition: {x: 17.08, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1079,8 +1079,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1063299457}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: weightCoefficient
+      value: 0.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: curveDict.Array.size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: useTArr.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[0]
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[2]
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[1]
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[2]
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: curveDict.Array.data[9].first
@@ -1170,7 +1202,7 @@ Transform:
   m_GameObject: {fileID: 664886583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.9, y: 0, z: 0}
+  m_LocalPosition: {x: 9.22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2109,7 +2141,7 @@ Transform:
   m_GameObject: {fileID: 1074211479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.4, y: 0, z: 0}
+  m_LocalPosition: {x: 34.8, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2922,7 +2954,7 @@ Transform:
   m_GameObject: {fileID: 1144333037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.4, y: 0, z: 0}
+  m_LocalPosition: {x: 34.8, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4458,7 +4490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 1
   <isReverse>k__BackingField: 0
-  length: 35.4
+  length: 34.8
   distances:
     dataList:
     - key: 1
@@ -4466,13 +4498,13 @@ MonoBehaviour:
     - key: 2
       value: 0
     - key: 3
-      value: 13.13
+      value: 13.45
     - key: 4
-      value: 17.3
+      value: 17.08
     - key: 5
-      value: 35.4
+      value: 34.8
     - key: 6
-      value: 35.4
+      value: 34.8
   positions:
     dataList:
     - key: 1
@@ -5175,7 +5207,7 @@ Transform:
   m_GameObject: {fileID: 1979756268}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.13, y: 0, z: 0}
+  m_LocalPosition: {x: 13.45, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5576,9 +5608,9 @@ MonoBehaviour:
     - key: 2
       value: 0
     - key: 3
-      value: 8.9
+      value: 9.22
     - key: 4
-      value: 13.1
+      value: 12.88
     - key: 5
       value: 24
     - key: 6

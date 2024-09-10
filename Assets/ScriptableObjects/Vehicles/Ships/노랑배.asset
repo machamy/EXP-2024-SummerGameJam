@@ -21,14 +21,14 @@ MonoBehaviour:
   reverseSprite: {fileID: 21300000, guid: d3af12ccef727f14ea949afc3b19bc0a, type: 3}
   beforeTime: 0
   waitTime: 9999
-  afterTime: 4
+  afterTime: 3.5
   rawBeforeCurve: Linear
   rawAfterCurve: BoatEaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 0
-  open: 5
+  open: 7
   close: -1
-  possibleDifficultyFlag: 15
+  possibleDifficultyFlag: 6
   bridgeCrossVariableT: 9999
   reverseValue: 0

@@ -26,8 +26,8 @@ MonoBehaviour:
   rawAfterCurve: EaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
-  Rarity: 1
-  open: 20
+  Rarity: 0
+  open: 28
   close: -1
   possibleDifficultyFlag: 15
   bridgeCrossVariableT: 9999
