@@ -179,14 +179,14 @@ public class BridgeController : MonoBehaviour
         if (bridgeDown)
         {
             // progress가 MoveTime을 넘지 않도록 증가
-            this.progress = Mathf.Clamp(this.progress + Time.deltaTime*(1/MoveSpeedWeight), 0, MoveTime);
+            this.progress = Mathf.Clamp(this.progress + Time.fixedDeltaTime*(1/MoveSpeedWeight), 0, MoveTime);
             selectedCurve = curveSink;
             // Debug.Log("Bridge Sink");
         }
         else
         {
             // progress가 0보다 작지 않도록 감소
-            this.progress = Mathf.Clamp(this.progress - Time.deltaTime*(1/MoveSpeedWeight), 0, MoveTime);
+            this.progress = Mathf.Clamp(this.progress - Time.fixedDeltaTime*(1/MoveSpeedWeight), 0, MoveTime);
             selectedCurve = curveGoup;
             // Debug.Log("Bridge Go Up");
         }
