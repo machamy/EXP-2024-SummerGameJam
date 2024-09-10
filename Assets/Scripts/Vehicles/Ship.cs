@@ -29,7 +29,11 @@ namespace Vehicles
         public virtual IEnumerator FlyAwayRoutine(float height = 12f, float time = 1.0f, Action callback = null)
         {
             float passedTime = 0f;
-            gfx.GetComponent<SpriteRenderer>().sortingLayerName = "Effect";
+            var renderers = gfx.GetComponentsInChildren<SpriteRenderer>();
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].sortingLayerName = "Effect";
+            }
             while (passedTime < time)
             {
                 float dy = Mathf.Lerp(0, height, passedTime/time);

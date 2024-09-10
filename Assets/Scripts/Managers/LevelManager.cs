@@ -65,8 +65,8 @@ public class LevelManager : MonoBehaviour
     [Header("CarData"), SerializeField] private List<VehicleDataSO> carDataList;
     [Header("ShipData"), SerializeField] private List<VehicleDataSO> shipDataList;
     [Header("Particles")]
-    [SerializeField] private GameObject explodeEffect;
-    [SerializeField] private GameObject bubbleEffect;
+    // [SerializeField] private GameObject explodeEffect;
+    // [SerializeField] private GameObject bubbleEffect;
     
     [Header("Summon Interval")]
     [SerializeField] private float intervalMax = 7;
@@ -391,7 +391,7 @@ public class LevelManager : MonoBehaviour
         vehicle.bridgeController = bridge;
         vehicle.playerHp = GameManager.Instance.hp;
         vehicle.playerScore = GameManager.Instance.score;
-        vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
+        // vehicle.deathEffect = vehicle.type == BaseVehicle.VehicleType.Car ? bubbleEffect : explodeEffect;
         vehicle.transform.position = line.Spawn.position;
 
         data?.ApplyData(vehicle);
