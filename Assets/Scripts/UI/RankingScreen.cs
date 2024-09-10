@@ -12,9 +12,14 @@ namespace DefaultNamespace.UI
     public class RankingScreen : UIScreenBase
     {
         [SerializeField] private MainScreen _mainScreen;
-        [SerializeField] private TextMeshProUGUI rankingText;
+        [SerializeField] private TextMeshProUGUI rankTexts1;
+        [SerializeField] private TextMeshProUGUI rankTexts2;
+        [SerializeField] private TextMeshProUGUI rankTexts3;
+        [SerializeField] private TextMeshProUGUI rankTexts4;
+        [SerializeField] private TextMeshProUGUI rankTexts5;
         [SerializeField] private ScoreManager scoreManager;
-        
+        [SerializeField] private Image[] trophyImages;
+
         [SerializeField] private GameObject levelBox;
         [SerializeField] private Button levelButton;
         [SerializeField] private int sellectedDifficulty = 0;
@@ -25,24 +30,42 @@ namespace DefaultNamespace.UI
             OnDifficultySelected(sellectedDifficulty);
         }
 
+        /*  public void UpdateRankingDisplay(int selectedDifficulty)
+          {
+              rankTexts1.text = "";
+
+              var filteredScores = scoreManager.scoreData
+                  .Where(score => score.difficulty == selectedDifficulty)
+                  .OrderByDescending(score => score.score) 
+                  .ToList();
+
+              for (int i = 0; i < filteredScores.Count; i++)
+              {
+                  rankTexts1.text += $"{i + 1}.{filteredScores[i].score}\n";
+              }
+
+              if (filteredScores.Count == 0)
+              {
+                  rankTexts1.text = " - ";
+              }
+          }*/
+
         public void UpdateRankingDisplay(int selectedDifficulty)
         {
-            rankingText.text = "";
 
             var filteredScores = scoreManager.scoreData
                 .Where(score => score.difficulty == selectedDifficulty)
-                .OrderByDescending(score => score.score) 
+                .OrderByDescending(score => score.score)
                 .ToList();
 
-            for (int i = 0; i < filteredScores.Count; i++)
-            {
-                rankingText.text += $"{i + 1}. Score: {filteredScores[i].score}\n";
-            }
 
-            if (filteredScores.Count == 0)
-            {
-                rankingText.text = "No scores available for this difficulty.";
-            }
+            rankTexts1.text = filteredScores.Count > 0 ? filteredScores[0].score.ToString() : "-";
+            rankTexts2.text = filteredScores.Count > 1 ? filteredScores[1].score.ToString() : "-";
+            rankTexts3.text = filteredScores.Count > 2 ? filteredScores[2].score.ToString() : "-";
+            rankTexts4.text = filteredScores.Count > 3 ? filteredScores[3].score.ToString() : "-";
+            rankTexts5.text = filteredScores.Count > 4 ? filteredScores[4].score.ToString() : "-";
+
+
         }
 
 
