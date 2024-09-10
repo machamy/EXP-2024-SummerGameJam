@@ -151,18 +151,21 @@ public class BridgeController : MonoBehaviour
     void Update()
     {
         isInputActive = Input.GetKey(KeyCode.Space) || Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
-        if (isInputActive)
+        if(GameManager.Instance.State == GameManager.GameState.Main)
         {
-            autoplayEnabled = false;
-            autoplayDelayRemain = autoplayDelay;
-        }
-        else if(autoplayDelayRemain > 0)
-        {
-            autoplayDelayRemain -= Time.deltaTime;
-        }
-        else
-        {
-            autoplayEnabled = true;
+            if (isInputActive)
+            {
+                autoplayEnabled = false;
+                autoplayDelayRemain = autoplayDelay;
+            }
+            else if (autoplayDelayRemain > 0)
+            {
+                autoplayDelayRemain -= Time.deltaTime;
+            }
+            else
+            {
+                autoplayEnabled = true;
+            }
         }
     }
 
