@@ -1071,6 +1071,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996977927}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: dbgSummonShip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
@@ -2105,7 +2109,7 @@ Transform:
   m_GameObject: {fileID: 1074211479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 0, z: 0}
+  m_LocalPosition: {x: 35.4, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2918,7 +2922,7 @@ Transform:
   m_GameObject: {fileID: 1144333037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 0, z: 0}
+  m_LocalPosition: {x: 35.4, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4237,6 +4241,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2016323661}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
+      propertyPath: invincible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 598619506}
@@ -4244,6 +4252,10 @@ PrefabInstance:
       propertyPath: rankingScreen
       value: 
       objectReference: {fileID: 1775475779}
+    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
+      propertyPath: <currentDifficulty>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3423029211225883645, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: m_LocalPosition.x
       value: 351.22147
@@ -4446,7 +4458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 1
   <isReverse>k__BackingField: 0
-  length: 34
+  length: 35.4
   distances:
     dataList:
     - key: 1
@@ -4458,9 +4470,9 @@ MonoBehaviour:
     - key: 4
       value: 17.3
     - key: 5
-      value: 34
+      value: 35.4
     - key: 6
-      value: 34
+      value: 35.4
   positions:
     dataList:
     - key: 1
