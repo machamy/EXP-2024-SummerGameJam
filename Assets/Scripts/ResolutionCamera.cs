@@ -17,28 +17,28 @@ namespace DefaultNamespace
 
         public void Start()
         {
-            // ÃâÃ³ : https://devsquare.tistory.com/11
+            // ì¶œì²˜ : https://devsquare.tistory.com/11
             Rect viewportRect = camera.rect;
 
-            // ¿øÇÏ´Â °¡·Î ¼¼·Î ºñÀ²À» °è»êÇÏ´Â ÄÚµå
+            // ì›í•˜ëŠ” ê°€ë¡œ ì„¸ë¡œ ë¹„ìœ¨ì„ ê³„ì‚°í•˜ëŠ” ì½”ë“œ
             float screenAspectRatio = (float)Screen.width / Screen.height;
-            float targetAspectRatio = (float)targetWidth/ targetHeight; // ¿øÇÏ´Â °íÁ¤ ºñÀ² ¼³Á¤ (¿¹: 16:9)
+            float targetAspectRatio = (float)targetWidth/ targetHeight; // ì›í•˜ëŠ” ê³ ì • ë¹„ìœ¨ ì„¤ì • (ì˜ˆ: 16:9)
 
-            // È­¸é °¡·Î ¼¼·Î ºñÀ²¿¡ µû¶ó ºäÆ÷Æ® ¿µ¿ªÀ» Á¶Á¤ÇÏ´Â ÄÚµå
+            // í™”ë©´ ê°€ë¡œ ì„¸ë¡œ ë¹„ìœ¨ì— ë”°ë¼ ë·°í¬íŠ¸ ì˜ì—­ì„ ì¡°ì •í•˜ëŠ” ì½”ë“œ
             if (screenAspectRatio < targetAspectRatio)
             {
-                // È­¸éÀÌ ´õ '³ô´Ù'¸é (¼¼·Î°¡ ´õ ±æ´Ù¸é) ¼¼·Î¸¦ Á¶ÀıÇÏ´Â ÄÚµå
+                // í™”ë©´ì´ ë” 'ë†’ë‹¤'ë©´ (ì„¸ë¡œê°€ ë” ê¸¸ë‹¤ë©´) ì„¸ë¡œë¥¼ ì¡°ì ˆí•˜ëŠ” ì½”ë“œ
                 viewportRect.height = screenAspectRatio / targetAspectRatio;
                 viewportRect.y = (1f - viewportRect.height) / 2f;
             }
             else
             {
-                // È­¸éÀÌ ´õ '³Ğ´Ù'¸é (°¡·Î°¡ ´õ ±æ´Ù¸é) °¡·Î¸¦ Á¶ÀıÇÏ´Â ÄÚµå.
+                // í™”ë©´ì´ ë” 'ë„“ë‹¤'ë©´ (ê°€ë¡œê°€ ë” ê¸¸ë‹¤ë©´) ê°€ë¡œë¥¼ ì¡°ì ˆí•˜ëŠ” ì½”ë“œ.
                 viewportRect.width = targetAspectRatio / screenAspectRatio;
                 viewportRect.x = (1f - viewportRect.width) / 2f;
             }
 
-            // Á¶Á¤µÈ ºäÆ÷Æ® ¿µ¿ªÀ» Ä«¸Ş¶ó¿¡ ¼³Á¤ÇÏ´Â ÄÚµå
+            // ì¡°ì •ëœ ë·°í¬íŠ¸ ì˜ì—­ì„ ì¹´ë©”ë¼ì— ì„¤ì •í•˜ëŠ” ì½”ë“œ
             camera.rect = viewportRect;
         }
 
