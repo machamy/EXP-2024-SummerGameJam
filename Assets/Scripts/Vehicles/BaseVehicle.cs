@@ -195,7 +195,7 @@ namespace Vehicles
             if (isDead) // 죽으면 실행 X
                 return;
             //backwardPoint: 
-            if (frontPoint == targetPoint || backwardPoint == targetPoint) // 현재 다리 위에 있음
+            if (frontPoint == targetPoint || midPoint == targetPoint|| backwardPoint == targetPoint) // 현재 다리 위에 있음
             {
                 if (!IsOnBridge)
                 {
@@ -232,9 +232,9 @@ namespace Vehicles
         {
             float totalDistance = (EndDistance - WaitDistance);
             // t0 = 대기--다리시작 / 대기--끝
-            float t0 = (BridgeStartDistance - WaitDistance) /totalDistance;
+            float t0 = (BridgeStartDistance - frontDeltaPos - WaitDistance) /totalDistance;
             // t1 = 대기--다리끝 / 대기--끝
-            float t1 = (BridgeEndDistance - WaitDistance) /totalDistance;
+            float t1 = (BridgeEndDistance - backwardDeltaPos - WaitDistance) /totalDistance;
             // print($"({vehicle.BridgeEndDistance} - {vehicle.WaitDistance}) / {vehicle.EndDistance} - {vehicle.WaitDistance}");
             // print($"length = {Math.Abs(vehicle.EndDistance - vehicle.WaitDistance)}");
             bridgeStartTime = curveSO.EvaluateByValueFirst(t0) * afterMovingTime;
