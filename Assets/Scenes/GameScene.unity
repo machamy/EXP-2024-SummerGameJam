@@ -2378,6 +2378,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -42
       objectReference: {fileID: 0}
+    - target: {fileID: 2504704275279942549, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2535685521244989873, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -4322,7 +4326,7 @@ PrefabInstance:
       objectReference: {fileID: 2016323661}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: invincible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: levelManager
