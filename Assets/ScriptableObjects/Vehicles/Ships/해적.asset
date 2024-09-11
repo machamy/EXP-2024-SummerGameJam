@@ -26,7 +26,7 @@ MonoBehaviour:
   rawAfterCurve: Linear
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
-  Rarity: 1
+  Rarity: 2
   open: 3
   close: -1
   possibleDifficultyFlag: 7

@@ -16,9 +16,9 @@ MonoBehaviour:
   type: 0
   prefabID: 2
   spriteID: 3
-  rawSprite: '-'
-  sprite: {fileID: 21300000, guid: b18737552f3e88541b216e674a9d43c7, type: 3}
-  reverseSprite: {fileID: 21300000, guid: b18737552f3e88541b216e674a9d43c7, type: 3}
+  rawSprite: blue
+  sprite: {fileID: 21300000, guid: 677a8caa6ac93094dae0a93cdc9e8f56, type: 3}
+  reverseSprite: {fileID: 21300000, guid: 677a8caa6ac93094dae0a93cdc9e8f56, type: 3}
   beforeTime: 2
   waitTime: 4.2
   afterTime: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   rawAfterCurve: EaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
-  Rarity: 1
+  Rarity: 2
   open: 40
   close: -1
   possibleDifficultyFlag: 15
