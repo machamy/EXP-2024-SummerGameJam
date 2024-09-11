@@ -20,8 +20,8 @@ namespace Vehicles.Ships
         {
             playerHp.Value -= 1;
             isDead = true;
-            var go = Instantiate(FailEffect);
-            go.transform.position = gfx.transform.position;
+
+            deathEffect = FailEffect;
             SoundManager.Instance.StopSFX("speedboat");
             SoundManager.Instance.Play("ship_crash");
             OnDeath();
