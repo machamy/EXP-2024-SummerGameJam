@@ -47,7 +47,7 @@ namespace Vehicles.Ships
             if(isDead)
                 return;
             var go = Instantiate(FailEffect);
-            go.transform.position = gfx.transform.position;
+            go.transform.position = MoveLine.Wait02.position;
             playerHp.Value -= 1;
             Destroy(gameObject);
         }

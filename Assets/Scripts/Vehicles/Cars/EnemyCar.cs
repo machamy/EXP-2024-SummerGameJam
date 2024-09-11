@@ -31,7 +31,7 @@ namespace Vehicles.Cars
         {
             playerHp.Value -= 1;
             var go = Instantiate(FailEffect);
-            go.transform.position = gfx.transform.position;
+            go.transform.position = MoveLine.Wait02.position;
             Destroy(gameObject);
         }
     }

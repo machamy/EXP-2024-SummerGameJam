@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 2.0609999, y: 3.598404}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2897081354676847685
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7183758590761964236
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showPanjeong: 0
   VehicleData: {fileID: 0}
-  deathEffect: {fileID: 3147302296258448394, guid: 572c67ddf154d9843a9c12308c10ac6e, type: 3}
+  deathEffect: {fileID: 3147302296258448394, guid: 24a22453fa58f174a815c260b976e4ed, type: 3}
   height: 1
   timestampCheck: 0
   bridgeController: {fileID: 0}
