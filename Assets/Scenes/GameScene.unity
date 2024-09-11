@@ -755,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 0
   <isReverse>k__BackingField: 0
+  <isFirstLine>k__BackingField: 1
   length: 16
   distances:
     dataList:
@@ -1783,6 +1784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 0
   <isReverse>k__BackingField: 1
+  <isFirstLine>k__BackingField: 1
   length: 16
   distances:
     dataList:
@@ -2061,6 +2063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 2
   <isReverse>k__BackingField: 0
+  <isFirstLine>k__BackingField: 0
   length: 25
   distances:
     dataList:
@@ -4211,6 +4214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 0
   <isReverse>k__BackingField: 1
+  <isFirstLine>k__BackingField: 0
   length: 16
   distances:
     dataList:
@@ -4534,6 +4538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 1
   <isReverse>k__BackingField: 0
+  <isFirstLine>k__BackingField: 0
   length: 34.8
   distances:
     dataList:
@@ -4856,6 +4861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 0
   <isReverse>k__BackingField: 0
+  <isFirstLine>k__BackingField: 0
   length: 16
   distances:
     dataList:
@@ -5644,6 +5650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleType: 1
   <isReverse>k__BackingField: 0
+  <isFirstLine>k__BackingField: 0
   length: 24
   distances:
     dataList:

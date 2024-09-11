@@ -17,7 +17,7 @@ namespace DefaultNamespace
             Wait01,
             Bridge01,
             Bridge02,
-            Wait02,
+            EndEffect,
             End,
             
             Count = 6,
@@ -37,6 +37,7 @@ namespace DefaultNamespace
         [Header("Type")]
         [SerializeField] private BaseVehicle.VehicleType vehicleType = BaseVehicle.VehicleType.Car;
         [field:SerializeField] public bool isReverse { get; private set; }
+        [field:SerializeField] public bool isFirstLine { get; private set; }
         [Header("Property")]
         [SerializeField] private float length = 10;
         [FormerlySerializedAs("Distances")] [SerializeField] public OrderedSerializableDict<Point, float> distances = new OrderedSerializableDict<Point, float>(new PointComparer());
@@ -51,14 +52,14 @@ namespace DefaultNamespace
         public Transform Wait01 => positions[Point.Wait01].transform;
         public Transform Bridge01 => positions[Point.Bridge01].transform;
         public Transform Bridge02 => positions[Point.Bridge02].transform;
-        public Transform Wait02 => positions[Point.Wait02].transform;
+        public Transform EndEffect => positions[Point.EndEffect].transform;
         public Transform End => positions[Point.End].transform;
         
         // public float SpawnDistance => Distances[Position.Spawn];
         public float Wait01Distance => distances[Point.Wait01];
         public float Bridge01Distance => distances[Point.Bridge01];
         public float Bridge02Distance => distances[Point.Bridge02];
-        public float Wait02Distance => distances[Point.Wait02];
+        public float Wait02Distance => distances[Point.EndEffect];
         public float EndDistance => distances[Point.End];
         // public Transform Spawn => positions[Position.Spawn].transform;
 
@@ -97,8 +98,8 @@ namespace DefaultNamespace
             Debug.DrawLine(Spawn.position,Wait01.position,Color.yellow);
             Debug.DrawLine(Wait01.position,Bridge01.position,Color.cyan);
             Debug.DrawLine(Bridge01.position,Bridge02.position,Color.green);
-            Debug.DrawLine(Bridge02.position,Wait02.position,Color.cyan);
-            Debug.DrawLine(Wait02.position,End.position,Color.yellow);
+            Debug.DrawLine(Bridge02.position,EndEffect.position,Color.cyan);
+            Debug.DrawLine(EndEffect.position,End.position,Color.yellow);
         }
 
         private void OnDrawGizmosSelected()
@@ -110,9 +111,9 @@ namespace DefaultNamespace
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(Bridge01.position,Bridge02.position);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(Bridge02.position,Wait02.position);
+            Gizmos.DrawLine(Bridge02.position,EndEffect.position);
             Gizmos.color = Color.white;
-            Gizmos.DrawLine(Wait02.position,End.position);
+            Gizmos.DrawLine(EndEffect.position,End.position);
 
             float radius = 0.1f;
             
@@ -124,7 +125,7 @@ namespace DefaultNamespace
             Gizmos.DrawSphere(Bridge01.position,radius);
             Gizmos.DrawSphere(Bridge02.position,radius);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(Wait02.position,radius);
+            Gizmos.DrawSphere(EndEffect.position,radius);
             Gizmos.color = Color.blue;
             Gizmos.DrawSphere(End.position, radius);
         }
@@ -224,7 +225,7 @@ namespace DefaultNamespace
                 renderer.SetPosition(1,transform.InverseTransformPoint( Wait01.position));
                 renderer.SetPosition(2, transform.InverseTransformPoint(Bridge01.position));
                 renderer.SetPosition(3, transform.InverseTransformPoint(Bridge02.position));
-                renderer.SetPosition(4, transform.InverseTransformPoint(Wait02.position));
+                renderer.SetPosition(4, transform.InverseTransformPoint(EndEffect.position));
                 renderer.SetPosition(5, transform.InverseTransformPoint(End.position));
                 
                 if (renderer.sharedMaterial == null)
