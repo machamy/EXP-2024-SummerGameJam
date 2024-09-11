@@ -278,8 +278,8 @@ MonoBehaviour:
   afterMovingTime: 10
   waitTime: 0.4
   collisionHeight: 0.3
-  frontDeltaPos: 0
-  backwardDeltaPos: 0
+  frontDeltaPos: 1.61
+  backwardDeltaPos: -1.5
   isDead: 0
   MoveLine: {fileID: 0}
   isReverse: 0

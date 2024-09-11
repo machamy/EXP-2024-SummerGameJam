@@ -199,8 +199,8 @@ MonoBehaviour:
   afterMovingTime: 3
   waitTime: 0.4
   collisionHeight: 0.3
-  frontDeltaPos: 0
-  backwardDeltaPos: 0
+  frontDeltaPos: 1.52
+  backwardDeltaPos: -1.48
   isDead: 0
   MoveLine: {fileID: 0}
   isReverse: 0
@@ -251,9 +251,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5319998, y: 0.36920914}
     oldSize: {x: 2.0609999, y: 3.598404}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 2.0609999, y: 3.598404}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
