@@ -31,7 +31,7 @@ namespace Vehicles.Cars
                     currentTime = 0f;
                     state = VehicleState.MoveBefore;
                     float total = priorMoveDelay + priorWaitDelay;
-                    float hardcoding = -0.743f;
+                    float hardcoding = -0.571f;
                     if(!MoveLine.isFirstLine)
                     {
                         RedLight.transform.position += Vector3.left * (hardcoding);
