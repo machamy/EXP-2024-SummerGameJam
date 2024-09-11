@@ -6,6 +6,8 @@ namespace Vehicles.Ships
 {
     public class PirateBomb : Ship
     {
+        public GameObject FailEffect;
+
         public override bool isBridgeMustSink => true;
         private void Start()
         {
@@ -38,6 +40,8 @@ namespace Vehicles.Ships
         {
             if(isDead)
                 return;
+            var go = Instantiate(FailEffect);
+            go.transform.position = gfx.transform.position;
             playerHp.Value -= 1;
             Destroy(gameObject);
         }

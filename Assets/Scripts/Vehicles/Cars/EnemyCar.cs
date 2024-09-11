@@ -1,11 +1,14 @@
 using DefaultNamespace;
 using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Vehicles.Cars
 {
     public class EnemyCar : Car
     {
         public override bool isBridgeMustSink => true;
+
+        public GameObject FailEffect;
 
         protected override void Start()
         {
@@ -27,6 +30,8 @@ namespace Vehicles.Cars
         public override void OnArrival()
         {
             playerHp.Value -= 1;
+            var go = Instantiate(FailEffect);
+            go.transform.position = gfx.transform.position;
             Destroy(gameObject);
         }
     }

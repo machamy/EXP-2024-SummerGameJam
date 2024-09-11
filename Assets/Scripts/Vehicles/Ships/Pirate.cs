@@ -6,6 +6,8 @@ namespace Vehicles.Ships
 {
     public class Pirate : global::Vehicles.Ship
     {
+        public GameObject FailEffect;
+
         private void Start()
         {
             base.Start();
@@ -44,6 +46,8 @@ namespace Vehicles.Ships
         {
             if(isDead)
                 return;
+            var go = Instantiate(FailEffect);
+            go.transform.position = gfx.transform.position;
             playerHp.Value -= 1;
             Destroy(gameObject);
         }

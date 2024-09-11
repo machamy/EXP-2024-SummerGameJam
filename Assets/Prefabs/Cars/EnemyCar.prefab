@@ -207,6 +207,7 @@ MonoBehaviour:
   playerHp: {fileID: 0}
   audioSource: {fileID: 0}
   trafficLight: {fileID: 907542656083092478}
+  FailEffect: {fileID: 3147302296258448394, guid: 572c67ddf154d9843a9c12308c10ac6e, type: 3}
 --- !u!1 &2765389675682264006
 GameObject:
   m_ObjectHideFlags: 0

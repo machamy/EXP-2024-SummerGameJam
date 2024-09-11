@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1343542147440079439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.608, y: -0.959, z: 0}
+  m_LocalPosition: {x: -0.608, y: -0.9299, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &2897081354676847685
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   <IsOnBridge>k__BackingField: 0
   playerScore: {fileID: 0}
   playerHp: {fileID: 0}
+  FailEffect: {fileID: 3147302296258448394, guid: 572c67ddf154d9843a9c12308c10ac6e, type: 3}
 --- !u!95 &350766045777797473
 Animator:
   serializedVersion: 5
@@ -341,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 3246105816471522805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.608, y: -0.959, z: 0}
+  m_LocalPosition: {x: -0.608, y: -0.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
