@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1319340549030053094
 Transform:
@@ -50,22 +50,27 @@ MonoBehaviour:
   dbgShipId: 0
   difficulty: 3
   intervalMinArr:
-  - 0.9
-  - 0.6
-  - 0.2
+  - 0.5
+  - 0.4
+  - 0.12
   - 3
   intervalMaxArr:
-  - 3
+  - 2.5
   - 2
-  - 1
+  - 0.6
   - 4
   <openScoreArr>k__BackingField: 000000004600000046000000ffffffff
   reverseValueArr: 00000101
-  useTArr: 00010100
+  useTArr: 01010100
+  weightCoefficientArray:
+  - 0.95
+  - 0.99
+  - 1
+  defaultSpawnTickets: 04000000040000000400000004000000
+  spawnTickets: 04000000040000000400000004000000
   useReverse: 0
   useT: 0
   weight: 1
-  weightCoefficient: 0.95
   score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
   deltaTime: 7
   bridge: {fileID: 0}
@@ -95,6 +100,8 @@ MonoBehaviour:
     second: {fileID: 11400000, guid: 903906fb0744bba45b399cdd8e64bbba, type: 2}
   - first: PurpleCarCurve
     second: {fileID: 11400000, guid: c896da989c23df345ab1b6137afd3495, type: 2}
+  - first: PurpleCarCurve1
+    second: {fileID: 11400000, guid: e3c4519c527f9da4e919749f6ed927e5, type: 2}
   cars:
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
@@ -110,8 +117,6 @@ MonoBehaviour:
   - {fileID: 7834775809938355334, guid: f626b413549e6d247846100522d93d77, type: 3}
   carDataList: []
   shipDataList: []
-  explodeEffect: {fileID: 3147302296258448394, guid: 24a22453fa58f174a815c260b976e4ed, type: 3}
-  bubbleEffect: {fileID: 1483976923654584623, guid: 58d61bce3d5528545bc2e9e8efc999a4, type: 3}
   intervalMax: 3
   intervalMin: 0.2
   intervalRemain: 0

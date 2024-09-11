@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3423029211225883645
 Transform:
@@ -55,5 +55,5 @@ MonoBehaviour:
   gravity: 3
   waterGravity: 1
   invincible: 0
-  <currentDifficulty>k__BackingField: 0
+  <currentDifficulty>k__BackingField: 2
   <unlockedDifficulty>k__BackingField: 0
