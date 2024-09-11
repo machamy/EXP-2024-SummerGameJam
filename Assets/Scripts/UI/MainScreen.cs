@@ -12,6 +12,8 @@ namespace DefaultNamespace.UI
         [field:SerializeField] public Sprite[] levelSprites { get; private set; }
         [field:SerializeField] public Sprite[] levelPressedSprites{ get; private set; }
         [field:SerializeField] public Button[] difficultyButtons{ get; private set; }
+        [field:SerializeField] public Button startButton{ get; private set; }
+
         private bool isSellectingDiffculty;
         protected bool IsSellectingDiffculty
         {

@@ -1079,6 +1079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '@LevelManager'
       objectReference: {fileID: 0}
+    - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2238,6 +2242,10 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
+    - target: {fileID: 1712734861859843774, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: <startButton>k__BackingField
+      value: 
+      objectReference: {fileID: 1121046625}
     - target: {fileID: 1758179156852182018, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -2782,6 +2790,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7927056074944521885, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8135942376601006401, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2920,6 +2932,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7373756875874603853, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
   m_PrefabInstance: {fileID: 1109167696}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121046625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7927056074944521885, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+  m_PrefabInstance: {fileID: 1109167696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144333037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e063b6ad8dd64e62afb70f44d850a0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReady: 0
   VehicleDataSoList:
   - {fileID: 11400000, guid: d4a9bffd68c23c64ab163bfa594e145f, type: 2}
   - {fileID: 11400000, guid: 69a683fdb10751f4388e99e7e7cde2e9, type: 2}

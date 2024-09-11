@@ -13,8 +13,11 @@ namespace DefaultNamespace.Database
 
         private Coroutine loadRoutine;
 
+        public float waitTime = 3f;
+
         public static Database Instance;
-        
+        public bool isReady = false;
+        public bool forceReady = false;
         public List<VehicleDataSO> VehicleDataSoList;
         public List<VehicleDataSO> CarDataSoList;
         public List<VehicleDataSO> ShipDataSoList;
@@ -34,8 +37,9 @@ namespace DefaultNamespace.Database
             if (Application.internetReachability != NetworkReachability.NotReachable)
             {
                 loadRoutine = StartCoroutine(sheetReader.LoadData());
-                StartCoroutine(WaitBreak());
-                yield return loadRoutine;
+                StartCoroutine(WaitBreak(waitTime,loadRoutine));
+                yield return new WaitUntil(() => sheetReader.IsDataLoaded | forceReady);
+                print("ParseData");
                 if (sheetReader.IsDataLoaded)
                 {
                     string[] lines = sheetReader.rawData.Split("\n");
@@ -55,6 +59,7 @@ namespace DefaultNamespace.Database
                 }
             }
             SortData();
+            isReady = true;
         }
 
         public void SortData()
@@ -74,9 +79,10 @@ namespace DefaultNamespace.Database
             }
         }
 
-        public IEnumerator WaitBreak()
+        public IEnumerator WaitBreak(float waitTime, Coroutine loadRoutine)
         {
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(waitTime);
+            forceReady = true;
             StopCoroutine(loadRoutine);
         }
 

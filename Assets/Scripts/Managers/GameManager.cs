@@ -2,12 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Database;
+using DefaultNamespace.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    [SerializeField] private Database DB;
     
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LevelManager levelManager;
@@ -16,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DefaultNamespace.UI.RankingScreen rankingScreen;
 
     [SerializeField] private BridgeController bridge;
-    
+
     public IntVariableSO hp;
     public IntVariableSO score;
 
@@ -50,13 +56,23 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        InitializeGame();
-        print($"current difficulty : {currentDifficulty}");
-        levelManager.Initialize(3);
-        
+        StartCoroutine(ReadyRoutine());
+
         // Debug.Log(Global.shipDirection);
         // Debug.Log(Global.carDirection);
         // Debug.Log(new Vector2(Mathf.Cos(239/180 * Mathf.PI), Mathf.Sin(239/180 * Mathf.PI)).normalized);
+    }
+
+    private IEnumerator ReadyRoutine()
+    {
+        levelManager.gameObject.SetActive(false);
+        uiManager.Main.GetComponent<MainScreen>().startButton.interactable = false;
+        yield return new WaitUntil(()=>DB.isReady);
+        levelManager.gameObject.SetActive(true);
+        uiManager.Main.GetComponent<MainScreen>().startButton.interactable = true;
+        InitializeGame();
+        print($"current difficulty : {currentDifficulty}");
+        levelManager.Initialize(3);
     }
 
     /// <summary>

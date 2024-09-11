@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     [Header("Main")] 
-    [SerializeField] private GameObject Main;
+    [SerializeField] public GameObject Main;
     [Header("Game")]
     [SerializeField] private GameObject Game;
     [Header("Setting")]
