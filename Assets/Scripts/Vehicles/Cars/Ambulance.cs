@@ -15,6 +15,7 @@ namespace Vehicles.Cars
         
         [SerializeField] private GameObject RedLight;
         [SerializeField] private GameObject BlueLight;
+        
 
         private bool sirenSoundPlayed = false;
 
@@ -31,8 +32,11 @@ namespace Vehicles.Cars
                     state = VehicleState.MoveBefore;
                     float total = priorMoveDelay + priorWaitDelay;
                     float hardcoding = -0.743f;
-                    RedLight.transform.position += Vector3.left * (hardcoding);
-                    BlueLight.transform.position += Vector3.left * (hardcoding);
+                    if(!MoveLine.isFirstLine)
+                    {
+                        RedLight.transform.position += Vector3.left * (hardcoding);
+                        BlueLight.transform.position += Vector3.left * (hardcoding);
+                    }
                     StartCoroutine(SirenWaitRoutine(total));
                     StartCoroutine(SirenLightRoutine(total/ sirenMaxCount));
 

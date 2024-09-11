@@ -28,7 +28,7 @@ namespace Vehicles
         [Header("Debug")] public bool showPanjeong;
         [Space, Header("BaseVehicle")] public VehicleDataSO VehicleData;
         public GameObject deathEffect;
-
+        // public bool isFirstLine = false;
         public float height = 1f;
         public float timestampCheck;
         public BridgeController bridgeController;
