@@ -30,7 +30,7 @@ namespace DefaultNamespace
 
                 randomValue -= weights[i];
             }
-
+            Debug.LogWarning("WeightedRandom Error");
             return 0;
         }
 

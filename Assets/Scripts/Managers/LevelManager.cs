@@ -26,8 +26,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool[] reverseValueArr = { false, false, true };
     [SerializeField] private bool[] useTArr = { false, true, true };
     [SerializeField,Tooltip("0~100, 101~200, 200 ~ ")] private float[] weightCoefficientArray = { 0.95f, 0.99f, 1f };
-    
-    [Header("Spawn")]    
+
+    [Header("Spawn")] 
+    [SerializeField] private int[] defaultSpawnTickets = {4,4,4,4};
+    [SerializeField] private int[] spawnTickets= {4,4,4,4};
     [SerializeField] private bool useReverse = false;
     [SerializeField] private bool useT = false;
     [Space] 
@@ -104,6 +106,7 @@ public class LevelManager : MonoBehaviour
         PedcanSpawn = true;
         carDataList = Database.Instance.CarDataSoList;
         shipDataList = Database.Instance.ShipDataSoList;
+        Array.Copy(defaultSpawnTickets, spawnTickets,4);
         
         intervalMin = intervalMinArr[difficulty];
         intervalMax = intervalMaxArr[difficulty];
@@ -292,11 +295,41 @@ public class LevelManager : MonoBehaviour
     private Line GetCarLine(VehicleDataSO data)
     {
         Line line;
-        bool isFirstLine = Random.Range(0, 2) == 1;
-        if (useReverse && Random.Range(0, 100) < data.reverseValue)
-            line = isFirstLine ? carUpperRev : carLowerRev;
+       
+        if (useReverse && 0 < data.reverseValue)
+        {
+            if (spawnTickets.All(e => e == 0))
+            {
+                Array.Copy(defaultSpawnTickets, spawnTickets,4);
+            }
+
+            int i = Utilties.WeightedRandom(spawnTickets);
+            print($"{name} {i} picked");
+            spawnTickets[i] -= 1;
+            switch (i)
+            {
+                case 0:
+                    line = carUpper;
+                    break;
+                case 1:
+                    line = carLower;
+                    break;
+                case 2:
+                    line = carUpperRev;
+                    break;
+                case 3:
+                    line = carLowerRev;
+                    break;
+                default:
+                    line = carUpper;
+                    break;
+            }
+        }
         else
+        {
+            bool isFirstLine = Random.Range(0, 2) == 1;
             line = isFirstLine ? carUpper : carLower;
+        }
         return line;
     }
     
