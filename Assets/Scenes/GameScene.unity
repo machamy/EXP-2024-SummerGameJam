@@ -1072,64 +1072,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996977927}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgSummonShip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: weightCoefficient
-      value: 0.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: useTArr.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[0]
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[2]
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[0]
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[1]
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[2]
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[9].first
-      value: PurpleCarCurve1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[9].second
-      value: 
-      objectReference: {fileID: 11400000, guid: e3c4519c527f9da4e919749f6ed927e5, type: 2}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3306,17 +3254,9 @@ PrefabInstance:
       propertyPath: hpIndicator
       value: 
       objectReference: {fileID: 1109167697}
-    - target: {fileID: 511254235443115827, guid: 9db06139b01125741b78be9e150e3de2, type: 3}
-      propertyPath: rankingText
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3545104598606969091, guid: 9db06139b01125741b78be9e150e3de2, type: 3}
       propertyPath: m_Name
       value: '@UIManager'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3545104598606969091, guid: 9db06139b01125741b78be9e150e3de2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4219260667780930395, guid: 9db06139b01125741b78be9e150e3de2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4325,10 +4265,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2016323661}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: invincible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 598619506}
@@ -4336,10 +4272,6 @@ PrefabInstance:
       propertyPath: rankingScreen
       value: 
       objectReference: {fileID: 1775475779}
-    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: <currentDifficulty>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3423029211225883645, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: m_LocalPosition.x
       value: 351.22147
@@ -4383,10 +4315,6 @@ PrefabInstance:
     - target: {fileID: 4874741958728184354, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: m_Name
       value: '@GameManager'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874741958728184354, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5822,10 +5750,6 @@ PrefabInstance:
     - target: {fileID: 8869792427653417052, guid: d053f117de749d84e8ada98879e36b0f, type: 3}
       propertyPath: m_Name
       value: '@BGMManager'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869792427653417052, guid: d053f117de749d84e8ada98879e36b0f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
