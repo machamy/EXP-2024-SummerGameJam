@@ -71,6 +71,7 @@ public class BGMManager : MonoBehaviour
                 {
                     _playbgmSources[i].Play();
                 }
+                _playbgmSources[0].volume = 1;
                 for (int i = 1; i < 5; i++) {
                     _playbgmSources[i].volume = 0;
                 }
