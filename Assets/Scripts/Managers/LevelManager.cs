@@ -12,26 +12,27 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] private bool dbgSummonCar;
+    [Header("Debug")] [SerializeField] private bool dbgSummonCar;
     [SerializeField] private int dbgCarId = 0;
     [SerializeField] private bool dbgSummonShip;
     [SerializeField] private int dbgShipId = 0;
 
-    [Header("Level")]
-    [Range(0,3),SerializeField,Tooltip("easy,normal,hard,main")] public int difficulty = 0;
+    [Header("Level")] [Range(0, 3), SerializeField, Tooltip("easy,normal,hard,main")]
+    public int difficulty = 0;
+
     [SerializeField] private float[] intervalMinArr = { 3f, 1f, 0.2f };
     [SerializeField] private float[] intervalMaxArr = { 7f, 4f, 3f };
-    [field:SerializeField] public int[] openScoreArr { get; private set; } = { 0, 70, 70, -1 };
+    [field: SerializeField] public int[] openScoreArr { get; private set; } = { 0, 70, 70, -1 };
     [SerializeField] private bool[] reverseValueArr = { false, false, true };
     [SerializeField] private bool[] useTArr = { false, true, true };
-
+    [SerializeField,Tooltip("0~100, 101~200, 200 ~ ")] private float[] weightCoefficientArray = { 0.95f, 0.99f, 1f };
+    
     [Header("Spawn")]    
     [SerializeField] private bool useReverse = false;
     [SerializeField] private bool useT = false;
     [Space] 
     [SerializeField] private float weight = 1.00f;
-    [SerializeField] private float weightCoefficient = 0.95f;
+    
     [SerializeField] private IntVariableSO score;
     [SerializeField] private float deltaTime = 10f;
 
@@ -223,9 +224,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (n % 10 == 0 && GameManager.Instance.State == GameManager.GameState.Running)
         {
-            weight *= weightCoefficient;
-            bridge.MoveSpeedWeight *= weightCoefficient;
-            intervalMax = Mathf.Max(intervalMin, intervalMax * weightCoefficient);
+            float coeff = weightCoefficientArray[Math.Min((n - 1) / 100, 2)];
+            if (difficulty < 2 && n == 200)
+            {
+                intervalMin = 0.3f;
+            }
+            weight *= coeff;
+            bridge.MoveSpeedWeight *= coeff;
+            intervalMax = Mathf.Max(intervalMin, intervalMax * coeff);
             weight = Mathf.Max(0.05f, weight); // 최솟값(임의) 설정
         }
     }
