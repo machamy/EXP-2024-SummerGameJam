@@ -49,7 +49,7 @@ namespace DefaultNamespace.UI
             PlayerPrefs.SetFloat("sfx", sfxVol);
             PlayerPrefs.Save();
             gameObject.SetActive(false);
-            isRunning = false;
+            // isRunning = false;
         }
         public void OnRestartClicked()
         {
@@ -64,10 +64,11 @@ namespace DefaultNamespace.UI
             PlayerPrefs.SetFloat("bgm", bgmVol);
             PlayerPrefs.SetFloat("sfx", sfxVol);
             PlayerPrefs.Save();
-            gameObject.SetActive(false);
-            if (isRunning)
-                GameManager.Instance.ResumeGame();
-            isRunning = false;
+            // gameObject.SetActive(false);
+            uiManager.ShowGame();
+            // if (isRunning)
+            //     GameManager.Instance.ResumeGame();
+            // isRunning = false;
         }
 
     }

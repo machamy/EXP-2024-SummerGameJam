@@ -37,10 +37,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float uiTransitionSec = 0.25f;
     [SerializeField] private float uiTransitionDistance = 5f;
     [Header("Difficulties")] private Sprite[] difficultySprites;
+
+    [Header("LastUI")] public UIScreenBase lastUI;
     private void Awake()
     {
         Score.Value = 0;
         Hp.Value = 3;
+    }
+
+    private void Start()
+    {
+        lastUI = Main.GetComponent<UIScreenBase>();
     }
 
     public void Initialize(int currentDifficulty, int unlockDifficulty)
@@ -51,11 +58,21 @@ public class UIManager : MonoBehaviour
         Skin.SkinCheck();
     }
 
-    public void ShowPause()
+    private void Update()
     {
-        SoundManager.Instance.Play("button2");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            lastUI?.OnBackClicked();
+        }
+    }
+
+    public void ShowPause(bool playsound = false)
+    {
+        if(playsound)
+            SoundManager.Instance.Play("button2");
         Pause.SetActive(true);
         Pause.GetComponent<PauseScreen>().isRunning = true;
+        lastUI = Pause.GetComponent<UIScreenBase>();
         GameManager.Instance.PauseGame();
     }
 
@@ -70,6 +87,7 @@ public class UIManager : MonoBehaviour
         Game.SetActive(true);
         Setting.SetActive(false);
         Pause.SetActive(false);
+        lastUI = Game.GetComponent<UIScreenBase>();
         if(GameManager.Instance.State == GameManager.GameState.Pause)
             GameManager.Instance.ResumeGame();
     }
@@ -81,12 +99,13 @@ public class UIManager : MonoBehaviour
         Pause.SetActive(false);
         Setting.SetActive(false);
         Main.SetActive(true);
-
+        lastUI = Main.GetComponent<UIScreenBase>();
     }
 
     public void ShowResult()
     {
         Result.SetActive(true);
+        lastUI = Result.GetComponent<UIScreenBase>();
     }
 
     // private IEnumerator ShowGameRoutine(GameObject gameObject)
@@ -97,6 +116,7 @@ public class UIManager : MonoBehaviour
     public void ShowRanking()
     {
         Ranking.SetActive(true);
+        lastUI = Ranking.GetComponent<UIScreenBase>();
     }
 
     public void HideRanking()

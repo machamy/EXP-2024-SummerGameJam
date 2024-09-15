@@ -101,6 +101,7 @@ namespace DefaultNamespace.UI
             // GameManager.Instance.GoMain();
             levelBox.SetActive(false);
             gameObject.SetActive(false);
+            uiManager.lastUI = uiManager.Main.GetComponent<UIScreenBase>();
         }
     }
 

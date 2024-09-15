@@ -29,6 +29,7 @@ namespace DefaultNamespace.UI
         public override void Awake()
         {
             base.Awake();
+            previousQuitTime = Time.time;
         }
 
         public void UpdateSprites(int currentDifficulty, int unlockDifficulty)
@@ -53,12 +54,26 @@ namespace DefaultNamespace.UI
             levelButton.GetComponent<Image>().sprite = ss.selectedSprite;
         }
 
+        private float previousQuitTime;
         public override void OnBackClicked()
         {
             SoundManager.Instance.Play("button2");
             if (IsSellectingDiffculty)
             {
                 IsSellectingDiffculty = false;
+            }
+            else
+            {
+                print(Time.time - previousQuitTime);
+                if (Time.time - previousQuitTime < 0.2f)
+                {
+                    print("Á¾·á");
+                    Application.Quit();
+                }
+                else
+                {
+                    previousQuitTime = Time.time;
+                }
             }
         }
 
@@ -100,5 +115,6 @@ namespace DefaultNamespace.UI
         {
             SkinScreen.SetActive(true);
         }
+        
     }
 }

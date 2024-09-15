@@ -7,7 +7,6 @@ namespace DefaultNamespace.UI
 {
     public class SettingScreen : UIScreenBase
     {
-        public bool isRunning = false;
         private SoundManager sm;
         private float bgmVol;
         private float sfxVol;
@@ -23,6 +22,7 @@ namespace DefaultNamespace.UI
 
             bgmSilder.value = bgmVol;
             sfxSilder.value = sfxVol;
+            uiManager.lastUI = this;
         }
 
         public void OnCreditClicked()
@@ -76,9 +76,7 @@ namespace DefaultNamespace.UI
             PlayerPrefs.SetFloat("sfx",sfxVol);
             PlayerPrefs.Save();
             gameObject.SetActive(false);
-            if(isRunning)
-                GameManager.Instance.ResumeGame();
-            isRunning = false;
+            uiManager.lastUI = uiManager.Main.GetComponent<UIScreenBase>();
         }
     }
 }

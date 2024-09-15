@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1319340549030053094
 Transform:
   m_ObjectHideFlags: 0
@@ -51,19 +51,19 @@ MonoBehaviour:
   difficulty: 3
   intervalMinArr:
   - 0.5
-  - 0.4
-  - 0.12
+  - 0.3
+  - 0.18
   - 3
   intervalMaxArr:
-  - 2.5
   - 2
-  - 0.6
+  - 1.5
+  - 1
   - 4
   <openScoreArr>k__BackingField: 000000004600000046000000ffffffff
   reverseValueArr: 00000101
   useTArr: 01010100
   weightCoefficientArray:
-  - 0.95
+  - 0.97
   - 0.99
   - 1
   defaultSpawnTickets: 04000000040000000400000004000000
