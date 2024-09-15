@@ -31,6 +31,7 @@ namespace Vehicles.Cars
         {
             playerHp.Value -= 1;
             var go = Instantiate(FailEffect);
+            SoundManager.Instance.Play("ship_crash");
             go.transform.position = MoveLine.EndEffect.position;
             Destroy(gameObject);
         }
