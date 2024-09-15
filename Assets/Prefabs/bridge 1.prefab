@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 124458415411112225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.052, y: -0.794, z: 0.038440607}
+  m_LocalPosition: {x: 0.04, y: -0.76, z: 0.038440607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -141,7 +141,7 @@ MonoBehaviour:
   MoveTime: 0.33
   progress: 0
   height: 1
-  heightweight: 5
+  heightweight: 3.3
   curveSinkSO: {fileID: 11400000, guid: b44740b653557a442b7d6fe79c59fd22, type: 2}
   curveGoupSO: {fileID: 11400000, guid: bdb036bb09512324a8d626ff1ef1cb7f, type: 2}
   sinkHeight: 0.1
@@ -384,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 4058801167286390231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.12186947, w: -0.99254614}
-  m_LocalPosition: {x: 0.1866, y: -5.3973, z: 0}
+  m_LocalPosition: {x: 0.41, y: -4.49, z: 0}
   m_LocalScale: {x: 10.561965, y: 4.7431192, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

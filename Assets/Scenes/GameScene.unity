@@ -166,26 +166,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bridge 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2847775605559536301, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2847775605559536301, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: heightweight
-      value: 3.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.49
-      objectReference: {fileID: 0}
     - target: {fileID: 6861071919750462988, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.228
