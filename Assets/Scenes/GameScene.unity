@@ -1075,6 +1075,46 @@ PrefabInstance:
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: useTArr.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[0]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[2]
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[0]
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[1]
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: reverseValueArr.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: reverseValueArr.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: weightCoefficientArray.Array.data[0]
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: <openScoreArr>k__BackingField.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: <openScoreArr>k__BackingField.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
