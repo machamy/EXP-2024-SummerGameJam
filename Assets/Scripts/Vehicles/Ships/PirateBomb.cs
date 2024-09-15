@@ -43,6 +43,7 @@ namespace Vehicles.Ships
             if(isDead)
                 return;
             var go = Instantiate(FailEffect);
+            SoundManager.Instance.Play("ship_crash");
             go.transform.position = MoveLine.EndEffect.position;
             playerHp.Value -= 1;
             Destroy(gameObject);
