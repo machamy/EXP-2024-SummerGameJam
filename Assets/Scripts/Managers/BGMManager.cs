@@ -79,17 +79,17 @@ public class BGMManager : MonoBehaviour
             case 10:// 2. play1_2 볼륨을 켬
                 StartCoroutine(VolumeRoutine(_playbgmSources[1],time:1.5f));
                 break;
-            case 20:// 3. play1_3 볼륨을 켬
+            case 30:// 3. play1_3 볼륨을 켬
                 StartCoroutine(VolumeRoutine(_playbgmSources[2],time:1.5f));
                 break;
-            case 30:// 4. playinst, play_2, play_3 볼륨 0, playinst2 볼륨을 켬
+            case 50:// 4. playinst, play_2, play_3 볼륨 0, playinst2 볼륨을 켬
                 for(int i = 0; i < 3; i++)
                 {
                     StartCoroutine(VolumeRoutine(_playbgmSources[i],1,0,time:0.3f));
                 }
                 StartCoroutine(VolumeRoutine(_playbgmSources[3],time:0.3f));
                 break;
-            case 40:// 5.모두 재생 중지하고 play2를 재생
+            case 70:// 5.모두 재생 중지하고 play2를 재생
                 for(int i = 0; i < 4; i++)
                 {
                     // StartCoroutine(VolumeRoutine(_playbgmSources[i],1,0,time:0.3f));
@@ -131,5 +131,5 @@ public class BGMManager : MonoBehaviour
 
         source.volume = to;
     }
-    
+
 }
