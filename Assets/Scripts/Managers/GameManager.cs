@@ -47,9 +47,10 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
+        Instance = this; 
+        PlayerPrefs.SetInt("u_diff", 2);
         currentDifficulty = PlayerPrefs.GetInt("c_diff", 0);
-        unlockedDifficulty = PlayerPrefs.GetInt("u_diff", 0);
+        unlockedDifficulty = PlayerPrefs.GetInt("u_diff", 2);
         // highScore = PlayerPrefs.GetInt("h_score", 0);
     }
 
