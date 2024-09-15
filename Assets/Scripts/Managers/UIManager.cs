@@ -6,9 +6,11 @@ using DefaultNamespace.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
+    public Camera Camera;
     [Header("Main")] 
     [SerializeField] public GameObject Main;
     [Header("Game")]
@@ -140,11 +142,36 @@ public class UIManager : MonoBehaviour
     {
         Score.ValueChangeEvent.AddListener(ChangeScore);
         Hp.ValueChangeEvent.AddListener(hpIndicator.SetHP);
+        Hp.ValueChangeEvent.AddListener(PlayOuch);
     }
 
     private void OnDisable()
     {
         Score.ValueChangeEvent.RemoveListener(ChangeScore);
         Hp.ValueChangeEvent.RemoveListener(hpIndicator.SetHP);
+        Hp.ValueChangeEvent.RemoveListener(PlayOuch);
+    }
+
+    private void PlayOuch(int nextHP)
+    {
+        if (nextHP < Hp.Value && (GameManager.Instance.State == GameManager.GameState.Running)) 
+        {
+            // SoundManager.Instance.Play("heart_ouch", volume:0.5f);
+            StartCoroutine(CameraShake(5, 0.04f, 0.1f));
+        }
+    }
+
+    public IEnumerator CameraShake(int times, float interval, float delta)
+    {
+        Vector3 initialPos = Camera.transform.position;
+        Transform transform = Camera.transform;
+        for (int i = 0; i < times; i++)
+        {
+            Vector3 deltaVector = new Vector3(Random.Range(-delta, +delta), Random.Range(-delta, +delta), 0);
+            transform.position = initialPos + deltaVector;
+            yield return new WaitForSeconds(interval);
+        }
+
+        transform.position = initialPos;
     }
 }
