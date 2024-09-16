@@ -29,6 +29,6 @@ MonoBehaviour:
   Rarity: 0
   open: 30
   close: -1
-  possibleDifficultyFlag: 14
+  possibleDifficultyFlag: 10
   bridgeCrossVariableT: 9999
   reverseValue: 0

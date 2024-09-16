@@ -21,7 +21,7 @@ MonoBehaviour:
   reverseSprite: {fileID: 21300000, guid: 254d4237ac74c9546967e1f43a1c607f, type: 3}
   beforeTime: 0.5
   waitTime: 0.2
-  afterTime: 2
+  afterTime: 1.7
   rawBeforeCurve: Linear
   rawAfterCurve: PurpleCarCurve1
   beforeCurve: {fileID: 0}
@@ -29,6 +29,6 @@ MonoBehaviour:
   Rarity: 0
   open: 14
   close: -1
-  possibleDifficultyFlag: 6
+  possibleDifficultyFlag: 2
   bridgeCrossVariableT: 9999
   reverseValue: 30
