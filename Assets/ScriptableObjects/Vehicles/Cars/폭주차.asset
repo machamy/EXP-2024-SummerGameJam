@@ -27,8 +27,8 @@ MonoBehaviour:
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 2
-  open: 4
+  open: 1
   close: -1
-  possibleDifficultyFlag: 3
+  possibleDifficultyFlag: 1
   bridgeCrossVariableT: 0.5
   reverseValue: 0

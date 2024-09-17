@@ -1092,10 +1092,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1775276551}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgShipId
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipRight
       value: 
       objectReference: {fileID: 2081447687}
@@ -1108,69 +1104,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996977927}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgSummonShip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: useTArr.Array.data[3]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[1]
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[2]
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[0]
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[1]
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: reverseValueArr.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: reverseValueArr.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[10].first
-      value: BoatEaseInHard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[10].second
-      value: 
-      objectReference: {fileID: 11400000, guid: 7aafbfec8d4394542a7e02586612d3d0, type: 2}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: weightCoefficientArray.Array.data[0]
-      value: 0.965
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: <openScoreArr>k__BackingField.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: <openScoreArr>k__BackingField.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
@@ -3024,10 +2960,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2016323661}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: invincible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 598619506}
@@ -3035,14 +2967,6 @@ PrefabInstance:
       propertyPath: rankingScreen
       value: 
       objectReference: {fileID: 1775475779}
-    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: <currentDifficulty>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
-      propertyPath: <unlockedDifficulty>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3423029211225883645, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: m_LocalPosition.x
       value: 351.22147

@@ -47,23 +47,23 @@ MonoBehaviour:
   dbgSummonCar: 0
   dbgCarId: 2
   dbgSummonShip: 0
-  dbgShipId: 0
+  dbgShipId: 26
   difficulty: 3
   intervalMinArr:
-  - 0.5
+  - 0.3
   - 0.3
   - 0.18
   - 3
   intervalMaxArr:
-  - 2
-  - 1.5
   - 1
+  - 0.8
+  - 0.7
   - 4
-  <openScoreArr>k__BackingField: 000000004600000046000000ffffffff
-  reverseValueArr: 00000101
+  <openScoreArr>k__BackingField: 000000000000000000000000ffffffff
+  reverseValueArr: 01010101
   useTArr: 01010100
   weightCoefficientArray:
-  - 0.97
+  - 0.965
   - 0.99
   - 1
   defaultSpawnTickets: 04000000040000000400000004000000
@@ -102,6 +102,8 @@ MonoBehaviour:
     second: {fileID: 11400000, guid: c896da989c23df345ab1b6137afd3495, type: 2}
   - first: PurpleCarCurve1
     second: {fileID: 11400000, guid: e3c4519c527f9da4e919749f6ed927e5, type: 2}
+  - first: BoatEaseInHard
+    second: {fileID: 11400000, guid: 7aafbfec8d4394542a7e02586612d3d0, type: 2}
   cars:
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}

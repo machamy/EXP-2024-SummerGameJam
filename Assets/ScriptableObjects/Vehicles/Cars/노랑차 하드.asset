@@ -19,15 +19,15 @@ MonoBehaviour:
   rawSprite: yellow
   sprite: {fileID: 21300000, guid: 6740121b48864a746831a063e58fa675, type: 3}
   reverseSprite: {fileID: 21300000, guid: 3cbaa24f52339a940984042cfe077901, type: 3}
-  beforeTime: 1.8
-  waitTime: 1.8
-  afterTime: 1.8
+  beforeTime: 1.54
+  waitTime: 1.309
+  afterTime: 1.54
   rawBeforeCurve: Linear
   rawAfterCurve: BoatEaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 0
-  open: 7
+  open: 4
   close: -1
   possibleDifficultyFlag: 4
   bridgeCrossVariableT: 9999

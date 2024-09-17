@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194b07c950fe02e4a814297488ebbb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DB: {fileID: 0}
   uiManager: {fileID: 0}
   levelManager: {fileID: 0}
   bgmManager: {fileID: 0}
@@ -55,5 +56,5 @@ MonoBehaviour:
   gravity: 3
   waterGravity: 1
   invincible: 0
-  <currentDifficulty>k__BackingField: 2
-  <unlockedDifficulty>k__BackingField: 0
+  <currentDifficulty>k__BackingField: 1
+  <unlockedDifficulty>k__BackingField: 2

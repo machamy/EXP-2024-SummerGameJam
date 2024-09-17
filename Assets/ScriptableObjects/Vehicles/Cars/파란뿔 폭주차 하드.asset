@@ -19,15 +19,15 @@ MonoBehaviour:
   rawSprite: blue
   sprite: {fileID: 21300000, guid: 677a8caa6ac93094dae0a93cdc9e8f56, type: 3}
   reverseSprite: {fileID: 21300000, guid: 677a8caa6ac93094dae0a93cdc9e8f56, type: 3}
-  beforeTime: 1.8
-  waitTime: 4.5
-  afterTime: 0.9
+  beforeTime: 1.54
+  waitTime: 4
+  afterTime: 1.54
   rawBeforeCurve: Linear
   rawAfterCurve: EaseOut
   beforeCurve: {fileID: 0}
   afterCurve: {fileID: 0}
   Rarity: 2
-  open: 40
+  open: 30
   close: -1
   possibleDifficultyFlag: 4
   bridgeCrossVariableT: 0.5
