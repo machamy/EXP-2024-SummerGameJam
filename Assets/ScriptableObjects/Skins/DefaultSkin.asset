@@ -17,4 +17,4 @@ MonoBehaviour:
   upperSprite: {fileID: 0}
   sideSprite: {fileID: 0}
   BridgeColor: {r: 1, g: 1, b: 1, a: 1}
-  SunkenColor: {r: 0.81, g: 0.94, b: 1, a: 1}
+  SunkenColor: {r: 0.3882353, g: 0.94, b: 1, a: 1}
