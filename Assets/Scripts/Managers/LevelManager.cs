@@ -27,20 +27,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool[] useTArr = { false, true, true };
     [SerializeField,Tooltip("0~100, 101~200, 200 ~ ")] private float[] weightCoefficientArray = { 0.95f, 0.99f, 1f };
 
-    [Header("Spawn")] 
+    [Header("Spawn")]
     [SerializeField] private int[] defaultSpawnTickets = {4,4,4,4};
     [SerializeField] private int[] spawnTickets= {4,4,4,4};
     [SerializeField] private bool useReverse = false;
     [SerializeField] private bool useT = false;
-    [Space] 
+    [Space]
     [SerializeField] private float weight = 1.00f;
-    
+
     [SerializeField] private IntVariableSO score;
     [SerializeField] private float deltaTime = 10f;
 
     [SerializeField] private BridgeController bridge;
 
-    [Header("Lines")] 
+    [Header("Lines")]
     [SerializeField] private Line carUpper;
     [SerializeField] private Line carLower;
     [SerializeField] private Line carUpperRev;
@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
     [Header("Particles")]
     // [SerializeField] private GameObject explodeEffect;
     // [SerializeField] private GameObject bubbleEffect;
-    
+
     [Header("Summon Interval")]
     [SerializeField] private float intervalMax = 7;
     [SerializeField] private float intervalMin = 3;
@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
         carDataList = Database.Instance.CarDataSoList;
         shipDataList = Database.Instance.ShipDataSoList;
         Array.Copy(defaultSpawnTickets, spawnTickets,4);
-        
+
         intervalMin = intervalMinArr[difficulty];
         intervalMax = intervalMaxArr[difficulty];
         useReverse = reverseValueArr[difficulty];
@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
             Destroy(bv.gameObject);
         }
     }
-    
+
 
     public void Update()
     {
@@ -149,7 +149,7 @@ public class LevelManager : MonoBehaviour
                 GameObject go;
             #if UNITY_EDITOR
                 if(dbgSummonCar || dbgSummonShip)
-                { 
+                {
                     go = SummonDebug();
                 }
                 else
@@ -160,23 +160,23 @@ public class LevelManager : MonoBehaviour
                     go = SummonRandomByData();
             #endif
                 // 소환 후 대기
-                
+
                 go.SetActive(false);
-                
+
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
                 float vehicleActivateTime = timestamp + deltaTime - (vehicle.TotalBeforeTime + vehicle.bridgeStartTime);
                 schedule.Add(vehicleActivateTime, go);
                 intervalRemain = Random.Range(intervalMin, intervalMax);
                 vehicle.timestampCheck = vehicleActivateTime;
                 float t;
-                
+
                 if (useT)
                     t = Mathf.Max(vehicle.VehicleData.bridgeCrossVariableT * weight,bridge.curveSinkSO.EvaluateByValueFirst(vehicle.collisionHeight));
                 else
                     t = 10000f;
                 // float startDelay = Random.Range(vehicle.bridgeStartTime, vehicle.bridgeEndTime - t - 0.05f);
                 // 난이도 쉬움 : t 없음
-                
+
                 canSpawn = false;
                 float waitTime = Random.Range(Mathf.Min(t + 0.1f, vehicle.bridgeCrossingTime),
                     vehicle.bridgeCrossingTime);
@@ -217,7 +217,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         PedcanSpawn = true;
     }
-    
+
     private void CheckScore(int n)
     {
         if (n == 0)
@@ -242,7 +242,7 @@ public class LevelManager : MonoBehaviour
     public GameObject SummonRandomByData()
     {
         GameObject prefab;
-        bool isCar = Random.Range(0, 2) == 1;
+        bool isCar = Random.Range(0, 100) < 43;
         Rarity rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
         GameObject[] prefabArr = cars;
         List<VehicleDataSO> vehicleDataList = carDataList;
@@ -252,7 +252,7 @@ public class LevelManager : MonoBehaviour
             vehicleDataList = shipDataList;
         }
         var candidates = GetSummonables(rarity, vehicleDataList);
-        
+
         while (candidates.Count == 0)
         {
             rarity = (Rarity)Utilties.WeightedRandom(50,30,20);
@@ -265,7 +265,7 @@ public class LevelManager : MonoBehaviour
         // 거꾸로 이동 부여
         GameObject result = Instantiate(prefabArr[data.prefabID]);
         InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve,data:data,isReverse:line.isReverse);
-        
+
         return result;
     }
     [ContextMenu("SummonDebug")]
@@ -289,13 +289,13 @@ public class LevelManager : MonoBehaviour
         // 거꾸로 이동 부여
         GameObject result = Instantiate(prefabArr[data.prefabID]);
         InitVehicle(result.GetComponent<BaseVehicle>(),line,data.rawAfterCurve,data:data,isReverse:line.isReverse);
-        
+
         return result;
     }
     private Line GetCarLine(VehicleDataSO data)
     {
         Line line;
-       
+
         if (useReverse && 0 < data.reverseValue)
         {
             if (spawnTickets.All(e => e == 0))
@@ -332,7 +332,7 @@ public class LevelManager : MonoBehaviour
         }
         return line;
     }
-    
+
     private Line GetShipLine(VehicleDataSO data)
     {
         Line line;
@@ -345,7 +345,7 @@ public class LevelManager : MonoBehaviour
 
     private List<VehicleDataSO> GetSummonables(Rarity rarity, List<VehicleDataSO> vehicleDataSoList)
     {
-        var resultList = from data in vehicleDataSoList 
+        var resultList = from data in vehicleDataSoList
             where data.open <= score.Value  //최소 조건
                   && rarity == data.Rarity  //희귀도 조건
                   && (data.close == -1 || data.close != -1 && score.Value < data.close) // 최대조건
@@ -416,7 +416,7 @@ public class LevelManager : MonoBehaviour
     {
         InitVehicle(vehicle, line, GetCurve(curveSo),data, isReverse:isReverse);
     }
-    
+
 
     private void InitVehicle(BaseVehicle vehicle,Line line,CurveSO curveSo,VehicleDataSO data = null,bool isReverse = false, bool applyWeight = true)
     {
@@ -442,7 +442,7 @@ public class LevelManager : MonoBehaviour
             vehicle.afterMovingTime *= weight;
         }
         // 다리 건너는 시간 계산
-        
+
         vehicle.InitBridgeCrossingTime();
     }
 
