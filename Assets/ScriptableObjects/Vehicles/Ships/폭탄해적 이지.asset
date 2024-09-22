@@ -30,5 +30,5 @@ MonoBehaviour:
   open: 30
   close: -1
   possibleDifficultyFlag: 1
-  bridgeCrossVariableT: 0.6
+  bridgeCrossVariableT: 0.54
   reverseValue: 0

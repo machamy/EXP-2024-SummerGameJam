@@ -21,7 +21,7 @@ MonoBehaviour:
   reverseSprite: {fileID: 21300000, guid: 3cbaa24f52339a940984042cfe077901, type: 3}
   beforeTime: 1.54
   waitTime: 1.309
-  afterTime: 1.54
+  afterTime: 1.463
   rawBeforeCurve: Linear
   rawAfterCurve: BoatEaseOut
   beforeCurve: {fileID: 0}
