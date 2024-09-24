@@ -7,6 +7,7 @@ namespace DefaultNamespace.UI
     {
         [SerializeField] private GameObject difficultySellector;
         [SerializeField] private GameObject SkinScreen;
+        [SerializeField] private SimpleScreen GuideScreen;
         [SerializeField] private Button levelButton;
         [SerializeField] private Button RankingButton;
         [field:SerializeField] public Sprite[] levelSprites { get; private set; }
@@ -62,6 +63,11 @@ namespace DefaultNamespace.UI
             {
                 IsSellectingDiffculty = false;
             }
+            else if (GuideScreen.gameObject.activeSelf)
+            {
+                GuideScreen.gameObject.SetActive(false);
+                uiManager.lastUI = this;
+            }
             else
             {
                 print(Time.time - previousQuitTime);
@@ -107,9 +113,17 @@ namespace DefaultNamespace.UI
             
         }
         
+        public void OnGuideClicked()
+        {
+            SoundManager.Instance.Play("button2");
+            GuideScreen.gameObject.SetActive(true);
+            uiManager.lastUI = GuideScreen;
+        }
+        
         public void OnRankingClicked() { 
             SoundManager.Instance.Play("button2"); 
-            uiManager.ShowRanking(); }
+            uiManager.ShowRanking(); 
+        }
 
         public void OnSkinClicked()
         {

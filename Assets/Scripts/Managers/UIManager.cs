@@ -122,7 +122,9 @@ public class UIManager : MonoBehaviour
     }
 
     public void HideRanking()
-    { Ranking.SetActive(false); }
+    {
+        Ranking.SetActive(false);
+    }
     
 
     // private IEnumerator FadeRoutine(float time, float from, float to, int frame = 32)

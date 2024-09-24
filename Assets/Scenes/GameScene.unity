@@ -1225,6 +1225,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2081447688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698950177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5375791395821904756, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+  m_PrefabInstance: {fileID: 1109167696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4874f74d44584b79b3f532253ee3a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756337510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,6 +1905,14 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
+    - target: {fileID: 1712734861859843774, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: GuideScreen
+      value: 
+      objectReference: {fileID: 698950177}
+    - target: {fileID: 1855525370818689332, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2321368765821398454, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -1903,17 +1922,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1404201534}
     - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1404201534}
-    - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3401074316341453249, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
@@ -2007,6 +2018,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1404201534}
     - target: {fileID: 4493717413016101868, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1404201534}
+    - target: {fileID: 5375791395821904756, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
