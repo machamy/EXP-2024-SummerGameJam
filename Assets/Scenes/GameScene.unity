@@ -1128,6 +1128,14 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMaxArr.Array.data[0]
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: intervalMinArr.Array.data[0]
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: curveDict.Array.data[11].first
       value: BlueBoatCurve
       objectReference: {fileID: 0}
@@ -1143,6 +1151,18 @@ PrefabInstance:
       propertyPath: curveDict.Array.data[12].second
       value: 
       objectReference: {fileID: 11400000, guid: 30f772e25a85d1e4e91a6e2ef45fb17f, type: 2}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: weightCoefficientArray.Array.data[0]
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: weightCoefficientArray.Array.data[1]
+      value: 0.985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: weightCoefficientArray.Array.data[2]
+      value: 0.98
+      objectReference: {fileID: 0}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'
@@ -2459,6 +2479,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e1530e0b981dd54ba9cd8e789bdd846, type: 2}
   - {fileID: 11400000, guid: f22b9f746725bfe49a10b07bd796f6ef, type: 2}
   - {fileID: 11400000, guid: 11b1c959dfffd6143ada590f1123b1ec, type: 2}
+  - {fileID: 11400000, guid: 951297f1d6f018c47889272bb2b96388, type: 2}
+  - {fileID: 11400000, guid: 587567e871f01f14e82bc2f8070ea6dc, type: 2}
   CarDataSoList: []
   ShipDataSoList: []
 --- !u!4 &1521374877
