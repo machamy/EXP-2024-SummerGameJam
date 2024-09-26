@@ -1088,17 +1088,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596474005}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgCarId
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipLeft
       value: 
       objectReference: {fileID: 1775276551}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgShipId
-      value: 33
-      objectReference: {fileID: 0}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipRight
       value: 
@@ -1112,57 +1104,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 996977927}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgSummonCar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: dbgSummonShip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: pedestrianLine
       value: 
       objectReference: {fileID: 1063299457}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMaxArr.Array.data[0]
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: intervalMinArr.Array.data[0]
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[11].first
-      value: BlueBoatCurve
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[12].first
-      value: RedCarCurve
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[11].second
-      value: 
-      objectReference: {fileID: 11400000, guid: 6835d40a7db0562438d31280430c54fa, type: 2}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: curveDict.Array.data[12].second
-      value: 
-      objectReference: {fileID: 11400000, guid: 30f772e25a85d1e4e91a6e2ef45fb17f, type: 2}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: weightCoefficientArray.Array.data[0]
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: weightCoefficientArray.Array.data[1]
-      value: 0.985
-      objectReference: {fileID: 0}
-    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
-      propertyPath: weightCoefficientArray.Array.data[2]
-      value: 0.98
-      objectReference: {fileID: 0}
     - target: {fileID: 5357008397933743693, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: m_Name
       value: '@LevelManager'

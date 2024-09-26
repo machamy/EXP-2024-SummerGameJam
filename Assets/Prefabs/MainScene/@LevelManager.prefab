@@ -45,17 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dbgSummonCar: 0
-  dbgCarId: 2
+  dbgCarId: 25
   dbgSummonShip: 0
-  dbgShipId: 26
+  dbgShipId: 33
   difficulty: 3
   intervalMinArr:
-  - 0.3
+  - 0.35
   - 0.3
   - 0.18
   - 3
   intervalMaxArr:
-  - 1
+  - 1.2
   - 0.8
   - 0.7
   - 4
@@ -63,9 +63,9 @@ MonoBehaviour:
   reverseValueArr: 01010101
   useTArr: 01010100
   weightCoefficientArray:
-  - 0.965
   - 0.99
-  - 1
+  - 0.985
+  - 0.98
   defaultSpawnTickets: 04000000040000000400000004000000
   spawnTickets: 04000000040000000400000004000000
   useReverse: 0
@@ -104,6 +104,10 @@ MonoBehaviour:
     second: {fileID: 11400000, guid: e3c4519c527f9da4e919749f6ed927e5, type: 2}
   - first: BoatEaseInHard
     second: {fileID: 11400000, guid: 7aafbfec8d4394542a7e02586612d3d0, type: 2}
+  - first: BlueBoatCurve
+    second: {fileID: 11400000, guid: 6835d40a7db0562438d31280430c54fa, type: 2}
+  - first: RedCarCurve
+    second: {fileID: 11400000, guid: 30f772e25a85d1e4e91a6e2ef45fb17f, type: 2}
   cars:
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
   - {fileID: 690107860050213565, guid: d537e09a087cff740b35e85c835c76fa, type: 3}
