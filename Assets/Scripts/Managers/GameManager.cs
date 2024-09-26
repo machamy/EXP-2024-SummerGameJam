@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         // 다음 난이도 해금
         if (currentDifficulty < 2 && score.Value >= levelManager.openScoreArr[currentDifficulty])
         {
-            unlockedDifficulty = currentDifficulty + 1;
+            unlockedDifficulty = Math.Max(unlockedDifficulty, currentDifficulty + 1);
             PlayerPrefs.SetInt("u_diff",unlockedDifficulty);
             PlayerPrefs.Save();
         }
