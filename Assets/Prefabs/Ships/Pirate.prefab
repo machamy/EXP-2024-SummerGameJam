@@ -73,15 +73,15 @@ SpriteRenderer:
   m_SortingLayerID: -847147063
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29cb76c7deb525c4984457afed9503c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4083cd14d51f9ce4890795a96cafe185, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.0609999, y: 3.598404}
+  m_Size: {x: 2.5037992, y: 3.1491635}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2897081354676847685
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5628640392947556087}
   - component: {fileID: 7183758590761964236}
   - component: {fileID: 2568900186296551934}
+  - component: {fileID: 5714432468298426784}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Ship
@@ -160,15 +161,15 @@ SpriteRenderer:
   m_SortingLayerID: -847147063
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29cb76c7deb525c4984457afed9503c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4083cd14d51f9ce4890795a96cafe185, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5037992, y: 3.1491635}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7183758590761964236
@@ -191,6 +192,7 @@ MonoBehaviour:
   bridgeController: {fileID: 0}
   type: 1
   gfx: {fileID: 1400541169435521437}
+  body: {fileID: 0}
   priorMoveDelay: 2
   priorWaitDelay: 0
   bridgeCrossingTime: 10
@@ -251,9 +253,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5319998, y: 0.36920914}
-    oldSize: {x: 2.0609999, y: 3.598404}
-    newSize: {x: 2.0609999, y: 3.598404}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5037992, y: 3.1491635}
+    newSize: {x: 2.5037992, y: 3.1491635}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -261,3 +263,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &5714432468298426784
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897081354676847685}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

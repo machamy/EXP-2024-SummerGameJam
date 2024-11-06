@@ -13,8 +13,7 @@ public class BridgeController : MonoBehaviour
 {
     public GameObject bridgegfx;
     public GameObject shadow;
-    public Ship Ship;
-    public Car Car;
+
     public float MoveSpeedWeight = 1.0f;
     [Tooltip("다리가 잠기고 떠오르는데 걸리는 시간")]   public float MoveTime = 1.0f;       
     [Tooltip("잠기고 떠오르는 행위의 진행률")]          public float progress = 0.0f;
@@ -36,13 +35,15 @@ public class BridgeController : MonoBehaviour
     [SerializeField] private SpriteRenderer[] renderers;
     [Header("Skin")] 
     [SerializeField] private SkinSO skinSo;
-
+    
+    
     
     [SerializeField] private Color bridgeColor = Color.white;
     [SerializeField] private Color sunkenColor = new Color(0.81f, 0.94f, 1f);
     private static Color defaultSunkenColor = new Color(0.81f, 0.94f, 1f);
     private AnimationCurve selectedCurve;  // 클래스 레벨에서 selectedCurve 선언
     private AnimationCurve previousCurve;  // 이전 곡선을 저장할 변수
+    [SerializeField]private Rigidbody2D gfxBody;
     public SkinSO SkinSo
     {
         get => skinSo;
@@ -90,6 +91,7 @@ public class BridgeController : MonoBehaviour
         maskOriginalPos = spriteMask.transform.position;
         selectedCurve = curveSink;
         previousCurve = selectedCurve;
+
     }
 
     
@@ -199,7 +201,7 @@ public class BridgeController : MonoBehaviour
 
         // 현재 곡선에 따른 height 계산
         height = selectedCurve.Evaluate(Mathf.Lerp(0, 1, this.progress / MoveTime));
-
+        
         shadow.SetActive(!(bridgegfx.transform.position.y <= shadow.transform.position.y));
 
         if (height < sinkHeight)
@@ -218,9 +220,8 @@ public class BridgeController : MonoBehaviour
                 renderer.sortingLayerName = "Bridge";
             }
         }
-
-        bridgegfx.transform.position = new Vector3(originalPos.x, originalPos.y + height * heightweight - heightweight, originalPos.z);
-    }
+        gfxBody.MovePosition(new Vector2(originalPos.x, originalPos.y + height * heightweight - heightweight));
+        }
 
     // 주어진 height에 맞는 progress 값을 찾는 함수
     private float FindProgressForHeight(AnimationCurve curve, float targetHeight)

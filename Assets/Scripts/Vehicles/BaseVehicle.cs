@@ -34,6 +34,7 @@ namespace Vehicles
         public BridgeController bridgeController;
         public VehicleType type;
         public GameObject gfx;
+        public Rigidbody2D body;
 
         public virtual bool isBridgeMustSink => false;
         /// <summary>
@@ -99,6 +100,10 @@ namespace Vehicles
         [FormerlySerializedAs("score")]public IntVariableSO playerScore;
         [FormerlySerializedAs("hp")] public IntVariableSO playerHp;
 
+        private void Awake()
+        {
+            body = GetComponent<Rigidbody2D>();
+        }
 
         private void FixedUpdate()
         {
@@ -141,7 +146,7 @@ namespace Vehicles
                 case VehicleState.MoveBefore:
                     if (currentDistance >= WaitDistance) // 도착하면 움직이지않고 대기 페이즈로
                     {
-                        transform.position = WaitPos.position;
+                        body.MovePosition(WaitPos.position);
                         state = VehicleState.Wait;
                         OnWait();
                         return;
@@ -182,7 +187,7 @@ namespace Vehicles
             // print($"{name} : {totalTime} {startPos} {endPos}, {pickedCurve.Evaluate(ratio)}");
             // print($"{currentTime} {ratio} {currentDistance} {position}");
             currentTime += Time.fixedDeltaTime;
-            transform.position = position;
+            body.MovePosition(position);
 
         }
 

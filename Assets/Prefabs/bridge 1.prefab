@@ -135,8 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bridgegfx: {fileID: 2568303578286881452}
   shadow: {fileID: 124458415411112225}
-  Ship: {fileID: 0}
-  Car: {fileID: 0}
   MoveSpeedWeight: 1
   MoveTime: 0.33
   progress: 0
@@ -155,6 +153,7 @@ MonoBehaviour:
   skinSo: {fileID: 11400000, guid: d39346fdc7ac076459b155cb5bb622ca, type: 2}
   bridgeColor: {r: 1, g: 1, b: 1, a: 1}
   sunkenColor: {r: 0.3882353, g: 0.94, b: 1, a: 1}
+  gfxBody: {fileID: 0}
   autoplayEnabled: 0
   autoInput: 0
   autoplayDelay: 3
