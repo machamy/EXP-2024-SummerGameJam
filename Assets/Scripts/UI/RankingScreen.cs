@@ -23,7 +23,8 @@ namespace DefaultNamespace.UI
         [SerializeField] private GameObject levelBox;
         [SerializeField] private Button levelButton;
         [SerializeField] private int sellectedDifficulty = 0;
-
+        [field:SerializeField] public Sprite[] levelSprites { get; private set; }
+        [field:SerializeField] public Sprite[] levelPressedSprites{ get; private set; }
         public void OnEnable()
         {
             scoreManager.LoadScores();
@@ -76,8 +77,8 @@ namespace DefaultNamespace.UI
             levelBox.SetActive(false);
 
             var ss = levelButton.spriteState;
-            ss.selectedSprite = _mainScreen.levelSprites[difficulty];
-            ss.pressedSprite = _mainScreen.levelPressedSprites[difficulty];
+            ss.selectedSprite = levelSprites[difficulty];
+            ss.pressedSprite = levelPressedSprites[difficulty];
             levelButton.spriteState = ss;
             levelButton.GetComponent<Image>().sprite = ss.selectedSprite;
             
