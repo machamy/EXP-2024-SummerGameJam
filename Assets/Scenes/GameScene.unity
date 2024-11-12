@@ -1902,6 +1902,22 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1404201534}
+    - target: {fileID: 2430015026490854803, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: <levelSprites>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 584f8e903edc45144adccb14b30a126b, type: 3}
+    - target: {fileID: 2430015026490854803, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: <levelSprites>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4046a5f025817934b869a447b5877a49, type: 3}
+    - target: {fileID: 2430015026490854803, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: <levelPressedSprites>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: adfeed83297657344a448b094d83dc46, type: 3}
+    - target: {fileID: 2430015026490854803, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
+      propertyPath: <levelPressedSprites>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e2eddce85554b1f41901220627a3a198, type: 3}
     - target: {fileID: 2580137515443219597, guid: 1b3e42560321baa4489be13b0f88e49c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
