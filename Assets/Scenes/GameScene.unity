@@ -1100,6 +1100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1775276551}
     - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
+      propertyPath: deltaTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254278218294990395, guid: 76ca24efa96700245a70d54cbd8ab4a1, type: 3}
       propertyPath: shipRight
       value: 
       objectReference: {fileID: 2081447687}
