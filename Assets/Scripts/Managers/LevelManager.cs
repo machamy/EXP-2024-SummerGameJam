@@ -217,6 +217,8 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         PedcanSpawn = true;
     }
+    
+    public float intervalMinMin = 0.2f;
 
     private void CheckScore(int n)
     {
@@ -235,6 +237,8 @@ public class LevelManager : MonoBehaviour
             weight *= coeff;
             bridge.MoveSpeedWeight *= coeff;
             intervalMax = Mathf.Max(intervalMin, intervalMax * coeff);
+            intervalMin = Mathf.Max(intervalMinMin, intervalMax * coeff);
+       
             weight = Mathf.Max(0.05f, weight); // 최솟값(임의) 설정
         }
     }
