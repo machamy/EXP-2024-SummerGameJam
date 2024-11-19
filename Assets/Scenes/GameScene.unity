@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,40 +166,28 @@ PrefabInstance:
       value: bridge 1
       objectReference: {fileID: 0}
     - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: gfxBody
-      value: 
-      objectReference: {fileID: 1665469994}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: MoveTime
-      value: 0.27
+      propertyPath: sinkHeight
+      value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: heightweight
-      value: 3.2
+    - target: {fileID: 4026959811883327129, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: m_Name
+      value: bridgegfx_sunken
       objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: sunkenColor.b
-      value: 1
+    - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.587315
       objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: sunkenColor.g
-      value: 0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: sunkenColor.r
-      value: 0.3882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 3835841208907939764, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      propertyPath: autoplayEnabled
-      value: 0
+    - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.50432
       objectReference: {fileID: 0}
     - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.53
+      value: -0.2598
       objectReference: {fileID: 0}
     - target: {fileID: 4565154461790958656, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.03
+      value: -7.2492
       objectReference: {fileID: 0}
     - target: {fileID: 6861071919750462988, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
       propertyPath: m_LocalPosition.x
@@ -242,14 +229,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6943331099085047800, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+    - target: {fileID: 8683682752155894994, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2568303578286881452, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1665469994}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
 --- !u!1 &90884387
 GameObject:
@@ -2995,38 +2982,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1775276552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1665469991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2568303578286881452, guid: f0566e23e80faaa44ad934039fe3e852, type: 3}
-  m_PrefabInstance: {fileID: 68248465}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1665469994
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665469991}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1672824453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3051,6 +3006,10 @@ PrefabInstance:
       propertyPath: bgmManager
       value: 
       objectReference: {fileID: 2016323661}
+    - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
+      propertyPath: invincible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2781505453922268439, guid: bb758d8e8ad964d47abe387be88b0122, type: 3}
       propertyPath: levelManager
       value: 
@@ -3448,12 +3407,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!81 &1900122109
 AudioListener:
   m_ObjectHideFlags: 0
