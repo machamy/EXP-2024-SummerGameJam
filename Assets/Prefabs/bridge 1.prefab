@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6861071919750462988}
   - component: {fileID: 3835841208907939764}
-  - component: {fileID: 6943331099085047800}
   m_Layer: 0
   m_Name: bridge 1
   m_TagString: Bridge
@@ -136,10 +135,10 @@ MonoBehaviour:
   bridgegfx: {fileID: 2568303578286881452}
   shadow: {fileID: 124458415411112225}
   MoveSpeedWeight: 1
-  MoveTime: 0.33
+  MoveTime: 0.27
   progress: 0
   height: 1
-  heightweight: 3.3
+  heightweight: 3.2
   curveSinkSO: {fileID: 11400000, guid: b44740b653557a442b7d6fe79c59fd22, type: 2}
   curveGoupSO: {fileID: 11400000, guid: bdb036bb09512324a8d626ff1ef1cb7f, type: 2}
   sinkHeight: 0.1
@@ -153,37 +152,10 @@ MonoBehaviour:
   skinSo: {fileID: 11400000, guid: d39346fdc7ac076459b155cb5bb622ca, type: 2}
   bridgeColor: {r: 1, g: 1, b: 1, a: 1}
   sunkenColor: {r: 0.3882353, g: 0.94, b: 1, a: 1}
-  gfxBody: {fileID: 0}
+  gfxBody: {fileID: 1181185052264752816}
   autoplayEnabled: 0
   autoInput: 0
   autoplayDelay: 3
---- !u!50 &6943331099085047800
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287940819486860500}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &2568303578286881452
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474877399024341399}
   - component: {fileID: 8683682752155894994}
+  - component: {fileID: 1181185052264752816}
   m_Layer: 0
   m_Name: bridgegfx
   m_TagString: Bridge
@@ -273,6 +246,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!50 &1181185052264752816
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568303578286881452}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4026959811883327129
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 4058801167286390231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.12186947, w: -0.99254614}
-  m_LocalPosition: {x: 0.41, y: -4.49, z: 0}
+  m_LocalPosition: {x: 0.53, y: -4.03, z: 0}
   m_LocalScale: {x: 10.561965, y: 4.7431192, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

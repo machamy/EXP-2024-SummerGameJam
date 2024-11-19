@@ -206,18 +206,20 @@ public class BridgeController : MonoBehaviour
 
         if (height < sinkHeight)
         {
-            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
+            // spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y + 2, maskOriginalPos.z);
             foreach (var renderer in renderers)
             {
                 renderer.sortingLayerName = "SunkenBridge";
+                renderer.color = sunkenColor;
             }
         }
         else
         {
-            spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
+            // spriteMask.transform.position = new Vector3(maskOriginalPos.x, maskOriginalPos.y, maskOriginalPos.z);
             foreach (var renderer in renderers)
             {
                 renderer.sortingLayerName = "Bridge";
+                renderer.color = bridgeColor;
             }
         }
         gfxBody.MovePosition(new Vector2(originalPos.x, originalPos.y + height * heightweight - heightweight));
