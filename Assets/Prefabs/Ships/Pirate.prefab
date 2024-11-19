@@ -200,7 +200,7 @@ MonoBehaviour:
   bridgeEndTime: 1.2
   afterMovingTime: 3
   waitTime: 0.4
-  collisionHeight: 0.3
+  collisionHeight: 0.5
   frontDeltaPos: 1.52
   backwardDeltaPos: -1.48
   isDead: 0

@@ -189,6 +189,10 @@ PrefabInstance:
       value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 6902445524783724940, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
+      propertyPath: collisionHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902445524783724940, guid: fabba0f0a0f3cff4c9118486f827ab3e, type: 3}
       propertyPath: backwardDeltaPos
       value: 0
       objectReference: {fileID: 0}
