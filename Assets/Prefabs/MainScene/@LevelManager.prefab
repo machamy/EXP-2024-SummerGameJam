@@ -72,7 +72,7 @@ MonoBehaviour:
   useT: 0
   weight: 1
   score: {fileID: 11400000, guid: dfceaf1ab4668bf4da239c9dc96ebb6f, type: 2}
-  deltaTime: 3
+  deltaTime: 4
   bridge: {fileID: 0}
   carUpper: {fileID: 0}
   carLower: {fileID: 0}

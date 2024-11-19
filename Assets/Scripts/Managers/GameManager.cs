@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
     [field:SerializeField] public int currentDifficulty { get; set; }
     [field:SerializeField]public int unlockedDifficulty { get; set; }
     // public int highScore { get; private set; }
-    
+
+    public static float TimeStamp => Instance.levelManager.timestamp;
     public enum GameState
     {
         Main,

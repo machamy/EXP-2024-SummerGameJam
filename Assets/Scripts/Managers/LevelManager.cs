@@ -36,7 +36,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float weight = 1.00f;
 
     [SerializeField] private IntVariableSO score;
-    [SerializeField] private float deltaTime = 10f;
+    /// <summary>
+    /// 현재 데이터셋으로 4보다 낮아지면, 문제가 생김
+    /// </summary>
+    [SerializeField,Min(4.0f)] private float deltaTime = 10f; 
 
     [SerializeField] private BridgeController bridge;
 
@@ -119,31 +122,38 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void Update()
+    public void FixedUpdate()
     {
         if(GameManager.Instance.State == GameManager.GameState.Pause ||
            GameManager.Instance.State == GameManager.GameState.Score)
             return;
 
-        timestamp += Time.deltaTime;
+        timestamp += Time.fixedDeltaTime;
 
         if(schedule.Count > 0)
         {
+            #if UNITY_EDITOR
+            Debug.Log($"Timestamp: {timestamp}, Schedule Count: {schedule.Count}, Schedule: {string.Join(", ", schedule.Select(kv => $"[{kv.Key}: {kv.Value.name}]"))}");
+            #endif
             var key = schedule.Keys[0];
-            while (timestamp > key)
+            while (timestamp >= key)
             {
                 GameObject go = schedule.Values[0];
                 schedule.RemoveAt(0);
+                #if UNITY_EDITOR
+                var vehicle = go.GetComponent<BaseVehicle>();
+                print($"{vehicle.name} at {timestamp}, {key}");
+                #endif
                 go.SetActive(true);
                 if (schedule.Count <= 0)
-                    return;
+                    break;
                 key = schedule.Keys[0];
             }
         }
 
         if (canSpawn)
         {
-            intervalRemain -= Time.deltaTime;
+            intervalRemain -= Time.fixedDeltaTime;
             if (intervalRemain <= 0)
             {
                 GameObject go;
@@ -166,7 +176,7 @@ public class LevelManager : MonoBehaviour
                 BaseVehicle vehicle = go.GetComponent<BaseVehicle>();
                 float vehicleActivateTime = timestamp + deltaTime - (vehicle.TotalBeforeTime + vehicle.bridgeStartTime);
                 schedule.Add(vehicleActivateTime, go);
-                intervalRemain = Random.Range(intervalMin, intervalMax);
+                intervalRemain = Random.Range(intervalMin, intervalMax); 
                 vehicle.timestampCheck = vehicleActivateTime;
                 float t;
 
@@ -237,7 +247,7 @@ public class LevelManager : MonoBehaviour
             weight *= coeff;
             bridge.MoveSpeedWeight *= coeff;
             intervalMax = Mathf.Max(intervalMin, intervalMax * coeff);
-            intervalMin = Mathf.Max(intervalMinMin, intervalMax * coeff);
+            intervalMin = Mathf.Max(intervalMinMin, intervalMin * coeff);
        
             weight = Mathf.Max(0.05f, weight); // 최솟값(임의) 설정
         }
@@ -272,6 +282,7 @@ public class LevelManager : MonoBehaviour
 
         return result;
     }
+#if UNITY_EDITOR
     [ContextMenu("SummonDebug")]
     public GameObject SummonDebug()
     {
@@ -296,6 +307,7 @@ public class LevelManager : MonoBehaviour
 
         return result;
     }
+    #endif
     private Line GetCarLine(VehicleDataSO data)
     {
         Line line;

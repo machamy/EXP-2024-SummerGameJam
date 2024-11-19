@@ -48,6 +48,9 @@ namespace Vehicles
 
             this.state = VehicleState.MoveAfter;
             // print($"car {TotalBeforeTime} {priorWaitDelay} , {currentTime}");
+            #if UNITY_EDITOR
+            print("Wait End"+name + " " + (timestampCheck + TotalBeforeTime) + " and" + GameManager.TimeStamp);
+            #endif
             currentTime = 0f;
             SoundManager.Instance.Play("car_slow", SoundManager.SoundType.SFX);
         }

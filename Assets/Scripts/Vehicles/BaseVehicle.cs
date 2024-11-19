@@ -121,6 +121,7 @@ namespace Vehicles
         {
             currentTime = 0f;
             AutoInit();
+            print("Enable "+name + $"{GetInstanceID()} " + (timestampCheck) + " and" + GameManager.TimeStamp);
         }
 
         public virtual void AutoInit() => AutoInit(-0.3f, 0.5f);
@@ -142,10 +143,16 @@ namespace Vehicles
                     // OnStart와 같음
                     OnIdleStay(); // 초기 시작 함수
                     currentTime += Time.fixedDeltaTime;
+#if UNITY_EDITOR
+                    print("Start "+name + " " + (timestampCheck) + " and" + GameManager.TimeStamp);
+                    #endif
                     return;// 움직이지 않는다.
                 case VehicleState.MoveBefore:
                     if (currentDistance >= WaitDistance) // 도착하면 움직이지않고 대기 페이즈로
                     {
+#if UNITY_EDITOR
+                        print("Wait "+name + " " + (timestampCheck + priorMoveDelay) + " and" + GameManager.TimeStamp);
+                        #endif
                         body.MovePosition(WaitPos.position);
                         state = VehicleState.Wait;
                         OnWait();
@@ -204,6 +211,9 @@ namespace Vehicles
             {
                 if (!IsOnBridge)
                 {
+#if UNITY_EDITOR
+                    print("Enter "+name + " " + (timestampCheck + TotalBeforeTime + bridgeStartTime) + " and" + GameManager.TimeStamp);
+                    #endif
                     OnBridgeStart();
                 }
                 if (isCollideHeight(bridgeController.height)) // 충돌시
@@ -215,7 +225,7 @@ namespace Vehicles
                         OnCollisionUp();
                     }
                     else
-                    { 
+                    {
                         //Enter 이벤트
                         OnCollisionFront();
                     }
